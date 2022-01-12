@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ItemInfoWindowController">
+            <connections>
+                <outlet property="infotextview" destination="emr-ln-wsc" id="PNJ-Wh-z3M"/>
+                <outlet property="playvoicetoolbaritem" destination="Zhe-5I-HHx" id="Ywt-JB-2sb"/>
+                <outlet property="window" destination="KD4-Wj-44B" id="yzo-8y-pkw"/>
+                <outlet property="wordlabel" destination="RUT-SM-BoI" id="8ii-J4-taI"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Word Info" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" toolbarStyle="unified" titleVisibility="hidden" id="KD4-Wj-44B">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="514" height="384"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
+            <view key="contentView" wantsLayer="YES" id="Lpb-E8-VIz">
+                <rect key="frame" x="0.0" y="0.0" width="514" height="384"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="fwm-hI-KEb">
+                        <rect key="frame" x="0.0" y="186" width="514" height="198"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUT-SM-BoI">
+                                <rect key="frame" x="-2" y="55" width="518" height="87"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="漢字" id="M4m-3Q-d9V">
+                                    <font key="font" metaFont="system" size="64"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </visualEffectView>
+                    <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c39-Fq-Ys2">
+                        <rect key="frame" x="0.0" y="0.0" width="514" height="186"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        <clipView key="contentView" drawsBackground="NO" id="VMn-6Z-K1f">
+                            <rect key="frame" x="0.0" y="0.0" width="514" height="186"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView editable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="emr-ln-wsc">
+                                    <rect key="frame" x="0.0" y="0.0" width="514" height="186"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="514" height="186"/>
+                                    <size key="maxSize" width="523" height="10000000"/>
+                                    <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                </textView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="IPw-hl-Z3N">
+                            <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="X7c-AN-GWZ">
+                            <rect key="frame" x="498" y="0.0" width="16" height="186"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="64B40366-EE42-4E28-9A85-F929AB2D6FF4" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="rNz-r0-gjX">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="1F3DE3F5-9B19-4B2D-A50E-9B5538C32F73" label="Look up in Dictionary" paletteLabel="Look up in Dictionary" toolTip="Look up in Dictionary" image="books.vertical" catalog="system" bordered="YES" id="DLh-ZR-R17">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="rd6-P0-x6i">
+                            <rect key="frame" x="41" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="books.vertical" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AD2-qB-24A">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="lookupworddictionary:" target="-2" id="doJ-04-0zp"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="12D221FB-F1B0-4D8B-A6D4-8F77483714EB" label="Other Resources" paletteLabel="Other Resources" toolTip="Other Resources" image="safari" catalog="system" bordered="YES" id="g7t-D0-yYe">
+                        <size key="minSize" width="26" height="28"/>
+                        <size key="maxSize" width="50" height="30"/>
+                        <popUpButton key="view" verticalHuggingPriority="750" id="wmo-vo-bJn">
+                            <rect key="frame" x="30" y="14" width="35" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" selectedItem="rRj-4f-XDj" id="GBs-7H-GjA">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="7qx-pj-AHr">
+                                    <items>
+                                        <menuItem state="on" image="safari" catalog="system" hidden="YES" id="rRj-4f-XDj"/>
+                                        <menuItem title="Dictionaries" id="nq3-WS-kQf">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="lookupdictionariesapp:" target="-2" id="Obg-Kj-aNI"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Jisho" tag="1" id="uJo-Hf-kuM">
+                                            <connections>
+                                                <action selector="lookupjisho:" target="-2" id="eGp-AS-Gl1"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Weblio" tag="1" id="Mbq-I4-Js1">
+                                            <connections>
+                                                <action selector="lookupweblio:" target="-2" id="9H7-YK-lqa"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="ALC" tag="1" id="gz8-Hu-TV6">
+                                            <connections>
+                                                <action selector="lookupalc:" target="-2" id="pSQ-br-fIP"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Goo" tag="1" id="EgQ-Mf-mCf">
+                                            <connections>
+                                                <action selector="lookupgoo:" target="-2" id="hhy-Gn-cx9"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Tangorin" tag="1" id="leh-ee-q9d">
+                                            <connections>
+                                                <action selector="lookuptangorin:" target="-2" id="nKq-ow-ho0"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                        </popUpButton>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="E325394B-D079-47EE-86E9-06367BE1C983" label="Play Voice" paletteLabel="Play Voice" toolTip="Play Voice" image="play.circle" catalog="system" bordered="YES" id="Zhe-5I-HHx">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="74d-C3-KVK">
+                            <rect key="frame" x="12" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="play.circle" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="egZ-6S-9iZ">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="playvoice:" target="-2" id="jgX-oG-dOw"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="Zhe-5I-HHx"/>
+                    <toolbarItem reference="DLh-ZR-R17"/>
+                    <toolbarItem reference="g7t-D0-yYe"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="Q0F-dR-9HL"/>
+            </connections>
+            <point key="canvasLocation" x="157" y="201"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="books.vertical" catalog="system" width="20" height="17"/>
+        <image name="play.circle" catalog="system" width="15" height="15"/>
+        <image name="safari" catalog="system" width="15" height="15"/>
+    </resources>
+</document>

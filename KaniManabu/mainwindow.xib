@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController">
+            <connections>
+                <outlet property="arrayController" destination="aN6-8N-XoP" id="3Ai-FU-IxC"/>
+                <outlet property="tb" destination="26o-mf-wcx" id="Y2a-4P-OOK"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="N31-TV-vfg"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="KaniManabu" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="409"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
+            <value key="minSize" type="size" width="480" height="409"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="480" height="409"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="125" horizontalPageScroll="10" verticalLineScroll="125" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyP-xp-oMH">
+                        <rect key="frame" x="-1" y="-1" width="482" height="411"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <clipView key="contentView" id="YAG-85-IfW">
+                            <rect key="frame" x="1" y="1" width="480" height="409"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="125" viewBased="YES" id="26o-mf-wcx">
+                                    <rect key="frame" x="0.0" y="0.0" width="480" height="409"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <size key="intercellSpacing" width="17" height="0.0"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                    <tableColumns>
+                                        <tableColumn editable="NO" width="468" minWidth="40" maxWidth="1000" id="mqb-Oi-NUt">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="wxt-No-QUp">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
+                                            <prototypeCellViews>
+                                                <tableCellView id="jJw-Kr-BAb" customClass="DeckViewCell">
+                                                    <rect key="frame" x="8" y="0.0" width="463" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                </tableCellView>
+                                            </prototypeCellViews>
+                                        </tableColumn>
+                                    </tableColumns>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-2" id="Wcw-A1-s8Q"/>
+                                        <outlet property="delegate" destination="-2" id="d6a-Xq-wYl"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="VJ8-V5-m1R">
+                            <rect key="frame" x="1" y="394" width="480" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="ehE-Ti-Y1S">
+                            <rect key="frame" x="224" y="17" width="15" height="102"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="2101ABC7-9E2D-4B72-B19B-5929AC9E90C1" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="kxH-mr-wlK">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="F6BCC8E8-F9F2-4B92-91DC-0DA5F52D84B2" label="Browse" paletteLabel="Browse" toolTip="Browse" image="doc.text.magnifyingglass" catalog="system" bordered="YES" id="ByB-ZQ-AA5">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="N0G-Rk-OUd">
+                            <rect key="frame" x="5" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="doc.text.magnifyingglass" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0rb-Za-6o6">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="openDeckBrowser:" target="-2" id="zB0-YW-TJw"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C88789A7-5450-4E44-AA7F-94A57190497E" label="New Deck" paletteLabel="New Deck" toolTip="New Deck" image="doc.badge.plus" catalog="system" bordered="YES" id="7dU-lF-Vhj">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="Kyu-Mi-vk1">
+                            <rect key="frame" x="12" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="doc.badge.plus" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="W9g-np-By0">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="addNewDeck:" target="-2" id="bED-a1-Os6"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="ByB-ZQ-AA5"/>
+                    <toolbarItem reference="7dU-lF-Vhj"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="dR6-yB-VIq"/>
+            </connections>
+            <point key="canvasLocation" x="140" y="213.5"/>
+        </window>
+        <arrayController automaticallyPreparesContent="YES" id="aN6-8N-XoP"/>
+    </objects>
+    <resources>
+        <image name="doc.badge.plus" catalog="system" width="16" height="17"/>
+        <image name="doc.text.magnifyingglass" catalog="system" width="15" height="17"/>
+    </resources>
+</document>

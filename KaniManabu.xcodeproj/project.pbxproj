@@ -1,0 +1,804 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		15162333278F762300A09568 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1516232B278F762300A09568 /* QuartzCore.framework */; platformFilter = maccatalyst; };
+		151F3AB7278D07AB00953ECD /* DeckViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3AB6278D07AB00953ECD /* DeckViewCell.m */; };
+		151F3AB9278D07C100953ECD /* DeckViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3AB8278D07C100953ECD /* DeckViewCell.xib */; };
+		151F3ABD278E23CD00953ECD /* KanjiEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3ABB278E23CD00953ECD /* KanjiEditor.m */; };
+		151F3ABE278E23CD00953ECD /* KanjiEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3ABC278E23CD00953ECD /* KanjiEditor.xib */; };
+		151F3AC2278E23D800953ECD /* KanaEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3AC0278E23D800953ECD /* KanaEditor.m */; };
+		151F3AC3278E23D800953ECD /* KanaEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3AC1278E23D800953ECD /* KanaEditor.xib */; };
+		1579486D278CBFB0000D984D /* DeckAddDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1579486C278CBFB0000D984D /* DeckAddDialogController.m */; };
+		15794870278CBFC9000D984D /* ItemInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1579486F278CBFC9000D984D /* ItemInfoWindowController.m */; };
+		15794873278CC083000D984D /* CardReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794872278CC083000D984D /* CardReview.m */; };
+		15794878278CD407000D984D /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794876278CD407000D984D /* GeneralPreferencesViewController.m */; };
+		15794879278CD407000D984D /* GeneralPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15794877278CD407000D984D /* GeneralPreferences.xib */; };
+		1579487D278CDB97000D984D /* DeckManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1579487C278CDB97000D984D /* DeckManager.m */; };
+		15B122D1278CE45300575A73 /* VocabEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122CF278CE45300575A73 /* VocabEditor.m */; };
+		15B122D2278CE45300575A73 /* VocabEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15B122D0278CE45300575A73 /* VocabEditor.xib */; };
+		15B122D6278CE93E00575A73 /* AnswerCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122D5278CE93E00575A73 /* AnswerCheck.m */; };
+		15B122D9278CEBE900575A73 /* string_score.c in Sources */ = {isa = PBXBuildFile; fileRef = 15B122D8278CEBE900575A73 /* string_score.c */; };
+		15B122DE278CED4C00575A73 /* PaRomajiKanaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122DA278CED4C00575A73 /* PaRomajiKanaConverter.m */; };
+		15B122DF278CED4C00575A73 /* NSString+RomajiKanaConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122DB278CED4C00575A73 /* NSString+RomajiKanaConvert.m */; };
+		FF28A80F278C941800D3744D /* SRScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A80E278C941800D3744D /* SRScheduler.m */; };
+		FF28A811278CA23B00D3744D /* NewDeckDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF28A810278CA23B00D3744D /* NewDeckDialog.xib */; };
+		FF28A813278CA4AF00D3744D /* Learn.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF28A812278CA4AF00D3744D /* Learn.xib */; };
+		FF28A817278CB16D00D3744D /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A816278CB16D00D3744D /* MainWindowController.m */; };
+		FF28A81A278CB17F00D3744D /* LearnWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A819278CB17F00D3744D /* LearnWindowController.m */; };
+		FF28A81D278CB19E00D3744D /* ReviewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A81C278CB19E00D3744D /* ReviewWindowController.m */; };
+		FF28A825278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A822278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m */; };
+		FF28A826278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A824278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m */; };
+		FF28A827278CB50500D3744D /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A80B278C8D5F00D3744D /* MASPreferences.framework */; };
+		FF28A828278CB50500D3744D /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A80B278C8D5F00D3744D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF28A82A278CB50600D3744D /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A809278C8D5500D3744D /* PXSourceList.framework */; };
+		FF28A82B278CB50600D3744D /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A809278C8D5500D3744D /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF708866278C7CDF00DF399E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF708865278C7CDF00DF399E /* AppDelegate.m */; };
+		FF708869278C7CDF00DF399E /* KaniManabu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF708867278C7CDF00DF399E /* KaniManabu.xcdatamodeld */; };
+		FF70886B278C7CE000DF399E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF70886A278C7CE000DF399E /* Assets.xcassets */; };
+		FF70886E278C7CE000DF399E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70886C278C7CE000DF399E /* MainMenu.xib */; };
+		FF708870278C7CE000DF399E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF70886F278C7CE000DF399E /* main.m */; };
+		FF708879278C83A000DF399E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF708878278C83A000DF399E /* CloudKit.framework */; };
+		FF70887B278C852700DF399E /* Review.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70887A278C852700DF399E /* Review.xib */; };
+		FF70887D278C853400DF399E /* mainwindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70887C278C853400DF399E /* mainwindow.xib */; };
+		FF70887F278C854000DF399E /* DeckBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70887E278C854000DF399E /* DeckBrowser.xib */; };
+		FF74656C278F2FAE0062E476 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF746563278F2F960062E476 /* AFNetworking.framework */; };
+		FF74656D278F2FAE0062E476 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF746563278F2F960062E476 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF746570278F44A10062E476 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF74656E278F44A10062E476 /* PFAboutWindowController.m */; };
+		FF746572278F44AE0062E476 /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF746571278F44AE0062E476 /* PFAboutWindow.xib */; };
+		FF746574278F47330062E476 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF746573278F47330062E476 /* EULA.rtf */; };
+		FF746576278F47380062E476 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF746575278F47380062E476 /* Credits.rtf */; };
+		FFA14B7B278EF1560038B9C2 /* CardEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA14B7A278EF1560038B9C2 /* CardEditor.m */; };
+		FFA14B85278F04E10038B9C2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA14B84278F04E10038B9C2 /* AVFoundation.framework */; };
+		FFA14B90278F0F8C0038B9C2 /* NSTableViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA14B8F278F0F8C0038B9C2 /* NSTableViewAction.m */; };
+		FFA14B92278F18340038B9C2 /* ItemInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA14B91278F18340038B9C2 /* ItemInfoWindow.xib */; };
+		FFB6145C278CB8AF001E5FAA /* DeckBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */; };
+		FFBE3C2E278DEF67003D3F06 /* SRSLevelValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C2D278DEF67003D3F06 /* SRSLevelValueTransformer.m */; };
+		FFBE3C31278DF05F003D3F06 /* UnixDatetoNSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C30278DF05F003D3F06 /* UnixDatetoNSDate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FF74655E278F2F960062E476 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF746554278F2F950062E476 /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 299522391BBF104D00859F49;
+			remoteInfo = "AFNetworking iOS";
+		};
+		FF746560278F2F960062E476 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF746554278F2F950062E476 /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 299522651BBF129200859F49;
+			remoteInfo = "AFNetworking watchOS";
+		};
+		FF746562278F2F960062E476 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF746554278F2F950062E476 /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 299522771BBF136400859F49;
+			remoteInfo = "AFNetworking macOS";
+		};
+		FF746564278F2F960062E476 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF746554278F2F950062E476 /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2987B0A51BC408A200179A4C;
+			remoteInfo = "AFNetworking tvOS";
+		};
+		FF746566278F2F960062E476 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF746554278F2F950062E476 /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 298D7C3B1BC2C79500FD3B3E;
+			remoteInfo = "AFNetworking iOS Tests";
+		};
+		FF746568278F2F960062E476 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF746554278F2F950062E476 /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 298D7C4A1BC2C7B200FD3B3E;
+			remoteInfo = "AFNetworking macOS Tests";
+		};
+		FF74656A278F2F960062E476 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF746554278F2F950062E476 /* AFNetworking.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2987B0AE1BC408A200179A4C;
+			remoteInfo = "AFNetworking tvOS Tests";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FF28A829278CB50500D3744D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FF28A828278CB50500D3744D /* MASPreferences.framework in Embed Frameworks */,
+				FF74656D278F2FAE0062E476 /* AFNetworking.framework in Embed Frameworks */,
+				FF28A82B278CB50600D3744D /* PXSourceList.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1516232B278F762300A09568 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		151F3AB5278D07AB00953ECD /* DeckViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckViewCell.h; sourceTree = "<group>"; };
+		151F3AB6278D07AB00953ECD /* DeckViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckViewCell.m; sourceTree = "<group>"; };
+		151F3AB8278D07C100953ECD /* DeckViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckViewCell.xib; sourceTree = "<group>"; };
+		151F3ABA278E23CD00953ECD /* KanjiEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KanjiEditor.h; sourceTree = "<group>"; };
+		151F3ABB278E23CD00953ECD /* KanjiEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KanjiEditor.m; sourceTree = "<group>"; };
+		151F3ABC278E23CD00953ECD /* KanjiEditor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KanjiEditor.xib; sourceTree = "<group>"; };
+		151F3ABF278E23D800953ECD /* KanaEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KanaEditor.h; sourceTree = "<group>"; };
+		151F3AC0278E23D800953ECD /* KanaEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KanaEditor.m; sourceTree = "<group>"; };
+		151F3AC1278E23D800953ECD /* KanaEditor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KanaEditor.xib; sourceTree = "<group>"; };
+		1579486B278CBFB0000D984D /* DeckAddDialogController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckAddDialogController.h; sourceTree = "<group>"; };
+		1579486C278CBFB0000D984D /* DeckAddDialogController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckAddDialogController.m; sourceTree = "<group>"; };
+		1579486E278CBFC9000D984D /* ItemInfoWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemInfoWindowController.h; sourceTree = "<group>"; };
+		1579486F278CBFC9000D984D /* ItemInfoWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItemInfoWindowController.m; sourceTree = "<group>"; };
+		15794871278CC083000D984D /* CardReview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardReview.h; sourceTree = "<group>"; };
+		15794872278CC083000D984D /* CardReview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardReview.m; sourceTree = "<group>"; };
+		15794875278CD407000D984D /* GeneralPreferencesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneralPreferencesViewController.h; sourceTree = "<group>"; };
+		15794876278CD407000D984D /* GeneralPreferencesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeneralPreferencesViewController.m; sourceTree = "<group>"; };
+		15794877278CD407000D984D /* GeneralPreferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralPreferences.xib; sourceTree = "<group>"; };
+		1579487A278CD496000D984D /* PreferencesControllers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesControllers.h; sourceTree = "<group>"; };
+		1579487B278CDB97000D984D /* DeckManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckManager.h; sourceTree = "<group>"; };
+		1579487C278CDB97000D984D /* DeckManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckManager.m; sourceTree = "<group>"; };
+		15B122CE278CE45300575A73 /* VocabEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VocabEditor.h; sourceTree = "<group>"; };
+		15B122CF278CE45300575A73 /* VocabEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VocabEditor.m; sourceTree = "<group>"; };
+		15B122D0278CE45300575A73 /* VocabEditor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VocabEditor.xib; sourceTree = "<group>"; };
+		15B122D4278CE93E00575A73 /* AnswerCheck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnswerCheck.h; sourceTree = "<group>"; };
+		15B122D5278CE93E00575A73 /* AnswerCheck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnswerCheck.m; sourceTree = "<group>"; };
+		15B122D7278CEBE900575A73 /* string_score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_score.h; sourceTree = "<group>"; };
+		15B122D8278CEBE900575A73 /* string_score.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = string_score.c; sourceTree = "<group>"; };
+		15B122DA278CED4C00575A73 /* PaRomajiKanaConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PaRomajiKanaConverter.m; path = PaRomajiKanaConverter/PaRomajiKanaConverter.m; sourceTree = "<group>"; };
+		15B122DB278CED4C00575A73 /* NSString+RomajiKanaConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+RomajiKanaConvert.m"; path = "PaRomajiKanaConverter/NSString+RomajiKanaConvert.m"; sourceTree = "<group>"; };
+		15B122DC278CED4C00575A73 /* NSString+RomajiKanaConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+RomajiKanaConvert.h"; path = "PaRomajiKanaConverter/NSString+RomajiKanaConvert.h"; sourceTree = "<group>"; };
+		15B122DD278CED4C00575A73 /* PaRomajiKanaConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaRomajiKanaConverter.h; path = PaRomajiKanaConverter/PaRomajiKanaConverter.h; sourceTree = "<group>"; };
+		FF28A809278C8D5500D3744D /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
+		FF28A80B278C8D5F00D3744D /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASPreferences.framework; sourceTree = "<group>"; };
+		FF28A80D278C941800D3744D /* SRScheduler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRScheduler.h; sourceTree = "<group>"; };
+		FF28A80E278C941800D3744D /* SRScheduler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRScheduler.m; sourceTree = "<group>"; };
+		FF28A810278CA23B00D3744D /* NewDeckDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewDeckDialog.xib; sourceTree = "<group>"; };
+		FF28A812278CA4AF00D3744D /* Learn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Learn.xib; sourceTree = "<group>"; };
+		FF28A815278CB16D00D3744D /* MainWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
+		FF28A816278CB16D00D3744D /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
+		FF28A818278CB17F00D3744D /* LearnWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearnWindowController.h; sourceTree = "<group>"; };
+		FF28A819278CB17F00D3744D /* LearnWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnWindowController.m; sourceTree = "<group>"; };
+		FF28A81B278CB19E00D3744D /* ReviewWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewWindowController.h; sourceTree = "<group>"; };
+		FF28A81C278CB19E00D3744D /* ReviewWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewWindowController.m; sourceTree = "<group>"; };
+		FF28A821278CB31300D3744D /* NSString+HTMLtoNSAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLtoNSAttributedString.h"; sourceTree = "<group>"; };
+		FF28A822278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLtoNSAttributedString.m"; sourceTree = "<group>"; };
+		FF28A823278CB31300D3744D /* NSTextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
+		FF28A824278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
+		FF708861278C7CDF00DF399E /* KaniManabu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaniManabu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF708864278C7CDF00DF399E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FF708865278C7CDF00DF399E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FF708868278C7CDF00DF399E /* WaniManabu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WaniManabu.xcdatamodel; sourceTree = "<group>"; };
+		FF70886A278C7CE000DF399E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF70886D278C7CE000DF399E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FF70886F278C7CE000DF399E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FF708871278C7CE000DF399E /* KaniManabu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KaniManabu.entitlements; sourceTree = "<group>"; };
+		FF708878278C83A000DF399E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		FF70887A278C852700DF399E /* Review.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Review.xib; sourceTree = "<group>"; };
+		FF70887C278C853400DF399E /* mainwindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = mainwindow.xib; sourceTree = "<group>"; };
+		FF70887E278C854000DF399E /* DeckBrowser.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckBrowser.xib; sourceTree = "<group>"; };
+		FF746554278F2F950062E476 /* AFNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AFNetworking.xcodeproj; path = "Dependencies/AFNetworking 4/AFNetworking.xcodeproj"; sourceTree = "<group>"; };
+		FF74656E278F44A10062E476 /* PFAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFAboutWindowController.m; sourceTree = "<group>"; };
+		FF74656F278F44A10062E476 /* PFAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFAboutWindowController.h; sourceTree = "<group>"; };
+		FF746571278F44AE0062E476 /* PFAboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFAboutWindow.xib; sourceTree = "<group>"; };
+		FF746573278F47330062E476 /* EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = EULA.rtf; sourceTree = "<group>"; };
+		FF746575278F47380062E476 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		FFA14B79278EF1560038B9C2 /* CardEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardEditor.h; sourceTree = "<group>"; };
+		FFA14B7A278EF1560038B9C2 /* CardEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardEditor.m; sourceTree = "<group>"; };
+		FFA14B84278F04E10038B9C2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		FFA14B8E278F0F8C0038B9C2 /* NSTableViewAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTableViewAction.h; sourceTree = "<group>"; };
+		FFA14B8F278F0F8C0038B9C2 /* NSTableViewAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTableViewAction.m; sourceTree = "<group>"; };
+		FFA14B91278F18340038B9C2 /* ItemInfoWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemInfoWindow.xib; sourceTree = "<group>"; };
+		FFB6145A278CB8AF001E5FAA /* DeckBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckBrowser.h; sourceTree = "<group>"; };
+		FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckBrowser.m; sourceTree = "<group>"; };
+		FFBE3C2C278DEF67003D3F06 /* SRSLevelValueTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRSLevelValueTransformer.h; sourceTree = "<group>"; };
+		FFBE3C2D278DEF67003D3F06 /* SRSLevelValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRSLevelValueTransformer.m; sourceTree = "<group>"; };
+		FFBE3C2F278DF05F003D3F06 /* UnixDatetoNSDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnixDatetoNSDate.h; sourceTree = "<group>"; };
+		FFBE3C30278DF05F003D3F06 /* UnixDatetoNSDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnixDatetoNSDate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF70885E278C7CDF00DF399E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFA14B85278F04E10038B9C2 /* AVFoundation.framework in Frameworks */,
+				FF74656C278F2FAE0062E476 /* AFNetworking.framework in Frameworks */,
+				15162333278F762300A09568 /* QuartzCore.framework in Frameworks */,
+				FF28A827278CB50500D3744D /* MASPreferences.framework in Frameworks */,
+				FF708879278C83A000DF399E /* CloudKit.framework in Frameworks */,
+				FF28A82A278CB50600D3744D /* PXSourceList.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		15794874278CD3D5000D984D /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				15794875278CD407000D984D /* GeneralPreferencesViewController.h */,
+				15794876278CD407000D984D /* GeneralPreferencesViewController.m */,
+				15794877278CD407000D984D /* GeneralPreferences.xib */,
+				1579487A278CD496000D984D /* PreferencesControllers.h */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
+		15B122D3278CE85E00575A73 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				FF28A80D278C941800D3744D /* SRScheduler.h */,
+				FF28A80E278C941800D3744D /* SRScheduler.m */,
+				15794871278CC083000D984D /* CardReview.h */,
+				15794872278CC083000D984D /* CardReview.m */,
+				1579487B278CDB97000D984D /* DeckManager.h */,
+				1579487C278CDB97000D984D /* DeckManager.m */,
+				15B122D4278CE93E00575A73 /* AnswerCheck.h */,
+				15B122D5278CE93E00575A73 /* AnswerCheck.m */,
+			);
+			path = Backend;
+			sourceTree = "<group>";
+		};
+		FF28A814278CB14700D3744D /* Window Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FF28A815278CB16D00D3744D /* MainWindowController.h */,
+				FF28A816278CB16D00D3744D /* MainWindowController.m */,
+				FF28A818278CB17F00D3744D /* LearnWindowController.h */,
+				FF28A819278CB17F00D3744D /* LearnWindowController.m */,
+				FF28A81B278CB19E00D3744D /* ReviewWindowController.h */,
+				FF28A81C278CB19E00D3744D /* ReviewWindowController.m */,
+				FFB6145A278CB8AF001E5FAA /* DeckBrowser.h */,
+				FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */,
+				1579486B278CBFB0000D984D /* DeckAddDialogController.h */,
+				1579486C278CBFB0000D984D /* DeckAddDialogController.m */,
+				1579486E278CBFC9000D984D /* ItemInfoWindowController.h */,
+				1579486F278CBFC9000D984D /* ItemInfoWindowController.m */,
+				15B122CE278CE45300575A73 /* VocabEditor.h */,
+				15B122CF278CE45300575A73 /* VocabEditor.m */,
+				15B122D0278CE45300575A73 /* VocabEditor.xib */,
+				151F3ABA278E23CD00953ECD /* KanjiEditor.h */,
+				151F3ABB278E23CD00953ECD /* KanjiEditor.m */,
+				151F3ABC278E23CD00953ECD /* KanjiEditor.xib */,
+				151F3ABF278E23D800953ECD /* KanaEditor.h */,
+				151F3AC0278E23D800953ECD /* KanaEditor.m */,
+				151F3AC1278E23D800953ECD /* KanaEditor.xib */,
+			);
+			path = "Window Controllers";
+			sourceTree = "<group>";
+		};
+		FF28A820278CB30900D3744D /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				FFA14B8E278F0F8C0038B9C2 /* NSTableViewAction.h */,
+				FFA14B8F278F0F8C0038B9C2 /* NSTableViewAction.m */,
+				15B122DC278CED4C00575A73 /* NSString+RomajiKanaConvert.h */,
+				15B122DB278CED4C00575A73 /* NSString+RomajiKanaConvert.m */,
+				15B122DD278CED4C00575A73 /* PaRomajiKanaConverter.h */,
+				15B122DA278CED4C00575A73 /* PaRomajiKanaConverter.m */,
+				15B122D8278CEBE900575A73 /* string_score.c */,
+				15B122D7278CEBE900575A73 /* string_score.h */,
+				FF28A821278CB31300D3744D /* NSString+HTMLtoNSAttributedString.h */,
+				FF28A822278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m */,
+				FF28A823278CB31300D3744D /* NSTextView+SetHTMLAttributedText.h */,
+				FF28A824278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m */,
+				FF74656F278F44A10062E476 /* PFAboutWindowController.h */,
+				FF74656E278F44A10062E476 /* PFAboutWindowController.m */,
+				FF746571278F44AE0062E476 /* PFAboutWindow.xib */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		FF708858278C7CDF00DF399E = {
+			isa = PBXGroup;
+			children = (
+				FF746553278F2F8D0062E476 /* Dependencies */,
+				FF708863278C7CDF00DF399E /* KaniManabu */,
+				FF708862278C7CDF00DF399E /* Products */,
+				FF708877278C83A000DF399E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FF708862278C7CDF00DF399E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF708861278C7CDF00DF399E /* KaniManabu.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF708863278C7CDF00DF399E /* KaniManabu */ = {
+			isa = PBXGroup;
+			children = (
+				FFBE3C2B278DEF44003D3F06 /* ValueTransformers */,
+				15B122D3278CE85E00575A73 /* Backend */,
+				15794874278CD3D5000D984D /* Preferences */,
+				FF28A820278CB30900D3744D /* Support */,
+				FF28A814278CB14700D3744D /* Window Controllers */,
+				FF708864278C7CDF00DF399E /* AppDelegate.h */,
+				FF708865278C7CDF00DF399E /* AppDelegate.m */,
+				FF70886A278C7CE000DF399E /* Assets.xcassets */,
+				FF70886C278C7CE000DF399E /* MainMenu.xib */,
+				FF70887A278C852700DF399E /* Review.xib */,
+				FF28A812278CA4AF00D3744D /* Learn.xib */,
+				FF70887C278C853400DF399E /* mainwindow.xib */,
+				FF28A810278CA23B00D3744D /* NewDeckDialog.xib */,
+				FF70887E278C854000DF399E /* DeckBrowser.xib */,
+				FF70886F278C7CE000DF399E /* main.m */,
+				FF708871278C7CE000DF399E /* KaniManabu.entitlements */,
+				FF708867278C7CDF00DF399E /* KaniManabu.xcdatamodeld */,
+				151F3AB5278D07AB00953ECD /* DeckViewCell.h */,
+				151F3AB6278D07AB00953ECD /* DeckViewCell.m */,
+				151F3AB8278D07C100953ECD /* DeckViewCell.xib */,
+				FFA14B79278EF1560038B9C2 /* CardEditor.h */,
+				FFA14B7A278EF1560038B9C2 /* CardEditor.m */,
+				FFA14B91278F18340038B9C2 /* ItemInfoWindow.xib */,
+				FF746573278F47330062E476 /* EULA.rtf */,
+				FF746575278F47380062E476 /* Credits.rtf */,
+			);
+			path = KaniManabu;
+			sourceTree = "<group>";
+		};
+		FF708877278C83A000DF399E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1516232B278F762300A09568 /* QuartzCore.framework */,
+				FFA14B84278F04E10038B9C2 /* AVFoundation.framework */,
+				FF708878278C83A000DF399E /* CloudKit.framework */,
+				FF28A809278C8D5500D3744D /* PXSourceList.framework */,
+				FF28A80B278C8D5F00D3744D /* MASPreferences.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FF746553278F2F8D0062E476 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				FF746554278F2F950062E476 /* AFNetworking.xcodeproj */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		FF746555278F2F950062E476 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF74655F278F2F960062E476 /* AFNetworking.framework */,
+				FF746561278F2F960062E476 /* AFNetworking.framework */,
+				FF746563278F2F960062E476 /* AFNetworking.framework */,
+				FF746565278F2F960062E476 /* AFNetworking.framework */,
+				FF746567278F2F960062E476 /* AFNetworking iOS Tests.xctest */,
+				FF746569278F2F960062E476 /* AFNetworking macOS Tests.xctest */,
+				FF74656B278F2F960062E476 /* AFNetworking tvOS Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FFBE3C2B278DEF44003D3F06 /* ValueTransformers */ = {
+			isa = PBXGroup;
+			children = (
+				FFBE3C2C278DEF67003D3F06 /* SRSLevelValueTransformer.h */,
+				FFBE3C2D278DEF67003D3F06 /* SRSLevelValueTransformer.m */,
+				FFBE3C2F278DF05F003D3F06 /* UnixDatetoNSDate.h */,
+				FFBE3C30278DF05F003D3F06 /* UnixDatetoNSDate.m */,
+			);
+			path = ValueTransformers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FF708860278C7CDF00DF399E /* KaniManabu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF708874278C7CE000DF399E /* Build configuration list for PBXNativeTarget "KaniManabu" */;
+			buildPhases = (
+				FF70885D278C7CDF00DF399E /* Sources */,
+				FF70885E278C7CDF00DF399E /* Frameworks */,
+				FF70885F278C7CDF00DF399E /* Resources */,
+				FF28A829278CB50500D3744D /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KaniManabu;
+			productName = WaniManabu;
+			productReference = FF708861278C7CDF00DF399E /* KaniManabu.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF708859278C7CDF00DF399E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					FF708860278C7CDF00DF399E = {
+						CreatedOnToolsVersion = 13.1;
+					};
+				};
+			};
+			buildConfigurationList = FF70885C278C7CDF00DF399E /* Build configuration list for PBXProject "KaniManabu" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FF708858278C7CDF00DF399E;
+			productRefGroup = FF708862278C7CDF00DF399E /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FF746555278F2F950062E476 /* Products */;
+					ProjectRef = FF746554278F2F950062E476 /* AFNetworking.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				FF708860278C7CDF00DF399E /* KaniManabu */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FF74655F278F2F960062E476 /* AFNetworking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AFNetworking.framework;
+			remoteRef = FF74655E278F2F960062E476 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF746561278F2F960062E476 /* AFNetworking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AFNetworking.framework;
+			remoteRef = FF746560278F2F960062E476 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF746563278F2F960062E476 /* AFNetworking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AFNetworking.framework;
+			remoteRef = FF746562278F2F960062E476 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF746565278F2F960062E476 /* AFNetworking.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AFNetworking.framework;
+			remoteRef = FF746564278F2F960062E476 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF746567278F2F960062E476 /* AFNetworking iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "AFNetworking iOS Tests.xctest";
+			remoteRef = FF746566278F2F960062E476 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF746569278F2F960062E476 /* AFNetworking macOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "AFNetworking macOS Tests.xctest";
+			remoteRef = FF746568278F2F960062E476 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF74656B278F2F960062E476 /* AFNetworking tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "AFNetworking tvOS Tests.xctest";
+			remoteRef = FF74656A278F2F960062E476 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FF70885F278C7CDF00DF399E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				151F3AB9278D07C100953ECD /* DeckViewCell.xib in Resources */,
+				151F3AC3278E23D800953ECD /* KanaEditor.xib in Resources */,
+				FF70887D278C853400DF399E /* mainwindow.xib in Resources */,
+				FF746576278F47380062E476 /* Credits.rtf in Resources */,
+				FF28A811278CA23B00D3744D /* NewDeckDialog.xib in Resources */,
+				151F3ABE278E23CD00953ECD /* KanjiEditor.xib in Resources */,
+				FF746574278F47330062E476 /* EULA.rtf in Resources */,
+				15794879278CD407000D984D /* GeneralPreferences.xib in Resources */,
+				FF70886B278C7CE000DF399E /* Assets.xcassets in Resources */,
+				FF28A813278CA4AF00D3744D /* Learn.xib in Resources */,
+				FF70886E278C7CE000DF399E /* MainMenu.xib in Resources */,
+				FF746572278F44AE0062E476 /* PFAboutWindow.xib in Resources */,
+				FF70887B278C852700DF399E /* Review.xib in Resources */,
+				15B122D2278CE45300575A73 /* VocabEditor.xib in Resources */,
+				FFA14B92278F18340038B9C2 /* ItemInfoWindow.xib in Resources */,
+				FF70887F278C854000DF399E /* DeckBrowser.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF70885D278C7CDF00DF399E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				15794873278CC083000D984D /* CardReview.m in Sources */,
+				FF746570278F44A10062E476 /* PFAboutWindowController.m in Sources */,
+				15B122DE278CED4C00575A73 /* PaRomajiKanaConverter.m in Sources */,
+				151F3AC2278E23D800953ECD /* KanaEditor.m in Sources */,
+				FF28A81A278CB17F00D3744D /* LearnWindowController.m in Sources */,
+				FF28A825278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				151F3ABD278E23CD00953ECD /* KanjiEditor.m in Sources */,
+				15B122DF278CED4C00575A73 /* NSString+RomajiKanaConvert.m in Sources */,
+				FFA14B90278F0F8C0038B9C2 /* NSTableViewAction.m in Sources */,
+				1579486D278CBFB0000D984D /* DeckAddDialogController.m in Sources */,
+				FF28A817278CB16D00D3744D /* MainWindowController.m in Sources */,
+				FFBE3C31278DF05F003D3F06 /* UnixDatetoNSDate.m in Sources */,
+				FFB6145C278CB8AF001E5FAA /* DeckBrowser.m in Sources */,
+				15794878278CD407000D984D /* GeneralPreferencesViewController.m in Sources */,
+				1579487D278CDB97000D984D /* DeckManager.m in Sources */,
+				FF28A80F278C941800D3744D /* SRScheduler.m in Sources */,
+				FF28A81D278CB19E00D3744D /* ReviewWindowController.m in Sources */,
+				15B122D1278CE45300575A73 /* VocabEditor.m in Sources */,
+				151F3AB7278D07AB00953ECD /* DeckViewCell.m in Sources */,
+				15B122D9278CEBE900575A73 /* string_score.c in Sources */,
+				FFA14B7B278EF1560038B9C2 /* CardEditor.m in Sources */,
+				FF708869278C7CDF00DF399E /* KaniManabu.xcdatamodeld in Sources */,
+				15794870278CBFC9000D984D /* ItemInfoWindowController.m in Sources */,
+				FF708870278C7CE000DF399E /* main.m in Sources */,
+				FF708866278C7CDF00DF399E /* AppDelegate.m in Sources */,
+				FF28A826278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m in Sources */,
+				15B122D6278CE93E00575A73 /* AnswerCheck.m in Sources */,
+				FFBE3C2E278DEF67003D3F06 /* SRSLevelValueTransformer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FF70886C278C7CE000DF399E /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF70886D278C7CE000DF399E /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FF708872278C7CE000DF399E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FF708873278C7CE000DF399E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FF708875278C7CE000DF399E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KaniManabu/KaniManabu.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 MAL Updater OS X Group. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		FF708876278C7CE000DF399E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = KaniManabu/KaniManabu.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 MAL Updater OS X Group. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF70885C278C7CDF00DF399E /* Build configuration list for PBXProject "KaniManabu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF708872278C7CE000DF399E /* Debug */,
+				FF708873278C7CE000DF399E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF708874278C7CE000DF399E /* Build configuration list for PBXNativeTarget "KaniManabu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF708875278C7CE000DF399E /* Debug */,
+				FF708876278C7CE000DF399E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FF708867278C7CDF00DF399E /* KaniManabu.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FF708868278C7CDF00DF399E /* WaniManabu.xcdatamodel */,
+			);
+			currentVersion = FF708868278C7CDF00DF399E /* WaniManabu.xcdatamodel */;
+			path = KaniManabu.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = FF708859278C7CDF00DF399E /* Project object */;
+}

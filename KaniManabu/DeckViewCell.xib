@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="DeckViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="404" height="125"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uoj-LB-obo">
+                    <rect key="frame" x="8" y="86" width="346" height="26"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Deck Name" id="Nvi-SU-78Z">
+                        <font key="font" textStyle="title1" name=".SFNS-Regular"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D7g-TP-Uyg">
+                    <rect key="frame" x="22" y="28" width="48" height="52"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="tray" catalog="system" id="fdf-1g-7IW"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ix9-9m-daV">
+                    <rect key="frame" x="28" y="20" width="37" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0" id="tBf-ca-Kjv">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wnw-Tt-zdk">
+                    <rect key="frame" x="99" y="19" width="37" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="0" id="P2e-8d-G9r">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xd6-M7-TFv">
+                    <rect key="frame" x="301" y="36" width="97" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="Review" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WLs-Xh-Kec">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="startReviewSession:" target="c22-O7-iKe" id="mg7-II-H9C"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Unq-EN-UIB">
+                    <rect key="frame" x="301" y="67" width="97" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="Learn" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PsD-oP-2Nl">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="startLearnSession:" target="c22-O7-iKe" id="lph-R5-fLj"/>
+                    </connections>
+                </button>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PuZ-gh-ayd">
+                    <rect key="frame" x="96" y="34" width="41" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="text.book.closed" catalog="system" id="yi1-5W-Fai"/>
+                </imageView>
+                <button toolTip="Add Card" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tXc-eb-4Fe">
+                    <rect key="frame" x="301" y="10" width="42" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="NSAddTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ESK-5d-Klr">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="addCard:" target="c22-O7-iKe" id="ctW-SC-SFB"/>
+                    </connections>
+                </button>
+                <button toolTip="Delete Deck" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vXY-Es-isH">
+                    <rect key="frame" x="356" y="10" width="42" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="roundRect" bezelStyle="roundedRect" image="trash" catalog="system" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dmn-pL-KFB">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="deletedeck:" target="c22-O7-iKe" id="5Xi-dX-efV"/>
+                    </connections>
+                </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xYN-13-EEr">
+                    <rect key="frame" x="301" y="96" width="99" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" placeholderString="Deck Type" id="iUX-yU-nbO">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <connections>
+                <outlet property="DeckName" destination="uoj-LB-obo" id="6Vf-1L-WWF"/>
+                <outlet property="decktypestr" destination="xYN-13-EEr" id="CPL-md-DIc"/>
+                <outlet property="learningcount" destination="Wnw-Tt-zdk" id="nJ8-tw-p9i"/>
+                <outlet property="reviewcount" destination="Ix9-9m-daV" id="PI3-YA-8YO"/>
+            </connections>
+            <point key="canvasLocation" x="102" y="80.5"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSAddTemplate" width="15" height="13"/>
+        <image name="text.book.closed" catalog="system" width="15" height="16"/>
+        <image name="trash" catalog="system" width="15" height="17"/>
+        <image name="tray" catalog="system" width="19" height="13"/>
+    </resources>
+</document>

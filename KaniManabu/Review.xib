@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ReviewWindowController">
+            <connections>
+                <outlet property="answerstatus" destination="fdh-O3-be9" id="CFz-YO-xBG"/>
+                <outlet property="answertextfield" destination="V0c-Ys-uF1" id="h3C-lA-M55"/>
+                <outlet property="correctitem" destination="yHU-Qo-khj" id="qsO-KN-s0Q"/>
+                <outlet property="iteminfotoolbaritem" destination="bZn-3E-AeB" id="1ul-D7-SHj"/>
+                <outlet property="pendingitem" destination="djS-pX-nPo" id="nyq-ZL-F0f"/>
+                <outlet property="questionprompt" destination="qWw-XL-1r9" id="Kpx-V5-O1M"/>
+                <outlet property="scoreitem" destination="LMg-pa-VZc" id="nTp-g3-vhR"/>
+                <outlet property="srslevellabel" destination="BJP-Z4-Toa" id="zJ7-qc-Y9z"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="KSx-Co-Pzj"/>
+                <outlet property="word" destination="czI-9i-G2Z" id="kRA-YP-sbT"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" toolbarStyle="unified" titleVisibility="hidden" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="514" height="384"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <value key="minSize" type="size" width="514" height="384"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="514" height="384"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Xfr-wC-NeZ">
+                        <rect key="frame" x="0.0" y="100" width="514" height="284"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czI-9i-G2Z">
+                                <rect key="frame" x="-2" y="99" width="518" height="87"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="漢字" id="Xzb-8U-Sdn">
+                                    <font key="font" metaFont="system" size="64"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fdh-O3-be9">
+                                <rect key="frame" x="12" y="20" width="490" height="34"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textFieldCell key="cell" selectable="YES" alignment="center" id="Q6r-OG-nqx">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BJP-Z4-Toa">
+                                <rect key="frame" x="0.0" y="268" width="514" height="16"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="RKi-kN-g12">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </visualEffectView>
+                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0c-Ys-uF1">
+                        <rect key="frame" x="0.0" y="13" width="514" height="46"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" focusRingType="none" alignment="center" drawsBackground="YES" id="X2d-ZP-q78">
+                            <font key="font" metaFont="system" size="24"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <action selector="checkanswer:" target="-2" id="hnK-EQ-V2Z"/>
+                        </connections>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-XL-1r9">
+                        <rect key="frame" x="-2" y="55" width="518" height="34"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Meaning" id="iGu-Z2-pCe">
+                            <font key="font" textStyle="title1" name=".SFNS-Regular"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                </subviews>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="64B40366-EE42-4E28-9A85-F929AB2D6FF4" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="Rnw-Gf-mlN">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="A3B21426-4F4A-4B0B-A13F-D1366DA9AC21" label="Last 10" paletteLabel="Last 10" image="clock" catalog="system" bordered="YES" sizingBehavior="auto" id="3nf-1B-Tty">
+                        <nil key="toolTip"/>
+                        <button key="view" verticalHuggingPriority="750" id="1By-vP-Wet">
+                            <rect key="frame" x="9" y="14" width="27" height="23"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="clock" catalog="system" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AQe-dG-hdi">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="E2D62481-4AB5-4F1C-AF79-EB6465C47A9A" label="Item Info" paletteLabel="Item Info" image="eye" catalog="system" bordered="YES" sizingBehavior="auto" id="bZn-3E-AeB">
+                        <nil key="toolTip"/>
+                        <button key="view" verticalHuggingPriority="750" id="dpb-BG-dSK">
+                            <rect key="frame" x="11" y="14" width="32" height="23"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="eye" catalog="system" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ywc-pB-ZUC">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="viewitem:" target="-2" id="K6Q-ke-GJU"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Uh9-GM-qy3"/>
+                    <toolbarItem implicitItemIdentifier="2025E579-9FAA-4C11-BA1C-3F408C451B3A" label="score" paletteLabel="score" image="hand.thumbsup" catalog="system" title="0" sizingBehavior="auto" id="qrJ-eQ-MpB">
+                        <nil key="toolTip"/>
+                        <button key="view" id="LMg-pa-VZc">
+                            <rect key="frame" x="4" y="14" width="29" height="18"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <buttonCell key="cell" type="square" title="0" bezelStyle="shadowlessSquare" image="hand.thumbsup" catalog="system" imagePosition="left" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="1qK-vr-bd0">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="B395702F-C195-4B59-A8D4-8E97EFAAE8F8" label="correct" paletteLabel="correct" image="checkmark" catalog="system" title="0" sizingBehavior="auto" id="YQY-Yi-zpT">
+                        <nil key="toolTip"/>
+                        <button key="view" id="yHU-Qo-khj">
+                            <rect key="frame" x="9" y="14" width="28" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <buttonCell key="cell" type="square" title="0" bezelStyle="shadowlessSquare" image="checkmark" catalog="system" imagePosition="left" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="ApU-oJ-1lS">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="398B65C2-4730-406F-8C9D-90F95010C55D" label="pending" paletteLabel="pending" image="tray" catalog="system" title="0" sizingBehavior="auto" id="3eg-n8-46e">
+                        <nil key="toolTip"/>
+                        <button key="view" id="djS-pX-nPo">
+                            <rect key="frame" x="9" y="14" width="32" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <buttonCell key="cell" type="square" title="0" bezelStyle="shadowlessSquare" image="tray" catalog="system" imagePosition="left" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="8aU-17-6l1">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="3nf-1B-Tty"/>
+                    <toolbarItem reference="bZn-3E-AeB"/>
+                    <toolbarItem reference="Uh9-GM-qy3"/>
+                    <toolbarItem reference="qrJ-eQ-MpB"/>
+                    <toolbarItem reference="YQY-Yi-zpT"/>
+                    <toolbarItem reference="3eg-n8-46e"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="3ux-rv-GUr"/>
+            </connections>
+            <point key="canvasLocation" x="157" y="201"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="checkmark" catalog="system" width="15" height="13"/>
+        <image name="clock" catalog="system" width="15" height="15"/>
+        <image name="eye" catalog="system" width="20" height="13"/>
+        <image name="hand.thumbsup" catalog="system" width="16" height="17"/>
+        <image name="tray" catalog="system" width="19" height="13"/>
+    </resources>
+</document>

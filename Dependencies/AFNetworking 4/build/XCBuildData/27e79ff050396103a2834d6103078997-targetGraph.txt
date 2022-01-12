@@ -1,0 +1,2 @@
+Target dependency graph (1 target)
+AFNetworking macOS in AFNetworking, no dependencies
