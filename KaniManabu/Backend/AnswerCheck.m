@@ -14,7 +14,7 @@ NSString *const kHiraganacharacterset = @"ーぁあぃいぅうぇえぉおか�
 NSString *const kHiraganaVerbCharacterset = @"うくぐすずつづぬふぶぷむる";
 NSString *const kKatakanacharacterset = @"-ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ";
 NSString *const kAlphanumericcharacterset = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_, ";
-double const kFuzziness = 0.3;
+double const kFuzziness = 0.8;
 
 + (bool)validateAlphaNumericString:(NSString *)string {
     NSCharacterSet *alphanumericset = [NSCharacterSet characterSetWithCharactersInString:kAlphanumericcharacterset];
@@ -70,7 +70,7 @@ double const kFuzziness = 0.3;
         
         // Check for imprecise match with stringscore.
         float stringscore = string_fuzzy_score(answer.UTF8String, [correctAnswer substringFromIndex:3].UTF8String, kFuzziness);
-        if (stringscore >= .9) {
+        if (stringscore >= .6) {
             // Answer missing "to ", required for verbs. Prompt user
             return AnswerStateVerbNoTo;
         }
@@ -83,7 +83,7 @@ double const kFuzziness = 0.3;
     
     // Check for imprecise match with stringscore.
     float stringscore = string_fuzzy_score(answer.UTF8String, correctAnswer.UTF8String, kFuzziness);
-    if (stringscore >= .9) {
+    if (stringscore >= .6) {
         // Answer is correct enough, but not precise.
         return AnswerStateInprecise;
     }
@@ -96,7 +96,7 @@ double const kFuzziness = 0.3;
         }
         // Check for imprecise match with stringscore.
         float stringscore = string_fuzzy_score(answer.UTF8String, taltAnswer.UTF8String, kFuzziness);
-        if (stringscore >= .9) {
+        if (stringscore >= .6) {
             // Answer is correct enough, but not precise.
             return AnswerStateInprecise;
         }

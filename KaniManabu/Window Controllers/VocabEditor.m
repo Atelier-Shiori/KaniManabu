@@ -32,8 +32,9 @@
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(textDidChange:) name:NSTextDidChangeNotification object:nil];
-    
-    [self populatefromDictionary:[DeckManager.sharedInstance getCardWithCardUUID:self.cardUUID withType:DeckTypeVocab]];
+    if (!_newcard) {
+        [self populatefromDictionary:[DeckManager.sharedInstance getCardWithCardUUID:self.cardUUID withType:DeckTypeVocab]];
+    }
 }
 
 - (bool)validateFields {

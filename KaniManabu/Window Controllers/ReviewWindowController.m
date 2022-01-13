@@ -206,7 +206,7 @@
                 [self sayAnswer:[_currentcard.card valueForKey:@"reading"]];
             }
         }
-        _currentcard.reviewedmeaning = true;
+        _currentcard.reviewedreading = true;
         _answered = true;
         _iteminfotoolbaritem.enabled = true;
         [_currentcard setCorrect:CardReviewTypeReading];
@@ -214,6 +214,7 @@
     if (_currentcard.reviewedmeaning && _currentcard.reviewedreading) {
         // Show New SRS Level
         [self showNewSRSStage:YES];
+        _iteminfotoolbaritem.enabled = true;
     }
 }
 
@@ -231,29 +232,29 @@
 
 - (void)calculatescores {
     _correctitem.title = @(_correctcount).stringValue;
-    _scoreitem.title = @(_correctcount/(_correctcount+_incorrectcount)).stringValue;
+    _scoreitem.title = [NSString stringWithFormat:@"%@%%",@(((double)_correctcount/((double)_correctcount+(double)_incorrectcount))*100).stringValue];
     _pendingitem.title = @(_reviewqueue.count).stringValue;
 }
 
 - (void)nextQuestion {
     [NSNotificationCenter.defaultCenter postNotificationName:@"ReviewAdvanced" object:nil];
-    [self calculatescores];
     _iteminfotoolbaritem.enabled = false;
     _answered = false;
     _answerstatus.stringValue = @"";
     [self showNewSRSStage:NO];
-    if (_reviewqueue.count > 0) {
-        if (_currentcard) {
-            // Check if both questions are answered. If so, mark as complete
-            if (_currentcard.reviewedmeaning && _currentcard.reviewedreading) {
-                [self reviewComplete];
-                if (_reviewqueue.count == 0) {
-                    // Review complete
-                    [self showReviewComplete];
-                    return;
-                }
+    if (_currentcard) {
+        // Check if both questions are answered. If so, mark as complete
+        if (_currentcard.reviewedmeaning && _currentcard.reviewedreading) {
+            [self reviewComplete];
+            [self calculatescores];
+            if (_reviewqueue.count == 0) {
+                // Review complete
+                [self showReviewComplete];
+                return;
             }
         }
+    }
+    if (_reviewqueue.count > 0) {
         // Pick a random index number with the max being the number of cards in queue
         int ranindex = arc4random_uniform((int)_reviewqueue.count);
         _currentcard = _reviewqueue[ranindex];
