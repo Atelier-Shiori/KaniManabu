@@ -13,10 +13,15 @@
 #import "LearnWindowController.h"
 #import "ReviewWindowController.h"
 #import "CardReview.h"
+#import "MSWeakTimer.h"
 
 @interface MainWindowController ()
 @property (strong)LearnWindowController *lwc;
 @property (strong)ReviewWindowController *rwc;
+@property (strong, nonatomic) dispatch_queue_t privateQueue;
+@property (strong, nonatomic) MSWeakTimer *refreshtimer;
+@property long totallearnitemcount;
+@property long totalreviewitemcount;
 @end
 
 @implementation MainWindowController
@@ -47,15 +52,39 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ActionAddCard" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"StartLearningReviewQuiz" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"AddToQueueCount" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresWillChangeNotification object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
     [self loadDeckArrayAndPopulate];
+    //Review Queue timer
+    _privateQueue = dispatch_queue_create("moe.ateliershiori.Shukofukurou", DISPATCH_QUEUE_CONCURRENT);
+    _refreshtimer =  [MSWeakTimer scheduledTimerWithTimeInterval:900
+                                                          target:self
+                                                        selector:@selector(fireTimer)
+                                                        userInfo:nil
+                                                         repeats:YES
+                                                   dispatchQueue:_privateQueue];
+}
+
+- (void)fireTimer {
+    _totalreviewitemcount = 0;
+    _totallearnitemcount = 0;
+    [NSNotificationCenter.defaultCenter postNotificationName:@"TimerFired" object:nil];
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"CardBrowserClosed"] || [notification.name isEqualToString:@"LearnEnded"] || [notification.name isEqualToString:@"ReviewEnded"]) {
         [self.window makeKeyAndOrderFront:self];
+        if( [notification.name isEqualToString:@"ReviewEnded"]) {
+            _totalreviewitemcount = 0;
+            _totallearnitemcount = 0;
+        }
     }
-    else if ([notification.name isEqualToString:@"DeckAdded"]||[notification.name isEqualToString:@"DeckRemoved"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification]) {
+    else if ([notification.name isEqualToString:@"DeckAdded"] || [notification.name isEqualToString:@"DeckRemoved"] || [notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresWillChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
         // Reload
+        _totalreviewitemcount = 0;
+        _totallearnitemcount = 0;
         [self loadDeckArrayAndPopulate];
     }
     else if ([notification.name isEqualToString:@"ActionAddCard"]) {
@@ -102,6 +131,19 @@
     }
     else if ([notification.name isEqualToString:@"StartLearningReviewQuiz"]) {
         [self performStartLearnQuiz];
+    }
+    else if ([notification.name isEqualToString:@"AddToQueueCount"]) {
+        if ([notification.object isKindOfClass:[NSDictionary class]]) {
+            long totalreviewcount = ((NSNumber *)notification.object[@"reviewcount"]).longValue;
+            long totallearncount = ((NSNumber *)notification.object[@"learncount"]).longValue;
+            _totalreviewitemcount = _totalreviewitemcount + totalreviewcount;
+            _totallearnitemcount = _totallearnitemcount + totallearncount;
+            long totalqueue = _totallearnitemcount+_totalreviewitemcount;
+            bool nonzerototalqueuecount = (_totallearnitemcount+_totalreviewitemcount) > 0;
+            NSApp.dockTile.showsApplicationBadge = nonzerototalqueuecount;
+            NSApp.dockTile.badgeLabel = nonzerototalqueuecount ? @(totalqueue).stringValue : @"";
+            [NSApp.dockTile display];
+        }
     }
 }
 

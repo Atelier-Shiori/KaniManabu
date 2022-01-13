@@ -11,6 +11,7 @@
 @interface KanjiEditor ()
 @property (strong) IBOutlet NSTextField *savestatus;
 @property (strong) IBOutlet NSButton *savebtn;
+@property (strong) IBOutlet NSPopUpButton *mainreadingtype;
 @end
 
 @implementation KanjiEditor
@@ -60,6 +61,7 @@
     _englishmeaning.stringValue = dict[@"english"];
     _altmeanings.stringValue = dict[@"altmeaning"];
     _kanareadings.stringValue = dict[@"kanareading"];
+    [_mainreadingtype selectItemWithTag:((NSNumber *)dict[@"readingtype"]).intValue];
     _altkanareadings.stringValue = dict[@"altreading"];
     _notes.string = dict[@"notes"];
     _tags.stringValue = dict[@"tags"];
@@ -72,30 +74,10 @@
     dict[@"english"] = _englishmeaning.stringValue;
     dict[@"altmeaning"] = _altmeanings.stringValue;
     dict[@"kanareading"] = _kanareadings.stringValue;
+    dict[@"readingtype"] = @(_mainreadingtype.selectedTag);
     dict[@"altreading"] = _altkanareadings.stringValue;
     dict[@"notes"] = _notes.string;
     dict[@"tags"] = _tags.stringValue;
     self.cardSaveData = dict;
 }
-- (IBAction)togglemainreadingoption:(id)sender {
-    if (_mainon.state == NSControlStateValueOn) {
-        _mainkun.state = NSControlStateValueOff;
-        _altkun.state = NSControlStateValueOff;
-    }
-    else {
-        _mainon.state = NSControlStateValueOff;
-        _alton.state = NSControlStateValueOn;
-    }
-}
-- (IBAction)togglealtreadingoption:(id)sender {
-    if (_alton.state == NSControlStateValueOn) {
-        _altkun.state = NSControlStateValueOff;
-        _mainkun.state = NSControlStateValueOff;
-    }
-    else {
-        _alton.state = NSControlStateValueOff;
-        _mainon.state = NSControlStateValueOn;
-    }
-}
-
 @end

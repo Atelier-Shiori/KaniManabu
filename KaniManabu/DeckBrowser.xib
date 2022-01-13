@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,6 +11,10 @@
             <connections>
                 <outlet property="addcardtoolbaritem" destination="d9H-ix-8uv" id="JUo-IX-D3J"/>
                 <outlet property="arraycontroller" destination="IT8-Pf-9N8" id="Cmb-ti-fdG"/>
+                <outlet property="contextDeleteCardMenuItem" destination="jnJ-T8-EoI" id="0Md-BN-8Z4"/>
+                <outlet property="contextEditCardMenuItem" destination="sp7-uu-ZsX" id="xt1-vH-R7U"/>
+                <outlet property="contextSuspendCardItem" destination="NGs-KR-Jmm" id="wiq-Ib-HH8"/>
+                <outlet property="contextViewCardMenuItem" destination="ijw-cB-wfW" id="JUk-6E-QHH"/>
                 <outlet property="mainViewController" destination="4vu-kB-fMo" id="hT8-jh-mHR"/>
                 <outlet property="sourceList" destination="9nT-Uf-DUD" id="sWh-sH-gXp"/>
                 <outlet property="sourceListViewController" destination="p6f-uD-d98" id="2Px-g2-ABD"/>
@@ -20,11 +24,11 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Card Browser" subtitle="0 items" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" toolbarStyle="unified" id="QvC-M9-y7g">
+        <window title="Card Browser" subtitle="0 items" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="deckbrowser" animationBehavior="default" titlebarAppearsTransparent="YES" toolbarStyle="unified" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="775" height="464"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="775" height="464"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +112,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <clipView key="contentView" drawsBackground="NO" id="sYa-8j-d8l">
                 <rect key="frame" x="0.0" y="0.0" width="131" height="300"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="28" rowSizeStyle="systemDefault" viewBased="YES" indentationPerLevel="5" indentationMarkerFollowsCell="NO" outlineTableColumn="ehS-5Z-mLw" id="9nT-Uf-DUD" customClass="PXSourceList">
                         <rect key="frame" x="0.0" y="0.0" width="131" height="300"/>
@@ -222,7 +226,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="116" minWidth="40" maxWidth="1000" id="3pX-nQ-m0y">
+                                    <tableColumn identifier="english" width="116" minWidth="40" maxWidth="1000" id="3pX-nQ-m0y">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="English">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -237,7 +241,7 @@
                                             <binding destination="IT8-Pf-9N8" name="value" keyPath="arrangedObjects.english" id="QYN-Ci-bi0"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn width="113" minWidth="40" maxWidth="1000" id="sAR-Do-7jA">
+                                    <tableColumn identifier="japanese" width="113" minWidth="40" maxWidth="1000" id="sAR-Do-7jA">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Japanese">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -252,7 +256,7 @@
                                             <binding destination="IT8-Pf-9N8" name="value" keyPath="arrangedObjects.japanese" id="Hnt-Nk-Fa1"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn width="66" minWidth="10" maxWidth="3.4028234663852886e+38" id="4zn-vD-NFu">
+                                    <tableColumn identifier="srslevel" width="114" minWidth="10" maxWidth="3.4028234663852886e+38" id="4zn-vD-NFu">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Level">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -271,7 +275,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn width="209" minWidth="10" maxWidth="3.4028234663852886e+38" id="znb-Kb-kpQ">
+                                    <tableColumn identifier="nextreview" width="162" minWidth="10" maxWidth="3.4028234663852886e+38" id="znb-Kb-kpQ">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Next Review">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -311,6 +315,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="568" height="28"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
+                    <connections>
+                        <outlet property="menu" destination="iIv-Ig-ify" id="dGy-nl-nk9"/>
+                    </connections>
                 </scrollView>
             </subviews>
             <point key="canvasLocation" x="-331" y="156"/>
@@ -330,6 +337,38 @@
                 <string>allKeys</string>
             </declaredKeys>
         </arrayController>
+        <menu autoenablesItems="NO" id="iIv-Ig-ify">
+            <items>
+                <menuItem title="Edit Card…" id="sp7-uu-ZsX">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="editcontext:" target="-2" id="Cgw-P3-JvV"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Delete Card…" id="jnJ-T8-EoI">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="deletecontext:" target="-2" id="1wU-i5-iYQ"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="View Card" id="ijw-cB-wfW">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="viewcontext:" target="-2" id="b7z-gZ-S77"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Suspend Card" id="NGs-KR-Jmm">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="suspendcontext:" target="-2" id="R04-BP-tbA"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="-2" id="ODL-9R-aTb"/>
+            </connections>
+            <point key="canvasLocation" x="141" y="388"/>
+        </menu>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="15" height="15"/>

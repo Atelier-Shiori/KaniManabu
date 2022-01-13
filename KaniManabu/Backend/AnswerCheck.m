@@ -67,14 +67,12 @@ double const kFuzziness = 0.8;
             // Answer missing "to ", required for verbs. Prompt user
             return AnswerStateVerbNoTo;
         }
-        
-        // Check for imprecise match with stringscore.
-        float stringscore = string_fuzzy_score(answer.UTF8String, [correctAnswer substringFromIndex:3].UTF8String, kFuzziness);
-        if (stringscore >= .6) {
-            // Answer missing "to ", required for verbs. Prompt user
-            return AnswerStateVerbNoTo;
+        for (NSString *altAnswer in altAnswers) {
+            NSString * taltAnswer = [altAnswer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+            if ([answer caseInsensitiveCompare:[taltAnswer substringFromIndex:3]] == NSOrderedSame) {
+                return AnswerStateVerbNoTo;
+            }
         }
-        
     }
     
     if ([answer caseInsensitiveCompare:correctAnswer] == NSOrderedSame) {
@@ -131,19 +129,21 @@ double const kFuzziness = 0.8;
     // Convert answer to Hiragana
     answer = [answer stringKatakanaToHiragana];
     // Check alt reading
-    NSArray *altAnswers = [(NSString *)[card valueForKey:@"altreading"] componentsSeparatedByString:@","];
+    NSArray *altAnswers = [(NSString *)[card valueForKey:@"altreading"] componentsSeparatedByString:@"、"];
     // Check alternative answers
     for (NSString *altAnswer in altAnswers) {
         NSString * taltAnswer = [altAnswer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        taltAnswer = [taltAnswer stringKatakanaToHiragana];
         if ([answer caseInsensitiveCompare:taltAnswer] == NSOrderedSame) {
             // We are looking for the primary reading, do not mark answer as incorrect, but prompt user to type in main meaning for the Kanji
             return AnswerStateOtherKanjiReading;
         }
     }
     // Check answer
-    NSArray *correctAnswers = [(NSString *)[card valueForKey:@"kanareading"] componentsSeparatedByString:@","];
+    NSArray *correctAnswers = [(NSString *)[card valueForKey:@"kanareading"] componentsSeparatedByString:@"、"];
     for (NSString *correctAnswer in correctAnswers) {
         NSString * tcorrectAnswer = [correctAnswer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        tcorrectAnswer = [tcorrectAnswer stringKatakanaToHiragana];
         if ([answer isEqualToString:tcorrectAnswer]) {
             return AnswerStatePrecise;
         }

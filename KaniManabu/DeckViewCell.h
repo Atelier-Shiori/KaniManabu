@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) IBOutlet NSTextField *learningcount;
 @property (strong) NSManagedObject *deckMeta;
 @property (strong) IBOutlet NSTextField *decktypestr;
+@property long totalreviewitemcount;
+@property long totallearnitemcount;
 - (void)reloadQueueCount;
 - (void)setDeckTypeLabel;
 @end

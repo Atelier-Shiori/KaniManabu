@@ -5,6 +5,7 @@
 //  Created by 千代田桃 on 1/10/22.
 //
 
+#import <UserNotifications/UserNotifications.h>
 #import "AppDelegate.h"
 #import "PreferencesControllers.h"
 #import "DeckManager.h"
@@ -39,6 +40,12 @@
     _mwc.moc = self.persistentContainer.viewContext;
 
     [_mwc.window makeKeyAndOrderFront:self];
+    
+    [UNUserNotificationCenter.currentNotificationCenter requestAuthorizationWithOptions:UNAuthorizationOptionBadge completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted) {
+            NSLog(@"User enabled badges");
+        }
+    }];
 }
 
 

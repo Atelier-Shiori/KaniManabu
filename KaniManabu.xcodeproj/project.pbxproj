@@ -26,6 +26,9 @@
 		15B122D9278CEBE900575A73 /* string_score.c in Sources */ = {isa = PBXBuildFile; fileRef = 15B122D8278CEBE900575A73 /* string_score.c */; };
 		15B122DE278CED4C00575A73 /* PaRomajiKanaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122DA278CED4C00575A73 /* PaRomajiKanaConverter.m */; };
 		15B122DF278CED4C00575A73 /* NSString+RomajiKanaConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122DB278CED4C00575A73 /* NSString+RomajiKanaConvert.m */; };
+		FF1BE8112790542900CA6A99 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */; };
+		FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE81727906AA500CA6A99 /* MSWeakTimer.m */; };
+		FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */; platformFilter = maccatalyst; };
 		FF28A80F278C941800D3744D /* SRScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A80E278C941800D3744D /* SRScheduler.m */; };
 		FF28A811278CA23B00D3744D /* NewDeckDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF28A810278CA23B00D3744D /* NewDeckDialog.xib */; };
 		FF28A813278CA4AF00D3744D /* Learn.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF28A812278CA4AF00D3744D /* Learn.xib */; };
@@ -164,6 +167,11 @@
 		15B122DB278CED4C00575A73 /* NSString+RomajiKanaConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+RomajiKanaConvert.m"; path = "PaRomajiKanaConverter/NSString+RomajiKanaConvert.m"; sourceTree = "<group>"; };
 		15B122DC278CED4C00575A73 /* NSString+RomajiKanaConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+RomajiKanaConvert.h"; path = "PaRomajiKanaConverter/NSString+RomajiKanaConvert.h"; sourceTree = "<group>"; };
 		15B122DD278CED4C00575A73 /* PaRomajiKanaConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaRomajiKanaConverter.h; path = PaRomajiKanaConverter/PaRomajiKanaConverter.h; sourceTree = "<group>"; };
+		FF1BE8082790542900CA6A99 /* NSNumberFormatterNumberOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberFormatterNumberOnly.h; sourceTree = "<group>"; };
+		FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberFormatterNumberOnly.m; sourceTree = "<group>"; };
+		FF1BE81627906AA500CA6A99 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSWeakTimer.h; path = Dependencies/MSWeakTimer/MSWeakTimer.h; sourceTree = "<group>"; };
+		FF1BE81727906AA500CA6A99 /* MSWeakTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MSWeakTimer.m; path = Dependencies/MSWeakTimer/MSWeakTimer.m; sourceTree = "<group>"; };
+		FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		FF28A809278C8D5500D3744D /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
 		FF28A80B278C8D5F00D3744D /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASPreferences.framework; sourceTree = "<group>"; };
 		FF28A80D278C941800D3744D /* SRScheduler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRScheduler.h; sourceTree = "<group>"; };
@@ -223,6 +231,7 @@
 				FF28A827278CB50500D3744D /* MASPreferences.framework in Frameworks */,
 				FF708879278C83A000DF399E /* CloudKit.framework in Frameworks */,
 				FF28A82A278CB50600D3744D /* PXSourceList.framework in Frameworks */,
+				FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,8 +260,19 @@
 				1579487C278CDB97000D984D /* DeckManager.m */,
 				15B122D4278CE93E00575A73 /* AnswerCheck.h */,
 				15B122D5278CE93E00575A73 /* AnswerCheck.m */,
+				FF1BE8082790542900CA6A99 /* NSNumberFormatterNumberOnly.h */,
+				FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */,
 			);
 			path = Backend;
+			sourceTree = "<group>";
+		};
+		FF1BE81527906A9900CA6A99 /* MSWeakTimer */ = {
+			isa = PBXGroup;
+			children = (
+				FF1BE81627906AA500CA6A99 /* MSWeakTimer.h */,
+				FF1BE81727906AA500CA6A99 /* MSWeakTimer.m */,
+			);
+			name = MSWeakTimer;
 			sourceTree = "<group>";
 		};
 		FF28A814278CB14700D3744D /* Window Controllers */ = {
@@ -358,6 +378,7 @@
 		FF708877278C83A000DF399E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */,
 				1516232B278F762300A09568 /* QuartzCore.framework */,
 				FFA14B84278F04E10038B9C2 /* AVFoundation.framework */,
 				FF708878278C83A000DF399E /* CloudKit.framework */,
@@ -370,6 +391,7 @@
 		FF746553278F2F8D0062E476 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				FF1BE81527906A9900CA6A99 /* MSWeakTimer */,
 				FF746554278F2F950062E476 /* AFNetworking.xcodeproj */,
 			);
 			name = Dependencies;
@@ -560,6 +582,8 @@
 				FF28A80F278C941800D3744D /* SRScheduler.m in Sources */,
 				FF28A81D278CB19E00D3744D /* ReviewWindowController.m in Sources */,
 				15B122D1278CE45300575A73 /* VocabEditor.m in Sources */,
+				FF1BE8112790542900CA6A99 /* NSNumberFormatterNumberOnly.m in Sources */,
+				FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */,
 				151F3AB7278D07AB00953ECD /* DeckViewCell.m in Sources */,
 				15B122D9278CEBE900575A73 /* string_score.c in Sources */,
 				FFA14B7B278EF1560038B9C2 /* CardEditor.m in Sources */,
@@ -724,7 +748,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "1.0-alpha1";
+				MARKETING_VERSION = "1.0-prealpha1";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -757,7 +781,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "1.0-alpha1";
+				MARKETING_VERSION = "1.0-prealpha1";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

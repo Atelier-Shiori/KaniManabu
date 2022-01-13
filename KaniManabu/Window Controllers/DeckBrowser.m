@@ -15,6 +15,10 @@
 @property (strong) NSSplitViewController *splitview;
 @property (strong) NSMutableArray *sourceListItems;
 @property (strong) ItemInfoWindowController *iiwc;
+@property (strong) IBOutlet NSMenuItem *contextEditCardMenuItem;
+@property (strong) IBOutlet NSMenuItem *contextDeleteCardMenuItem;
+@property (strong) IBOutlet NSMenuItem *contextViewCardMenuItem;
+@property (strong) IBOutlet NSMenuItem *contextSuspendCardItem;
 @end
 
 @implementation DeckBrowser
@@ -43,11 +47,14 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckRemoved" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LearnEnded" object:nil];
-    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresWillChangeNotification object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"DeckAdded"]||[notification.name isEqualToString:@"DeckRemoved"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification]) {
+    if ([notification.name isEqualToString:@"DeckAdded"]||[notification.name isEqualToString:@"DeckRemoved"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresWillChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]||[notification.name isEqualToString:@"LearnEnded"]||[notification.name isEqualToString:@"ReviewEnded"]) {
         // Reload
         [self generateSourceList];
     }
@@ -61,7 +68,7 @@
     _splitview = [NSSplitViewController new];
     NSSplitViewItem *sourceListSplitViewItem = [NSSplitViewItem sidebarWithViewController:_sourceListViewController];
     NSSplitViewItem *mainViewSplitViewItem = [NSSplitViewItem splitViewItemWithViewController:_mainViewController];
-    sourceListSplitViewItem.maximumThickness = 250;
+    sourceListSplitViewItem.maximumThickness = 280;
     [_splitview addSplitViewItem:sourceListSplitViewItem];
     [_splitview addSplitViewItem:mainViewSplitViewItem];
     _splitview.splitView.autosaveName = @"mainWindowSplitView";
@@ -78,7 +85,7 @@
         [decks addObject:sourceItem];
     }
     decksItem.children = decks;
-    PXSourceListItem *stagesItem = [PXSourceListItem itemWithTitle:@"STAGES" identifier:@"searchgroup"];
+    PXSourceListItem *stagesItem = [PXSourceListItem itemWithTitle:@"STAGES" identifier:@"stagegroup"];
     NSMutableArray *stageitems = [NSMutableArray new];
     for (int i=0; i <5; i++) {
         NSString *stagename = @"";
@@ -113,9 +120,14 @@
     }
     stagesItem.children = stageitems;
 
+    PXSourceListItem *otherItem = [PXSourceListItem itemWithTitle:@"OTHER" identifier:@"othergroup"];
+    PXSourceListItem *criticalItem = [PXSourceListItem itemWithTitle:@"Critical Items" identifier:@"criticalitems"];
+    criticalItem.icon = [NSImage imageWithSystemSymbolName:@"exclamationmark.triangle" accessibilityDescription:@""];
+    otherItem.children = @[criticalItem];
     // Populate Source List
     [self.sourceListItems addObject:decksItem];
     [self.sourceListItems addObject:stagesItem];
+    [self.sourceListItems addObject:otherItem];
     [_sourceList reloadData];
 
 }
@@ -218,8 +230,13 @@
 }
 
 - (IBAction)editCard:(id)sender {
+    [self performEditCard];
+}
+
+- (void)performEditCard {
     NSUUID *selecteduuid = [_arraycontroller selectedObjects][0][@"carduuid"];
-    switch (_currentDeckType) {
+    int type = _currentDeckType == -1 ? ((NSNumber *)[_arraycontroller selectedObjects][0][@"cardtype"]).intValue : _currentDeckType;
+    switch (type) {
             case DeckTypeVocab: {
                 [CardEditor openVocabCardEditorWithUUID:selecteduuid isNewCard:false withWindow:self.window completionHandler:^(bool success) {
                     if (success) {
@@ -254,6 +271,10 @@
 }
 
 - (IBAction)deleteCard:(id)sender {
+    [self performdeleteCard];
+}
+
+- (void)performdeleteCard {
     NSDictionary *card =  [_arraycontroller selectedObjects][0];
     NSAlert *alert = [NSAlert new];
     alert.messageText = @"Delete card?";
@@ -278,6 +299,12 @@
         _currentDeckType = -1;
         _addcardtoolbaritem.enabled = false;
         [self loadSRSStageCards:[identifier stringByReplacingOccurrencesOfString:@"srsstage-" withString:@""].intValue];
+    }
+    else if ([identifier isEqualToString:@"criticalitems"]) {
+        _currentDeckUUID = nil;
+        _currentDeckType = -1;
+        _addcardtoolbaritem.enabled = false;
+        [self loadcriticalitems];
     }
     else {
         _addcardtoolbaritem.enabled = true;
@@ -325,7 +352,20 @@
     }
     [self populateTableViewWithArray:tmparray];
 }
+
+- (void)loadcriticalitems {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (int i = 0; i < 3; i++) {
+        [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCriticalCardswithType:i]];
+    }
+    [self populateTableViewWithArray:tmparray];
+}
+
 - (IBAction)tbdoubleaction:(id)sender {
+    [self performViewCard];
+}
+
+- (void)performViewCard {
     NSDictionary *selected = [_arraycontroller selectedObjects][0];
     if (!_iiwc) {
         _iiwc = [ItemInfoWindowController new];
@@ -334,4 +374,54 @@
     [_iiwc setDictionary:selected withWindowType:ParentWindowTypeDeckBrowser];
 }
 
+#pragma mark Context menu
+- (void)menuWillOpen:(NSMenu *)menu {
+    [self setPopupMenuState];
+}
+
+- (void)setPopupMenuState {
+    long rightClickSelectedRow = self.tb.clickedRow;
+    [self.tb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    bool validclick = rightClickSelectedRow >= 0;
+    _contextEditCardMenuItem.enabled = validclick;
+    _contextDeleteCardMenuItem.enabled = validclick;
+    _contextSuspendCardItem.enabled = validclick;
+    _contextViewCardMenuItem.enabled = validclick;
+}
+- (IBAction)editcontext:(id)sender {
+    long rightClickSelectedRow = self.tb.clickedRow;
+    [self.tb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    [self performEditCard];
+}
+- (IBAction)deletecontext:(id)sender {
+    long rightClickSelectedRow = self.tb.clickedRow;
+    [self.tb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    [self performdeleteCard];
+}
+- (IBAction)viewcontext:(id)sender {
+    long rightClickSelectedRow = self.tb.clickedRow;
+    [self.tb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    [self performViewCard];
+}
+- (IBAction)suspendcontext:(id)sender {
+    long rightClickSelectedRow = self.tb.clickedRow;
+    [self.tb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    NSDictionary *card =  [_arraycontroller selectedObjects][0];
+    [DeckManager.sharedInstance togglesuspendCardForCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue];
+    [self loadDeck];
+}
+
+#pragma mark NSTableViewDelegate
+- (void)tableView:(NSTableView *)tableView
+  willDisplayCell:(id)cell
+   forTableColumn:(NSTableColumn *)tableColumn
+              row:(NSInteger)row {
+    bool suspended = ((NSNumber *)_arraycontroller.arrangedObjects[row][@"suspended"]).boolValue;
+    NSTextFieldCell *tcell = (NSTextFieldCell *)cell;
+    NSMutableAttributedString *astr = [[NSMutableAttributedString alloc] initWithString:tcell.stringValue];
+    if (suspended) {
+        [astr addAttribute:NSStrikethroughStyleAttributeName value:(NSNumber *)kCFBooleanTrue range:NSMakeRange(0, [astr length])];
+    }
+    [tcell setAttributedStringValue:astr];
+}
 @end

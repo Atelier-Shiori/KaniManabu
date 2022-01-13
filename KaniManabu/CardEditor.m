@@ -98,7 +98,7 @@
                 }
             }
             else {
-                if ([DeckManager.sharedInstance modifyCardWithCardUUID:kje.cardUUID withCardData:kje.cardSaveData withType:DeckTypeVocab]) {
+                if ([DeckManager.sharedInstance modifyCardWithCardUUID:kje.cardUUID withCardData:kje.cardSaveData withType:DeckTypeKanji]) {
                     completionHandler(true);
                 }
             }
@@ -145,7 +145,7 @@
                 }
             }
             else {
-                if ([DeckManager.sharedInstance modifyCardWithCardUUID:ke.cardUUID withCardData:ke.cardSaveData withType:DeckTypeVocab]) {
+                if ([DeckManager.sharedInstance modifyCardWithCardUUID:ke.cardUUID withCardData:ke.cardSaveData withType:DeckTypeKana]) {
                     completionHandler(true);
                 }
             }

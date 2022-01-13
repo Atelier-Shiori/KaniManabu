@@ -272,6 +272,20 @@
     return tmpcardslist;
 }
 
+- (NSArray *)retrieveAllCriticalCardswithType:(int)type {
+    NSArray *tmparray = [self retrieveAllCardswithType:type withPredicate:[NSPredicate predicateWithFormat:@"learned == %@", @YES]];
+    NSMutableArray *criticalitems = [NSMutableArray new];
+    for (NSDictionary *card in tmparray) {
+        int numbercorrect = ((NSNumber *)card[@"numansweredcorrect"]).intValue;
+        int numberincorrect = ((NSNumber *)card[@"numansweredincorrect"]).intValue;
+        double score = ((double)numbercorrect/((double)numbercorrect + (double)numberincorrect));
+        if (score <= .7) {
+            [criticalitems addObject:card];
+        }
+    }
+    return criticalitems;
+}
+
 #pragma mark Card Management
 
 - (bool)addCardWithDeckUUID:(NSUUID *)uuid withCardData:(NSDictionary *)cardData withType:(DeckType)type {
@@ -309,10 +323,11 @@
 }
 
 - (bool)modifyCardWithCardUUID:(NSUUID *)uuid withCardData:(NSDictionary *)cardData withType:(DeckType)type {
-    NSManagedObject *card = [self getCardWithCardUUID:uuid withType:type];
+    NSDictionary *card = [self getCardWithCardUUID:uuid withType:type];
     if (card) {
+        NSManagedObject *obj = card[@"managedObject"];
         for (NSString *key in cardData.allKeys) {
-            [card setValue:cardData[key] forKey:key];
+            [obj setValue:cardData[key] forKey:key];
         }
         [_moc save:nil];
     }
@@ -424,5 +439,32 @@
         [_moc deleteObject:obj];
     }
     [_moc save:nil];
+}
+
+- (void)togglesuspendCardForCardUUID:(NSUUID *)uuid withType:(int)type {
+    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+    switch (type) {
+        case DeckTypeKana:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"KanaCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeKanji:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"KanjiCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeVocab:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+            break;
+        default:
+            return;
+    }
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"carduuid == %@", uuid];
+    fetchRequest.predicate = predicate;
+    NSError *error = nil;
+    NSArray *tmparray = [_moc executeFetchRequest:fetchRequest error:&error];
+    if (tmparray.count > 0) {
+        NSManagedObject *obj = tmparray[0];
+        bool suspended = ((NSNumber *)[obj valueForKey:@"suspended"]).boolValue;
+        [obj setValue:@(!suspended) forKey:@"suspended"];
+        [_moc save:nil];
+    }
 }
 @end

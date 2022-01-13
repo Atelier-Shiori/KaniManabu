@@ -88,8 +88,11 @@
     // Increment current incorrect review count for the card and recalculate proposed SRS stage.
     self.currentreviewnumincorrect++;
     if (!_learningmode) {
-        // Only decreate SRS stage when the card is not in learning mode.
+        // Only decreate SRS stage when the card is not in learning mode. SRS stage cannot be 0.
         _proposedSRSStage = [SRScheduler calculatedDeIncrementSRSStageWithCurrentStage:_proposedSRSStage withIncorrectCount:_currentreviewnumincorrect];
+        if (_proposedSRSStage <= 0) {
+            _proposedSRSStage = 1;
+        }
     }
 }
 

@@ -21,6 +21,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"CardModified" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LearnEnded" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"TimerFired" object:nil];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -46,7 +47,7 @@
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"CardAdded"]||[notification.name isEqualToString:@"CardRemoved"]||[notification.name isEqualToString:@"CardModified"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:@"ReviewEnded"]) {
+    if ([notification.name isEqualToString:@"CardAdded"]||[notification.name isEqualToString:@"CardRemoved"]||[notification.name isEqualToString:@"CardModified"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:@"ReviewEnded"] || [notification.name isEqualToString:@"TimerFired"]) {
         // Reload
         [self reloadQueueCount];
     }
@@ -69,8 +70,11 @@
 }
 
 - (void)reloadQueueCount {
-    _reviewcount.stringValue = @([DeckManager.sharedInstance getQueuedReviewItemsCountforUUID:[_deckMeta valueForKey:@"deckUUID"] withType:((NSNumber *)[_deckMeta valueForKey:@"deckType"]).intValue]).stringValue;
-    _learningcount.stringValue = @([DeckManager.sharedInstance getQueuedLearnItemsCountforUUID:[_deckMeta valueForKey:@"deckUUID"] withType:((NSNumber *)[_deckMeta valueForKey:@"deckType"]).intValue]).stringValue;
+    _totalreviewitemcount = [DeckManager.sharedInstance getQueuedReviewItemsCountforUUID:[_deckMeta valueForKey:@"deckUUID"] withType:((NSNumber *)[_deckMeta valueForKey:@"deckType"]).intValue];
+    _totallearnitemcount = [DeckManager.sharedInstance getQueuedLearnItemsCountforUUID:[_deckMeta valueForKey:@"deckUUID"] withType:((NSNumber *)[_deckMeta valueForKey:@"deckType"]).intValue];
+    _reviewcount.stringValue = @(_totalreviewitemcount).stringValue;
+    _learningcount.stringValue = @(_totallearnitemcount).stringValue;
+    [NSNotificationCenter.defaultCenter postNotificationName:@"AddToQueueCount" object:@{@"learncount" : @(_totallearnitemcount), @"reviewcount" : @(_totalreviewitemcount)}];
 }
 - (IBAction)addCard:(id)sender {
     [NSNotificationCenter.defaultCenter postNotificationName:@"ActionAddCard" object:_deckMeta];

@@ -33,6 +33,9 @@
 @property bool answered;
 @property (strong) CardReview* currentcard;
 @property bool promptacknowledged;
+@property (strong) IBOutlet NSPopover *lasttenpopover;
+@property (strong) IBOutlet NSTableView *lasttentb;
+@property (strong) IBOutlet NSArrayController *lasttenarraycontroller;
 @end
 
 @implementation ReviewWindowController
@@ -113,6 +116,7 @@
 }
 
 - (void)performCheckAnswer {
+    _answerstatus.stringValue = @"";
     NSString * correctAnswer;
     switch (_currentcard.cardtype) {
         case CardTypeKana: {
@@ -152,7 +156,7 @@
                 break;
             }
             case AnswerStateVerbNoTo: {
-                _answerstatus.stringValue = [NSString stringWithFormat:@"Almost, but this is a verb. Enter %@.", correctAnswer];
+                _answerstatus.stringValue = [NSString stringWithFormat:@"Almost, but this is a verb. Enter \"to %@\".", _answertextfield.stringValue];
                 return;
             }
             case AnswerStateInvalidCharacters: {
@@ -182,7 +186,9 @@
                 break;
             }
             case AnswerStateOtherKanjiReading: {
-                _answerstatus.stringValue = @"We want the primary reading of this Kanji.";
+                _answerstatus.stringValue = [NSString stringWithFormat:@"We want the %@ of this Kanji.", ((NSNumber *)[_currentcard.card valueForKey:@"readingtype"]).intValue == 0 ? @"On'yomi" : @"Kun'yomi"];
+                NSBeep();
+                [self shake:_answertextfield];
                 return;
             }
             case AnswerStateInvalidCharacters: {

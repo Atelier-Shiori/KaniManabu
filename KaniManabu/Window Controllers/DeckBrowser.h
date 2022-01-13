@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DeckBrowser : NSWindowController <PXSourceListDataSource, PXSourceListDelegate>
+@interface DeckBrowser : NSWindowController <PXSourceListDataSource, PXSourceListDelegate, NSMenuDelegate, NSTableViewDelegate>
 @property (strong) IBOutlet PXSourceList *sourceList;
 @property (strong) IBOutlet NSViewController *sourceListViewController;
 @property (strong) IBOutlet NSViewController *mainViewController;

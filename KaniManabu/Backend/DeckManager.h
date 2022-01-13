@@ -31,6 +31,7 @@ typedef NS_ENUM(int,DeckType) {
 - (long)getQueuedLearnItemsCountforUUID:(NSUUID *)uuid withType:(int)type;
 - (NSArray *)retrieveCardsForDeckUUID:(NSUUID *)uuid withType:(int)type;
 - (NSArray *)retrieveAllCardswithType:(int)type withPredicate:(NSPredicate *)predicates;
+- (NSArray *)retrieveAllCriticalCardswithType:(int)type;
 - (NSArray *)retrieveDecks;
 - (NSManagedObject *)getDeckMetadataWithUUID:(NSUUID *)uuid;
 - (bool)addCardWithDeckUUID:(NSUUID *)uuid withCardData:(NSDictionary *)cardData withType:(DeckType)type;
@@ -39,6 +40,7 @@ typedef NS_ENUM(int,DeckType) {
 - (NSDictionary *)getCardWithCardUUID:(NSUUID *)uuid withType:(DeckType)type;
 - (bool)deleteCardWithCardUUID:(NSUUID *)uuid withType:(DeckType)type;
 - (void)deleteAllCardsForDeckUUID:(NSUUID *)uuid withType:(int)type;
+- (void)togglesuspendCardForCardUUID:(NSUUID *)uuid withType:(int)type;
 @end
 
 NS_ASSUME_NONNULL_END
