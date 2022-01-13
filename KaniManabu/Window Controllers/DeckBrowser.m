@@ -221,7 +221,7 @@
     NSUUID *selecteduuid = [_arraycontroller selectedObjects][0][@"carduuid"];
     switch (_currentDeckType) {
             case DeckTypeVocab: {
-                [CardEditor openVocabCardEditorWithUUID:selecteduuid isNewCard:true withWindow:self.window completionHandler:^(bool success) {
+                [CardEditor openVocabCardEditorWithUUID:selecteduuid isNewCard:false withWindow:self.window completionHandler:^(bool success) {
                     if (success) {
                         [self loadDeck];
                         [NSNotificationCenter.defaultCenter postNotificationName:@"CardModified" object:selecteduuid];
@@ -230,7 +230,7 @@
                 break;
             }
             case DeckTypeKana: {
-                [CardEditor openKanaCardEditorWithUUID:selecteduuid isNewCard:true withWindow:self.window completionHandler:^(bool success) {
+                [CardEditor openKanaCardEditorWithUUID:selecteduuid isNewCard:false withWindow:self.window completionHandler:^(bool success) {
                     if (success) {
                         [self loadDeck];
                         [NSNotificationCenter.defaultCenter postNotificationName:@"CardModified" object:selecteduuid];
@@ -239,7 +239,7 @@
                 break;
             }
             case DeckTypeKanji: {
-                [CardEditor openKanjiCardEditorWithUUID:selecteduuid isNewCard:true withWindow:self.window completionHandler:^(bool success) {
+                [CardEditor openKanjiCardEditorWithUUID:selecteduuid isNewCard:false withWindow:self.window completionHandler:^(bool success) {
                     if (success) {
                         [self loadDeck];
                         [NSNotificationCenter.defaultCenter postNotificationName:@"CardModified" object:selecteduuid];

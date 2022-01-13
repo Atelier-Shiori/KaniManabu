@@ -6,6 +6,7 @@
 //
 
 #import "KanjiEditor.h"
+#import "DeckManager.h"
 
 @interface KanjiEditor ()
 @property (strong) IBOutlet NSTextField *savestatus;
@@ -29,6 +30,8 @@
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(textDidChange:) name:NSTextDidChangeNotification object:nil];
+    
+    [self populatefromDictionary:[DeckManager.sharedInstance getCardWithCardUUID:self.cardUUID withType:DeckTypeKanji]];
 }
 
 - (IBAction)save:(id)sender {
@@ -49,6 +52,17 @@
     else {
         _savebtn.enabled = NO;
     }
+}
+
+- (void)populatefromDictionary:(NSDictionary *)dict {
+    _japaneseword.stringValue = dict[@"japanese"];
+    _englishmeaning.stringValue = dict[@"english"];
+    _altmeanings.stringValue = dict[@"altmeaning"];
+    _kanareadings.stringValue = dict[@"kanareading"];
+    _altkanareadings.stringValue = dict[@"altreading"];
+    _notes.string = dict[@"notes"];
+    _tags.stringValue = dict[@"tags"];
+    _savebtn.enabled = YES;
 }
 
 - (void)generateSaveDictionary {

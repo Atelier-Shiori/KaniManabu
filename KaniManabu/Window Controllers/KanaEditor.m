@@ -7,6 +7,7 @@
 
 #import "KanaEditor.h"
 #import "AnswerCheck.h"
+#import "DeckManager.h"
 
 @interface KanaEditor ()
 @property (strong) IBOutlet NSTextField *savestatus;
@@ -30,6 +31,8 @@
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(textDidChange:) name:NSTextDidChangeNotification object:nil];
+    
+    [self populatefromDictionary:[DeckManager.sharedInstance getCardWithCardUUID:self.cardUUID withType:DeckTypeKana]];
 }
 
 - (bool)validateFields {
@@ -66,6 +69,20 @@
 - (IBAction)setkanareading:(id)sender {
     _kanareadings.stringValue = _japaneseword.stringValue;
     [self textDidChange:nil];
+}
+
+- (void)populatefromDictionary:(NSDictionary *)dict {
+    _japaneseword.stringValue = dict[@"japanese"];
+    _englishmeaning.stringValue = dict[@"english"];
+    _altmeanings.stringValue = dict[@"altmeaning"];
+    _kanareadings.stringValue = dict[@"kanareading"];
+    _notes.string = dict[@"notes"];
+    _contextsentence1.stringValue = dict[@"contextsentence1"];
+    _contextsentence2.stringValue = dict[@"contextsentence2"];
+    _englishsentence1.stringValue = dict[@"englishsentence1"];
+    _englishsentence2.stringValue = dict[@"englishsentence2"];
+    _tags.stringValue = dict[@"tags"];
+    _savebtn.enabled = YES;
 }
 
 - (void)generateSaveDictionary {

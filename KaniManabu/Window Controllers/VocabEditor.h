@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) NSUUID *deckUUID;
 @property (strong) NSUUID *cardUUID;
 @property bool newcard;
-
+- (void)populatefromDictionary;
 @end
 
 NS_ASSUME_NONNULL_END

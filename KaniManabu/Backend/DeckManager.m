@@ -371,9 +371,27 @@
 }
 
 - (bool)deleteCardWithCardUUID:(NSUUID *)uuid withType:(DeckType)type {
-    NSManagedObject *card = [self getCardWithCardUUID:uuid withType:type];
-    if (card) {
-        [_moc deleteObject:card];
+    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+    switch (type) {
+        case DeckTypeKana:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"KanaCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeKanji:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"KanjiCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeVocab:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+            break;
+        default:
+            return false;
+    }
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"carduuid == %@", uuid];
+    fetchRequest.predicate = predicate;
+    NSError *error = nil;
+    NSArray *tmparray = [_moc executeFetchRequest:fetchRequest error:&error];
+    if (tmparray.count > 0) {
+        NSManagedObject *obj = tmparray[0];
+        [_moc deleteObject:obj];
         [_moc save:nil];
         return true;
     }

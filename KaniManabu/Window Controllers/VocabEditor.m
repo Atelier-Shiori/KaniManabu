@@ -7,6 +7,7 @@
 
 #import "VocabEditor.h"
 #import "AnswerCheck.h"
+#import "DeckManager.h"
 
 @interface VocabEditor ()
 @property (strong) IBOutlet NSTextField *savestatus;
@@ -31,6 +32,8 @@
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(textDidChange:) name:NSTextDidChangeNotification object:nil];
+    
+    [self populatefromDictionary:[DeckManager.sharedInstance getCardWithCardUUID:self.cardUUID withType:DeckTypeVocab]];
 }
 
 - (bool)validateFields {
@@ -70,6 +73,23 @@
     else {
         _savebtn.enabled = NO;
     }
+}
+
+- (void)populatefromDictionary:(NSDictionary *)dict{
+    _japaneseword.stringValue = dict[@"japanese"];
+    _englishmeaning.stringValue = dict[@"english"];
+    _altmeanings.stringValue = dict[@"altmeaning"];
+    _kana.stringValue = dict[@"kanaWord"];
+    _kanareadings.stringValue = dict[@"reading"];
+    _notes.string = dict[@"notes"];
+    _contextsentence1.stringValue = dict[@"contextsentence1"];
+    _contextsentence2.stringValue = dict[@"contextsentence2"];
+    _contextsentence3.stringValue = dict[@"contextsentence3"];
+    _englishsentence1.stringValue = dict[@"englishsentence1"];
+    _englishsentence2.stringValue = dict[@"englishsentence2"];
+    _englishsentence3.stringValue = dict[@"englishsentence3"];
+    _tags.stringValue = dict[@"tags"];
+    _savebtn.enabled = YES;
 }
 
 - (void)generateSaveDictionary {
