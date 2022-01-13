@@ -191,8 +191,9 @@
             break;
         }
     }
+    __weak LearnWindowController* weakSelf = self;
     [_infotextview setTextToHTML:infostr withLoadingText:@"Loading" completion:^(NSAttributedString * _Nonnull astr) {
-        
+        weakSelf.infotextview.textColor = NSColor.controlTextColor;
     }];
 }
 

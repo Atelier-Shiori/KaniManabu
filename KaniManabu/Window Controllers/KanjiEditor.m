@@ -34,6 +34,7 @@
     if (!_newcard) {
         [self populatefromDictionary:[DeckManager.sharedInstance getCardWithCardUUID:self.cardUUID withType:DeckTypeKanji]];
     }
+    _notes.textColor = NSColor.controlTextColor;
 }
 
 - (IBAction)save:(id)sender {

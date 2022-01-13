@@ -35,6 +35,7 @@
     if (!_newcard) {
         [self populatefromDictionary:[DeckManager.sharedInstance getCardWithCardUUID:self.cardUUID withType:DeckTypeVocab]];
     }
+    _notes.textColor = NSColor.controlTextColor;
 }
 
 - (bool)validateFields {
