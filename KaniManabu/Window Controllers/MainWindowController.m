@@ -54,7 +54,6 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"StartLearningReviewQuiz" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"AddToQueueCount" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresWillChangeNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
     [self loadDeckArrayAndPopulate];
     //Review Queue timer
@@ -81,7 +80,7 @@
             _totallearnitemcount = 0;
         }
     }
-    else if ([notification.name isEqualToString:@"DeckAdded"] || [notification.name isEqualToString:@"DeckRemoved"] || [notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresWillChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
+    else if ([notification.name isEqualToString:@"DeckAdded"] || [notification.name isEqualToString:@"DeckRemoved"] || [notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
         // Reload
         _totalreviewitemcount = 0;
         _totallearnitemcount = 0;
@@ -221,6 +220,16 @@
 }
 
 - (IBAction)openDeckBrowser:(id)sender {
+    if (((NSMutableArray *)_arrayController.content).count == 0) {
+        // No Cards, show error
+        NSAlert *alert = [[NSAlert alloc] init] ;
+        [alert addButtonWithTitle:@"OK"];
+        [alert setMessageText:@"You have no decks"];
+        alert.informativeText = @"Create or import a deck first before using this feature.";
+        alert.alertStyle = NSAlertStyleInformational;
+        [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+            }];
+    }
     if (!_deckbrowserwc) {
         _deckbrowserwc = [DeckBrowser new];
     }

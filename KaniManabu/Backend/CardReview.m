@@ -54,6 +54,9 @@
             break;
         }
     }
+    if (self.reviewedreading && self.reviewedmeaning && !self.currentreviewmeaningincorrect && !self.currentreviewreadingincorrect) {
+        _proposedSRSStage = [SRScheduler newStageByIncrementingCurrentStage:self.proposedSRSStage];
+    }
 }
 
 - (void)setIncorrect:(CardReviewType)reviewtype {
@@ -102,7 +105,6 @@
         // Increment Correct count
         int correctcount = ((NSNumber *)[_card valueForKey:@"numansweredcorrect"]).intValue;
         [self.card setValue:@(correctcount+1) forKey:@"numansweredcorrect"];
-        _proposedSRSStage = [SRScheduler newStageByIncrementingCurrentStage:self.proposedSRSStage];
     }
     else {
         // Increment Incorrect count, only for learned cards
@@ -111,6 +113,8 @@
             [self.card setValue:@(incorrectcount+1) forKey:@"numansweredincorrect"];
         }
     }
+    // Set new SRS Stage
+    [_card setValue:@(_proposedSRSStage) forKey:@"srsstage"];
     // Reset in review values
     [_card setValue:@(0) forKey:@"proposedsrsstage"];
     [_card setValue:@(0) forKey:@"reviewincorrectcount"];

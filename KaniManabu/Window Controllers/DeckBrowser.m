@@ -322,7 +322,7 @@
     [_arraycontroller addObjects:array];
     [_tb reloadData];
     [_tb deselectAll:self];
-    self.window.subtitle = array.count == 1 ? @"1 item" : [NSString stringWithFormat:@"%i items",array.count];
+    self.window.subtitle = array.count == 1 ? @"1 item" : [NSString stringWithFormat:@"%lu items",(unsigned long)array.count];
 }
 
 - (void)loadSRSStageCards:(int)stage {
