@@ -16,9 +16,9 @@ KaniManbu is a lot easier to use with three different card types (Kanji, Kana, a
 * Ability to lookup words from other resources (Dictionary.app, Monokakido's Dictionaries app, and online resources)
 * Ability to tag cards for future reference.
 * TTS support
+* Anki mode (see answer and click correct/incorrect button)
 
 # Planned features
-* Anki mode (see answer and click correct/incorrect button)
 * Deck statistics
 * Learning forecast
 * Vacation Mode
