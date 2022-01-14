@@ -5,6 +5,7 @@
 //  Created by 千代田桃 on 1/10/22.
 //
 
+#import "AppDelegate.h"
 #import "MainWindowController.h"
 #import "DeckManager.h"
 #import "DeckAddDialogController.h"
@@ -53,8 +54,9 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"StartLearningReviewQuiz" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"AddToQueueCount" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
+    AppDelegate *delegate = (AppDelegate *)NSApp.delegate;
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
     [self loadDeckArrayAndPopulate];
     //Review Queue timer
     _privateQueue = dispatch_queue_create("moe.ateliershiori.Shukofukurou", DISPATCH_QUEUE_CONCURRENT);
@@ -80,8 +82,15 @@
             _totallearnitemcount = 0;
         }
     }
-    else if ([notification.name isEqualToString:@"DeckAdded"] || [notification.name isEqualToString:@"DeckRemoved"] || [notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
+    else if ([notification.name isEqualToString:@"DeckAdded"] || [notification.name isEqualToString:@"DeckRemoved"]) {
         // Reload
+        _totalreviewitemcount = 0;
+        _totallearnitemcount = 0;
+        [self loadDeckArrayAndPopulate];
+    }
+    else if ([notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
+        // Reload
+        sleep(5);
         _totalreviewitemcount = 0;
         _totallearnitemcount = 0;
         [self loadDeckArrayAndPopulate];
