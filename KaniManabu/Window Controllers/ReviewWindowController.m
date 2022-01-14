@@ -107,12 +107,22 @@
             for (CardReview *card in self.reviewqueue) {
                 [card suspendReview];
             }
-            [NSNotificationCenter.defaultCenter postNotificationName:@"LearnEnded" object:nil];
-            [self.window close];
+            [self showReviewComplete];
         }
     }];
 }
+
+- (void)controlTextDidEndEditing:(NSNotification *)notification {
+    if (((NSNumber *)[notification.userInfo objectForKey:@"NSTextMovement"]).intValue == NSReturnTextMovement) {
+        [self checkAnswer];
+    }
+}
+
 - (IBAction)checkanswer:(id)sender {
+    [self checkAnswer];
+}
+
+- (void)checkAnswer {
     if (!_answered) {
         if (_answertextfield.stringValue.length == 0) {
             [self shake:_answertextfield];
@@ -247,11 +257,12 @@
     }
     [_completeditems addObject:_currentcard];
     [_reviewqueue removeObject:_currentcard];
+    [self reloadFinishList];
 }
 
 - (void)calculatescores {
     _correctitem.title = @(_correctcount).stringValue;
-    _scoreitem.title = [NSString stringWithFormat:@"%@%%",@(((double)_correctcount/((double)_correctcount+(double)_incorrectcount))*100).stringValue];
+    _scoreitem.title = [NSString stringWithFormat:@"%.0f%%",@(((double)_correctcount/((double)_correctcount+(double)_incorrectcount))*100).floatValue];
     _pendingitem.title = @(_reviewqueue.count).stringValue;
 }
 
@@ -423,6 +434,21 @@
     [self nextQuestion];
 }
 
+- (IBAction)showlast10:(id)sender {
+    [_lasttenpopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
+}
+
+- (void)reloadFinishList {
+    NSMutableArray *a = [_lasttenarraycontroller mutableArrayValueForKey:@"content"];
+    [a removeAllObjects];
+    for (long i = _completeditems.count -1; i >=0; i--) {
+        [_lasttenarraycontroller addObject:@{@"japanese" : [((CardReview *)_completeditems[i]).card valueForKey:@"japanese"]}];
+        if (((NSMutableArray *)[_lasttenarraycontroller mutableArrayValueForKey:@"content"]).count == 10) {
+            break;
+        }
+    }
+    [_lasttentb reloadData];
+}
 
 
 #pragma mark helpers

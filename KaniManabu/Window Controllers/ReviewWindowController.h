@@ -9,7 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ReviewWindowController : NSWindowController
+@interface ReviewWindowController : NSWindowController <NSTextFieldDelegate,NSTableViewDelegate>
 @property (strong) NSMutableArray *reviewqueue;
 - (void)startReview:(NSArray *)reviewitems;
 @end

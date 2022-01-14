@@ -15,6 +15,8 @@
 #import "ReviewWindowController.h"
 #import "CardReview.h"
 #import "MSWeakTimer.h"
+#import "CSVImportController.h"
+#import "CSVDeckImporter.h"
 
 @interface MainWindowController ()
 @property (strong)LearnWindowController *lwc;
@@ -23,6 +25,7 @@
 @property (strong, nonatomic) MSWeakTimer *refreshtimer;
 @property long totallearnitemcount;
 @property long totalreviewitemcount;
+@property (strong) CSVImportController *csvic;
 @end
 
 @implementation MainWindowController
@@ -80,6 +83,7 @@
         if( [notification.name isEqualToString:@"ReviewEnded"]) {
             _totalreviewitemcount = 0;
             _totallearnitemcount = 0;
+            [_moc save:nil];
         }
     }
     else if ([notification.name isEqualToString:@"DeckAdded"] || [notification.name isEqualToString:@"DeckRemoved"]) {
@@ -294,6 +298,52 @@
                 [NSNotificationCenter.defaultCenter postNotificationName:@"DeckRemoved" object:nil];
             }
         }
+    }];
+}
+- (IBAction)importdeck:(id)sender {
+    NSOpenPanel * op = [NSOpenPanel openPanel];
+    op.allowedFileTypes = @[@"csv", @"Comma Delimited Values File"];
+    op.message = @"Please select a CSV file to import as a deck.";
+    [op beginSheetModalForWindow:self.window
+               completionHandler:^(NSInteger result) {
+        if (result == NSFileHandlingPanelCancelButton) {
+            return;
+        }
+        [op close];
+        NSURL *Url = op.URL;
+        self.csvic = [CSVImportController new];
+        CSVDeckImporter *csvimporter = [CSVDeckImporter new];
+        [csvimporter loadCSVWithURL:Url completionHandler:^(bool success, NSArray * _Nonnull columnnames) {
+                if (success) {
+                    [self.csvic.window makeKeyAndOrderFront:self];
+                    [self.csvic loadColumnNames:columnnames];
+                    [self.window beginSheet:self.csvic.window completionHandler:^(NSModalResponse returnCode) {
+                        if (returnCode == NSModalResponseOK) {
+                            [csvimporter performimportWithDeckName:self.csvic.deckname.stringValue withDeckType:self.csvic.decktype.selectedTag destinationMap:self.csvic.maparray completionHandler:^(bool success) {
+                                if (success) {
+                                    [NSNotificationCenter.defaultCenter postNotificationName:@"DeckAdded" object:nil];
+                                    NSAlert *alert = [[NSAlert alloc] init] ;
+                                    [alert addButtonWithTitle:@"OK"];
+                                    [alert setMessageText:@"Deck imported"];
+                                    alert.informativeText = @"Deck as successfully imported";
+                                    alert.alertStyle = NSAlertStyleInformational;
+                                    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                                        }];
+                                }
+                                else {
+                                    NSAlert *alert = [[NSAlert alloc] init] ;
+                                    [alert addButtonWithTitle:@"OK"];
+                                    [alert setMessageText:@"Deck import failed"];
+                                    alert.informativeText = @"Deck either already exists or the field mappings are not correctly set. Please try again.";
+                                    alert.alertStyle = NSAlertStyleInformational;
+                                    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                                        }];
+                                }
+                            }];
+                        }
+                    }];
+                }
+        }];
     }];
 }
 

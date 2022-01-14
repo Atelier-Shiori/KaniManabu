@@ -83,14 +83,20 @@
                 if (((NSString *)_cardMeta[@"altmeaning"]).length > 0) {
                     [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",_cardMeta[@"altmeaning"]];
                 }
+            if (_cardMeta[@"notes"]) {
                 if (((NSString *)_cardMeta[@"notes"]).length > 0) {
                     [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",_cardMeta[@"notes"]];
                 }
-                if (((NSString *)_cardMeta[@"contextsentence1"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence1"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Context Sentence 1</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence1"],_cardMeta[@"englishsentence1"]];
+            }
+                if (_cardMeta[@"contextsentence1"] && _cardMeta[@"englishsentence1"]) {
+                    if (((NSString *)_cardMeta[@"contextsentence1"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence1"]).length > 0) {
+                        [infostr appendFormat:@"<h1>Context Sentence 1</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence1"],_cardMeta[@"englishsentence1"]];
+                    }
                 }
-                if (((NSString *)_cardMeta[@"contextsentence2"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence2"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Context Sentence 2</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence2"],_cardMeta[@"englishsentence2"]];
+                if (_cardMeta[@"contextsentence2"] && _cardMeta[@"englishsentence2"]) {
+                    if (((NSString *)_cardMeta[@"contextsentence2"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence2"]).length > 0) {
+                        [infostr appendFormat:@"<h1>Context Sentence 2</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence2"],_cardMeta[@"englishsentence2"]];
+                    }
                 }
             break;
         }
@@ -100,11 +106,15 @@
                 [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",_cardMeta[@"altmeaning"]];
             }
             [infostr appendFormat:@"<h1>Main Reading</h1><p>%@</p>",_cardMeta[@"kanareading"]];
-            if (((NSString *)_cardMeta[@"altreading"]).length > 0) {
-                [infostr appendFormat:@"<h1>Alt Readings</h1><p>%@</p>",_cardMeta[@"altreading"]];
+            if (_cardMeta[@"altreading"]) {
+                if (((NSString *)_cardMeta[@"altreading"]).length > 0) {
+                    [infostr appendFormat:@"<h1>Alt Readings</h1><p>%@</p>",_cardMeta[@"altreading"]];
+                }
             }
-            if (((NSString *)_cardMeta[@"notes"]).length > 0) {
-                [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",_cardMeta[@"notes"]];
+            if (_cardMeta[@"notes"]) {
+                if (((NSString *)_cardMeta[@"notes"]).length > 0) {
+                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",_cardMeta[@"notes"]];
+                }
             }
             break;
         }
@@ -114,17 +124,25 @@
             if (((NSString *)_cardMeta[@"altmeaning"]).length > 0) {
                 [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",_cardMeta[@"altmeaning"]];
             }
-            if (((NSString *)_cardMeta[@"notes"]).length > 0) {
-                [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",_cardMeta[@"notes"]];
+            if (_cardMeta[@"notes"]) {
+                if (((NSString *)_cardMeta[@"notes"]).length > 0) {
+                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",_cardMeta[@"notes"]];
+                }
             }
-            if (((NSString *)_cardMeta[@"contextsentence1"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence1"]).length > 0) {
-                [infostr appendFormat:@"<h1>Context Sentence 1</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence1"],_cardMeta[@"englishsentence1"]];
+            if (_cardMeta[@"contextsentence1"] && _cardMeta[@"englishsentence1"]) {
+                if (((NSString *)_cardMeta[@"contextsentence1"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence1"]).length > 0) {
+                    [infostr appendFormat:@"<h1>Context Sentence 1</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence1"],_cardMeta[@"englishsentence1"]];
+                }
             }
-            if (((NSString *)_cardMeta[@"contextsentence2"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence2"]).length > 0) {
-                [infostr appendFormat:@"<h1>Context Sentence 2</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence2"],_cardMeta[@"englishsentence2"]];
+            if (_cardMeta[@"contextsentence2"] && _cardMeta[@"englishsentence2"]) {
+                if (((NSString *)_cardMeta[@"contextsentence2"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence2"]).length > 0) {
+                    [infostr appendFormat:@"<h1>Context Sentence 2</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence2"],_cardMeta[@"englishsentence2"]];
+                }
             }
-            if (((NSString *)_cardMeta[@"contextsentence3"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence3"]).length > 0) {
-                [infostr appendFormat:@"<h1>Context Sentence 3</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence3"],_cardMeta[@"englishsentence3"]];
+            if (_cardMeta[@"contextsentence3"] && _cardMeta[@"englishsentence3"]) {
+                if (((NSString *)_cardMeta[@"contextsentence3"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence3"]).length > 0) {
+                    [infostr appendFormat:@"<h1>Context Sentence 3</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence3"],_cardMeta[@"englishsentence3"]];
+                }
             }
             break;
         }

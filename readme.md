@@ -6,19 +6,22 @@ Requires macOS 11 Big Sur or later.
 # What is different about KaniManabu compared to other SRS Flashcard software like Anki?
 KaniManbu is a lot easier to use with three different card types (Kanji, Kana, and Vocab). Unlike Anki, the user needs to type in the answer for both the meaning and reading instead of seeing the back of the card and picking the difficulty. This allows the learner to reinforce their knowledge.
 
-# Features
+# Features (already implemented)
 * Custom decks with three types to choose from (Kana, Kanji, and Vocab)
 * Decks are saved and synced to iCloud, making them accessible across all your Macs (and eventually iOS devices). App also works offline.
 * Easy to use, fully native, and macOS optimized interface (no Electron garbage)
 * WaniKani style SRS review system
 * Learning mode, which allow you to "learn" the cards before reviewing them. After a learning session, the newly learned cards goes into the review queue.
-* Ability to import and export decks
 * Ability to lookup words from other resources (Dictionary.app, Monokakido's Dictionaries app, and online resources)
 * Ability to tag cards for future reference.
 * TTS support
-* Anki mode (see answer and click correct/incorrect button)
+* Browse cards by SRS stage and critical condition items (cards that are answered correctly less than 70% of the time).
+* Ability to suspend cards
 
 # Planned features
+* Ability to import and export decks (CSV and KaniManabu JSON format)
+* Ability to enable/disable decks
+* Anki mode (see answer and click correct/incorrect button)
 * Deck statistics
 * Learning forecast
 * Vacation Mode

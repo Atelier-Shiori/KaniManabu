@@ -24,6 +24,7 @@ typedef NS_ENUM(int,DeckType) {
 - (bool)checkDeckExists:(NSString *)deckname withType:(int)type;
 - (bool)deleteDeckWithDeckUUID: (NSUUID *)uuid;
 - (NSArray *)retrieveReviewItemsForDeckUUID:(NSUUID *)uuid withType:(int)type;
+- (NSUUID *)getDeckUUIDWithDeckName:(NSString *)deckname withDeckType:(DeckType)type;
 - (long)getQueuedReviewItemsCountforUUID:(NSUUID *)uuid withType:(int)type;
 - (NSArray *)setandretrieveLearnItemsForDeckUUID:(NSUUID *)uuid withType:(int)type;
 - (void)setLearnDateForDeckUUID:(NSUUID *)uuid setToday:(bool)today;

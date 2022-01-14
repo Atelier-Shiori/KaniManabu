@@ -35,7 +35,7 @@
                                     <action selector="viewPreferences:" target="Voe-Tx-rLC" id="oFw-jZ-TnD"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="License…" id="rKL-Fx-gRV">
+                            <menuItem title="License…" hidden="YES" id="rKL-Fx-gRV">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
@@ -78,13 +78,6 @@
                                 <connections>
                                     <action selector="performClose:" target="-1" id="bdR-fd-z7h"/>
                                 </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="Id3-q2-aG5"/>
-                            <menuItem title="Import a Deck…" id="5rw-gM-kFq">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
-                            <menuItem title="Export a Deck…" id="P8M-TX-I23">
-                                <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                         </items>
                     </menu>

@@ -56,6 +56,10 @@
 		FF746572278F44AE0062E476 /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF746571278F44AE0062E476 /* PFAboutWindow.xib */; };
 		FF746574278F47330062E476 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF746573278F47330062E476 /* EULA.rtf */; };
 		FF746576278F47380062E476 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF746575278F47380062E476 /* Credits.rtf */; };
+		FF89D70B2791D41D009B7C6F /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89D70A2791D41D009B7C6F /* CHCSVParser.m */; };
+		FF89D70F2791DFE8009B7C6F /* CSVImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89D70D2791DFE8009B7C6F /* CSVImportController.m */; };
+		FF89D7102791DFE8009B7C6F /* CSVImportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF89D70E2791DFE8009B7C6F /* CSVImportController.xib */; };
+		FF89D7132791EC92009B7C6F /* CSVDeckImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89D7122791EC92009B7C6F /* CSVDeckImporter.m */; };
 		FFA14B7B278EF1560038B9C2 /* CardEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA14B7A278EF1560038B9C2 /* CardEditor.m */; };
 		FFA14B85278F04E10038B9C2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA14B84278F04E10038B9C2 /* AVFoundation.framework */; };
 		FFA14B90278F0F8C0038B9C2 /* NSTableViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA14B8F278F0F8C0038B9C2 /* NSTableViewAction.m */; };
@@ -206,6 +210,13 @@
 		FF746571278F44AE0062E476 /* PFAboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFAboutWindow.xib; sourceTree = "<group>"; };
 		FF746573278F47330062E476 /* EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = EULA.rtf; sourceTree = "<group>"; };
 		FF746575278F47380062E476 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		FF89D7092791D41D009B7C6F /* CHCSVParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
+		FF89D70A2791D41D009B7C6F /* CHCSVParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
+		FF89D70C2791DFE8009B7C6F /* CSVImportController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVImportController.h; sourceTree = "<group>"; };
+		FF89D70D2791DFE8009B7C6F /* CSVImportController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSVImportController.m; sourceTree = "<group>"; };
+		FF89D70E2791DFE8009B7C6F /* CSVImportController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CSVImportController.xib; sourceTree = "<group>"; };
+		FF89D7112791EC92009B7C6F /* CSVDeckImporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVDeckImporter.h; sourceTree = "<group>"; };
+		FF89D7122791EC92009B7C6F /* CSVDeckImporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSVDeckImporter.m; sourceTree = "<group>"; };
 		FFA14B79278EF1560038B9C2 /* CardEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardEditor.h; sourceTree = "<group>"; };
 		FFA14B7A278EF1560038B9C2 /* CardEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardEditor.m; sourceTree = "<group>"; };
 		FFA14B84278F04E10038B9C2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -262,6 +273,8 @@
 				15B122D5278CE93E00575A73 /* AnswerCheck.m */,
 				FF1BE8082790542900CA6A99 /* NSNumberFormatterNumberOnly.h */,
 				FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */,
+				FF89D7112791EC92009B7C6F /* CSVDeckImporter.h */,
+				FF89D7122791EC92009B7C6F /* CSVDeckImporter.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -299,6 +312,9 @@
 				151F3ABF278E23D800953ECD /* KanaEditor.h */,
 				151F3AC0278E23D800953ECD /* KanaEditor.m */,
 				151F3AC1278E23D800953ECD /* KanaEditor.xib */,
+				FF89D70C2791DFE8009B7C6F /* CSVImportController.h */,
+				FF89D70D2791DFE8009B7C6F /* CSVImportController.m */,
+				FF89D70E2791DFE8009B7C6F /* CSVImportController.xib */,
 			);
 			path = "Window Controllers";
 			sourceTree = "<group>";
@@ -321,6 +337,8 @@
 				FF74656F278F44A10062E476 /* PFAboutWindowController.h */,
 				FF74656E278F44A10062E476 /* PFAboutWindowController.m */,
 				FF746571278F44AE0062E476 /* PFAboutWindow.xib */,
+				FF89D7092791D41D009B7C6F /* CHCSVParser.h */,
+				FF89D70A2791D41D009B7C6F /* CHCSVParser.m */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -543,6 +561,7 @@
 				FF70887D278C853400DF399E /* mainwindow.xib in Resources */,
 				FF746576278F47380062E476 /* Credits.rtf in Resources */,
 				FF28A811278CA23B00D3744D /* NewDeckDialog.xib in Resources */,
+				FF89D7102791DFE8009B7C6F /* CSVImportController.xib in Resources */,
 				151F3ABE278E23CD00953ECD /* KanjiEditor.xib in Resources */,
 				FF746574278F47330062E476 /* EULA.rtf in Resources */,
 				15794879278CD407000D984D /* GeneralPreferences.xib in Resources */,
@@ -572,6 +591,7 @@
 				FF28A825278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				151F3ABD278E23CD00953ECD /* KanjiEditor.m in Sources */,
 				15B122DF278CED4C00575A73 /* NSString+RomajiKanaConvert.m in Sources */,
+				FF89D70B2791D41D009B7C6F /* CHCSVParser.m in Sources */,
 				FFA14B90278F0F8C0038B9C2 /* NSTableViewAction.m in Sources */,
 				1579486D278CBFB0000D984D /* DeckAddDialogController.m in Sources */,
 				FF28A817278CB16D00D3744D /* MainWindowController.m in Sources */,
@@ -583,6 +603,7 @@
 				FF28A81D278CB19E00D3744D /* ReviewWindowController.m in Sources */,
 				15B122D1278CE45300575A73 /* VocabEditor.m in Sources */,
 				FF1BE8112790542900CA6A99 /* NSNumberFormatterNumberOnly.m in Sources */,
+				FF89D7132791EC92009B7C6F /* CSVDeckImporter.m in Sources */,
 				FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */,
 				151F3AB7278D07AB00953ECD /* DeckViewCell.m in Sources */,
 				15B122D9278CEBE900575A73 /* string_score.c in Sources */,
@@ -590,6 +611,7 @@
 				FF708869278C7CDF00DF399E /* KaniManabu.xcdatamodeld in Sources */,
 				15794870278CBFC9000D984D /* ItemInfoWindowController.m in Sources */,
 				FF708870278C7CE000DF399E /* main.m in Sources */,
+				FF89D70F2791DFE8009B7C6F /* CSVImportController.m in Sources */,
 				FF708866278C7CDF00DF399E /* AppDelegate.m in Sources */,
 				FF28A826278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m in Sources */,
 				15B122D6278CE93E00575A73 /* AnswerCheck.m in Sources */,

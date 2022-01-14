@@ -54,6 +54,9 @@
                 if ([DeckManager.sharedInstance modifyCardWithCardUUID:ve.cardUUID withCardData:ve.cardSaveData withType:DeckTypeVocab]) {
                     completionHandler(true);
                 }
+                else {
+                    completionHandler(false);
+                }
             }
         }
     }];
@@ -101,6 +104,9 @@
                 if ([DeckManager.sharedInstance modifyCardWithCardUUID:kje.cardUUID withCardData:kje.cardSaveData withType:DeckTypeKanji]) {
                     completionHandler(true);
                 }
+                else {
+                    completionHandler(false);
+                }
             }
         }
     }];
@@ -147,6 +153,9 @@
             else {
                 if ([DeckManager.sharedInstance modifyCardWithCardUUID:ke.cardUUID withCardData:ke.cardSaveData withType:DeckTypeKana]) {
                     completionHandler(true);
+                }
+                else {
+                    completionHandler(false);
                 }
             }
         }

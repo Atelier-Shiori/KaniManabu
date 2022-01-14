@@ -78,6 +78,19 @@
     return nil;
 }
 
+- (NSUUID *)getDeckUUIDWithDeckName:(NSString *)deckname withDeckType:(DeckType)type {
+    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+    fetchRequest.entity = [NSEntityDescription entityForName:@"Decks" inManagedObjectContext:_moc];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deckName == %@ AND deckType == %i",deckname,type];
+    fetchRequest.predicate = predicate;
+    NSError *error = nil;
+    NSArray *tmparray =  [_moc executeFetchRequest:fetchRequest error:&error];
+    if (tmparray.count > 0) {
+        return [(NSManagedObject *)tmparray[0] valueForKey:@"deckUUID"];
+    }
+    return nil;
+}
+
 # pragma mark Review Queue Methods
 
 - (NSArray *)retrieveReviewItemsForDeckUUID:(NSUUID *)uuid withType:(int)type {
@@ -330,6 +343,7 @@
             [obj setValue:cardData[key] forKey:key];
         }
         [_moc save:nil];
+        return true;
     }
     return false;
 }
