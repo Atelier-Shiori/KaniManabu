@@ -337,19 +337,19 @@
     NSPredicate *predicate;
     switch (stage) {
         case 0:
-            predicate = [NSPredicate predicateWithFormat:@"srsstage <= %i" , 3];
+            predicate = [NSPredicate predicateWithFormat:@"srsstage <= %i AND learned == %@" , 3, @YES];
             break;
         case 1:
-            predicate = [NSPredicate predicateWithFormat:@"srsstage <= %i && srsstage >= %i" , 5, 4];
+            predicate = [NSPredicate predicateWithFormat:@"srsstage <= %i && srsstage >= %i AND learned == %@" , 5, 4, @YES];
             break;
         case 2:
-            predicate = [NSPredicate predicateWithFormat:@"srsstage == %i" , 6];
+            predicate = [NSPredicate predicateWithFormat:@"srsstage == %i AND learned == %@" , 6, @YES];
             break;
         case 3:
-            predicate = [NSPredicate predicateWithFormat:@"srsstage == %i" , 7];
+            predicate = [NSPredicate predicateWithFormat:@"srsstage == %i AND learned == %@" , 7, @YES];
             break;
         case 4:
-            predicate = [NSPredicate predicateWithFormat:@"srsstage == %i" , 8];
+            predicate = [NSPredicate predicateWithFormat:@"srsstage == %i AND learned == %@" , 8, @YES];
             break;
         default:
             break;
