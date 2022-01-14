@@ -1,0 +1,11 @@
+# Ignore Builds Directory
+build/**
+dsa_priv.pem
+.DS_Store
+Frameworks/.DS_Store
+KaniManabu.xcodeproj/project.xcworkspace/xcuserdata/*.*
+.idea/*.*
+.idea/inspectionProfiles/*.*
+.idea/runConfigurations/*.*
+.idea/runConfigurations/Hachidori_test.xml
+.idea/scopes/*.*
