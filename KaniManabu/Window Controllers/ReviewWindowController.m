@@ -25,17 +25,24 @@
 @property (strong) IBOutlet NSTextField *answerstatus;
 @property (strong) IBOutlet NSTextField *answertextfield;
 @property (strong) IBOutlet NSTextField *srslevellabel;
+@property (strong) IBOutlet NSButton *answerbtn;
 @property int totalitems;
 @property int correctcount;
 @property int incorrectcount;
 @property int questiontype;
 @property int currentitem;
 @property bool answered;
+@property bool ankimode;
 @property (strong) CardReview* currentcard;
 @property bool promptacknowledged;
 @property (strong) IBOutlet NSPopover *lasttenpopover;
 @property (strong) IBOutlet NSTableView *lasttentb;
 @property (strong) IBOutlet NSArrayController *lasttenarraycontroller;
+@property (strong) IBOutlet NSTextField *ankiwrongsrsstagelbl;
+@property (strong) IBOutlet NSTextField *ankirightstagelbl;
+@property (strong) IBOutlet NSButton *ankibtnwrong;
+@property (strong) IBOutlet NSButton *ankibtnright;
+@property (strong) IBOutlet NSButton *ankishowanswerbtn;
 @end
 
 @implementation ReviewWindowController
@@ -57,6 +64,12 @@
 }
 
 - (void)startReview:(NSArray *)reviewitems {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"AnkiMode"]) {
+        // Hide answer text field, buttons will show instead
+        _ankimode = true;
+        _answertextfield.hidden = YES;
+        _answerbtn.hidden = YES;
+    }
     [_reviewqueue addObjectsFromArray:reviewitems];
     [self nextQuestion];
 }
@@ -246,8 +259,17 @@
     [NSNotificationCenter.defaultCenter postNotificationName:@"ReviewAdvanced" object:nil];
     _iteminfotoolbaritem.enabled = false;
     _answered = false;
-    _answerstatus.stringValue = @"";
-    [self showNewSRSStage:NO];
+    if (!_ankimode) {
+        _answerstatus.stringValue = @"";
+        [self showNewSRSStage:NO];
+    }
+    else {
+        _ankishowanswerbtn.hidden = NO;
+        _ankibtnright.hidden = YES;
+        _ankibtnwrong.hidden = YES;
+        _ankirightstagelbl.hidden = YES;
+        _ankiwrongsrsstagelbl.hidden = YES;
+    }
     if (_currentcard) {
         // Check if both questions are answered. If so, mark as complete
         if (_currentcard.reviewedmeaning && _currentcard.reviewedreading) {
@@ -330,6 +352,78 @@
         }
     }
 }
+- (IBAction)showanswer:(id)sender {
+    [self performshowAnswer];
+}
+
+- (void)performshowAnswer {
+    switch (_questiontype) {
+        case CardReviewTypeMeaning: {
+            _questionprompt.stringValue = [_currentcard.card valueForKey:@"english"];
+            break;
+        }
+        case CardReviewTypeReading: {
+            switch (_currentcard.cardtype) {
+                case CardTypeVocab: {
+                    if (_currentcard.cardtype == CardTypeVocab) {
+                        // Say Vocab reading if user enabled option
+                        if ([NSUserDefaults.standardUserDefaults boolForKey:@"SayKanaReadingAnswer"]) {
+                            [self sayAnswer:[_currentcard.card valueForKey:@"reading"]];
+                        }
+                    }
+                    _questionprompt.stringValue = [_currentcard.card valueForKey:@"kanaWord"];
+                    break;
+                }
+                case CardTypeKanji: {
+                    _questionprompt.stringValue = [_currentcard.card valueForKey:@"reading"];
+                    break;
+                }
+            }
+            break;
+        }
+    }
+    _ankishowanswerbtn.hidden = YES;
+    _ankibtnright.hidden = NO;
+    _ankibtnwrong.hidden = NO;
+    _ankirightstagelbl.hidden = NO;
+    _ankiwrongsrsstagelbl.hidden = NO;
+    _ankirightstagelbl.stringValue = [SRScheduler getSRSStageNameWithCurrentSRSStage:_currentcard.proposedSRSStage+1];
+    _ankiwrongsrsstagelbl.stringValue = [SRScheduler getSRSStageNameWithCurrentSRSStage:_currentcard.proposedSRSStage-1 <= 0 ? 1 : _currentcard.proposedSRSStage-1];
+    _answered = true;
+    _iteminfotoolbaritem.enabled = true;
+}
+- (IBAction)ankianswerwrong:(id)sender {
+    switch (_questiontype) {
+        case CardReviewTypeMeaning: {
+            [_currentcard setIncorrect:CardReviewTypeMeaning];
+            _currentcard.currentreviewmeaningincorrect = true;
+            break;
+        }
+        case CardReviewTypeReading: {
+            [_currentcard setIncorrect:CardReviewTypeReading];
+            _currentcard.currentreviewreadingincorrect = true;
+            break;
+        }
+    }
+    [self nextQuestion];
+}
+- (IBAction)ankianswerright:(id)sender {
+    switch (_questiontype) {
+        case CardReviewTypeMeaning: {
+            [_currentcard setCorrect:CardReviewTypeMeaning];
+            _currentcard.currentreviewmeaningincorrect = false;
+            break;
+        }
+        case CardReviewTypeReading: {
+            [_currentcard setCorrect:CardReviewTypeReading];
+            _currentcard.currentreviewreadingincorrect = false;
+            break;
+        }
+    }
+    [self nextQuestion];
+}
+
+
 
 #pragma mark helpers
 

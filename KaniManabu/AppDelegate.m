@@ -27,7 +27,7 @@
     // Defaults
     defaultValues[@"DeckNewCardLimitPerDay"] = @(5);
     defaultValues[@"SayKanaReadingAnswer"] = @YES;
-    
+    defaultValues[@"AnkiMode"] = @NO;
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];
