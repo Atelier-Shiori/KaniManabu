@@ -15,12 +15,12 @@
      new_srs_stage = current_srs_stage - (incorrect_adjustment_count * srs_penalty_factor)
      See: https://knowledge.wanikani.com/wanikani/srs-stages/
      */
-    int srspenaltyfactor = currentSRSStage >= 5 ? 2 : 1;
+    int srspenaltyfactor = currentSRSStage >= 4 ? 2 : 1;
     int incorrectadjustmentcount = round(numincorrect/2);
     int newstage = currentSRSStage - (incorrectadjustmentcount * srspenaltyfactor);
     if (newstage < 0) {
-        // New SRS stage can't be negative, set it as Apprentice 1 (0)
-        newstage = 0;
+        // New SRS stage can't be negative, set it as Apprentice 2 (1)
+        newstage = 1;
     }
     return newstage;
 }
