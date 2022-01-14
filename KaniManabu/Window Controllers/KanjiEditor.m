@@ -60,12 +60,12 @@
 - (void)populatefromDictionary:(NSDictionary *)dict {
     _japaneseword.stringValue = dict[@"japanese"];
     _englishmeaning.stringValue = dict[@"english"];
-    _altmeanings.stringValue = dict[@"altmeaning"] ? dict[@"altmeaning"] : @"";
+    _altmeanings.stringValue = dict[@"altmeaning"] != [NSNull null] ? dict[@"altmeaning"] : @"";
     _kanareadings.stringValue = dict[@"kanareading"];
     [_mainreadingtype selectItemWithTag:((NSNumber *)dict[@"readingtype"]).intValue];
-    _altkanareadings.stringValue = dict[@"altreading"] ? dict[@"altreading"] : @"";
-    _notes.string = dict[@"notes"] ? dict[@"notes"] : @"";
-    _tags.stringValue = dict[@"tags"] ? dict[@"tags"] : @"";
+    _altkanareadings.stringValue = dict[@"altreading"] != [NSNull null] ? dict[@"altreading"] : @"";
+    _notes.string = dict[@"notes"] != [NSNull null] ? dict[@"notes"] : @"";
+    _tags.stringValue = dict[@"tags"] != [NSNull null] ? dict[@"tags"] : @"";
     _savebtn.enabled = YES;
 }
 

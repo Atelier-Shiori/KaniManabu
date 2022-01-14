@@ -10,3 +10,4 @@ KaniManabu.xcodeproj/project.xcworkspace/xcuserdata/*.*
 .idea/runConfigurations/Hachidori_test.xml
 .idea/scopes/*.*
 *.xcuserstate
+/KaniManabu.xcodeproj/xcuserdata/**

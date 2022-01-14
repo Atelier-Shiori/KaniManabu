@@ -76,13 +76,13 @@
 - (void)populatefromDictionary:(NSDictionary *)dict {
     _japaneseword.stringValue = dict[@"japanese"];
     _englishmeaning.stringValue = dict[@"english"];
-    _altmeanings.stringValue = dict[@"altmeaning"] ? dict[@"altmeaning"] : @"";
+    _altmeanings.stringValue = dict[@"altmeaning"] != [NSNull null] ? dict[@"altmeaning"] : @"";
     _kanareadings.stringValue = dict[@"kanareading"];
-    _notes.string = dict[@"notes"] ? dict[@"notes"] : @"";
-    _contextsentence1.stringValue = dict[@"contextsentence1"] ? dict[@"contextsentence1"] : @"";
-    _contextsentence2.stringValue = dict[@"contextsentence2"] ? dict[@"contextsentence2"] : @"";
-    _englishsentence1.stringValue = dict[@"englishsentence1"] ? dict[@"englishsentence1"] : @"";
-    _englishsentence2.stringValue = dict[@"englishsentence2"] ? dict[@"englishsentence2"] : @"";
+    _notes.string = dict[@"notes"] != [NSNull null] ? dict[@"notes"] : @"";
+    _contextsentence1.stringValue = dict[@"contextsentence1"] != [NSNull null] ? dict[@"contextsentence1"] : @"";
+    _contextsentence2.stringValue = dict[@"contextsentence2"] != [NSNull null] ? dict[@"contextsentence2"] : @"";
+    _englishsentence1.stringValue = dict[@"englishsentence1"] != [NSNull null] ? dict[@"englishsentence1"] : @"";
+    _englishsentence2.stringValue = dict[@"englishsentence2"] != [NSNull null] ? dict[@"englishsentence2"] : @"";
     _tags.stringValue = dict[@"tags"] ? dict[@"tags"] : @"";
     _savebtn.enabled = YES;
 }
