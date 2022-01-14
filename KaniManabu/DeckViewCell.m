@@ -48,8 +48,10 @@
 
 - (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"CardAdded"]||[notification.name isEqualToString:@"CardRemoved"]||[notification.name isEqualToString:@"CardModified"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:@"ReviewEnded"] || [notification.name isEqualToString:@"TimerFired"]) {
-        // Reload
-        [self reloadQueueCount];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Reload
+            [self reloadQueueCount];
+        });
     }
 }
 

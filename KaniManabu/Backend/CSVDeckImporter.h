@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "DeckManager.h"
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface CSVDeckImporter : NSObject
 @property (strong) NSArray *csvcolumns;
@@ -18,4 +18,4 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)performimportWithDeckName:(NSString *)deckname withDeckType:(int)type destinationMap:(NSArray *)map completionHandler:(void (^)(bool success)) completionHandler;
 @end
 
-NS_ASSUME_NONNULL_END
+

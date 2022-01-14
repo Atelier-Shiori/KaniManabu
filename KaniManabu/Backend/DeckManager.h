@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface DeckManager : NSObject
 @property (strong) NSManagedObjectContext *moc;
@@ -44,4 +44,4 @@ typedef NS_ENUM(int,DeckType) {
 - (void)togglesuspendCardForCardUUID:(NSUUID *)uuid withType:(int)type;
 @end
 
-NS_ASSUME_NONNULL_END
+

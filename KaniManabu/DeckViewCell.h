@@ -7,7 +7,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface DeckViewCell : NSTableCellView
 @property (strong) IBOutlet NSTextField *DeckName;
@@ -21,4 +21,4 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setDeckTypeLabel;
 @end
 
-NS_ASSUME_NONNULL_END
+

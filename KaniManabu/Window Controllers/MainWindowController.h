@@ -8,7 +8,7 @@
 #import <Cocoa/Cocoa.h>
 #import "DeckBrowser.h"
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface MainWindowController : NSWindowController <NSTableViewDelegate, NSTableViewDataSource>
 @property (strong) IBOutlet NSTableView *tb;
@@ -17,4 +17,4 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) DeckBrowser *deckbrowserwc;
 @end
 
-NS_ASSUME_NONNULL_END
+

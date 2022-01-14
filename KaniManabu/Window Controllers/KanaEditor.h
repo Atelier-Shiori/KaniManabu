@@ -7,7 +7,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface KanaEditor : NSWindowController
 @property (strong) IBOutlet NSTextField *japaneseword;
@@ -27,4 +27,4 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)populatefromDictionary:(NSDictionary *)dict;
 @end
 
-NS_ASSUME_NONNULL_END
+

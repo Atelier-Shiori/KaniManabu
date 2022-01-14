@@ -7,7 +7,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface CSVImportController : NSWindowController
 @property (strong) IBOutlet NSTableView *tb;
@@ -29,4 +29,4 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)loadColumnNames:(NSArray *)colarray;
 @end
 
-NS_ASSUME_NONNULL_END
+

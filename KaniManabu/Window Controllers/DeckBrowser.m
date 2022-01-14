@@ -62,8 +62,10 @@
 
 - (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"DeckAdded"]||[notification.name isEqualToString:@"DeckRemoved"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresWillChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]||[notification.name isEqualToString:@"LearnEnded"]||[notification.name isEqualToString:@"ReviewEnded"]) {
-        // Reload
-        [self generateSourceList];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Reload
+            [self generateSourceList];
+        });
     }
 }
 

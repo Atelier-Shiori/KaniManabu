@@ -7,11 +7,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface ReviewWindowController : NSWindowController <NSTextFieldDelegate,NSTableViewDelegate>
 @property (strong) NSMutableArray *reviewqueue;
 - (void)startReview:(NSArray *)reviewitems;
 @end
 
-NS_ASSUME_NONNULL_END
+

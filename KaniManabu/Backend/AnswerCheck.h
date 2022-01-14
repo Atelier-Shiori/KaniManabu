@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface AnswerCheck : NSObject
 typedef NS_ENUM(int,AnswerState) {
@@ -26,4 +26,4 @@ typedef NS_ENUM(int,AnswerState) {
 + (AnswerState)checkKanjiReading:(NSString *)answer withCard:(NSManagedObject *)card;
 @end
 
-NS_ASSUME_NONNULL_END
+

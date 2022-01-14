@@ -7,7 +7,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface DeckAddDialogController : NSWindowController
 @property (strong) IBOutlet NSTextField *deckname;
@@ -15,4 +15,4 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-NS_ASSUME_NONNULL_END
+

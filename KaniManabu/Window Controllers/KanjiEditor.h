@@ -7,7 +7,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface KanjiEditor : NSWindowController
 @property (strong) IBOutlet NSTextField *japaneseword;
@@ -23,4 +23,4 @@ NS_ASSUME_NONNULL_BEGIN
 @property bool newcard;
 @end
 
-NS_ASSUME_NONNULL_END
+

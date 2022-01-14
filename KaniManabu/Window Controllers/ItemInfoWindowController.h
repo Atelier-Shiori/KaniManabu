@@ -7,7 +7,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface ItemInfoWindowController : NSWindowController
 @property (strong) NSUUID *cardUUID;
@@ -22,4 +22,4 @@ typedef NS_ENUM(int,ParentWindowType) {
 - (void)setDictionary:(NSDictionary *)dictionary withWindowType:(ParentWindowType)wtype;
 @end
 
-NS_ASSUME_NONNULL_END
+

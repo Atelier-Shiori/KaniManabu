@@ -7,7 +7,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface CardEditor : NSObject
 + (void)openVocabCardEditorWithUUID:(NSUUID *)uuid isNewCard:(bool)newCard withWindow:(NSWindow *)w completionHandler:(void (^)(bool success)) completionHandler;
@@ -15,4 +15,4 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)openKanaCardEditorWithUUID:(NSUUID *)uuid isNewCard:(bool)newCard withWindow:(NSWindow *)w completionHandler:(void (^)(bool success)) completionHandler;
 @end
 
-NS_ASSUME_NONNULL_END
+

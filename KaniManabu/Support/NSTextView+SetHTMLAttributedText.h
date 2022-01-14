@@ -8,10 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface NSTextView (SetHTMLAttributedText)
 - (void)setTextToHTML:(NSString *)html withLoadingText:(nullable NSString *)loadingtext completion:(void (^)(NSAttributedString *astr)) completionHandler;
 @end
 
-NS_ASSUME_NONNULL_END
+

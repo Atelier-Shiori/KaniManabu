@@ -9,7 +9,7 @@
 #import <CoreData/CoreData.h>
 #import "SRScheduler.h"
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface CardReview : NSObject
 typedef NS_ENUM(int,CardType) {
@@ -40,4 +40,4 @@ typedef NS_ENUM(int,CardReviewType) {
 - (void)suspendReview;
 @end
 
-NS_ASSUME_NONNULL_END
+

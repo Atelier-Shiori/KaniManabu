@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface SRScheduler : NSObject
 /*
@@ -54,4 +54,4 @@ typedef NS_ENUM(int,SRSStages) {
 + (NSString *)getSRSStageNameWithCurrentSRSStage:(int)currentSRSStage;
 @end
 
-NS_ASSUME_NONNULL_END
+

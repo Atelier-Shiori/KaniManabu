@@ -8,7 +8,7 @@
 #import <Cocoa/Cocoa.h>
 #import <PXSourceList/PXSourceList.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface DeckBrowser : NSWindowController <PXSourceListDataSource, PXSourceListDelegate, NSMenuDelegate, NSTableViewDelegate>
 @property (strong) IBOutlet PXSourceList *sourceList;
@@ -21,4 +21,4 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) IBOutlet NSTableView *tb;
 @end
 
-NS_ASSUME_NONNULL_END
+
