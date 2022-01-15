@@ -7,6 +7,9 @@
 
 #import "GeneralPreferencesViewController.h"
 
+@import AppCenterAnalytics;
+@import AppCenterCrashes;
+
 @interface GeneralPreferencesViewController ()
 
 @end
@@ -16,6 +19,14 @@
 - (instancetype)init
 {
     return [super initWithNibName:@"GeneralPreferences" bundle:nil];
+}
+
+- (IBAction)sendstatstoggle:(id)sender {
+    [MSACCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+    [MSACAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+}
+- (IBAction)viewprivacypolicy:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://malupdaterosx.moe/kanimanabu/privacy-policy/"]];
 }
 
 #pragma mark -

@@ -88,16 +88,20 @@
     }
     else if ([notification.name isEqualToString:@"DeckAdded"] || [notification.name isEqualToString:@"DeckRemoved"]) {
         // Reload
-        _totalreviewitemcount = 0;
-        _totallearnitemcount = 0;
-        [self loadDeckArrayAndPopulate];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.totalreviewitemcount = 0;
+            self.totallearnitemcount = 0;
+            [self loadDeckArrayAndPopulate];
+        });
     }
     else if ([notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
         // Reload
         sleep(5);
-        _totalreviewitemcount = 0;
-        _totallearnitemcount = 0;
-        [self loadDeckArrayAndPopulate];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.totalreviewitemcount = 0;
+            self.totallearnitemcount = 0;
+            [self loadDeckArrayAndPopulate];
+        });
     }
     else if ([notification.name isEqualToString:@"ActionAddCard"]) {
         if ([notification.object isKindOfClass:[NSManagedObject class]]) {
@@ -242,6 +246,7 @@
         alert.alertStyle = NSAlertStyleInformational;
         [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
             }];
+        return;
     }
     if (!_deckbrowserwc) {
         _deckbrowserwc = [DeckBrowser new];

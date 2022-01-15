@@ -11,6 +11,10 @@
 #import "DeckManager.h"
 #import "PFAboutWindowController.h"
 
+@import AppCenter;
+@import AppCenterAnalytics;
+@import AppCenterCrashes;
+
 @interface AppDelegate ()
 
 @property PFAboutWindowController *aboutWindowController;
@@ -28,6 +32,7 @@
     defaultValues[@"DeckNewCardLimitPerDay"] = @(5);
     defaultValues[@"SayKanaReadingAnswer"] = @YES;
     defaultValues[@"AnkiMode"] = @NO;
+    defaultValues[@"sendanalytics"] = @YES;
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];
@@ -46,6 +51,13 @@
             NSLog(@"User enabled badges");
         }
     }];
+    
+    [MSACAppCenter start:@"8dbff13f-197a-40f6-800c-e70eb45f1fb7" withServices:@[
+      [MSACAnalytics class],
+      [MSACCrashes class]
+    ]];
+    [MSACCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+    [MSACAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
 }
 
 

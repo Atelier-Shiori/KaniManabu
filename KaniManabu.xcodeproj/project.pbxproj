@@ -26,6 +26,9 @@
 		15B122D9278CEBE900575A73 /* string_score.c in Sources */ = {isa = PBXBuildFile; fileRef = 15B122D8278CEBE900575A73 /* string_score.c */; };
 		15B122DE278CED4C00575A73 /* PaRomajiKanaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122DA278CED4C00575A73 /* PaRomajiKanaConverter.m */; };
 		15B122DF278CED4C00575A73 /* NSString+RomajiKanaConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122DB278CED4C00575A73 /* NSString+RomajiKanaConvert.m */; };
+		15C52D68279237EA002ADE2B /* AppCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D5E279237E3002ADE2B /* AppCenter.framework */; };
+		15C52D6A279237EA002ADE2B /* AppCenterAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D66279237E3002ADE2B /* AppCenterAnalytics.framework */; };
+		15C52D6C279237EA002ADE2B /* AppCenterCrashes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D67279237E3002ADE2B /* AppCenterCrashes.framework */; };
 		FF1BE8112790542900CA6A99 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */; };
 		FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE81727906AA500CA6A99 /* MSWeakTimer.m */; };
 		FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */; platformFilter = maccatalyst; };
@@ -171,6 +174,9 @@
 		15B122DB278CED4C00575A73 /* NSString+RomajiKanaConvert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+RomajiKanaConvert.m"; path = "PaRomajiKanaConverter/NSString+RomajiKanaConvert.m"; sourceTree = "<group>"; };
 		15B122DC278CED4C00575A73 /* NSString+RomajiKanaConvert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+RomajiKanaConvert.h"; path = "PaRomajiKanaConverter/NSString+RomajiKanaConvert.h"; sourceTree = "<group>"; };
 		15B122DD278CED4C00575A73 /* PaRomajiKanaConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PaRomajiKanaConverter.h; path = PaRomajiKanaConverter/PaRomajiKanaConverter.h; sourceTree = "<group>"; };
+		15C52D5E279237E3002ADE2B /* AppCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCenter.framework; sourceTree = "<group>"; };
+		15C52D66279237E3002ADE2B /* AppCenterAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCenterAnalytics.framework; sourceTree = "<group>"; };
+		15C52D67279237E3002ADE2B /* AppCenterCrashes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCenterCrashes.framework; sourceTree = "<group>"; };
 		FF1BE8082790542900CA6A99 /* NSNumberFormatterNumberOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberFormatterNumberOnly.h; sourceTree = "<group>"; };
 		FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberFormatterNumberOnly.m; sourceTree = "<group>"; };
 		FF1BE81627906AA500CA6A99 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSWeakTimer.h; path = Dependencies/MSWeakTimer/MSWeakTimer.h; sourceTree = "<group>"; };
@@ -237,12 +243,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFA14B85278F04E10038B9C2 /* AVFoundation.framework in Frameworks */,
+				15C52D68279237EA002ADE2B /* AppCenter.framework in Frameworks */,
 				FF74656C278F2FAE0062E476 /* AFNetworking.framework in Frameworks */,
 				15162333278F762300A09568 /* QuartzCore.framework in Frameworks */,
+				15C52D6A279237EA002ADE2B /* AppCenterAnalytics.framework in Frameworks */,
 				FF28A827278CB50500D3744D /* MASPreferences.framework in Frameworks */,
 				FF708879278C83A000DF399E /* CloudKit.framework in Frameworks */,
 				FF28A82A278CB50600D3744D /* PXSourceList.framework in Frameworks */,
 				FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */,
+				15C52D6C279237EA002ADE2B /* AppCenterCrashes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +418,9 @@
 		FF746553278F2F8D0062E476 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				15C52D5E279237E3002ADE2B /* AppCenter.framework */,
+				15C52D66279237E3002ADE2B /* AppCenterAnalytics.framework */,
+				15C52D67279237E3002ADE2B /* AppCenterCrashes.framework */,
 				FF1BE81527906A9900CA6A99 /* MSWeakTimer */,
 				FF746554278F2F950062E476 /* AFNetworking.xcodeproj */,
 			);
