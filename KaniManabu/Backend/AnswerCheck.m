@@ -69,8 +69,12 @@ double const kFuzziness = 0.8;
         }
         for (NSString *altAnswer in altAnswers) {
             NSString * taltAnswer = [altAnswer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-            if ([answer caseInsensitiveCompare:[taltAnswer substringFromIndex:3]] == NSOrderedSame) {
-                return AnswerStateVerbNoTo;
+            if (taltAnswer.length > 0) {
+                if (taltAnswer.length > 0) {
+                    if ([answer caseInsensitiveCompare:[taltAnswer substringFromIndex:3]] == NSOrderedSame) {
+                        return AnswerStateVerbNoTo;
+                    }
+                }
             }
         }
     }
@@ -89,14 +93,16 @@ double const kFuzziness = 0.8;
     // Check alternative answers
     for (NSString *altAnswer in altAnswers) {
         NSString * taltAnswer = [altAnswer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        if ([answer caseInsensitiveCompare:taltAnswer] == NSOrderedSame) {
-            return AnswerStatePrecise;
+        if (taltAnswer.length > 0) {
+            if ([answer caseInsensitiveCompare:taltAnswer] == NSOrderedSame) {
+                return AnswerStatePrecise;
+            }
+            // Check for imprecise match with stringscore.
+            float stringscore = string_fuzzy_score(answer.UTF8String, taltAnswer.UTF8String, kFuzziness);
+            if (stringscore >= .6) {
+                // Answer is correct enough, but not precise.
+                return AnswerStateInprecise;
         }
-        // Check for imprecise match with stringscore.
-        float stringscore = string_fuzzy_score(answer.UTF8String, taltAnswer.UTF8String, kFuzziness);
-        if (stringscore >= .6) {
-            // Answer is correct enough, but not precise.
-            return AnswerStateInprecise;
         }
     }
     // Answer is incorrect
@@ -133,10 +139,12 @@ double const kFuzziness = 0.8;
     // Check alternative answers
     for (NSString *altAnswer in altAnswers) {
         NSString * taltAnswer = [altAnswer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        taltAnswer = [taltAnswer stringKatakanaToHiragana];
-        if ([answer caseInsensitiveCompare:taltAnswer] == NSOrderedSame) {
-            // We are looking for the primary reading, do not mark answer as incorrect, but prompt user to type in main meaning for the Kanji
-            return AnswerStateOtherKanjiReading;
+        if (taltAnswer.length > 0) {
+            taltAnswer = [taltAnswer stringKatakanaToHiragana];
+            if ([answer caseInsensitiveCompare:taltAnswer] == NSOrderedSame) {
+                // We are looking for the primary reading, do not mark answer as incorrect, but prompt user to type in main meaning for the Kanji
+                return AnswerStateOtherKanjiReading;
+            }
         }
     }
     // Check answer

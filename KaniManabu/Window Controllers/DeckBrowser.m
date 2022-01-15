@@ -376,12 +376,14 @@
 }
 
 - (void)performViewCard {
-    NSDictionary *selected = [_arraycontroller selectedObjects][0];
-    if (!_iiwc) {
-        _iiwc = [ItemInfoWindowController new];
+    if (_arraycontroller.selectedObjects.count > 0) {
+        NSDictionary *selected = [_arraycontroller selectedObjects][0];
+        if (!_iiwc) {
+            _iiwc = [ItemInfoWindowController new];
+        }
+        [_iiwc.window makeKeyAndOrderFront:self];
+        [_iiwc setDictionary:selected withWindowType:ParentWindowTypeDeckBrowser];
     }
-    [_iiwc.window makeKeyAndOrderFront:self];
-    [_iiwc setDictionary:selected withWindowType:ParentWindowTypeDeckBrowser];
 }
 
 #pragma mark Context menu

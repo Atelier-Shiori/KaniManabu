@@ -193,7 +193,7 @@
     NSArray *decks = [_moc executeFetchRequest:fetchRequest error:&error];
     if (decks.count > 0) {
         NSManagedObject *deck = decks[0];
-        [deck setValue:today ? @(0) :@([NSDate.date dateByAddingTimeInterval:86400].timeIntervalSince1970) forKey:@"nextLearnInterval"];
+        [deck setValue:today ? @(0) :@([NSCalendar.currentCalendar startOfDayForDate:[NSDate.date dateByAddingTimeInterval:86400]].timeIntervalSince1970) forKey:@"nextLearnInterval"];
     }
 }
 

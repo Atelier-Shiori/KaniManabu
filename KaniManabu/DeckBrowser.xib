@@ -226,7 +226,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="english" width="116" minWidth="40" maxWidth="1000" id="3pX-nQ-m0y">
+                                    <tableColumn identifier="english" editable="NO" width="116" minWidth="40" maxWidth="1000" id="3pX-nQ-m0y">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="English">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -241,7 +241,7 @@
                                             <binding destination="IT8-Pf-9N8" name="value" keyPath="arrangedObjects.english" id="QYN-Ci-bi0"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="japanese" width="113" minWidth="40" maxWidth="1000" id="sAR-Do-7jA">
+                                    <tableColumn identifier="japanese" editable="NO" width="113" minWidth="40" maxWidth="1000" id="sAR-Do-7jA">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Japanese">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -256,7 +256,7 @@
                                             <binding destination="IT8-Pf-9N8" name="value" keyPath="arrangedObjects.japanese" id="Hnt-Nk-Fa1"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="srslevel" width="114" minWidth="10" maxWidth="3.4028234663852886e+38" id="4zn-vD-NFu">
+                                    <tableColumn identifier="srslevel" editable="NO" width="114" minWidth="10" maxWidth="3.4028234663852886e+38" id="4zn-vD-NFu">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Level">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -275,7 +275,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="nextreview" width="162" minWidth="10" maxWidth="3.4028234663852886e+38" id="znb-Kb-kpQ">
+                                    <tableColumn identifier="nextreview" editable="NO" width="162" minWidth="10" maxWidth="3.4028234663852886e+38" id="znb-Kb-kpQ">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Next Review">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -320,7 +320,7 @@
                     </connections>
                 </scrollView>
             </subviews>
-            <point key="canvasLocation" x="-331" y="156"/>
+            <point key="canvasLocation" x="48" y="160"/>
         </customView>
         <viewController id="4vu-kB-fMo">
             <connections>
