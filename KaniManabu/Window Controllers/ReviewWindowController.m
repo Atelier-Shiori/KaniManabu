@@ -317,8 +317,14 @@
 - (void)showReviewComplete {
     NSAlert *alert = [[NSAlert alloc] init] ;
     [alert addButtonWithTitle:@"OK"];
-    [alert setMessageText:@"Review Completed!"];
-    alert.informativeText = [NSString stringWithFormat:@"Your score is %@ with %i correct and %i incorrect.", _scoreitem.title, _correctcount, _incorrectcount];
+    if (!_learnmode) {
+        [alert setMessageText:@"Review Completed!"];
+        alert.informativeText = [NSString stringWithFormat:@"Your score is %@ with %i correct and %i incorrect.", _scoreitem.title, _correctcount, _incorrectcount];
+    }
+    else {
+        [alert setMessageText:@"Lesson Completed!"];
+        alert.informativeText = [NSString stringWithFormat:@"You have learned %lu %@ and they are added to the review queue.", _completeditems.count, _completeditems.count == 1 ? @"card" : @"cards"];
+    }
     alert.alertStyle = NSAlertStyleInformational;
     [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
         self.promptacknowledged = YES;

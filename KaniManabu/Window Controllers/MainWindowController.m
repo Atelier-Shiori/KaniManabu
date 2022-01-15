@@ -204,6 +204,7 @@
 
 - (void)performStartLearnQuiz {
     _rwc = [ReviewWindowController new];
+    _rwc.learnmode = YES;
     [_rwc.window makeKeyAndOrderFront:self];
     [_rwc startReview:_lwc.studyitems];
     [self.window orderOut:self];
