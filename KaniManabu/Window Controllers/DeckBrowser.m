@@ -130,9 +130,11 @@
     stagesItem.children = stageitems;
 
     PXSourceListItem *otherItem = [PXSourceListItem itemWithTitle:@"OTHER" identifier:@"othergroup"];
+    PXSourceListItem *allItem = [PXSourceListItem itemWithTitle:@"All Cards" identifier:@"allcards"];
+    allItem.icon = [NSImage imageWithSystemSymbolName:@"menucard" accessibilityDescription:@""];
     PXSourceListItem *criticalItem = [PXSourceListItem itemWithTitle:@"Critical Items" identifier:@"criticalitems"];
     criticalItem.icon = [NSImage imageWithSystemSymbolName:@"exclamationmark.triangle" accessibilityDescription:@""];
-    otherItem.children = @[criticalItem];
+    otherItem.children = @[allItem, criticalItem];
     // Populate Source List
     [self.sourceListItems addObject:decksItem];
     [self.sourceListItems addObject:stagesItem];
@@ -316,6 +318,12 @@
         _addcardtoolbaritem.enabled = false;
         [self loadcriticalitems];
     }
+    else if ([identifier isEqualToString:@"allcards"]) {
+        _currentDeckUUID = nil;
+        _currentDeckType = -1;
+        _addcardtoolbaritem.enabled = false;
+        [self loadallitems];
+    }
     else {
         _addcardtoolbaritem.enabled = true;
         _currentDeckUUID = [[NSUUID alloc] initWithUUIDString:identifier];
@@ -370,6 +378,15 @@
     }
     [self populateTableViewWithArray:tmparray];
 }
+
+- (void)loadallitems {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (int i = 0; i < 3; i++) {
+        [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithType:i withPredicate:nil]];
+    }
+    [self populateTableViewWithArray:tmparray];
+}
+
 
 - (IBAction)tbdoubleaction:(id)sender {
     [self performViewCard];
@@ -435,5 +452,11 @@
         [astr addAttribute:NSStrikethroughStyleAttributeName value:(NSNumber *)kCFBooleanTrue range:NSMakeRange(0, [astr length])];
     }
     [tcell setAttributedStringValue:astr];
+    if ([tableColumn.identifier isEqualToString:@"nextreview"]) {
+        double date = ((NSNumber *)_arraycontroller.arrangedObjects[row][@"nextreviewinterval"]).doubleValue;
+        if (date == 0) {
+            tcell.stringValue = @"";
+        }
+    }
 }
 @end
