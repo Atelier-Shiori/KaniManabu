@@ -7,3 +7,4 @@
 
 #import "GeneralPreferencesViewController.h"
 #import <MASPreferences/MASPreferences.h>
+#import "SoftwareUpdatesPref.h"
