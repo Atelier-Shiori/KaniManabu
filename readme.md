@@ -17,15 +17,15 @@ KaniManbu is a lot easier to use with three different card types (Kanji, Kana, a
 * TTS support
 * Browse cards by SRS stage and critical condition items (cards that are answered correctly less than 70% of the time).
 * Ability to suspend cards
-* Ability to import decks (CSV format)
+* Ability to import and export decks (CSV format)
 * Ability to view critical items (cards that are answered less than 70% correct)
 * Anki mode (see answer and click correct/incorrect button)
+* Ability to enable/disable decks
+* Ability to reset cards to the first SRS level
 
 # Planned features
-* Ability to import and export decks (CSV and KaniManabu JSON format)
-* Ability to enable/disable decks
+* Ability to import and export decks (KaniManabu JSON format)
 * Ability to review all items in the queue (Review and Learning)
-* Ability to reset cards to the first SRS level
 * Deck statistics
 * Learning forecast
 * Vacation Mode

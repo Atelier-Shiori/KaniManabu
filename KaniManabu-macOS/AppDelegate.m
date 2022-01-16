@@ -32,6 +32,11 @@
     defaultValues[@"DeckNewCardLimitPerDay"] = @(5);
     defaultValues[@"SayKanaReadingAnswer"] = @YES;
     defaultValues[@"sendanalytics"] = @YES;
+#if defined(AppStore)
+    defaultValues[@"donated"] = @YES;
+#else
+    defaultValues[@"donated"] = @NO;
+#endif
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];
@@ -73,8 +78,12 @@
     if (__preferencesWindowController == nil)
     {
         GeneralPreferencesViewController *genview =[[GeneralPreferencesViewController  alloc] init];
+#if defined(AppStore)
+        NSArray *controllers = @[genview];
+#else
         SoftwareUpdatesPref *supref = [SoftwareUpdatesPref new];
         NSArray *controllers = @[genview, supref];
+#endif
         __preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:controllers];
     }
     return __preferencesWindowController;
@@ -130,6 +139,7 @@
             NSPersistentStoreDescription *description = _persistentContainer.persistentStoreDescriptions.firstObject;
             [description setOption:@YES forKey:NSPersistentHistoryTrackingKey];
             [description setOption:@YES forKey:NSPersistentStoreRemoteChangeNotificationPostOptionKey];
+            [description setOption:@YES forKey:@"NSPersistentStoreRemoteChangeNotificationOptionKey"];
             [_persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
                 if (error != nil) {
                     // Replace this implementation with code to handle the error appropriately.

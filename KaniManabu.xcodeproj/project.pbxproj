@@ -14,6 +14,73 @@
 		151F3ABE278E23CD00953ECD /* KanjiEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3ABC278E23CD00953ECD /* KanjiEditor.xib */; };
 		151F3AC2278E23D800953ECD /* KanaEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3AC0278E23D800953ECD /* KanaEditor.m */; };
 		151F3AC3278E23D800953ECD /* KanaEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3AC1278E23D800953ECD /* KanaEditor.xib */; };
+		157328F22794B9C400587C05 /* CardReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794872278CC083000D984D /* CardReview.m */; };
+		157328F32794B9C400587C05 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF74656E278F44A10062E476 /* PFAboutWindowController.m */; };
+		157328F52794B9C400587C05 /* PaRomajiKanaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122DA278CED4C00575A73 /* PaRomajiKanaConverter.m */; };
+		157328F62794B9C400587C05 /* KanaEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3AC0278E23D800953ECD /* KanaEditor.m */; };
+		157328F72794B9C400587C05 /* LearnWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A819278CB17F00D3744D /* LearnWindowController.m */; };
+		157328F82794B9C400587C05 /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A822278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m */; };
+		157328F92794B9C400587C05 /* KanjiEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3ABB278E23CD00953ECD /* KanjiEditor.m */; };
+		157328FA2794B9C400587C05 /* NSString+RomajiKanaConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122DB278CED4C00575A73 /* NSString+RomajiKanaConvert.m */; };
+		157328FB2794B9C400587C05 /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89D70A2791D41D009B7C6F /* CHCSVParser.m */; };
+		157328FC2794B9C400587C05 /* NSTableViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA14B8F278F0F8C0038B9C2 /* NSTableViewAction.m */; };
+		157328FD2794B9C400587C05 /* DeckAddDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1579486C278CBFB0000D984D /* DeckAddDialogController.m */; };
+		157328FE2794B9C400587C05 /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A816278CB16D00D3744D /* MainWindowController.m */; };
+		157328FF2794B9C400587C05 /* UnixDatetoNSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C30278DF05F003D3F06 /* UnixDatetoNSDate.m */; };
+		157329002794B9C400587C05 /* DeckBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */; };
+		157329012794B9C400587C05 /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794876278CD407000D984D /* GeneralPreferencesViewController.m */; };
+		157329022794B9C400587C05 /* DeckManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1579487C278CDB97000D984D /* DeckManager.m */; };
+		157329032794B9C400587C05 /* SRScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A80E278C941800D3744D /* SRScheduler.m */; };
+		157329042794B9C400587C05 /* ReviewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A81C278CB19E00D3744D /* ReviewWindowController.m */; };
+		157329052794B9C400587C05 /* VocabEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122CF278CE45300575A73 /* VocabEditor.m */; };
+		157329062794B9C400587C05 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */; };
+		157329072794B9C400587C05 /* CSVDeckImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89D7122791EC92009B7C6F /* CSVDeckImporter.m */; };
+		157329082794B9C400587C05 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE81727906AA500CA6A99 /* MSWeakTimer.m */; };
+		157329092794B9C400587C05 /* DeckViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3AB6278D07AB00953ECD /* DeckViewCell.m */; };
+		1573290A2794B9C400587C05 /* CSVDeckExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CB506927949A5000ECF326 /* CSVDeckExporter.m */; };
+		1573290B2794B9C400587C05 /* string_score.c in Sources */ = {isa = PBXBuildFile; fileRef = 15B122D8278CEBE900575A73 /* string_score.c */; };
+		1573290C2794B9C400587C05 /* CardEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA14B7A278EF1560038B9C2 /* CardEditor.m */; };
+		1573290D2794B9C400587C05 /* KaniManabu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF708867278C7CDF00DF399E /* KaniManabu.xcdatamodeld */; };
+		1573290E2794B9C400587C05 /* ItemInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1579486F278CBFC9000D984D /* ItemInfoWindowController.m */; };
+		1573290F2794B9C400587C05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF70886F278C7CE000DF399E /* main.m */; };
+		157329102794B9C400587C05 /* CSVImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89D70D2791DFE8009B7C6F /* CSVImportController.m */; };
+		157329112794B9C400587C05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF708865278C7CDF00DF399E /* AppDelegate.m */; };
+		157329122794B9C400587C05 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A824278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m */; };
+		157329132794B9C400587C05 /* DeckOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C52D6F279398E3002ADE2B /* DeckOptions.m */; };
+		157329142794B9C400587C05 /* AnswerCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122D5278CE93E00575A73 /* AnswerCheck.m */; };
+		157329152794B9C400587C05 /* SRSLevelValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C2D278DEF67003D3F06 /* SRSLevelValueTransformer.m */; };
+		157329182794B9C400587C05 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA14B84278F04E10038B9C2 /* AVFoundation.framework */; };
+		157329192794B9C400587C05 /* AppCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D5E279237E3002ADE2B /* AppCenter.framework */; };
+		1573291A2794B9C400587C05 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF746563278F2F960062E476 /* AFNetworking.framework */; };
+		1573291B2794B9C400587C05 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1516232B278F762300A09568 /* QuartzCore.framework */; platformFilter = maccatalyst; };
+		1573291C2794B9C400587C05 /* AppCenterAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D66279237E3002ADE2B /* AppCenterAnalytics.framework */; };
+		1573291D2794B9C400587C05 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A80B278C8D5F00D3744D /* MASPreferences.framework */; };
+		1573291E2794B9C400587C05 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF708878278C83A000DF399E /* CloudKit.framework */; };
+		1573291F2794B9C400587C05 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A809278C8D5500D3744D /* PXSourceList.framework */; };
+		157329202794B9C400587C05 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */; platformFilter = maccatalyst; };
+		157329212794B9C400587C05 /* AppCenterCrashes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D67279237E3002ADE2B /* AppCenterCrashes.framework */; };
+		157329232794B9C400587C05 /* DeckViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3AB8278D07C100953ECD /* DeckViewCell.xib */; };
+		157329242794B9C400587C05 /* DeckOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C52D70279398E3002ADE2B /* DeckOptions.xib */; };
+		157329262794B9C400587C05 /* KanaEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3AC1278E23D800953ECD /* KanaEditor.xib */; };
+		157329272794B9C400587C05 /* mainwindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70887C278C853400DF399E /* mainwindow.xib */; };
+		157329282794B9C400587C05 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 15C52D7E2794780A002ADE2B /* dsa_pub.pem */; };
+		157329292794B9C400587C05 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF746575278F47380062E476 /* Credits.rtf */; };
+		1573292A2794B9C400587C05 /* NewDeckDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF28A810278CA23B00D3744D /* NewDeckDialog.xib */; };
+		1573292B2794B9C400587C05 /* CSVImportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF89D70E2791DFE8009B7C6F /* CSVImportController.xib */; };
+		1573292C2794B9C400587C05 /* KanjiEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3ABC278E23CD00953ECD /* KanjiEditor.xib */; };
+		1573292D2794B9C400587C05 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF746573278F47330062E476 /* EULA.rtf */; };
+		1573292E2794B9C400587C05 /* GeneralPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15794877278CD407000D984D /* GeneralPreferences.xib */; };
+		1573292F2794B9C400587C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF70886A278C7CE000DF399E /* Assets.xcassets */; };
+		157329302794B9C400587C05 /* Learn.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF28A812278CA4AF00D3744D /* Learn.xib */; };
+		157329312794B9C400587C05 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70886C278C7CE000DF399E /* MainMenu.xib */; };
+		157329322794B9C400587C05 /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF746571278F44AE0062E476 /* PFAboutWindow.xib */; };
+		157329332794B9C400587C05 /* Review.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70887A278C852700DF399E /* Review.xib */; };
+		157329342794B9C400587C05 /* VocabEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15B122D0278CE45300575A73 /* VocabEditor.xib */; };
+		157329352794B9C400587C05 /* ItemInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA14B91278F18340038B9C2 /* ItemInfoWindow.xib */; };
+		157329362794B9C400587C05 /* DeckBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70887E278C854000DF399E /* DeckBrowser.xib */; };
+		157329382794B9C400587C05 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A80B278C8D5F00D3744D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		157329392794B9C400587C05 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF746563278F2F960062E476 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1573293A2794B9C400587C05 /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A809278C8D5500D3744D /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1579486D278CBFB0000D984D /* DeckAddDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1579486C278CBFB0000D984D /* DeckAddDialogController.m */; };
 		15794870278CBFC9000D984D /* ItemInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1579486F278CBFC9000D984D /* ItemInfoWindowController.m */; };
 		15794873278CC083000D984D /* CardReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794872278CC083000D984D /* CardReview.m */; };
@@ -37,6 +104,7 @@
 		15C52D77279476FB002ADE2B /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C52D75279476FB002ADE2B /* SoftwareUpdatesPref.m */; };
 		15C52D7F2794780A002ADE2B /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 15C52D7E2794780A002ADE2B /* dsa_pub.pem */; };
 		15CB506A27949A5000ECF326 /* CSVDeckExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CB506927949A5000ECF326 /* CSVDeckExporter.m */; };
+		15CBBB272794BB7600B4FA4A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15CBBB262794BB7600B4FA4A /* MainMenu.xib */; };
 		FF1BE8112790542900CA6A99 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */; };
 		FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE81727906AA500CA6A99 /* MSWeakTimer.m */; };
 		FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */; platformFilter = maccatalyst; };
@@ -133,6 +201,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		157329372794B9C400587C05 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				157329382794B9C400587C05 /* MASPreferences.framework in Embed Frameworks */,
+				157329392794B9C400587C05 /* AFNetworking.framework in Embed Frameworks */,
+				1573293A2794B9C400587C05 /* PXSourceList.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF28A829278CB50500D3744D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -160,6 +241,8 @@
 		151F3ABF278E23D800953ECD /* KanaEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KanaEditor.h; sourceTree = "<group>"; };
 		151F3AC0278E23D800953ECD /* KanaEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KanaEditor.m; sourceTree = "<group>"; };
 		151F3AC1278E23D800953ECD /* KanaEditor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KanaEditor.xib; sourceTree = "<group>"; };
+		1573293F2794B9C400587C05 /* KaniManabu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaniManabu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		157329402794B9C400587C05 /* KaniManabu copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KaniManabu copy-Info.plist"; path = "/Volumes/美咲野くくる/Development/beta new/WaniManabu/KaniManabu copy-Info.plist"; sourceTree = "<absolute>"; };
 		1579486B278CBFB0000D984D /* DeckAddDialogController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckAddDialogController.h; sourceTree = "<group>"; };
 		1579486C278CBFB0000D984D /* DeckAddDialogController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckAddDialogController.m; sourceTree = "<group>"; };
 		1579486E278CBFC9000D984D /* ItemInfoWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemInfoWindowController.h; sourceTree = "<group>"; };
@@ -197,6 +280,7 @@
 		15C52D802794783C002ADE2B /* KaniManabu-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "KaniManabu-Info.plist"; sourceTree = "<group>"; };
 		15CB506827949A5000ECF326 /* CSVDeckExporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVDeckExporter.h; sourceTree = "<group>"; };
 		15CB506927949A5000ECF326 /* CSVDeckExporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSVDeckExporter.m; sourceTree = "<group>"; };
+		15CBBB262794BB7600B4FA4A /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "KaniManabu-macOS/Base.lproj/AppStore/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
 		FF1BE8082790542900CA6A99 /* NSNumberFormatterNumberOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberFormatterNumberOnly.h; sourceTree = "<group>"; };
 		FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberFormatterNumberOnly.m; sourceTree = "<group>"; };
 		FF1BE81627906AA500CA6A99 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSWeakTimer.h; path = Dependencies/MSWeakTimer/MSWeakTimer.h; sourceTree = "<group>"; };
@@ -258,6 +342,23 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		157329162794B9C400587C05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				157329182794B9C400587C05 /* AVFoundation.framework in Frameworks */,
+				157329192794B9C400587C05 /* AppCenter.framework in Frameworks */,
+				1573291A2794B9C400587C05 /* AFNetworking.framework in Frameworks */,
+				1573291B2794B9C400587C05 /* QuartzCore.framework in Frameworks */,
+				1573291C2794B9C400587C05 /* AppCenterAnalytics.framework in Frameworks */,
+				1573291D2794B9C400587C05 /* MASPreferences.framework in Frameworks */,
+				1573291E2794B9C400587C05 /* CloudKit.framework in Frameworks */,
+				1573291F2794B9C400587C05 /* PXSourceList.framework in Frameworks */,
+				157329202794B9C400587C05 /* UserNotifications.framework in Frameworks */,
+				157329212794B9C400587C05 /* AppCenterCrashes.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF70885E278C7CDF00DF399E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -369,6 +470,14 @@
 			path = XIBs;
 			sourceTree = "<group>";
 		};
+		15CBBB252794BB6200B4FA4A /* AppStore */ = {
+			isa = PBXGroup;
+			children = (
+				15CBBB262794BB7600B4FA4A /* MainMenu.xib */,
+			);
+			name = AppStore;
+			sourceTree = "<group>";
+		};
 		FF1BE81527906A9900CA6A99 /* MSWeakTimer */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,6 +490,7 @@
 		FF28A814278CB14700D3744D /* Window Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				15CBBB252794BB6200B4FA4A /* AppStore */,
 				15C52D7D279477D1002ADE2B /* XIBs */,
 				FF28A815278CB16D00D3744D /* MainWindowController.h */,
 				FF28A816278CB16D00D3744D /* MainWindowController.m */,
@@ -433,6 +543,7 @@
 				FF708863278C7CDF00DF399E /* KaniManabu-macOS */,
 				FF708862278C7CDF00DF399E /* Products */,
 				FF708877278C83A000DF399E /* Frameworks */,
+				157329402794B9C400587C05 /* KaniManabu copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -440,6 +551,7 @@
 			isa = PBXGroup;
 			children = (
 				FF708861278C7CDF00DF399E /* KaniManabu.app */,
+				1573293F2794B9C400587C05 /* KaniManabu.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -519,6 +631,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		157328F02794B9C400587C05 /* KaniManabu (AppStore) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1573293C2794B9C400587C05 /* Build configuration list for PBXNativeTarget "KaniManabu (AppStore)" */;
+			buildPhases = (
+				157328F12794B9C400587C05 /* Sources */,
+				157329162794B9C400587C05 /* Frameworks */,
+				157329222794B9C400587C05 /* Resources */,
+				157329372794B9C400587C05 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KaniManabu (AppStore)";
+			productName = WaniManabu;
+			productReference = 1573293F2794B9C400587C05 /* KaniManabu.app */;
+			productType = "com.apple.product-type.application";
+		};
 		FF708860278C7CDF00DF399E /* KaniManabu */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF708874278C7CE000DF399E /* Build configuration list for PBXNativeTarget "KaniManabu" */;
@@ -571,6 +701,7 @@
 			projectRoot = "";
 			targets = (
 				FF708860278C7CDF00DF399E /* KaniManabu */,
+				157328F02794B9C400587C05 /* KaniManabu (AppStore) */,
 			);
 		};
 /* End PBXProject section */
@@ -628,6 +759,33 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		157329222794B9C400587C05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				157329232794B9C400587C05 /* DeckViewCell.xib in Resources */,
+				157329242794B9C400587C05 /* DeckOptions.xib in Resources */,
+				157329262794B9C400587C05 /* KanaEditor.xib in Resources */,
+				157329272794B9C400587C05 /* mainwindow.xib in Resources */,
+				15CBBB272794BB7600B4FA4A /* MainMenu.xib in Resources */,
+				157329282794B9C400587C05 /* dsa_pub.pem in Resources */,
+				157329292794B9C400587C05 /* Credits.rtf in Resources */,
+				1573292A2794B9C400587C05 /* NewDeckDialog.xib in Resources */,
+				1573292B2794B9C400587C05 /* CSVImportController.xib in Resources */,
+				1573292C2794B9C400587C05 /* KanjiEditor.xib in Resources */,
+				1573292D2794B9C400587C05 /* EULA.rtf in Resources */,
+				1573292E2794B9C400587C05 /* GeneralPreferences.xib in Resources */,
+				1573292F2794B9C400587C05 /* Assets.xcassets in Resources */,
+				157329302794B9C400587C05 /* Learn.xib in Resources */,
+				157329312794B9C400587C05 /* MainMenu.xib in Resources */,
+				157329322794B9C400587C05 /* PFAboutWindow.xib in Resources */,
+				157329332794B9C400587C05 /* Review.xib in Resources */,
+				157329342794B9C400587C05 /* VocabEditor.xib in Resources */,
+				157329352794B9C400587C05 /* ItemInfoWindow.xib in Resources */,
+				157329362794B9C400587C05 /* DeckBrowser.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF70885F278C7CDF00DF399E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -658,6 +816,48 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		157328F12794B9C400587C05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				157328F22794B9C400587C05 /* CardReview.m in Sources */,
+				157328F32794B9C400587C05 /* PFAboutWindowController.m in Sources */,
+				157328F52794B9C400587C05 /* PaRomajiKanaConverter.m in Sources */,
+				157328F62794B9C400587C05 /* KanaEditor.m in Sources */,
+				157328F72794B9C400587C05 /* LearnWindowController.m in Sources */,
+				157328F82794B9C400587C05 /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				157328F92794B9C400587C05 /* KanjiEditor.m in Sources */,
+				157328FA2794B9C400587C05 /* NSString+RomajiKanaConvert.m in Sources */,
+				157328FB2794B9C400587C05 /* CHCSVParser.m in Sources */,
+				157328FC2794B9C400587C05 /* NSTableViewAction.m in Sources */,
+				157328FD2794B9C400587C05 /* DeckAddDialogController.m in Sources */,
+				157328FE2794B9C400587C05 /* MainWindowController.m in Sources */,
+				157328FF2794B9C400587C05 /* UnixDatetoNSDate.m in Sources */,
+				157329002794B9C400587C05 /* DeckBrowser.m in Sources */,
+				157329012794B9C400587C05 /* GeneralPreferencesViewController.m in Sources */,
+				157329022794B9C400587C05 /* DeckManager.m in Sources */,
+				157329032794B9C400587C05 /* SRScheduler.m in Sources */,
+				157329042794B9C400587C05 /* ReviewWindowController.m in Sources */,
+				157329052794B9C400587C05 /* VocabEditor.m in Sources */,
+				157329062794B9C400587C05 /* NSNumberFormatterNumberOnly.m in Sources */,
+				157329072794B9C400587C05 /* CSVDeckImporter.m in Sources */,
+				157329082794B9C400587C05 /* MSWeakTimer.m in Sources */,
+				157329092794B9C400587C05 /* DeckViewCell.m in Sources */,
+				1573290A2794B9C400587C05 /* CSVDeckExporter.m in Sources */,
+				1573290B2794B9C400587C05 /* string_score.c in Sources */,
+				1573290C2794B9C400587C05 /* CardEditor.m in Sources */,
+				1573290D2794B9C400587C05 /* KaniManabu.xcdatamodeld in Sources */,
+				1573290E2794B9C400587C05 /* ItemInfoWindowController.m in Sources */,
+				1573290F2794B9C400587C05 /* main.m in Sources */,
+				157329102794B9C400587C05 /* CSVImportController.m in Sources */,
+				157329112794B9C400587C05 /* AppDelegate.m in Sources */,
+				157329122794B9C400587C05 /* NSTextView+SetHTMLAttributedText.m in Sources */,
+				157329132794B9C400587C05 /* DeckOptions.m in Sources */,
+				157329142794B9C400587C05 /* AnswerCheck.m in Sources */,
+				157329152794B9C400587C05 /* SRSLevelValueTransformer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF70885D278C7CDF00DF399E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -715,6 +915,76 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1573293D2794B9C400587C05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "KaniManabu-macOS/KaniManabu(AppStore).entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "KaniManabu copy-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 MAL Updater OS X Group. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = "1.0-prealpha1";
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
+				PRODUCT_NAME = KaniManabu;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		1573293E2794B9C400587C05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "KaniManabu-macOS/KaniManabu(AppStore).entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "KaniManabu copy-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 MAL Updater OS X Group. All rights reserved.";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = "1.0-prealpha1";
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
+				PRODUCT_NAME = KaniManabu;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
 		FF708872278C7CE000DF399E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -897,6 +1167,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1573293C2794B9C400587C05 /* Build configuration list for PBXNativeTarget "KaniManabu (AppStore)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1573293D2794B9C400587C05 /* Debug */,
+				1573293E2794B9C400587C05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FF70885C278C7CDF00DF399E /* Build configuration list for PBXProject "KaniManabu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

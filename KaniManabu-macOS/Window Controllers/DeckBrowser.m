@@ -52,10 +52,11 @@
     AppDelegate *delegate = (AppDelegate *)NSApp.delegate;
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSManagedObjectContextDidSaveNotification object:delegate.persistentContainer.viewContext];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"NSPersistentStoreRemoteChangeNotification" object:delegate.persistentContainer.persistentStoreCoordinator];
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"DeckAdded"]||[notification.name isEqualToString:@"DeckRemoved"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSManagedObjectContextDidSaveNotification] ||[notification.name isEqualToString:@"LearnEnded"]||[notification.name isEqualToString:@"ReviewEnded"]) {
+    if ([notification.name isEqualToString:@"DeckAdded"]||[notification.name isEqualToString:@"DeckRemoved"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSManagedObjectContextDidSaveNotification] ||[notification.name isEqualToString:@"LearnEnded"]||[notification.name isEqualToString:@"ReviewEnded"]||[notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             // Reload
             [self generateSourceList];

@@ -61,8 +61,9 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"AddToQueueCount" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ActionShowDeckOptions" object:nil];
     AppDelegate *delegate = (AppDelegate *)NSApp.delegate;
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSManagedObjectContextDidSaveNotification object:_moc];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSManagedObjectContextDidSaveNotification object:delegate.persistentContainer.viewContext];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"NSPersistentStoreRemoteChangeNotification" object:delegate.persistentContainer.persistentStoreCoordinator];
     [self loadDeckArrayAndPopulate];
     //Review Queue timer
     _privateQueue = dispatch_queue_create("moe.ateliershiori.Shukofukurou", DISPATCH_QUEUE_CONCURRENT);
@@ -97,7 +98,7 @@
             [self loadDeckArrayAndPopulate];
         });
     }
-    else if ([notification.name isEqualToString:NSManagedObjectContextDidSaveNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
+    else if ([notification.name isEqualToString:NSManagedObjectContextDidSaveNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification] || [notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"]) {
         // Reload
         dispatch_async(dispatch_get_main_queue(), ^{
             self.totalreviewitemcount = 0;

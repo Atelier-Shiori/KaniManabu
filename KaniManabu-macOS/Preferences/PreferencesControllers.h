@@ -7,4 +7,7 @@
 
 #import "GeneralPreferencesViewController.h"
 #import <MASPreferences/MASPreferences.h>
+#if defined(AppStore)
+#else
 #import "SoftwareUpdatesPref.h"
+#endif
