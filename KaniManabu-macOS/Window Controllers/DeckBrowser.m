@@ -292,10 +292,13 @@
     NSAlert *alert = [NSAlert new];
     alert.messageText = @"Delete card?";
     alert.informativeText = [NSString stringWithFormat:@"Do you want to delete card, %@? This cannot be undone", [card valueForKey:@"japanese"]];
-    [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
-    [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Delete",nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
+    [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    [(NSButton *)alert.buttons[0] setKeyEquivalent: @""];
+    [(NSButton *)alert.buttons[1] setKeyEquivalent: @"\033"];
     [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode == NSAlertSecondButtonReturn) {
+        if (returnCode == NSAlertFirstButtonReturn) {
             if ([DeckManager.sharedInstance deleteCardWithCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue]) {
                 [NSNotificationCenter.defaultCenter postNotificationName:@"CardRemoved" object:[card valueForKey:@"carduuid"]];
                 [self loadDeck];

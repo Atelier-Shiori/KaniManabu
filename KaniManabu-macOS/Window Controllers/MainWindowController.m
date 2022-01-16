@@ -315,10 +315,13 @@
     NSAlert *alert = [NSAlert new];
     alert.messageText = @"Delete Deck?";
     alert.informativeText = [NSString stringWithFormat:@"Do you want to delete deck, %@? This cannot be undone", [selectedDeck valueForKey:@"deckName"]];
-    [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
-    [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Delete",nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
+    [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    [(NSButton *)alert.buttons[0] setKeyEquivalent: @""];
+    [(NSButton *)alert.buttons[1] setKeyEquivalent: @"\033"];
     [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode == NSAlertSecondButtonReturn) {
+        if (returnCode == NSAlertFirstButtonReturn) {
             NSUUID *deckuuid = [selectedDeck valueForKey:@"deckUUID"];
             int decktype = ((NSNumber *)[selectedDeck valueForKey:@"deckType"]).intValue;
             if ([DeckManager.sharedInstance deleteDeckWithDeckUUID:deckuuid]) {

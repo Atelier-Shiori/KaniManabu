@@ -73,7 +73,8 @@
     if (__preferencesWindowController == nil)
     {
         GeneralPreferencesViewController *genview =[[GeneralPreferencesViewController  alloc] init];
-        NSArray *controllers = @[genview];
+        SoftwareUpdatesPref *supref = [SoftwareUpdatesPref new];
+        NSArray *controllers = @[genview, supref];
         __preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:controllers];
     }
     return __preferencesWindowController;
