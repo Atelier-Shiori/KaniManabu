@@ -89,8 +89,8 @@
                 }
             }
                 if (_cardMeta[@"contextsentence1"] != [NSNull null] && _cardMeta[@"englishsentence1"] != [NSNull null]) {
-                    [infostr appendString:@"<h1>Example Sentences</h1>"];
                     if (((NSString *)_cardMeta[@"contextsentence1"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence1"]).length > 0) {
+                        [infostr appendString:@"<h1>Example Sentences</h1>"];
                         [infostr appendFormat:@"<p>%@<br />%@</p>",_cardMeta[@"contextsentence1"],_cardMeta[@"englishsentence1"]];
                     }
                 }
@@ -132,8 +132,8 @@
                 }
             }
             if (_cardMeta[@"contextsentence1"] != [NSNull null] && _cardMeta[@"englishsentence1"] != [NSNull null]) {
-                [infostr appendString:@"<h1>Example Sentences</h1>"];
                 if (((NSString *)_cardMeta[@"contextsentence1"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence1"]).length > 0) {
+                    [infostr appendString:@"<h1>Example Sentences</h1>"];
                     [infostr appendFormat:@"<p>%@<br />%@</p>",_cardMeta[@"contextsentence1"],_cardMeta[@"englishsentence1"]];
                 }
             }

@@ -18,6 +18,7 @@
 #import "CSVImportController.h"
 #import "CSVDeckImporter.h"
 #import "DeckOptions.h"
+#import "CSVDeckExporter.h"
 
 @interface MainWindowController ()
 @property (strong)LearnWindowController *lwc;
@@ -377,6 +378,58 @@
                 }
         }];
     }];
+}
+- (IBAction)exportdeck:(id)sender {
+    if (((NSMutableArray *)_arrayController.content).count == 0) {
+        // No Cards, show error
+        NSAlert *alert = [[NSAlert alloc] init] ;
+        [alert addButtonWithTitle:@"OK"];
+        [alert setMessageText:@"You have no decks"];
+        alert.informativeText = @"Create or import a deck first before using this feature.";
+        alert.alertStyle = NSAlertStyleInformational;
+        [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+            }];
+        return;
+    }
+    else {
+        NSArray *decks = [DeckManager.sharedInstance retrieveDecks];
+        NSSavePanel * sp = [NSSavePanel savePanel];
+        sp.title = @"Export Deck";
+        sp.allowedFileTypes = @[@"csv", @"Comma Delimited"];
+        NSPopUpButton *button = [NSPopUpButton new];
+        NSMenu *menu = [NSMenu new];
+        for (NSManagedObject * deck in decks) {
+            NSMenuItem *mitem = [[NSMenuItem alloc] initWithTitle:[deck valueForKey:@"deckName"] action:nil keyEquivalent:@""];
+            [menu addItem:mitem];
+        }
+        button.menu = menu;
+        [button selectItemAtIndex:0];
+        [button sizeToFit];
+        sp.accessoryView = button;
+        [sp beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode == NSModalResponseCancel) {
+                return;
+            }
+            else {
+                NSManagedObject * deck = decks[button.indexOfSelectedItem];
+                [CSVDeckExporter exportDeckwithDeck:deck withURL:sp.URL completionHandler:^(bool success) {
+                    NSAlert *alert = [[NSAlert alloc] init] ;
+                    [alert addButtonWithTitle:@"OK"];
+                    if (success) {
+                        [alert setMessageText:@"Deck Export Successful"];
+                        alert.informativeText = @"Deck successfully exported.";
+                    }
+                    else {
+                        [alert setMessageText:@"Deck Export Failed"];
+                        alert.informativeText = @"Failed to export deck";
+                    }
+                    alert.alertStyle = NSAlertStyleInformational;
+                    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                        }];
+                }];
+            }
+        }];
+    }
 }
 
 #pragma mark NSTableViewDataSource

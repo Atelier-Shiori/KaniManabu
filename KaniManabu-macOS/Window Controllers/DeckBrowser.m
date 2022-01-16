@@ -20,6 +20,7 @@
 @property (strong) IBOutlet NSMenuItem *contextDeleteCardMenuItem;
 @property (strong) IBOutlet NSMenuItem *contextViewCardMenuItem;
 @property (strong) IBOutlet NSMenuItem *contextSuspendCardItem;
+@property (strong) IBOutlet NSMenuItem *contextresetProgress;
 @end
 
 @implementation DeckBrowser
@@ -410,6 +411,23 @@
     }
 }
 
+- (void)performResetProgress {
+    NSDictionary *card =  [_arraycontroller selectedObjects][0];
+    NSAlert *alert = [NSAlert new];
+    alert.messageText = @"Reset Card's Progress?";
+    alert.informativeText = [NSString stringWithFormat:@"Do you want to reset the review progress for card, %@ and put it back in the learning queue? This cannot be undone", [card valueForKey:@"japanese"]];
+    [alert addButtonWithTitle:NSLocalizedString(@"Reset",nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
+    [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    [(NSButton *)alert.buttons[0] setKeyEquivalent: @""];
+    [(NSButton *)alert.buttons[1] setKeyEquivalent: @"\033"];
+    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            [DeckManager.sharedInstance resetCardWithCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue];
+        }
+    }];
+}
+
 #pragma mark Context menu
 - (void)menuWillOpen:(NSMenu *)menu {
     [self setPopupMenuState];
@@ -423,6 +441,12 @@
     _contextDeleteCardMenuItem.enabled = validclick;
     _contextSuspendCardItem.enabled = validclick;
     _contextViewCardMenuItem.enabled = validclick;
+    if (validclick) {
+        _contextresetProgress.enabled = ((NSNumber *)[_arraycontroller selectedObjects][0][@"learned"]).boolValue;
+    }
+    else {
+        _contextresetProgress.enabled = false;
+    }
 }
 - (IBAction)editcontext:(id)sender {
     long rightClickSelectedRow = self.tb.clickedRow;
@@ -433,6 +457,9 @@
     long rightClickSelectedRow = self.tb.clickedRow;
     [self.tb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
     [self performdeleteCard];
+}
+- (IBAction)resetcontext:(id)sender {
+    [self performResetProgress];
 }
 - (IBAction)viewcontext:(id)sender {
     long rightClickSelectedRow = self.tb.clickedRow;

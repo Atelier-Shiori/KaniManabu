@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,7 +19,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="409"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <value key="minSize" type="size" width="480" height="409"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="409"/>
@@ -123,11 +123,27 @@
                             <action selector="importdeck:" target="-2" id="eo1-fe-8dC"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="092B926C-4F8D-4D20-93A3-AFD98A4A87D3" label="Export Deck" paletteLabel="Export Deck" toolTip="Export Deck" image="square.and.arrow.up" catalog="system" bordered="YES" id="krx-0y-Zsr">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="4EM-Di-B1J">
+                            <rect key="frame" x="18" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="square.and.arrow.up" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dPH-fy-EcT">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="exportdeck:" target="-2" id="XJf-SS-QOr"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="ByB-ZQ-AA5"/>
                     <toolbarItem reference="7dU-lF-Vhj"/>
                     <toolbarItem reference="xFG-tM-t4u"/>
+                    <toolbarItem reference="krx-0y-Zsr"/>
                 </defaultToolbarItems>
             </toolbar>
             <connections>
@@ -141,5 +157,6 @@
         <image name="doc.badge.plus" catalog="system" width="16" height="17"/>
         <image name="doc.text.magnifyingglass" catalog="system" width="15" height="17"/>
         <image name="square.and.arrow.down" catalog="system" width="16" height="16"/>
+        <image name="square.and.arrow.up" catalog="system" width="16" height="17"/>
     </resources>
 </document>

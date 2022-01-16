@@ -6,6 +6,7 @@
 //
 
 #import "DeckManager.h"
+#import "SRScheduler.h"
 
 @implementation DeckManager
 + (instancetype)sharedInstance {
@@ -397,6 +398,44 @@
         return tmpdict;
     }
     return nil;
+}
+
+- (void)resetCardWithCardUUID:(NSUUID *)uuid withType:(DeckType)type {
+    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+    switch (type) {
+        case DeckTypeKana:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"KanaCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeKanji:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"KanjiCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeVocab:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+            break;
+        default:
+            return;
+    }
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"carduuid == %@", uuid];
+    fetchRequest.predicate = predicate;
+    NSError *error = nil;
+    NSArray *tmparray = [_moc executeFetchRequest:fetchRequest error:&error];
+    if (tmparray.count > 0) {
+        NSManagedObject *obj = tmparray[0];
+        [obj setValue:@(0) forKey:@"numansweredcorrect"];
+        [obj setValue:@(0) forKey:@"numansweredincorrect"];
+        [obj setValue:@NO forKey:@"reviewedmeaning"];
+        [obj setValue:@NO forKey:@"reviewedreading"];
+        [obj setValue:@(0) forKey:@"reviewincorrectcount"];
+        [obj setValue:@(0) forKey:@"reviewincorrectmeaning"];
+        [obj setValue:@(0) forKey:@"srsstage"];
+        [obj setValue:@(0) forKey:@"proposedsrsstage"];
+        [obj setValue:@NO forKey:@"learned"];
+        [obj setValue:@NO forKey:@"learning"];
+        [obj setValue:@NO forKey:@"inreview"];
+        [obj setValue:@(0) forKey:@"lastreviewed"];
+        [obj setValue:@(0) forKey:@"nextreviewinterval"];
+        [_moc save:nil];
+    }
 }
 
 - (bool)deleteCardWithCardUUID:(NSUUID *)uuid withType:(DeckType)type {

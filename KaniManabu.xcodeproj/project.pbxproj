@@ -36,6 +36,7 @@
 		15C52D74279476EB002ADE2B /* SoftwareUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C52D73279476EB002ADE2B /* SoftwareUpdateView.xib */; };
 		15C52D77279476FB002ADE2B /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C52D75279476FB002ADE2B /* SoftwareUpdatesPref.m */; };
 		15C52D7F2794780A002ADE2B /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 15C52D7E2794780A002ADE2B /* dsa_pub.pem */; };
+		15CB506A27949A5000ECF326 /* CSVDeckExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CB506927949A5000ECF326 /* CSVDeckExporter.m */; };
 		FF1BE8112790542900CA6A99 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */; };
 		FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE81727906AA500CA6A99 /* MSWeakTimer.m */; };
 		FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */; platformFilter = maccatalyst; };
@@ -194,6 +195,8 @@
 		15C52D7927947757002ADE2B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		15C52D7E2794780A002ADE2B /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		15C52D802794783C002ADE2B /* KaniManabu-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "KaniManabu-Info.plist"; sourceTree = "<group>"; };
+		15CB506827949A5000ECF326 /* CSVDeckExporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVDeckExporter.h; sourceTree = "<group>"; };
+		15CB506927949A5000ECF326 /* CSVDeckExporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSVDeckExporter.m; sourceTree = "<group>"; };
 		FF1BE8082790542900CA6A99 /* NSNumberFormatterNumberOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberFormatterNumberOnly.h; sourceTree = "<group>"; };
 		FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberFormatterNumberOnly.m; sourceTree = "<group>"; };
 		FF1BE81627906AA500CA6A99 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSWeakTimer.h; path = Dependencies/MSWeakTimer/MSWeakTimer.h; sourceTree = "<group>"; };
@@ -305,6 +308,8 @@
 				FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */,
 				FF89D7112791EC92009B7C6F /* CSVDeckImporter.h */,
 				FF89D7122791EC92009B7C6F /* CSVDeckImporter.m */,
+				15CB506827949A5000ECF326 /* CSVDeckExporter.h */,
+				15CB506927949A5000ECF326 /* CSVDeckExporter.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -681,6 +686,7 @@
 				FF89D7132791EC92009B7C6F /* CSVDeckImporter.m in Sources */,
 				FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */,
 				151F3AB7278D07AB00953ECD /* DeckViewCell.m in Sources */,
+				15CB506A27949A5000ECF326 /* CSVDeckExporter.m in Sources */,
 				15B122D9278CEBE900575A73 /* string_score.c in Sources */,
 				FFA14B7B278EF1560038B9C2 /* CardEditor.m in Sources */,
 				FF708869278C7CDF00DF399E /* KaniManabu.xcdatamodeld in Sources */,

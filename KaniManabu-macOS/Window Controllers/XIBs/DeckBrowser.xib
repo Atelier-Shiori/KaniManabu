@@ -15,6 +15,7 @@
                 <outlet property="contextEditCardMenuItem" destination="sp7-uu-ZsX" id="xt1-vH-R7U"/>
                 <outlet property="contextSuspendCardItem" destination="NGs-KR-Jmm" id="wiq-Ib-HH8"/>
                 <outlet property="contextViewCardMenuItem" destination="ijw-cB-wfW" id="JUk-6E-QHH"/>
+                <outlet property="contextresetProgress" destination="bGT-al-EuE" id="bzl-Bi-Zds"/>
                 <outlet property="mainViewController" destination="4vu-kB-fMo" id="hT8-jh-mHR"/>
                 <outlet property="sourceList" destination="9nT-Uf-DUD" id="sWh-sH-gXp"/>
                 <outlet property="sourceListViewController" destination="p6f-uD-d98" id="2Px-g2-ABD"/>
@@ -212,15 +213,15 @@
             <rect key="frame" x="0.0" y="0.0" width="570" height="388"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ig-El-BTw">
+                <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ig-El-BTw">
                     <rect key="frame" x="0.0" y="0.0" width="570" height="388"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="Fl2-3G-GYM">
-                        <rect key="frame" x="1" y="1" width="568" height="386"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <rect key="frame" x="0.0" y="0.0" width="570" height="388"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" headerView="EkD-Rv-KPD" id="mGW-Ts-3KE" customClass="NSTableViewAction">
-                                <rect key="frame" x="0.0" y="0.0" width="568" height="358"/>
+                                <rect key="frame" x="0.0" y="0.0" width="570" height="360"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="17" height="0.0"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -275,7 +276,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="nextreview" editable="NO" width="162" minWidth="10" maxWidth="3.4028234663852886e+38" id="znb-Kb-kpQ">
+                                    <tableColumn identifier="nextreview" editable="NO" width="144" minWidth="10" maxWidth="3.4028234663852886e+38" id="znb-Kb-kpQ">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Next Review">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -304,7 +305,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="guQ-Ef-FAv">
-                        <rect key="frame" x="1" y="371" width="568" height="16"/>
+                        <rect key="frame" x="2" y="370" width="566" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="AeB-q1-iS3">
@@ -312,7 +313,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" wantsLayer="YES" id="EkD-Rv-KPD">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="28"/>
+                        <rect key="frame" x="0.0" y="0.0" width="570" height="28"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                     <connections>
@@ -349,6 +350,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="deletecontext:" target="-2" id="1wU-i5-iYQ"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Reset Card Progress…" id="bGT-al-EuE">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="resetcontext:" target="-2" id="Dhi-3j-Fnn"/>
                     </connections>
                 </menuItem>
                 <menuItem title="View Card" id="ijw-cB-wfW">
