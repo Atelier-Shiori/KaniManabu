@@ -72,17 +72,30 @@
 }
 
 - (void)reloadQueueCount {
-    _totalreviewitemcount = [DeckManager.sharedInstance getQueuedReviewItemsCountforUUID:[_deckMeta valueForKey:@"deckUUID"] withType:((NSNumber *)[_deckMeta valueForKey:@"deckType"]).intValue];
-    _totallearnitemcount = [DeckManager.sharedInstance getQueuedLearnItemsCountforUUID:[_deckMeta valueForKey:@"deckUUID"] withType:((NSNumber *)[_deckMeta valueForKey:@"deckType"]).intValue];
-    _reviewcount.stringValue = @(_totalreviewitemcount).stringValue;
-    _learningcount.stringValue = @(_totallearnitemcount).stringValue;
-    [NSNotificationCenter.defaultCenter postNotificationName:@"AddToQueueCount" object:@{@"learncount" : @(_totallearnitemcount), @"reviewcount" : @(_totalreviewitemcount)}];
+    if (((NSNumber *)[_deckMeta valueForKey:@"enabled"]).boolValue) {
+        _totalreviewitemcount = [DeckManager.sharedInstance getQueuedReviewItemsCountforUUID:[_deckMeta valueForKey:@"deckUUID"] withType:((NSNumber *)[_deckMeta valueForKey:@"deckType"]).intValue];
+        _totallearnitemcount = [DeckManager.sharedInstance getQueuedLearnItemsCountforUUID:[_deckMeta valueForKey:@"deckUUID"] withType:((NSNumber *)[_deckMeta valueForKey:@"deckType"]).intValue];
+        _reviewcount.stringValue = @(_totalreviewitemcount).stringValue;
+        _learningcount.stringValue = @(_totallearnitemcount).stringValue;
+        [NSNotificationCenter.defaultCenter postNotificationName:@"AddToQueueCount" object:@{@"learncount" : @(_totallearnitemcount), @"reviewcount" : @(_totalreviewitemcount)}];
+        _learnbtn.enabled = YES;
+        _reviewbtn.enabled = YES;
+    }
+    else {
+        _reviewcount.stringValue = @"-";
+        _learningcount.stringValue = @"-";
+        _learnbtn.enabled = NO;
+        _reviewbtn.enabled = NO;
+    }
 }
 - (IBAction)addCard:(id)sender {
     [NSNotificationCenter.defaultCenter postNotificationName:@"ActionAddCard" object:_deckMeta];
 }
 - (IBAction)deletedeck:(id)sender {
     [NSNotificationCenter.defaultCenter postNotificationName:@"ActionDeleteDeck" object:_deckMeta];
+}
+- (IBAction)openoptions:(id)sender {
+    [NSNotificationCenter.defaultCenter postNotificationName:@"ActionShowDeckOptions" object:_deckMeta];
 }
 
 @end

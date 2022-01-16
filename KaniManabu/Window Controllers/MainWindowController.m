@@ -17,6 +17,7 @@
 #import "MSWeakTimer.h"
 #import "CSVImportController.h"
 #import "CSVDeckImporter.h"
+#import "DeckOptions.h"
 
 @interface MainWindowController ()
 @property (strong)LearnWindowController *lwc;
@@ -26,6 +27,7 @@
 @property long totallearnitemcount;
 @property long totalreviewitemcount;
 @property (strong) CSVImportController *csvic;
+@property (strong) DeckOptions *dc;
 @end
 
 @implementation MainWindowController
@@ -54,11 +56,11 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"StartReviewing" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ActionDeleteDeck" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ActionAddCard" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"StartLearningReviewQuiz" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"AddToQueueCount" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ActionShowDeckOptions" object:nil];
     AppDelegate *delegate = (AppDelegate *)NSApp.delegate;
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSManagedObjectContextDidSaveNotification object:_moc];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
     [self loadDeckArrayAndPopulate];
     //Review Queue timer
@@ -94,9 +96,8 @@
             [self loadDeckArrayAndPopulate];
         });
     }
-    else if ([notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
+    else if ([notification.name isEqualToString:NSManagedObjectContextDidSaveNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
         // Reload
-        sleep(5);
         dispatch_async(dispatch_get_main_queue(), ^{
             self.totalreviewitemcount = 0;
             self.totallearnitemcount = 0;
@@ -113,6 +114,12 @@
         if ([notification.object isKindOfClass:[NSManagedObject class]]) {
             NSManagedObject *deck = notification.object;
             [self deletedeckWithDeck:deck];
+        }
+    }
+    else if ([notification.name isEqualToString:@"ActionShowDeckOptions"]) {
+        if ([notification.object isKindOfClass:[NSManagedObject class]]) {
+            NSManagedObject *deck = notification.object;
+            [self performShowDeckOptions:deck];
         }
     }
     else if ([notification.name isEqualToString:@"StartLearning"]) {
@@ -197,6 +204,7 @@
 
 - (void)performStartLearnWithDeck:(NSManagedObject *)deck {
     _lwc = [LearnWindowController new];
+    _lwc.ankimode = ((NSNumber *)[deck valueForKey:@"ankimode"]).boolValue;
     [_lwc.window makeKeyAndOrderFront:self];
     [_lwc loadStudyItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
     [self.window orderOut:self];
@@ -205,6 +213,7 @@
 - (void)performStartLearnQuiz {
     _rwc = [ReviewWindowController new];
     _rwc.learnmode = YES;
+    _rwc.ankimode = _lwc.ankimode;
     [_rwc.window makeKeyAndOrderFront:self];
     [_rwc startReview:_lwc.studyitems];
     [self.window orderOut:self];
@@ -214,6 +223,7 @@
     _rwc = [ReviewWindowController new];
     [_rwc.window makeKeyAndOrderFront:self];
     int deckType = ((NSNumber *)[deck valueForKey:@"deckType"]).intValue;
+    _rwc.ankimode = ((NSNumber *)[deck valueForKey:@"ankimode"]).boolValue;
     NSArray *reviewitems = [DeckManager.sharedInstance retrieveReviewItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:deckType];
     NSMutableArray *tmparray = [NSMutableArray new];
     for (NSManagedObject *card in reviewitems) {
@@ -224,6 +234,19 @@
     }
     [_rwc startReview:tmparray];
     [self.window orderOut:self];
+}
+- (void)performShowDeckOptions:(NSManagedObject *)deck {
+    _dc = [DeckOptions new];
+    [_dc.window makeKeyAndOrderFront:self];
+    [_dc loadSettings:deck];
+    [self.window beginSheet:_dc.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK) {
+            for (NSString *key in self.dc.newsettings) {
+                [deck setValue:self.dc.newsettings[key] forKey:key];
+            }
+            [self.moc save:nil];
+        }
+    }];
 }
 
 - (void)loadDeckArrayAndPopulate {

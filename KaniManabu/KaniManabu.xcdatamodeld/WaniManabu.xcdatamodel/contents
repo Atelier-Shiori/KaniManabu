@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="Decks" representedClassName="Decks" syncable="YES" codeGenerationType="class">
+        <attribute name="ankimode" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="deckName" optional="YES" attributeType="String"/>
         <attribute name="deckType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="deckUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -108,7 +109,7 @@
         <attribute name="tags" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Decks" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Decks" positionX="-63" positionY="-18" width="128" height="119"/>
         <element name="KanaCards" positionX="-18" positionY="144" width="128" height="434"/>
         <element name="KanjiCards" positionX="-36" positionY="135" width="128" height="509"/>
         <element name="VocabCards" positionX="-54" positionY="18" width="128" height="554"/>

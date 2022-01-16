@@ -10,6 +10,7 @@
 #import "DeckManager.h"
 #import "CardEditor.h"
 #import "ItemInfoWindowController.h"
+#import "AppDelegate.h"
 
 @interface DeckBrowser ()
 @property (strong) NSSplitViewController *splitview;
@@ -42,26 +43,18 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"selecteddeck"]){
-        NSNumber *selected = (NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"selecteddeck"];
-        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex: selected.unsignedIntegerValue]byExtendingSelection:false];
-    }
-    else{
-         [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1]byExtendingSelection:false];
-    }
-    
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckAdded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckRemoved" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LearnEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresWillChangeNotification object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
+    AppDelegate *delegate = (AppDelegate *)NSApp.delegate;
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSManagedObjectContextDidSaveNotification object:delegate.persistentContainer.viewContext];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"DeckAdded"]||[notification.name isEqualToString:@"DeckRemoved"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresWillChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]||[notification.name isEqualToString:@"LearnEnded"]||[notification.name isEqualToString:@"ReviewEnded"]) {
+    if ([notification.name isEqualToString:@"DeckAdded"]||[notification.name isEqualToString:@"DeckRemoved"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSManagedObjectContextDidSaveNotification] ||[notification.name isEqualToString:@"LearnEnded"]||[notification.name isEqualToString:@"ReviewEnded"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             // Reload
             [self generateSourceList];
@@ -85,6 +78,7 @@
 }
 
 - (void)generateSourceList {
+    NSPoint scrollOrigin = _sourceList.superview.bounds.origin;
     self.sourceListItems = [[NSMutableArray alloc] init];
     NSMutableArray *decks = [NSMutableArray new];
     PXSourceListItem *decksItem = [PXSourceListItem itemWithTitle:@"DECKS" identifier:@"decks"];
@@ -140,7 +134,14 @@
     [self.sourceListItems addObject:stagesItem];
     [self.sourceListItems addObject:otherItem];
     [_sourceList reloadData];
-
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"selecteddeck"]){
+        NSNumber *selected = (NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"selecteddeck"];
+        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex: selected.unsignedIntegerValue]byExtendingSelection:false];
+    }
+    else{
+         [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1]byExtendingSelection:false];
+    }
+    [_sourceList.superview setBoundsOrigin:scrollOrigin];
 }
 
 
@@ -200,7 +201,7 @@
 
 - (void)sourceListSelectionDidChange:(NSNotification *)notification
 {
-    [[NSUserDefaults standardUserDefaults] setValue:@(_sourceList.selectedRow) forKey:@"selectedmainview"];
+    [[NSUserDefaults standardUserDefaults] setValue:@(_sourceList.selectedRow) forKey:@"selecteddeck"];
     [self loadDeck];
 }
 
@@ -304,6 +305,8 @@
 }
 
 - (void)loadDeck {
+    // Save Scroll orgin
+    NSPoint scrollOrigin = _tb.superview.bounds.origin;
     NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier containsString:@"srsstage-"]) {
@@ -332,6 +335,7 @@
         NSArray *cards = [DeckManager.sharedInstance retrieveCardsForDeckUUID:_currentDeckUUID withType:_currentDeckType];
         [self populateTableViewWithArray:cards];
     }
+    [_tb.superview setBoundsOrigin:scrollOrigin];
 }
 
 - (void)populateTableViewWithArray:(NSArray *)array {

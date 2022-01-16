@@ -32,7 +32,6 @@
 @property int questiontype;
 @property int currentitem;
 @property bool answered;
-@property bool ankimode;
 @property (strong) CardReview* currentcard;
 @property bool promptacknowledged;
 @property (strong) IBOutlet NSPopover *lasttenpopover;
@@ -64,10 +63,10 @@
 }
 
 - (void)startReview:(NSArray *)reviewitems {
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"AnkiMode"]) {
+    if (_ankimode) {
         // Hide answer text field, buttons will show instead
-        _ankimode = true;
         _answertextfield.hidden = YES;
+        _answertextfield.enabled = NO;
         _answerbtn.hidden = YES;
     }
     [_reviewqueue addObjectsFromArray:reviewitems];
@@ -465,17 +464,23 @@
             //Incorrect
             _answertextfield.backgroundColor = NSColor.systemRedColor;
             _answertextfield.textColor = NSColor.whiteColor;
+            _answertextfield.editable = NO;
+            _answertextfield.currentEditor.selectedRange = NSMakeRange(0, 0);
             break;
         case 1:
             //Correct
             _answertextfield.backgroundColor = NSColor.systemGreenColor;
             _answertextfield.textColor = NSColor.whiteColor;
+            _answertextfield.editable = NO;
+            _answertextfield.currentEditor.selectedRange = NSMakeRange(0, 0);
             break;
         case 2:
             // Reset
             _answertextfield.backgroundColor = NSColor.textBackgroundColor;
             _answertextfield.textColor = NSColor.textColor;
             _answertextfield.stringValue = @"";
+            _answertextfield.editable = YES;
+            _answerbtn.keyEquivalent = @"";
             break;
     }
 }

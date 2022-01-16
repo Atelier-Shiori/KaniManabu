@@ -29,6 +29,8 @@
 		15C52D68279237EA002ADE2B /* AppCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D5E279237E3002ADE2B /* AppCenter.framework */; };
 		15C52D6A279237EA002ADE2B /* AppCenterAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D66279237E3002ADE2B /* AppCenterAnalytics.framework */; };
 		15C52D6C279237EA002ADE2B /* AppCenterCrashes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D67279237E3002ADE2B /* AppCenterCrashes.framework */; };
+		15C52D71279398E3002ADE2B /* DeckOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C52D6F279398E3002ADE2B /* DeckOptions.m */; };
+		15C52D72279398E3002ADE2B /* DeckOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C52D70279398E3002ADE2B /* DeckOptions.xib */; };
 		FF1BE8112790542900CA6A99 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */; };
 		FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE81727906AA500CA6A99 /* MSWeakTimer.m */; };
 		FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */; platformFilter = maccatalyst; };
@@ -177,6 +179,9 @@
 		15C52D5E279237E3002ADE2B /* AppCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCenter.framework; sourceTree = "<group>"; };
 		15C52D66279237E3002ADE2B /* AppCenterAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCenterAnalytics.framework; sourceTree = "<group>"; };
 		15C52D67279237E3002ADE2B /* AppCenterCrashes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCenterCrashes.framework; sourceTree = "<group>"; };
+		15C52D6E279398E3002ADE2B /* DeckOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckOptions.h; sourceTree = "<group>"; };
+		15C52D6F279398E3002ADE2B /* DeckOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckOptions.m; sourceTree = "<group>"; };
+		15C52D70279398E3002ADE2B /* DeckOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckOptions.xib; sourceTree = "<group>"; };
 		FF1BE8082790542900CA6A99 /* NSNumberFormatterNumberOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberFormatterNumberOnly.h; sourceTree = "<group>"; };
 		FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberFormatterNumberOnly.m; sourceTree = "<group>"; };
 		FF1BE81627906AA500CA6A99 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSWeakTimer.h; path = Dependencies/MSWeakTimer/MSWeakTimer.h; sourceTree = "<group>"; };
@@ -324,6 +329,9 @@
 				FF89D70C2791DFE8009B7C6F /* CSVImportController.h */,
 				FF89D70D2791DFE8009B7C6F /* CSVImportController.m */,
 				FF89D70E2791DFE8009B7C6F /* CSVImportController.xib */,
+				15C52D6E279398E3002ADE2B /* DeckOptions.h */,
+				15C52D6F279398E3002ADE2B /* DeckOptions.m */,
+				15C52D70279398E3002ADE2B /* DeckOptions.xib */,
 			);
 			path = "Window Controllers";
 			sourceTree = "<group>";
@@ -569,6 +577,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				151F3AB9278D07C100953ECD /* DeckViewCell.xib in Resources */,
+				15C52D72279398E3002ADE2B /* DeckOptions.xib in Resources */,
 				151F3AC3278E23D800953ECD /* KanaEditor.xib in Resources */,
 				FF70887D278C853400DF399E /* mainwindow.xib in Resources */,
 				FF746576278F47380062E476 /* Credits.rtf in Resources */,
@@ -626,6 +635,7 @@
 				FF89D70F2791DFE8009B7C6F /* CSVImportController.m in Sources */,
 				FF708866278C7CDF00DF399E /* AppDelegate.m in Sources */,
 				FF28A826278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m in Sources */,
+				15C52D71279398E3002ADE2B /* DeckOptions.m in Sources */,
 				15B122D6278CE93E00575A73 /* AnswerCheck.m in Sources */,
 				FFBE3C2E278DEF67003D3F06 /* SRSLevelValueTransformer.m in Sources */,
 			);

@@ -12,6 +12,7 @@
 @interface ReviewWindowController : NSWindowController <NSTextFieldDelegate,NSTableViewDelegate>
 @property (strong) NSMutableArray *reviewqueue;
 @property bool learnmode;
+@property bool ankimode;
 - (void)startReview:(NSArray *)reviewitems;
 @end
 

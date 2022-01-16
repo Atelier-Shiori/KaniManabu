@@ -17,6 +17,8 @@
 @property (strong) IBOutlet NSTextField *decktypestr;
 @property long totalreviewitemcount;
 @property long totallearnitemcount;
+@property (strong) IBOutlet NSButton *reviewbtn;
+@property (strong) IBOutlet NSButton *learnbtn;
 - (void)reloadQueueCount;
 - (void)setDeckTypeLabel;
 @end

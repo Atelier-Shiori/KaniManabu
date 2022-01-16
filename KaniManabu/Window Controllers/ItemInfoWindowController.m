@@ -89,13 +89,14 @@
                 }
             }
                 if (_cardMeta[@"contextsentence1"] != [NSNull null] && _cardMeta[@"englishsentence1"] != [NSNull null]) {
+                    [infostr appendString:@"<h1>Example Sentences</h1>"];
                     if (((NSString *)_cardMeta[@"contextsentence1"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence1"]).length > 0) {
-                        [infostr appendFormat:@"<h1>Context Sentence 1</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence1"],_cardMeta[@"englishsentence1"]];
+                        [infostr appendFormat:@"<p>%@<br />%@</p>",_cardMeta[@"contextsentence1"],_cardMeta[@"englishsentence1"]];
                     }
                 }
                 if (_cardMeta[@"contextsentence2"] != [NSNull null] && _cardMeta[@"englishsentence2"] != [NSNull null]) {
                     if (((NSString *)_cardMeta[@"contextsentence2"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence2"]).length > 0) {
-                        [infostr appendFormat:@"<h1>Context Sentence 2</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence2"],_cardMeta[@"englishsentence2"]];
+                        [infostr appendFormat:@"<p>%@<br />%@</p>",_cardMeta[@"contextsentence2"],_cardMeta[@"englishsentence2"]];
                     }
                 }
             break;
@@ -105,10 +106,11 @@
             if (((NSString *)_cardMeta[@"altmeaning"]).length > 0) {
                 [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",_cardMeta[@"altmeaning"]];
             }
-            [infostr appendFormat:@"<h1>Main Reading</h1><p>%@</p>",_cardMeta[@"kanareading"]];
+            int readingtype = ((NSNumber *)_cardMeta[@"readingtype"]).intValue;
+            [infostr appendFormat:@"<h1>%@(Primary)</h1><p>%@</p>",readingtype == 0 ? @"On'yomi" : @"Kun'yomi",_cardMeta[@"kanareading"]];
             if (_cardMeta[@"altreading"] != [NSNull null]) {
                 if (((NSString *)_cardMeta[@"altreading"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Alt Readings</h1><p>%@</p>",_cardMeta[@"altreading"]];
+                    [infostr appendFormat:@"<h1>%@ (Alt.)</h1><p>%@</p>",readingtype == 0 ? @"Kun'yomi" : @"On'yomi",_cardMeta[@"altreading"]];
                 }
             }
             if (_cardMeta[@"notes"] != [NSNull null]) {
@@ -119,7 +121,7 @@
             break;
         }
         case DeckTypeVocab: {
-            [infostr appendFormat:@"<p>%@</p>",_cardMeta[@"kanaWord"]];
+            [infostr appendFormat:@"<h1>Kana Reading</h1><p>%@</p>",_cardMeta[@"kanaWord"]];
             [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",_cardMeta[@"english"]];
             if (((NSString *)_cardMeta[@"altmeaning"]).length > 0) {
                 [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",_cardMeta[@"altmeaning"]];
@@ -130,18 +132,19 @@
                 }
             }
             if (_cardMeta[@"contextsentence1"] != [NSNull null] && _cardMeta[@"englishsentence1"] != [NSNull null]) {
+                [infostr appendString:@"<h1>Example Sentences</h1>"];
                 if (((NSString *)_cardMeta[@"contextsentence1"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence1"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Context Sentence 1</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence1"],_cardMeta[@"englishsentence1"]];
+                    [infostr appendFormat:@"<p>%@<br />%@</p>",_cardMeta[@"contextsentence1"],_cardMeta[@"englishsentence1"]];
                 }
             }
             if (_cardMeta[@"contextsentence2"] != [NSNull null] && _cardMeta[@"englishsentence2"] != [NSNull null]) {
                 if (((NSString *)_cardMeta[@"contextsentence2"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence2"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Context Sentence 2</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence2"],_cardMeta[@"englishsentence2"]];
+                    [infostr appendFormat:@"<p>%@<br />%@</p>",_cardMeta[@"contextsentence2"],_cardMeta[@"englishsentence2"]];
                 }
             }
             if (_cardMeta[@"contextsentence3"] != [NSNull null] && _cardMeta[@"englishsentence3"] != [NSNull null]) {
                 if (((NSString *)_cardMeta[@"contextsentence3"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence3"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Context Sentence 3</h1><p>%@<br />%@</p>",_cardMeta[@"contextsentence3"],_cardMeta[@"englishsentence3"]];
+                    [infostr appendFormat:@"<p>%@<br />%@</p>",_cardMeta[@"contextsentence3"],_cardMeta[@"englishsentence3"]];
                 }
             }
             break;
@@ -150,6 +153,16 @@
             break;
         }
     }
+    [infostr appendString:@"<h1>Review Information</h1>"];
+    NSDateFormatter *df = [NSDateFormatter new];
+    df.dateStyle = NSDateFormatterMediumStyle;
+    df.timeStyle = NSDateFormatterMediumStyle;
+    if (((NSNumber *)_cardMeta[@"learned"]).boolValue) {
+        [infostr appendFormat:@"<h3>Last Reviewed</h3><p>%@</p>",[df stringFromDate:[NSDate dateWithTimeIntervalSince1970:((NSNumber *)_cardMeta[@"lastreviewed"]).doubleValue]]];
+        [infostr appendFormat:@"<h3>Next Review</h3><p>%@</p>",[df stringFromDate:[NSDate dateWithTimeIntervalSince1970:((NSNumber *)_cardMeta[@"nextreviewinterval"]).doubleValue]]];
+    }
+    [infostr appendFormat:@"<h3>Date Created</h3><p>%@</p>",[df stringFromDate:[NSDate dateWithTimeIntervalSince1970:((NSNumber *)_cardMeta[@"datecreated"]).doubleValue]]];
+    
     __weak ItemInfoWindowController* weakSelf = self;
     [_infotextview setTextToHTML:infostr withLoadingText:@"Loading" completion:^(NSAttributedString * _Nonnull astr) {
         weakSelf.infotextview.textColor = NSColor.controlTextColor;

@@ -11,6 +11,7 @@
 
 @interface LearnWindowController : NSWindowController
 @property (strong) NSArray *studyitems;
+@property bool ankimode;
 - (void)loadStudyItemsForDeckUUID:(NSUUID *)uuid withType:(int)deckType;
 @end
 
