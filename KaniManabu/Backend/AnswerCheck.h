@@ -17,7 +17,8 @@ typedef NS_ENUM(int,AnswerState) {
     AnswerStateOtherKanjiReading = 2,
     AnswerStateInvalidCharacters = 3,
     AnswerStateIncorrect = 4,
-    AnswerStateVerbNoTo = 5
+    AnswerStateVerbNoTo = 5,
+    AnswerStateJapaneseReadingAnswer = 6
 };
 + (bool)validateAlphaNumericString:(NSString *)string;
 + (bool)validateKanaNumericString:(NSString *)string;

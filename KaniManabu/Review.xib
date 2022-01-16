@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,9 +22,11 @@
                 <outlet property="lasttenpopover" destination="QaP-as-QI8" id="SCU-dO-ugd"/>
                 <outlet property="lasttentb" destination="Ppm-jZ-rOU" id="gYq-Co-zVP"/>
                 <outlet property="pendingitem" destination="djS-pX-nPo" id="nyq-ZL-F0f"/>
+                <outlet property="popovervalidationmessage" destination="nxl-sv-4QS" id="Zge-Do-S9b"/>
                 <outlet property="questionprompt" destination="qWw-XL-1r9" id="Kpx-V5-O1M"/>
                 <outlet property="scoreitem" destination="LMg-pa-VZc" id="nTp-g3-vhR"/>
                 <outlet property="srslevellabel" destination="BJP-Z4-Toa" id="zJ7-qc-Y9z"/>
+                <outlet property="validationmessage" destination="Tp6-pm-EyI" id="hjp-Q6-bde"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="KSx-Co-Pzj"/>
                 <outlet property="word" destination="czI-9i-G2Z" id="kRA-YP-sbT"/>
             </connections>
@@ -35,7 +37,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="514" height="384"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <value key="minSize" type="size" width="514" height="384"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="514" height="384"/>
@@ -312,6 +314,26 @@
                 <string>allKeys</string>
             </declaredKeys>
         </arrayController>
+        <viewController id="N6a-k3-DaN" userLabel="Popover View Controller">
+            <connections>
+                <outlet property="view" destination="Tp6-pm-EyI" id="mW2-He-JPc"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="nxl-sv-4QS">
+            <connections>
+                <outlet property="contentViewController" destination="N6a-k3-DaN" id="iwQ-WA-gtP"/>
+            </connections>
+        </popover>
+        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Tp6-pm-EyI">
+            <rect key="frame" x="0.0" y="0.0" width="8" height="16"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="cMu-FG-xTy">
+                <font key="font" usesAppearanceFont="YES"/>
+                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+            </textFieldCell>
+            <point key="canvasLocation" x="221" y="575"/>
+        </textField>
     </objects>
     <resources>
         <image name="arrow.right" catalog="system" width="16" height="12"/>

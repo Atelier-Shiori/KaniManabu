@@ -42,6 +42,8 @@
 @property (strong) IBOutlet NSButton *ankibtnwrong;
 @property (strong) IBOutlet NSButton *ankibtnright;
 @property (strong) IBOutlet NSButton *ankishowanswerbtn;
+@property (strong) IBOutlet NSPopover *popovervalidationmessage;
+@property (strong) IBOutlet NSTextField *validationmessage;
 @end
 
 @implementation ReviewWindowController
@@ -139,6 +141,7 @@
 
 - (void)performCheckAnswer {
     _answerstatus.stringValue = @"";
+    [_popovervalidationmessage close];
     NSString * correctAnswer;
     switch (_currentcard.cardtype) {
         case CardTypeKana: {
@@ -178,12 +181,16 @@
                 break;
             }
             case AnswerStateVerbNoTo: {
-                _answerstatus.stringValue = [NSString stringWithFormat:@"Almost, but this is a verb. Enter \"to %@\".", _answertextfield.stringValue];
+                [self showvalidationmessage:[NSString stringWithFormat:@"Almost, but this is a verb. Enter \"to %@\".", _answertextfield.stringValue]];
                 return;
             }
             case AnswerStateInvalidCharacters: {
                 NSBeep();
                 [self shake:_answertextfield];
+                return;
+            }
+            case AnswerStateJapaneseReadingAnswer: {
+                [self showvalidationmessage:@"You entered the Japanese reading, we want the meaning."];
                 return;
             }
             case AnswerStateIncorrect: {
@@ -208,7 +215,7 @@
                 break;
             }
             case AnswerStateOtherKanjiReading: {
-                _answerstatus.stringValue = [NSString stringWithFormat:@"We want the %@ of this Kanji.", ((NSNumber *)[_currentcard.card valueForKey:@"readingtype"]).intValue == 0 ? @"On'yomi" : @"Kun'yomi"];
+                [self showvalidationmessage:[NSString stringWithFormat:@"We want the %@ of this Kanji.", ((NSNumber *)[_currentcard.card valueForKey:@"readingtype"]).intValue == 0 ? @"On'yomi" : @"Kun'yomi"]];
                 NSBeep();
                 [self shake:_answertextfield];
                 return;
@@ -216,6 +223,7 @@
             case AnswerStateInvalidCharacters: {
                 NSBeep();
                 [self shake:_answertextfield];
+                [self showvalidationmessage:@"Make sure you are typing your answers in Hiragana or Katakana only."];
                 return;
             }
             case AnswerStateIncorrect: {
@@ -564,5 +572,11 @@
     AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:answer];
     utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"ja-JP"];
     [synthesizer speakUtterance:utterance];
+}
+
+- (void)showvalidationmessage:(NSString *)text {
+    [_validationmessage setFrameSize:NSMakeSize(600, 20)];
+    _validationmessage.stringValue = text;
+    [_popovervalidationmessage showRelativeToRect:[_answertextfield bounds] ofView:_answertextfield preferredEdge:NSMaxYEdge];
 }
 @end
