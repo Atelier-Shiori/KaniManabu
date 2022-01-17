@@ -11,3 +11,11 @@ KaniManabu.xcodeproj/project.xcworkspace/xcuserdata/*.*
 .idea/scopes/*.*
 *.xcuserstate
 /KaniManabu.xcodeproj/xcuserdata/**
+/KaniManabu-macOS/Support/Private/CFobError.h
+/KaniManabu-macOS/Support/Private/CFobError.m
+/KaniManabu-macOS/Support/Private/CFobLicVerifier.h
+/KaniManabu-macOS/Support/Private/CFobLicVerifier.m
+/KaniManabu-macOS/Support/Private/DonationKeyVerify.h
+/KaniManabu-macOS/Support/Private/DonationKeyVerify.m
+/KaniManabu-macOS/Support/Private/LicenseManager.h
+/KaniManabu-macOS/Support/Private/LicenseManager.m
