@@ -11,6 +11,11 @@
 #import "DeckManager.h"
 #import "PFAboutWindowController.h"
 
+#if defined(AppStore)
+#else
+#import "LicenseManager.h"
+#endif
+
 @import AppCenter;
 @import AppCenterAnalytics;
 @import AppCenterCrashes;
@@ -62,6 +67,10 @@
     ]];
     [MSACCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
     [MSACAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+#if defined(AppStore)
+#else
+    [LicenseManager.sharedInstance checkKeyWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"donor"] withLicense:[[NSUserDefaults standardUserDefaults] objectForKey:@"donatekey"] withWindow:_mwc.window];
+#endif
 }
 
 
@@ -72,6 +81,11 @@
 
 - (BOOL)applicationSupportsSecureRestorableState:(NSApplication *)app {
     return YES;
+}
+- (IBAction)enterLicense:(id)sender {
+#if defined(AppStore)
+#else
+#endif
 }
 
 - (NSWindowController *)preferencesWindowController {
@@ -112,7 +126,7 @@
     }
     else if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
         [copyrightstr appendString:@"Registered. Thank you for supporting Kanimanabu's development!"];
-        [copyrightstr appendFormat:@"\rThis copy is registered to: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"donation_name"]];
+        [copyrightstr appendFormat:@"\rThis copy is registered to: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"donor"]];
     }
     else {
         [copyrightstr appendString:@"UNREGISTERED."];

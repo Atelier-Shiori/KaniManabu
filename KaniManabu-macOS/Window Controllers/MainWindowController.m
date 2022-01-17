@@ -19,6 +19,7 @@
 #import "CSVDeckImporter.h"
 #import "DeckOptions.h"
 #import "CSVDeckExporter.h"
+#import "LicenseManager.h"
 
 @interface MainWindowController ()
 @property (strong)LearnWindowController *lwc;
@@ -66,7 +67,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"NSPersistentStoreRemoteChangeNotification" object:delegate.persistentContainer.persistentStoreCoordinator];
     [self loadDeckArrayAndPopulate];
     //Review Queue timer
-    _privateQueue = dispatch_queue_create("moe.ateliershiori.Shukofukurou", DISPATCH_QUEUE_CONCURRENT);
+    _privateQueue = dispatch_queue_create("moe.ateliershiori.KaniManabu.MainWindow", DISPATCH_QUEUE_CONCURRENT);
     _refreshtimer =  [MSWeakTimer scheduledTimerWithTimeInterval:900
                                                           target:self
                                                         selector:@selector(fireTimer)
@@ -107,9 +108,14 @@
         });
     }
     else if ([notification.name isEqualToString:@"ActionAddCard"]) {
-        if ([notification.object isKindOfClass:[NSManagedObject class]]) {
-            NSManagedObject *deck = notification.object;
-            [self performAddCard:[deck valueForKey:@"deckUUID"] withDeckType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
+        if ([self checkDeckLimit:false]) {
+            if ([notification.object isKindOfClass:[NSManagedObject class]]) {
+                NSManagedObject *deck = notification.object;
+                [self performAddCard:[deck valueForKey:@"deckUUID"] withDeckType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
+            }
+        }
+        else {
+            [self deckexceedederror];
         }
     }
     else if ([notification.name isEqualToString:@"ActionDeleteDeck"]) {
@@ -125,33 +131,43 @@
         }
     }
     else if ([notification.name isEqualToString:@"StartLearning"]) {
-        if ([notification.object isKindOfClass:[NSManagedObject class]]) {
-            NSManagedObject *deck = notification.object;
-            [self performStartLearnWithDeck:deck];
+        if ([self checkDeckLimit:false]) {
+            if ([notification.object isKindOfClass:[NSManagedObject class]]) {
+                NSManagedObject *deck = notification.object;
+                [self performStartLearnWithDeck:deck];
+            }
+            else {
+                NSAlert *alert = [[NSAlert alloc] init] ;
+                [alert addButtonWithTitle:@"OK"];
+                [alert setMessageText:@"No cards in learning queue."];
+                alert.informativeText = @"This deck has no cards in the learning queue.";
+                alert.alertStyle = NSAlertStyleInformational;
+                [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                    }];
+            }
         }
         else {
-            NSAlert *alert = [[NSAlert alloc] init] ;
-            [alert addButtonWithTitle:@"OK"];
-            [alert setMessageText:@"No cards in learning queue."];
-            alert.informativeText = @"This deck has no cards in the learning queue.";
-            alert.alertStyle = NSAlertStyleInformational;
-            [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-                }];
+            [self deckexceedederror];
         }
     }
     else if ([notification.name isEqualToString:@"StartReviewing"]) {
-        if ([notification.object isKindOfClass:[NSManagedObject class]]) {
-            NSManagedObject *deck = notification.object;
-            [self performStartReviewWithDeck:deck];
+        if ([self checkDeckLimit:false]) {
+            if ([notification.object isKindOfClass:[NSManagedObject class]]) {
+                NSManagedObject *deck = notification.object;
+                [self performStartReviewWithDeck:deck];
+            }
+            else {
+                NSAlert *alert = [[NSAlert alloc] init] ;
+                [alert addButtonWithTitle:@"OK"];
+                [alert setMessageText:@"No cards in review queue."];
+                alert.informativeText = @"This deck has no cards in the review queue. Check back later.";
+                alert.alertStyle = NSAlertStyleInformational;
+                [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                    }];
+            }
         }
         else {
-            NSAlert *alert = [[NSAlert alloc] init] ;
-            [alert addButtonWithTitle:@"OK"];
-            [alert setMessageText:@"No cards in review queue."];
-            alert.informativeText = @"This deck has no cards in the review queue. Check back later.";
-            alert.alertStyle = NSAlertStyleInformational;
-            [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-                }];
+            [self deckexceedederror];
         }
     }
     else if ([notification.name isEqualToString:@"StartLearningReviewQuiz"]) {
@@ -173,34 +189,39 @@
 }
 
 - (void)performAddCard:(NSUUID *)deckUUID withDeckType:(int)type {
-    switch (type) {
-        case DeckTypeVocab: {
-            [CardEditor openVocabCardEditorWithUUID:deckUUID isNewCard:true withWindow:self.window completionHandler:^(bool success) {
-                if (success) {
-                    [NSNotificationCenter.defaultCenter postNotificationName:@"CardAdded" object:nil];
-                }
-            }];
-            break;
+    if ([self checkDeckLimit:false]) {
+        switch (type) {
+            case DeckTypeVocab: {
+                [CardEditor openVocabCardEditorWithUUID:deckUUID isNewCard:true withWindow:self.window completionHandler:^(bool success) {
+                    if (success) {
+                        [NSNotificationCenter.defaultCenter postNotificationName:@"CardAdded" object:nil];
+                    }
+                }];
+                break;
+            }
+            case DeckTypeKana: {
+                [CardEditor openKanaCardEditorWithUUID:deckUUID isNewCard:true withWindow:self.window completionHandler:^(bool success) {
+                    if (success) {
+                        [NSNotificationCenter.defaultCenter postNotificationName:@"CardAdded" object:nil];
+                    }
+                }];
+                break;
+            }
+            case DeckTypeKanji: {
+                [CardEditor openKanjiCardEditorWithUUID:deckUUID isNewCard:true withWindow:self.window completionHandler:^(bool success) {
+                    if (success) {
+                        [NSNotificationCenter.defaultCenter postNotificationName:@"CardAdded" object:nil];
+                    }
+                }];
+                break;
+            }
+            default: {
+                break;
+            }
         }
-        case DeckTypeKana: {
-            [CardEditor openKanaCardEditorWithUUID:deckUUID isNewCard:true withWindow:self.window completionHandler:^(bool success) {
-                if (success) {
-                    [NSNotificationCenter.defaultCenter postNotificationName:@"CardAdded" object:nil];
-                }
-            }];
-            break;
-        }
-        case DeckTypeKanji: {
-            [CardEditor openKanjiCardEditorWithUUID:deckUUID isNewCard:true withWindow:self.window completionHandler:^(bool success) {
-                if (success) {
-                    [NSNotificationCenter.defaultCenter postNotificationName:@"CardAdded" object:nil];
-                }
-            }];
-            break;
-        }
-        default: {
-            break;
-        }
+    }
+    else {
+        [self deckexceedederror];
     }
 }
 
@@ -281,36 +302,41 @@
     [self.window orderOut:self];
 }
 - (IBAction)addNewDeck:(id)sender {
-    DeckAddDialogController *dadddialog = [DeckAddDialogController new];
-    [self.window beginSheet:dadddialog.window completionHandler:^(NSModalResponse returnCode) {
-            if (returnCode == NSModalResponseOK) {
-                // Check if deck exists
-                if ([DeckManager.sharedInstance checkDeckExists:dadddialog.deckname.stringValue withType:dadddialog.typebtn.selectedTag]) {
-                    NSAlert *alert = [[NSAlert alloc] init] ;
-                    [alert addButtonWithTitle:@"OK"];
-                    [alert setMessageText:@"Deck already exists"];
-                    alert.informativeText = [NSString stringWithFormat:@"Deck %@ already exists. You cannot create a deck with the same deck name and type.", dadddialog.deckname.stringValue];
-                    alert.alertStyle = NSAlertStyleInformational;
-                    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-                        }];
-                }
-                else {
-                    bool success = [DeckManager.sharedInstance createDeck:dadddialog.deckname.stringValue withType:dadddialog.typebtn.selectedTag];
-                    if (!success) {
+    if ([self checkDeckLimit:true]) {
+        DeckAddDialogController *dadddialog = [DeckAddDialogController new];
+        [self.window beginSheet:dadddialog.window completionHandler:^(NSModalResponse returnCode) {
+                if (returnCode == NSModalResponseOK) {
+                    // Check if deck exists
+                    if ([DeckManager.sharedInstance checkDeckExists:dadddialog.deckname.stringValue withType:dadddialog.typebtn.selectedTag]) {
                         NSAlert *alert = [[NSAlert alloc] init] ;
                         [alert addButtonWithTitle:@"OK"];
-                        [alert setMessageText:@"Couldn't create deck."];
-                        alert.informativeText = [NSString stringWithFormat:@"%@ failed to create.", dadddialog.deckname.stringValue];
+                        [alert setMessageText:@"Deck already exists"];
+                        alert.informativeText = [NSString stringWithFormat:@"Deck %@ already exists. You cannot create a deck with the same deck name and type.", dadddialog.deckname.stringValue];
                         alert.alertStyle = NSAlertStyleInformational;
                         [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
                             }];
                     }
                     else {
-                        [NSNotificationCenter.defaultCenter postNotificationName:@"DeckAdded" object:nil];
+                        bool success = [DeckManager.sharedInstance createDeck:dadddialog.deckname.stringValue withType:dadddialog.typebtn.selectedTag];
+                        if (!success) {
+                            NSAlert *alert = [[NSAlert alloc] init] ;
+                            [alert addButtonWithTitle:@"OK"];
+                            [alert setMessageText:@"Couldn't create deck."];
+                            alert.informativeText = [NSString stringWithFormat:@"%@ failed to create.", dadddialog.deckname.stringValue];
+                            alert.alertStyle = NSAlertStyleInformational;
+                            [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                                }];
+                        }
+                        else {
+                            [NSNotificationCenter.defaultCenter postNotificationName:@"DeckAdded" object:nil];
+                        }
                     }
                 }
-            }
-        }];
+            }];
+    }
+    else {
+        [self deckexceedederror];
+    }
 }
 
 - (void)deletedeckWithDeck:(NSManagedObject *)selectedDeck {
@@ -335,6 +361,7 @@
     }];
 }
 - (IBAction)importdeck:(id)sender {
+    if ([self checkDeckLimit:true]) {
     NSOpenPanel * op = [NSOpenPanel openPanel];
     op.allowedFileTypes = @[@"csv", @"Comma Delimited Values File"];
     op.message = @"Please select a CSV file to import as a deck.";
@@ -379,8 +406,13 @@
                 }
         }];
     }];
+    }
+    else {
+        [self deckexceedederror];
+    }
 }
 - (IBAction)exportdeck:(id)sender {
+    if ([self checkDeckLimit:false]) {
     if (((NSMutableArray *)_arrayController.content).count == 0) {
         // No Cards, show error
         NSAlert *alert = [[NSAlert alloc] init] ;
@@ -431,6 +463,28 @@
             }
         }];
     }
+    }
+    else {
+        [self deckexceedederror];
+    }
+}
+
+- (void)deckexceedederror {
+    NSAlert *alert = [[NSAlert alloc] init] ;
+    [alert addButtonWithTitle:@"OK"];
+    [alert setMessageText:@"Deck Limit Exceeded"];
+    alert.informativeText = @"You cannot use this feature since you exceeded the deck limit of 3. Please delete one of the deck or register the program";
+    alert.alertStyle = NSAlertStyleInformational;
+    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+        }];
+}
+
+- (bool)checkDeckLimit:(bool)adding {
+#if defined(AppStore)
+    return true;
+#else
+    return [LicenseManager.sharedInstance checkDeckLimit:adding];
+#endif
 }
 
 #pragma mark NSTableViewDataSource

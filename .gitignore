@@ -19,3 +19,8 @@ KaniManabu.xcodeproj/project.xcworkspace/xcuserdata/*.*
 /KaniManabu-macOS/Support/Private/DonationKeyVerify.m
 /KaniManabu-macOS/Support/Private/LicenseManager.h
 /KaniManabu-macOS/Support/Private/LicenseManager.m
+/KaniManabu-macOS/Support/Private/DonationWindow.xib
+/KaniManabu-macOS/Support/Private/DonationWindowController.h
+/KaniManabu-macOS/Support/Private/DonationWindowController.m
+/KaniManabu-macOS/Support/Private/PatreonLicenseManager.h
+/KaniManabu-macOS/Support/Private/PatreonLicenseManager.m

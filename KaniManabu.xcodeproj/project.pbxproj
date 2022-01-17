@@ -14,6 +14,13 @@
 		151F3ABE278E23CD00953ECD /* KanjiEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3ABC278E23CD00953ECD /* KanjiEditor.xib */; };
 		151F3AC2278E23D800953ECD /* KanaEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3AC0278E23D800953ECD /* KanaEditor.m */; };
 		151F3AC3278E23D800953ECD /* KanaEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3AC1278E23D800953ECD /* KanaEditor.xib */; };
+		153FFE742794F33500D481A2 /* CFobLicVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE702794F33500D481A2 /* CFobLicVerifier.m */; };
+		153FFE752794F33500D481A2 /* DonationKeyVerify.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE722794F33500D481A2 /* DonationKeyVerify.m */; };
+		153FFE762794F33500D481A2 /* CFobError.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE732794F33500D481A2 /* CFobError.m */; };
+		153FFE792794F6EA00D481A2 /* DonationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE782794F6EA00D481A2 /* DonationWindowController.m */; };
+		153FFE7B2794F6F900D481A2 /* DonationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153FFE7A2794F6F900D481A2 /* DonationWindow.xib */; };
+		153FFE7E2794F72100D481A2 /* PatreonLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE7C2794F72100D481A2 /* PatreonLicenseManager.m */; };
+		154490842794ED760009CED4 /* LicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 154490832794ED760009CED4 /* LicenseManager.m */; };
 		157328F22794B9C400587C05 /* CardReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794872278CC083000D984D /* CardReview.m */; };
 		157328F32794B9C400587C05 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF74656E278F44A10062E476 /* PFAboutWindowController.m */; };
 		157328F52794B9C400587C05 /* PaRomajiKanaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122DA278CED4C00575A73 /* PaRomajiKanaConverter.m */; };
@@ -241,6 +248,19 @@
 		151F3ABF278E23D800953ECD /* KanaEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KanaEditor.h; sourceTree = "<group>"; };
 		151F3AC0278E23D800953ECD /* KanaEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KanaEditor.m; sourceTree = "<group>"; };
 		151F3AC1278E23D800953ECD /* KanaEditor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KanaEditor.xib; sourceTree = "<group>"; };
+		153FFE6E2794F33500D481A2 /* CFobError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFobError.h; sourceTree = "<group>"; };
+		153FFE6F2794F33500D481A2 /* CFobLicVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFobLicVerifier.h; sourceTree = "<group>"; };
+		153FFE702794F33500D481A2 /* CFobLicVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFobLicVerifier.m; sourceTree = "<group>"; };
+		153FFE712794F33500D481A2 /* DonationKeyVerify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationKeyVerify.h; sourceTree = "<group>"; };
+		153FFE722794F33500D481A2 /* DonationKeyVerify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationKeyVerify.m; sourceTree = "<group>"; };
+		153FFE732794F33500D481A2 /* CFobError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFobError.m; sourceTree = "<group>"; };
+		153FFE772794F6EA00D481A2 /* DonationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationWindowController.h; sourceTree = "<group>"; };
+		153FFE782794F6EA00D481A2 /* DonationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationWindowController.m; sourceTree = "<group>"; };
+		153FFE7A2794F6F900D481A2 /* DonationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DonationWindow.xib; sourceTree = "<group>"; };
+		153FFE7C2794F72100D481A2 /* PatreonLicenseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatreonLicenseManager.m; sourceTree = "<group>"; };
+		153FFE7D2794F72100D481A2 /* PatreonLicenseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatreonLicenseManager.h; sourceTree = "<group>"; };
+		154490822794ED760009CED4 /* LicenseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LicenseManager.h; sourceTree = "<group>"; };
+		154490832794ED760009CED4 /* LicenseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LicenseManager.m; sourceTree = "<group>"; };
 		1573293F2794B9C400587C05 /* KaniManabu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaniManabu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		157329402794B9C400587C05 /* KaniManabu copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KaniManabu copy-Info.plist"; path = "/Volumes/美咲野くくる/Development/beta new/WaniManabu/KaniManabu copy-Info.plist"; sourceTree = "<absolute>"; };
 		1579486B278CBFB0000D984D /* DeckAddDialogController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckAddDialogController.h; sourceTree = "<group>"; };
@@ -380,6 +400,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		153FFE662794F2DC00D481A2 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				154490822794ED760009CED4 /* LicenseManager.h */,
+				154490832794ED760009CED4 /* LicenseManager.m */,
+				153FFE6E2794F33500D481A2 /* CFobError.h */,
+				153FFE732794F33500D481A2 /* CFobError.m */,
+				153FFE6F2794F33500D481A2 /* CFobLicVerifier.h */,
+				153FFE702794F33500D481A2 /* CFobLicVerifier.m */,
+				153FFE712794F33500D481A2 /* DonationKeyVerify.h */,
+				153FFE722794F33500D481A2 /* DonationKeyVerify.m */,
+				153FFE772794F6EA00D481A2 /* DonationWindowController.h */,
+				153FFE782794F6EA00D481A2 /* DonationWindowController.m */,
+				153FFE7D2794F72100D481A2 /* PatreonLicenseManager.h */,
+				153FFE7C2794F72100D481A2 /* PatreonLicenseManager.m */,
+				153FFE7A2794F6F900D481A2 /* DonationWindow.xib */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
 		15794874278CD3D5000D984D /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +563,7 @@
 		FF28A820278CB30900D3744D /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				153FFE662794F2DC00D481A2 /* Private */,
 				FFA14B8E278F0F8C0038B9C2 /* NSTableViewAction.h */,
 				FFA14B8F278F0F8C0038B9C2 /* NSTableViewAction.m */,
 				FF28A823278CB31300D3744D /* NSTextView+SetHTMLAttributedText.h */,
@@ -795,6 +836,7 @@
 				15C52D74279476EB002ADE2B /* SoftwareUpdateView.xib in Resources */,
 				151F3AC3278E23D800953ECD /* KanaEditor.xib in Resources */,
 				FF70887D278C853400DF399E /* mainwindow.xib in Resources */,
+				153FFE7B2794F6F900D481A2 /* DonationWindow.xib in Resources */,
 				15C52D7F2794780A002ADE2B /* dsa_pub.pem in Resources */,
 				FF746576278F47380062E476 /* Credits.rtf in Resources */,
 				FF28A811278CA23B00D3744D /* NewDeckDialog.xib in Resources */,
@@ -866,6 +908,7 @@
 				FF746570278F44A10062E476 /* PFAboutWindowController.m in Sources */,
 				15C52D77279476FB002ADE2B /* SoftwareUpdatesPref.m in Sources */,
 				15B122DE278CED4C00575A73 /* PaRomajiKanaConverter.m in Sources */,
+				153FFE742794F33500D481A2 /* CFobLicVerifier.m in Sources */,
 				151F3AC2278E23D800953ECD /* KanaEditor.m in Sources */,
 				FF28A81A278CB17F00D3744D /* LearnWindowController.m in Sources */,
 				FF28A825278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m in Sources */,
@@ -874,6 +917,7 @@
 				FF89D70B2791D41D009B7C6F /* CHCSVParser.m in Sources */,
 				FFA14B90278F0F8C0038B9C2 /* NSTableViewAction.m in Sources */,
 				1579486D278CBFB0000D984D /* DeckAddDialogController.m in Sources */,
+				154490842794ED760009CED4 /* LicenseManager.m in Sources */,
 				FF28A817278CB16D00D3744D /* MainWindowController.m in Sources */,
 				FFBE3C31278DF05F003D3F06 /* UnixDatetoNSDate.m in Sources */,
 				FFB6145C278CB8AF001E5FAA /* DeckBrowser.m in Sources */,
@@ -881,7 +925,9 @@
 				1579487D278CDB97000D984D /* DeckManager.m in Sources */,
 				FF28A80F278C941800D3744D /* SRScheduler.m in Sources */,
 				FF28A81D278CB19E00D3744D /* ReviewWindowController.m in Sources */,
+				153FFE752794F33500D481A2 /* DonationKeyVerify.m in Sources */,
 				15B122D1278CE45300575A73 /* VocabEditor.m in Sources */,
+				153FFE792794F6EA00D481A2 /* DonationWindowController.m in Sources */,
 				FF1BE8112790542900CA6A99 /* NSNumberFormatterNumberOnly.m in Sources */,
 				FF89D7132791EC92009B7C6F /* CSVDeckImporter.m in Sources */,
 				FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */,
@@ -889,10 +935,12 @@
 				15CB506A27949A5000ECF326 /* CSVDeckExporter.m in Sources */,
 				15B122D9278CEBE900575A73 /* string_score.c in Sources */,
 				FFA14B7B278EF1560038B9C2 /* CardEditor.m in Sources */,
+				153FFE7E2794F72100D481A2 /* PatreonLicenseManager.m in Sources */,
 				FF708869278C7CDF00DF399E /* KaniManabu.xcdatamodeld in Sources */,
 				15794870278CBFC9000D984D /* ItemInfoWindowController.m in Sources */,
 				FF708870278C7CE000DF399E /* main.m in Sources */,
 				FF89D70F2791DFE8009B7C6F /* CSVImportController.m in Sources */,
+				153FFE762794F33500D481A2 /* CFobError.m in Sources */,
 				FF708866278C7CDF00DF399E /* AppDelegate.m in Sources */,
 				FF28A826278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m in Sources */,
 				15C52D71279398E3002ADE2B /* DeckOptions.m in Sources */,
@@ -1109,8 +1157,10 @@
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(inherited)/**",
+					"$(PROJECT_DIR)/**",
+					"$(PROJECT_DIR)/Dependencies/Private/**",
+					"$(PROJECT_DIR)/KaniManabu-macOS/**",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "KaniManabu-Info.plist";
@@ -1143,8 +1193,10 @@
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(inherited)/**",
+					"$(PROJECT_DIR)/**",
+					"$(PROJECT_DIR)/Dependencies/Private/**",
+					"$(PROJECT_DIR)/KaniManabu-macOS/**",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "KaniManabu-Info.plist";

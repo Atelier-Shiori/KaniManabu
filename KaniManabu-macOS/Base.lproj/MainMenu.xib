@@ -38,8 +38,12 @@
                                     <action selector="viewPreferences:" target="Voe-Tx-rLC" id="oFw-jZ-TnD"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="License…" hidden="YES" id="rKL-Fx-gRV">
+                            <menuItem title="License…" id="rKL-Fx-gRV">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="enterLicense:" target="Voe-Tx-rLC" id="iW4-qh-tVJ"/>
+                                    <binding destination="CVO-4r-Cco" name="hidden" keyPath="values.donated" id="Ztk-sy-6By"/>
+                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                             <menuItem title="Services" id="NMo-om-nkz">
@@ -377,5 +381,6 @@
             <point key="canvasLocation" x="200" y="121"/>
         </menu>
         <customObject id="deA-zA-9PF" customClass="SUUpdater"/>
+        <userDefaultsController representsSharedInstance="YES" id="CVO-4r-Cco"/>
     </objects>
 </document>
