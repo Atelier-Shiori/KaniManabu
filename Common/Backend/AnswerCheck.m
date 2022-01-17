@@ -10,10 +10,10 @@
 #import "NSString+RomajiKanaConvert.h"
 
 @implementation AnswerCheck
-NSString *const kHiraganacharacterset = @"ーぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをん";
+NSString *const kHiraganacharacterset = @"ーぁあぃいぅうぇえぉおかがきぎくぐけげこごさざしじすずせぜそぞただちぢっつづてでとどなにぬねのはばぱひびぴふぶぷへべぺほぼぽまみむめもゃやゅゆょよらりるれろゎわゐゑをん、";
 NSString *const kHiraganaVerbCharacterset = @"うくぐすずつづぬふぶぷむる";
-NSString *const kKatakanacharacterset = @"-ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ";
-NSString *const kAlphanumericcharacterset = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_, ";
+NSString *const kKatakanacharacterset = @"-ァアィイゥウェエォオカガキギクグケゲコゴサザシジスズセゼソゾタダチヂッツヅテデトドナニヌネノハバパヒビピフブプヘベペホボポマミムメモャヤュユョヨラリルレロヮワヰヱヲンヴヵヶ、";
+NSString *const kAlphanumericcharacterset = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_, '-";
 double const kFuzziness = 0.8;
 
 + (bool)validateAlphaNumericString:(NSString *)string {
