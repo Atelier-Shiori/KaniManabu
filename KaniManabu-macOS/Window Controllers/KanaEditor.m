@@ -83,7 +83,7 @@
     _contextsentence2.stringValue = dict[@"contextsentence2"] != [NSNull null] ? dict[@"contextsentence2"] : @"";
     _englishsentence1.stringValue = dict[@"englishsentence1"] != [NSNull null] ? dict[@"englishsentence1"] : @"";
     _englishsentence2.stringValue = dict[@"englishsentence2"] != [NSNull null] ? dict[@"englishsentence2"] : @"";
-    _tags.stringValue = dict[@"tags"] ? dict[@"tags"] : @"";
+    _tags.stringValue = dict[@"tags"] != [NSNull null] ? dict[@"tags"] : @"";
     _savebtn.enabled = YES;
 }
 
