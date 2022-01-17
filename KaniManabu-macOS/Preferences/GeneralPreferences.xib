@@ -14,11 +14,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="196"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="217"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hv-F6-Xe0">
-                    <rect key="frame" x="150" y="134" width="278" height="18"/>
+                    <rect key="frame" x="150" y="155" width="278" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Automatically play audio after answer" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="UqO-ZL-UPA">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -29,7 +29,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lXm-A5-fOV">
-                    <rect key="frame" x="60" y="162" width="55" height="16"/>
+                    <rect key="frame" x="60" y="183" width="55" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="General" id="kE4-tE-f01">
                         <font key="font" metaFont="systemBold"/>
@@ -38,7 +38,7 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iZL-ln-nBj">
-                    <rect key="frame" x="172" y="100" width="96" height="21"/>
+                    <rect key="frame" x="172" y="121" width="96" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" focusRingType="none" title="5" drawsBackground="YES" id="d4v-lb-YhD">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" formatWidth="-1" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="42" id="TMN-I6-3Mr" customClass="NSNumberFormatterNumberOnly">
@@ -58,7 +58,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V1y-gJ-hr2">
-                    <rect key="frame" x="30" y="103" width="136" height="16"/>
+                    <rect key="frame" x="30" y="124" width="136" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="New Card Limit:" id="cQi-FV-rvQ">
                         <font key="font" metaFont="system"/>
@@ -67,7 +67,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRh-Gl-1zG">
-                    <rect key="frame" x="276" y="103" width="184" height="16"/>
+                    <rect key="frame" x="276" y="124" width="184" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="per day per deck" id="WhB-cG-JH3">
                         <font key="font" metaFont="system"/>
@@ -116,8 +116,19 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KDd-U3-cEO">
+                    <rect key="frame" x="157" y="86" width="186" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Remove Orphaned Cards" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7A1-ZY-5wF">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="removeorphaned:" target="-2" id="HBE-wk-KB4"/>
+                    </connections>
+                </button>
             </subviews>
-            <point key="canvasLocation" x="140" y="116"/>
+            <point key="canvasLocation" x="140" y="126.5"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="AMl-7q-YBz"/>
     </objects>

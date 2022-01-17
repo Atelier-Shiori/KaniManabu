@@ -49,9 +49,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    DeckManager.sharedInstance.moc = self.persistentContainer.viewContext;
+    DeckManager.sharedInstance.moc = self.persistentContainer.newBackgroundContext;
     _mwc = [MainWindowController new];
-    _mwc.moc = self.persistentContainer.viewContext;
+    _mwc.moc = DeckManager.sharedInstance.moc;
 
     [_mwc.window makeKeyAndOrderFront:self];
     

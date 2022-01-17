@@ -28,11 +28,14 @@
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="numansweredcorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="numansweredincorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nummeaningcorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nummeaningincorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="proposedsrsstage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="reviewedmeaning" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="reviewedreading" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="reviewincorrectcount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="reviewincorrectmeaning" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="reviewincorrectreading" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="srsstage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="suspended" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="tags" optional="YES" attributeType="String"/>
@@ -110,7 +113,7 @@
     </entity>
     <elements>
         <element name="Decks" positionX="-63" positionY="-18" width="128" height="119"/>
-        <element name="KanaCards" positionX="-18" positionY="144" width="128" height="434"/>
+        <element name="KanaCards" positionX="-18" positionY="144" width="128" height="479"/>
         <element name="KanjiCards" positionX="-36" positionY="135" width="128" height="509"/>
         <element name="VocabCards" positionX="-54" positionY="18" width="128" height="554"/>
     </elements>

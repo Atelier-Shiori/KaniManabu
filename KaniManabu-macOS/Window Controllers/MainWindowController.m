@@ -66,7 +66,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"AddToQueueCount" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ActionShowDeckOptions" object:nil];
     AppDelegate *delegate = (AppDelegate *)NSApp.delegate;
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSManagedObjectContextDidSaveNotification object:delegate.persistentContainer.viewContext];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSManagedObjectContextDidSaveNotification object:_moc];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"NSPersistentStoreRemoteChangeNotification" object:delegate.persistentContainer.persistentStoreCoordinator];
     [self loadDeckArrayAndPopulate];
@@ -115,10 +115,8 @@
             });
         }
         if ([notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
-            if (_nextAllowableiCloudUIRefreshDate) {
-                // Set next time CloudKit can refresh the UI
-                _nextAllowableiCloudUIRefreshDate = [NSDate.date dateByAddingTimeInterval:300];
-            }
+            // Set next time CloudKit can refresh the UI
+            _nextAllowableiCloudUIRefreshDate = [NSDate.date dateByAddingTimeInterval:300];
         }
     }
     else if ([notification.name isEqualToString:@"ActionAddCard"]) {

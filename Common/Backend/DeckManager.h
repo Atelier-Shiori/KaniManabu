@@ -43,6 +43,7 @@ typedef NS_ENUM(int,DeckType) {
 - (void)deleteAllCardsForDeckUUID:(NSUUID *)uuid withType:(int)type;
 - (void)resetCardWithCardUUID:(NSUUID *)uuid withType:(DeckType)type;
 - (void)togglesuspendCardForCardUUID:(NSUUID *)uuid withType:(int)type;
+- (void)removeOrphanedCards;
 @end
 
 

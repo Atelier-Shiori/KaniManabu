@@ -42,6 +42,15 @@
     return [_moc executeFetchRequest:fetchRequest error:&error].count > 0;
 }
 
+- (bool)checkDeckUUIDExists:(NSUUID *)uuid {
+    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+    fetchRequest.entity = [NSEntityDescription entityForName:@"Decks" inManagedObjectContext:_moc];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deckUUID == %@",uuid];
+    fetchRequest.predicate = predicate;
+    NSError *error = nil;
+    return [_moc executeFetchRequest:fetchRequest error:&error].count > 0;
+}
+
 - (bool)deleteDeckWithDeckUUID: (NSUUID *)uuid {
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     fetchRequest.entity = [NSEntityDescription entityForName:@"Decks" inManagedObjectContext:_moc];
@@ -52,7 +61,7 @@
     if (decks.count > 0) {
         NSManagedObject *deck = decks[0];
         [_moc deleteObject:deck];
-                [_moc performBlockAndWait:^{
+        [_moc performBlockAndWait:^{
             [_moc save:nil];
         }];
         return true;
@@ -538,5 +547,26 @@
             [_moc save:nil];
         }];
     }
+}
+
+- (void)removeOrphanedCards {
+    _importing = true;
+    for (int i = 0; i <3; i++) {
+        NSArray *tmpcards = [self retrieveAllCardswithType:i withPredicate:nil];
+        for (NSDictionary *card in tmpcards) {
+            NSManagedObject *obj = card[@"managedObject"];
+            bool deckexists = [self checkDeckUUIDExists:card[@"deckUUID"]];
+            if (!deckexists) {
+                [_moc deleteObject:obj];
+                [_moc performBlockAndWait:^{
+                    [_moc save:nil];
+                }];
+            }
+        }
+    }
+    _importing = false;
+    [_moc performBlockAndWait:^{
+        [_moc save:nil];
+    }];
 }
 @end

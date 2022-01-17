@@ -24,6 +24,7 @@
 @property (strong) IBOutlet NSMenuItem *contextresetProgress;
 @property bool refreshinprogress;
 @property (strong) NSDate* nextAllowableiCloudUIRefreshDate;
+@property (strong, nonatomic) dispatch_queue_t privateQueue;
 @end
 
 @implementation DeckBrowser
@@ -53,7 +54,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LearnEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
     AppDelegate *delegate = (AppDelegate *)NSApp.delegate;
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSManagedObjectContextDidSaveNotification object:delegate.persistentContainer.viewContext];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSManagedObjectContextDidSaveNotification object:delegate.mwc.moc];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"NSPersistentStoreRemoteChangeNotification" object:delegate.persistentContainer.persistentStoreCoordinator];
 }
@@ -74,10 +75,8 @@
             });
         }
         if ([notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
-            if (_nextAllowableiCloudUIRefreshDate) {
-                // Set next time CloudKit can refresh the UI
-                _nextAllowableiCloudUIRefreshDate = [NSDate.date dateByAddingTimeInterval:300];
-            }
+            // Set next time CloudKit can refresh the UI
+            _nextAllowableiCloudUIRefreshDate = [NSDate.date dateByAddingTimeInterval:300];
         }
     }
 }
@@ -365,56 +364,64 @@
 }
 
 - (void)populateTableViewWithArray:(NSArray *)array {
-    NSMutableArray *a = [_arraycontroller mutableArrayValueForKey:@"content"];
-    [a removeAllObjects];
-    [_arraycontroller addObjects:array];
-    [_tb reloadData];
-    [_tb deselectAll:self];
-    self.window.subtitle = array.count == 1 ? @"1 item" : [NSString stringWithFormat:@"%lu items",(unsigned long)array.count];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSMutableArray *a = [_arraycontroller mutableArrayValueForKey:@"content"];
+        [a removeAllObjects];
+        [_arraycontroller addObjects:array];
+        [_tb reloadData];
+        [_tb deselectAll:self];
+        self.window.subtitle = array.count == 1 ? @"1 item" : [NSString stringWithFormat:@"%lu items",(unsigned long)array.count];
+    });
 }
 
 - (void)loadSRSStageCards:(int)stage {
-    NSPredicate *predicate;
-    switch (stage) {
-        case 0:
-            predicate = [NSPredicate predicateWithFormat:@"srsstage <= %i AND learned == %@" , 3, @YES];
-            break;
-        case 1:
-            predicate = [NSPredicate predicateWithFormat:@"srsstage <= %i && srsstage >= %i AND learned == %@" , 5, 4, @YES];
-            break;
-        case 2:
-            predicate = [NSPredicate predicateWithFormat:@"srsstage == %i AND learned == %@" , 6, @YES];
-            break;
-        case 3:
-            predicate = [NSPredicate predicateWithFormat:@"srsstage == %i AND learned == %@" , 7, @YES];
-            break;
-        case 4:
-            predicate = [NSPredicate predicateWithFormat:@"srsstage == %i AND learned == %@" , 8, @YES];
-            break;
-        default:
-            break;
-    }
-    NSMutableArray *tmparray = [NSMutableArray new];
-    for (int i = 0; i < 3; i++) {
-        [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithType:i withPredicate:predicate]];
-    }
-    [self populateTableViewWithArray:tmparray];
+    [DeckManager.sharedInstance.moc performBlock:^{
+        NSPredicate *predicate;
+        switch (stage) {
+            case 0:
+                predicate = [NSPredicate predicateWithFormat:@"srsstage <= %i AND learned == %@" , 3, @YES];
+                break;
+            case 1:
+                predicate = [NSPredicate predicateWithFormat:@"srsstage <= %i && srsstage >= %i AND learned == %@" , 5, 4, @YES];
+                break;
+            case 2:
+                predicate = [NSPredicate predicateWithFormat:@"srsstage == %i AND learned == %@" , 6, @YES];
+                break;
+            case 3:
+                predicate = [NSPredicate predicateWithFormat:@"srsstage == %i AND learned == %@" , 7, @YES];
+                break;
+            case 4:
+                predicate = [NSPredicate predicateWithFormat:@"srsstage == %i AND learned == %@" , 8, @YES];
+                break;
+            default:
+                break;
+        }
+        NSMutableArray *tmparray = [NSMutableArray new];
+        for (int i = 0; i < 3; i++) {
+            [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithType:i withPredicate:predicate]];
+        }
+        [self populateTableViewWithArray:tmparray];
+    }];
 }
 
 - (void)loadcriticalitems {
-    NSMutableArray *tmparray = [NSMutableArray new];
-    for (int i = 0; i < 3; i++) {
-        [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCriticalCardswithType:i]];
-    }
-    [self populateTableViewWithArray:tmparray];
+    [DeckManager.sharedInstance.moc performBlock:^{
+        NSMutableArray *tmparray = [NSMutableArray new];
+        for (int i = 0; i < 3; i++) {
+            [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCriticalCardswithType:i]];
+        }
+        [self populateTableViewWithArray:tmparray];
+    }];
 }
 
 - (void)loadallitems {
-    NSMutableArray *tmparray = [NSMutableArray new];
-    for (int i = 0; i < 3; i++) {
-        [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithType:i withPredicate:nil]];
-    }
-    [self populateTableViewWithArray:tmparray];
+    [DeckManager.sharedInstance.moc performBlock:^{
+        NSMutableArray *tmparray = [NSMutableArray new];
+        for (int i = 0; i < 3; i++) {
+            [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithType:i withPredicate:nil]];
+        }
+        [self populateTableViewWithArray:tmparray];
+    }];
 }
 
 

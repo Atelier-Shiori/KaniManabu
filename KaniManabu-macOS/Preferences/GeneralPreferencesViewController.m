@@ -6,6 +6,7 @@
 //
 
 #import "GeneralPreferencesViewController.h"
+#import "DeckManager.h"
 
 @import AppCenterAnalytics;
 @import AppCenterCrashes;
@@ -27,6 +28,27 @@
 }
 - (IBAction)viewprivacypolicy:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://malupdaterosx.moe/kanimanabu/privacy-policy/"]];
+}
+- (IBAction)removeorphaned:(id)sender {
+    NSAlert *alert = [NSAlert new];
+    alert.messageText = @"Remove Orphaned Cards?";
+    alert.informativeText = @"Do you want to remove orphaned cards? Once done, it cannot be undone.";
+    [alert addButtonWithTitle:NSLocalizedString(@"Remove",nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
+    [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    [(NSButton *)alert.buttons[0] setKeyEquivalent: @""];
+    [(NSButton *)alert.buttons[1] setKeyEquivalent: @"\033"];
+    [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            ((NSButton *)sender).enabled = NO;
+            [DeckManager.sharedInstance.moc performBlock:^{
+                [DeckManager.sharedInstance removeOrphanedCards];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    ((NSButton *)sender).enabled = YES;
+                });
+            }];
+        }
+    }];
 }
 
 #pragma mark -
