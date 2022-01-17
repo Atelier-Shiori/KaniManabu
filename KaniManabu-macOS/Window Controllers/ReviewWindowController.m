@@ -364,7 +364,7 @@
         case CardReviewTypeReading: {
             switch (_currentcard.cardtype) {
                 case CardTypeVocab: {
-                    _questionprompt.stringValue = @"Vocabuary Reading";
+                    _questionprompt.stringValue = @"Vocabulary Reading";
                     break;
                 }
                 case CardTypeKanji: {
