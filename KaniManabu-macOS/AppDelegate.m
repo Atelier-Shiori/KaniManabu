@@ -69,7 +69,7 @@
     [MSACAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
 #if defined(AppStore)
 #else
-    [LicenseManager.sharedInstance checkKeyWithName:[[NSUserDefaults standardUserDefaults] objectForKey:@"donor"] withLicense:[[NSUserDefaults standardUserDefaults] objectForKey:@"donatekey"] withWindow:_mwc.window];
+    [LicenseManager.sharedInstance checkLicenseWithWindow:_mwc.window];
 #endif
 }
 
@@ -85,6 +85,7 @@
 - (IBAction)enterLicense:(id)sender {
 #if defined(AppStore)
 #else
+    [LicenseManager.sharedInstance showLicenceEnterWindow];
 #endif
 }
 

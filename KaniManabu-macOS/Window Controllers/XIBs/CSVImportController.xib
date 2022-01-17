@@ -104,7 +104,7 @@ Gw
                             <menu key="menu" id="qdu-AB-xHU">
                                 <items>
                                     <menuItem title="Kanji" state="on" id="E37-sa-jUB"/>
-                                    <menuItem title="Vocabuary" tag="1" id="Rl9-RJ-fgg"/>
+                                    <menuItem title="Vocabulary" tag="1" id="Rl9-RJ-fgg"/>
                                     <menuItem title="Kana" tag="2" id="9qa-yd-tWk"/>
                                 </items>
                             </menu>

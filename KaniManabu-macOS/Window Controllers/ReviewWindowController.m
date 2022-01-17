@@ -350,7 +350,7 @@
                     break;
                 }
                 case CardTypeVocab: {
-                    _questionprompt.stringValue = @"Vocabuary Meaning";
+                    _questionprompt.stringValue = @"Vocabulary Meaning";
                     break;
                 }
                 case CardTypeKanji: {

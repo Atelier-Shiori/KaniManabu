@@ -15,6 +15,7 @@
 @interface DeckBrowser ()
 @property (strong) NSSplitViewController *splitview;
 @property (strong) NSMutableArray *sourceListItems;
+@property (strong) IBOutlet NSSearchToolbarItem *filterfield;
 @property (strong) ItemInfoWindowController *iiwc;
 @property (strong) IBOutlet NSMenuItem *contextEditCardMenuItem;
 @property (strong) IBOutlet NSMenuItem *contextDeleteCardMenuItem;
@@ -340,6 +341,7 @@
         NSArray *cards = [DeckManager.sharedInstance retrieveCardsForDeckUUID:_currentDeckUUID withType:_currentDeckType];
         [self populateTableViewWithArray:cards];
     }
+    [self filteritems];
     [_tb.superview setBoundsOrigin:scrollOrigin];
 }
 
@@ -473,6 +475,22 @@
     NSDictionary *card =  [_arraycontroller selectedObjects][0];
     [DeckManager.sharedInstance togglesuspendCardForCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue];
     [self loadDeck];
+}
+- (IBAction)filteraction:(id)sender {
+    [self filteritems];
+}
+
+- (void)filteritems {
+    if (_filterfield.searchField.stringValue.length > 0) {
+        NSString *str = _filterfield.searchField.stringValue;
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"japanese CONTAINS[cd] %@ OR english CONTAINS[cd] %@ OR altmeaning CONTAINS[cd] %@ OR kanaWord CONTAINS[cd] %@ OR altreading CONTAINS[cd] %@ OR reading CONTAINS[cd] %@ OR tags CONTAINS[cd] %@", str,str,str,str,str,str,str];
+        _arraycontroller.filterPredicate = predicate;
+        [_tb reloadData];
+    }
+    else {
+        _arraycontroller.filterPredicate = nil;
+        [_tb reloadData];
+    }
 }
 
 #pragma mark NSTableViewDelegate

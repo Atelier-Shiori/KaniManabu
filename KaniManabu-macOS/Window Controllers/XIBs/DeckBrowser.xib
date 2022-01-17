@@ -16,6 +16,7 @@
                 <outlet property="contextSuspendCardItem" destination="NGs-KR-Jmm" id="wiq-Ib-HH8"/>
                 <outlet property="contextViewCardMenuItem" destination="ijw-cB-wfW" id="JUk-6E-QHH"/>
                 <outlet property="contextresetProgress" destination="bGT-al-EuE" id="bzl-Bi-Zds"/>
+                <outlet property="filterfield" destination="Lze-6I-FEx" id="Usc-4E-E0i"/>
                 <outlet property="mainViewController" destination="4vu-kB-fMo" id="hT8-jh-mHR"/>
                 <outlet property="sourceList" destination="9nT-Uf-DUD" id="sWh-sH-gXp"/>
                 <outlet property="sourceListViewController" destination="p6f-uD-d98" id="2Px-g2-ABD"/>
@@ -94,6 +95,9 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </searchFieldCell>
                         </searchField>
+                        <connections>
+                            <action selector="filteraction:" target="-2" id="oj9-7m-mJT"/>
+                        </connections>
                     </searchToolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
