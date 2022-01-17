@@ -20,6 +20,7 @@
 #import "DeckOptions.h"
 #import "CSVDeckExporter.h"
 #import "LicenseManager.h"
+#import "CSVLoadingWindow.h"
 
 @interface MainWindowController ()
 @property (strong)LearnWindowController *lwc;
@@ -30,6 +31,9 @@
 @property long totalreviewitemcount;
 @property (strong) CSVImportController *csvic;
 @property (strong) DeckOptions *dc;
+@property (strong) CSVLoadingWindow *csvlw;
+@property bool refreshinprogress;
+@property (strong) NSDate* nextAllowableiCloudUIRefreshDate;
 @end
 
 @implementation MainWindowController
@@ -52,8 +56,8 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"CardBrowserClosed" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LearnEnded" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckAdded" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckRemoved" object:nil];
+    //[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckAdded" object:nil];
+    //[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckRemoved" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"StartLearning" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"StartReviewing" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ActionDeleteDeck" object:nil];
@@ -88,24 +92,34 @@
         if( [notification.name isEqualToString:@"ReviewEnded"]) {
             _totalreviewitemcount = 0;
             _totallearnitemcount = 0;
+                    [_moc performBlockAndWait:^{
             [_moc save:nil];
+        }];
         }
     }
-    else if ([notification.name isEqualToString:@"DeckAdded"] || [notification.name isEqualToString:@"DeckRemoved"]) {
-        // Reload
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.totalreviewitemcount = 0;
-            self.totallearnitemcount = 0;
-            [self loadDeckArrayAndPopulate];
-        });
-    }
     else if ([notification.name isEqualToString:NSManagedObjectContextDidSaveNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification] || [notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"]) {
+        // To prevent NSPresistentStoreRemoteChangeNotification triggering UI freshing several times and cause the app to perform slowly, check an allowable date before allowing its operation.
+        if ([notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
+            if (_nextAllowableiCloudUIRefreshDate) {
+                if (_nextAllowableiCloudUIRefreshDate.timeIntervalSinceNow > 0) {
+                    return;
+                }
+            }
+        }
         // Reload
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.totalreviewitemcount = 0;
-            self.totallearnitemcount = 0;
-            [self loadDeckArrayAndPopulate];
-        });
+        if (!DeckManager.sharedInstance.importing && !_refreshinprogress) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.totalreviewitemcount = 0;
+                self.totallearnitemcount = 0;
+                [self loadDeckArrayAndPopulate];
+            });
+        }
+        if ([notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
+            if (_nextAllowableiCloudUIRefreshDate) {
+                // Set next time CloudKit can refresh the UI
+                _nextAllowableiCloudUIRefreshDate = [NSDate.date dateByAddingTimeInterval:300];
+            }
+        }
     }
     else if ([notification.name isEqualToString:@"ActionAddCard"]) {
         if ([self checkDeckLimit:false]) {
@@ -273,11 +287,13 @@
 }
 
 - (void)loadDeckArrayAndPopulate {
+    _refreshinprogress = true;
     NSMutableArray *a = [_arrayController mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
     [_arrayController addObjects:[DeckManager.sharedInstance retrieveDecks]];
     [_tb reloadData];
     [_tb deselectAll:self];
+    _refreshinprogress = false;
 }
 - (void)windowWillClose:(NSNotification *)notification{
     [[NSApplication sharedApplication] terminate:nil];
@@ -380,27 +396,37 @@
                     [self.csvic loadColumnNames:columnnames];
                     [self.window beginSheet:self.csvic.window completionHandler:^(NSModalResponse returnCode) {
                         if (returnCode == NSModalResponseOK) {
-                            [csvimporter performimportWithDeckName:self.csvic.deckname.stringValue withDeckType:self.csvic.decktype.selectedTag destinationMap:self.csvic.maparray completionHandler:^(bool success) {
-                                if (success) {
-                                    [NSNotificationCenter.defaultCenter postNotificationName:@"DeckAdded" object:nil];
-                                    NSAlert *alert = [[NSAlert alloc] init] ;
-                                    [alert addButtonWithTitle:@"OK"];
-                                    [alert setMessageText:@"Deck imported"];
-                                    alert.informativeText = @"Deck as successfully imported";
-                                    alert.alertStyle = NSAlertStyleInformational;
-                                    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-                                        }];
-                                }
-                                else {
-                                    NSAlert *alert = [[NSAlert alloc] init] ;
-                                    [alert addButtonWithTitle:@"OK"];
-                                    [alert setMessageText:@"Deck import failed"];
-                                    alert.informativeText = @"Deck either already exists or the field mappings are not correctly set. Please try again.";
-                                    alert.alertStyle = NSAlertStyleInformational;
-                                    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-                                        }];
-                                }
+                            self.csvlw = [CSVLoadingWindow new];
+                            [self.window beginSheet:self.csvlw.window completionHandler:^(NSModalResponse returnCode) {
                             }];
+                            NSString *deckname = self.csvic.deckname.stringValue;
+                            long selectedtype = self.csvic.decktype.selectedTag;
+                            dispatch_async(self.privateQueue, ^{
+                                [csvimporter performimportWithDeckName:deckname withDeckType:selectedtype destinationMap:self.csvic.maparray completionHandler:^(bool success) {
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        [self.csvlw operationDone];
+                                        if (success) {
+                                            [NSNotificationCenter.defaultCenter postNotificationName:@"DeckAdded" object:nil];
+                                            NSAlert *alert = [[NSAlert alloc] init] ;
+                                            [alert addButtonWithTitle:@"OK"];
+                                            [alert setMessageText:@"Deck imported"];
+                                            alert.informativeText = @"Deck as successfully imported";
+                                            alert.alertStyle = NSAlertStyleInformational;
+                                            [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                                                }];
+                                        }
+                                        else {
+                                            NSAlert *alert = [[NSAlert alloc] init] ;
+                                            [alert addButtonWithTitle:@"OK"];
+                                            [alert setMessageText:@"Deck import failed"];
+                                            alert.informativeText = @"Deck either already exists or the field mappings are not correctly set. Please try again.";
+                                            alert.alertStyle = NSAlertStyleInformational;
+                                            [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                                                }];
+                                        }
+                                    });
+                                }];
+                            });
                         }
                     }];
                 }

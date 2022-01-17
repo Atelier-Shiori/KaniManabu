@@ -12,7 +12,7 @@
 
 @interface DeckManager : NSObject
 @property (strong) NSManagedObjectContext *moc;
-
+@property bool importing;
 typedef NS_ENUM(int,DeckType) {
     DeckTypeKanji = 0,
     DeckTypeVocab = 1,

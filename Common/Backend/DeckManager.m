@@ -25,7 +25,9 @@
         [newDeck setValue:@(type) forKey:@"deckType"];
         [newDeck setValue:NSUUID.UUID forKey:@"deckUUID"];
         [newDeck setValue:@(NSDate.date.timeIntervalSince1970) forKey:@"nextLearnInterval"];
-        [_moc save:nil];
+        [_moc performBlockAndWait:^{
+                [_moc save:nil];
+        }];
         return true;
     }
     return false;
@@ -50,7 +52,9 @@
     if (decks.count > 0) {
         NSManagedObject *deck = decks[0];
         [_moc deleteObject:deck];
-        [_moc save:nil];
+                [_moc performBlockAndWait:^{
+            [_moc save:nil];
+        }];
         return true;
     }
     return false;
@@ -180,7 +184,9 @@
             }
         }
         [self setLearnDateForDeckUUID:uuid setToday:NO];
-        [_moc save:nil];
+                [_moc performBlockAndWait:^{
+            [_moc save:nil];
+        }];
     }
     return learnqueue;
 }
@@ -330,7 +336,10 @@
         [newCard setValue:@(NSDate.date.timeIntervalSince1970) forKey:@"datecreated"];
         // Set deck learn date so it can refresh the learning queue with new cards
         [self setLearnDateForDeckUUID:uuid setToday:YES];
-        [_moc save:nil];
+        // Only save card when the add card operation is from the editor, not an import to prevent notifications from triggering multiple times.
+        [_moc performBlockAndWait:^{
+            [_moc save:nil];
+        }];
         return true;
     }
     return false;
@@ -343,7 +352,9 @@
         for (NSString *key in cardData.allKeys) {
             [obj setValue:cardData[key] forKey:key];
         }
-        [_moc save:nil];
+                [_moc performBlockAndWait:^{
+            [_moc save:nil];
+        }];
         return true;
     }
     return false;
@@ -434,7 +445,9 @@
         [obj setValue:@NO forKey:@"inreview"];
         [obj setValue:@(0) forKey:@"lastreviewed"];
         [obj setValue:@(0) forKey:@"nextreviewinterval"];
-        [_moc save:nil];
+                [_moc performBlockAndWait:^{
+            [_moc save:nil];
+        }];
     }
 }
 
@@ -460,7 +473,9 @@
     if (tmparray.count > 0) {
         NSManagedObject *obj = tmparray[0];
         [_moc deleteObject:obj];
-        [_moc save:nil];
+                [_moc performBlockAndWait:^{
+            [_moc save:nil];
+        }];
         return true;
     }
     return false;
@@ -491,7 +506,9 @@
     for (NSManagedObject *obj in cards) {
         [_moc deleteObject:obj];
     }
-    [_moc save:nil];
+    [_moc performBlockAndWait:^{
+            [_moc save:nil];
+    }];
 }
 
 - (void)togglesuspendCardForCardUUID:(NSUUID *)uuid withType:(int)type {
@@ -517,7 +534,9 @@
         NSManagedObject *obj = tmparray[0];
         bool suspended = ((NSNumber *)[obj valueForKey:@"suspended"]).boolValue;
         [obj setValue:@(!suspended) forKey:@"suspended"];
-        [_moc save:nil];
+                [_moc performBlockAndWait:^{
+            [_moc save:nil];
+        }];
     }
 }
 @end

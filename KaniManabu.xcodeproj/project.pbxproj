@@ -14,6 +14,10 @@
 		151F3ABE278E23CD00953ECD /* KanjiEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3ABC278E23CD00953ECD /* KanjiEditor.xib */; };
 		151F3AC2278E23D800953ECD /* KanaEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3AC0278E23D800953ECD /* KanaEditor.m */; };
 		151F3AC3278E23D800953ECD /* KanaEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3AC1278E23D800953ECD /* KanaEditor.xib */; };
+		153E9F0D2795CF170094A306 /* CSVLoadingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */; };
+		153E9F0E2795CF170094A306 /* CSVLoadingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */; };
+		153E9F0F2795CF170094A306 /* CSVLoadingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153E9F0C2795CF170094A306 /* CSVLoadingWindow.xib */; };
+		153E9F102795CF170094A306 /* CSVLoadingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153E9F0C2795CF170094A306 /* CSVLoadingWindow.xib */; };
 		153FFE742794F33500D481A2 /* CFobLicVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE702794F33500D481A2 /* CFobLicVerifier.m */; };
 		153FFE752794F33500D481A2 /* DonationKeyVerify.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE722794F33500D481A2 /* DonationKeyVerify.m */; };
 		153FFE762794F33500D481A2 /* CFobError.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE732794F33500D481A2 /* CFobError.m */; };
@@ -248,6 +252,9 @@
 		151F3ABF278E23D800953ECD /* KanaEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KanaEditor.h; sourceTree = "<group>"; };
 		151F3AC0278E23D800953ECD /* KanaEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KanaEditor.m; sourceTree = "<group>"; };
 		151F3AC1278E23D800953ECD /* KanaEditor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KanaEditor.xib; sourceTree = "<group>"; };
+		153E9F0A2795CF170094A306 /* CSVLoadingWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVLoadingWindow.h; sourceTree = "<group>"; };
+		153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSVLoadingWindow.m; sourceTree = "<group>"; };
+		153E9F0C2795CF170094A306 /* CSVLoadingWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CSVLoadingWindow.xib; sourceTree = "<group>"; };
 		153FFE6E2794F33500D481A2 /* CFobError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFobError.h; sourceTree = "<group>"; };
 		153FFE6F2794F33500D481A2 /* CFobLicVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFobLicVerifier.h; sourceTree = "<group>"; };
 		153FFE702794F33500D481A2 /* CFobLicVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFobLicVerifier.m; sourceTree = "<group>"; };
@@ -556,6 +563,9 @@
 				15C52D6F279398E3002ADE2B /* DeckOptions.m */,
 				FFA14B79278EF1560038B9C2 /* CardEditor.h */,
 				FFA14B7A278EF1560038B9C2 /* CardEditor.m */,
+				153E9F0A2795CF170094A306 /* CSVLoadingWindow.h */,
+				153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */,
+				153E9F0C2795CF170094A306 /* CSVLoadingWindow.xib */,
 			);
 			path = "Window Controllers";
 			sourceTree = "<group>";
@@ -814,6 +824,7 @@
 				1573292A2794B9C400587C05 /* NewDeckDialog.xib in Resources */,
 				1573292B2794B9C400587C05 /* CSVImportController.xib in Resources */,
 				1573292C2794B9C400587C05 /* KanjiEditor.xib in Resources */,
+				153E9F102795CF170094A306 /* CSVLoadingWindow.xib in Resources */,
 				1573292D2794B9C400587C05 /* EULA.rtf in Resources */,
 				1573292E2794B9C400587C05 /* GeneralPreferences.xib in Resources */,
 				1573292F2794B9C400587C05 /* Assets.xcassets in Resources */,
@@ -850,6 +861,7 @@
 				FF746572278F44AE0062E476 /* PFAboutWindow.xib in Resources */,
 				FF70887B278C852700DF399E /* Review.xib in Resources */,
 				15B122D2278CE45300575A73 /* VocabEditor.xib in Resources */,
+				153E9F0F2795CF170094A306 /* CSVLoadingWindow.xib in Resources */,
 				FFA14B92278F18340038B9C2 /* ItemInfoWindow.xib in Resources */,
 				FF70887F278C854000DF399E /* DeckBrowser.xib in Resources */,
 			);
@@ -897,6 +909,7 @@
 				157329132794B9C400587C05 /* DeckOptions.m in Sources */,
 				157329142794B9C400587C05 /* AnswerCheck.m in Sources */,
 				157329152794B9C400587C05 /* SRSLevelValueTransformer.m in Sources */,
+				153E9F0E2795CF170094A306 /* CSVLoadingWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,6 +935,7 @@
 				FFBE3C31278DF05F003D3F06 /* UnixDatetoNSDate.m in Sources */,
 				FFB6145C278CB8AF001E5FAA /* DeckBrowser.m in Sources */,
 				15794878278CD407000D984D /* GeneralPreferencesViewController.m in Sources */,
+				153E9F0D2795CF170094A306 /* CSVLoadingWindow.m in Sources */,
 				1579487D278CDB97000D984D /* DeckManager.m in Sources */,
 				FF28A80F278C941800D3744D /* SRScheduler.m in Sources */,
 				FF28A81D278CB19E00D3744D /* ReviewWindowController.m in Sources */,

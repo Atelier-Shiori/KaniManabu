@@ -22,6 +22,8 @@
 @property (strong) IBOutlet NSMenuItem *contextViewCardMenuItem;
 @property (strong) IBOutlet NSMenuItem *contextSuspendCardItem;
 @property (strong) IBOutlet NSMenuItem *contextresetProgress;
+@property bool refreshinprogress;
+@property (strong) NSDate* nextAllowableiCloudUIRefreshDate;
 @end
 
 @implementation DeckBrowser
@@ -45,8 +47,8 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckAdded" object:nil];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckRemoved" object:nil];
+    //[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckAdded" object:nil];
+    //[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckRemoved" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LearnEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
@@ -58,10 +60,25 @@
 
 - (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"DeckAdded"]||[notification.name isEqualToString:@"DeckRemoved"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSManagedObjectContextDidSaveNotification] ||[notification.name isEqualToString:@"LearnEnded"]||[notification.name isEqualToString:@"ReviewEnded"]||[notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Reload
-            [self generateSourceList];
-        });
+        if ([notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
+            if (_nextAllowableiCloudUIRefreshDate) {
+                if (_nextAllowableiCloudUIRefreshDate.timeIntervalSinceNow > 0) {
+                    return;
+                }
+            }
+        }
+        if (!DeckManager.sharedInstance.importing && !_refreshinprogress) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // Reload
+                [self generateSourceList];
+            });
+        }
+        if ([notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
+            if (_nextAllowableiCloudUIRefreshDate) {
+                // Set next time CloudKit can refresh the UI
+                _nextAllowableiCloudUIRefreshDate = [NSDate.date dateByAddingTimeInterval:300];
+            }
+        }
     }
 }
 
@@ -81,6 +98,7 @@
 }
 
 - (void)generateSourceList {
+    _refreshinprogress = true;
     NSPoint scrollOrigin = _sourceList.superview.bounds.origin;
     self.sourceListItems = [[NSMutableArray alloc] init];
     NSMutableArray *decks = [NSMutableArray new];
@@ -145,6 +163,7 @@
          [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1]byExtendingSelection:false];
     }
     [_sourceList.superview setBoundsOrigin:scrollOrigin];
+    _refreshinprogress = false;
 }
 
 

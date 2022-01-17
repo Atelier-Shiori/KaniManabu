@@ -66,6 +66,7 @@
     }
     //Create deck
     DeckManager *dm = DeckManager.sharedInstance;
+    dm.importing = true;
     if (![dm checkDeckExists:deckname withType:type]) {
         [dm createDeck:deckname withType:type];
         NSUUID *deckuuid = [dm getDeckUUIDWithDeckName:deckname withDeckType:type];
@@ -75,6 +76,11 @@
             }
             [dm addCardWithDeckUUID:deckuuid withCardData:ncard withType:type];
         }
+        dm.importing = false;
+        // Save the data
+        [dm.moc performBlockAndWait:^{
+            [dm.moc save:nil];
+        }];
         completionHandler(true);
     }
     else {
@@ -93,7 +99,7 @@
         }
         if ([deststr isEqualToString:@"Japanese"]) {
             if (!dict[@"japanese"]) {
-                dict[@"japanese"] = card[colstr];
+                dict[@"japanese"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -101,7 +107,7 @@
         }
         else if ([deststr isEqualToString:@"English"]) {
             if (!dict[@"english"]) {
-                dict[@"english"] = card[colstr];
+                dict[@"english"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -109,7 +115,7 @@
         }
         else if ([deststr isEqualToString:@"Alt Meanings"]) {
             if (!dict[@"altmeaning"]) {
-                dict[@"altmeaning"] = card[colstr];
+                dict[@"altmeaning"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -117,7 +123,7 @@
         }
         else if ([deststr isEqualToString:@"Primary Reading"]) {
             if (!dict[@"kanareading"]) {
-                dict[@"kanareading"] = card[colstr];
+                dict[@"kanareading"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -141,7 +147,7 @@
         }
         else if ([deststr isEqualToString:@"Alt Reading"]) {
             if (!dict[@"altreading"]) {
-                dict[@"altreading"] = card[colstr];
+                dict[@"altreading"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -149,7 +155,7 @@
         }
         else if ([deststr isEqualToString:@"Notes"]) {
             if (!dict[@"notes"]) {
-                dict[@"notes"] = card[colstr];
+                dict[@"notes"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -157,7 +163,7 @@
         }
         else if ([deststr isEqualToString:@"Tags"]) {
             if (!dict[@"tags"]) {
-                dict[@"tags"] = card[colstr];
+                dict[@"tags"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -181,7 +187,7 @@
         }
         if ([deststr isEqualToString:@"Japanese"]) {
             if (!dict[@"japanese"]) {
-                dict[@"japanese"] = card[colstr];
+                dict[@"japanese"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -189,7 +195,7 @@
         }
         else if ([deststr isEqualToString:@"English"]) {
             if (!dict[@"english"]) {
-                dict[@"english"] = card[colstr];
+                dict[@"english"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -197,7 +203,7 @@
         }
         else if ([deststr isEqualToString:@"Alt Meanings"]) {
             if (!dict[@"altmeaning"]) {
-                dict[@"altmeaning"] = card[colstr];
+                dict[@"altmeaning"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -205,8 +211,8 @@
         }
         else if ([deststr isEqualToString:@"Kana"]) {
             if (!dict[@"kanaWord"]) {
-                dict[@"kanaWord"] = card[colstr];
-                dict[@"reading"] = card[colstr];
+                dict[@"kanaWord"] = [self quotesCleanup:card[colstr]];
+                dict[@"reading"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -214,7 +220,7 @@
         }
         else if ([deststr isEqualToString:@"Notes"]) {
             if (!dict[@"notes"]) {
-                dict[@"notes"] = card[colstr];
+                dict[@"notes"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -222,7 +228,7 @@
         }
         else if ([deststr isEqualToString:@"Context Sentence 1"]) {
             if (!dict[@"contextsentence1"]) {
-                dict[@"contextsentence1"] = card[colstr];
+                dict[@"contextsentence1"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -230,7 +236,7 @@
         }
         else if ([deststr isEqualToString:@"Context Sentence 2"]) {
             if (!dict[@"contextsentence2"]) {
-                dict[@"contextsentence2"] = card[colstr];
+                dict[@"contextsentence2"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -238,7 +244,7 @@
         }
         else if ([deststr isEqualToString:@"Context Sentence 3"]) {
             if (!dict[@"contextsentence3"]) {
-                dict[@"contextsentence3"] = card[colstr];
+                dict[@"contextsentence3"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -246,7 +252,7 @@
         }
         else if ([deststr isEqualToString:@"English Sentence 1"]) {
             if (!dict[@"englishsentence1"]) {
-                dict[@"englishsentence1"] = card[colstr];
+                dict[@"englishsentence1"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -254,7 +260,7 @@
         }
         else if ([deststr isEqualToString:@"English Sentence 2"]) {
             if (!dict[@"englishsentence2"]) {
-                dict[@"englishsentence2"] = card[colstr];
+                dict[@"englishsentence2"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -262,7 +268,7 @@
         }
         else if ([deststr isEqualToString:@"English Sentence 3"]) {
             if (!dict[@"englishsentence3"]) {
-                dict[@"englishsentence3"] = card[colstr];
+                dict[@"englishsentence3"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -270,7 +276,7 @@
         }
         else if ([deststr isEqualToString:@"Tags"]) {
             if (!dict[@"tags"]) {
-                dict[@"tags"] = card[colstr];
+                dict[@"tags"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -294,8 +300,8 @@
         }
         if ([deststr isEqualToString:@"Japanese"]) {
             if (!dict[@"japanese"]) {
-                dict[@"japanese"] = card[colstr];
-                dict[@"kanareading"] = card[colstr];
+                dict[@"japanese"] = [self quotesCleanup:card[colstr]];
+                dict[@"kanareading"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -303,7 +309,7 @@
         }
         else if ([deststr isEqualToString:@"English"]) {
             if (!dict[@"english"]) {
-                dict[@"english"] = card[colstr];
+                dict[@"english"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -311,7 +317,7 @@
         }
         else if ([deststr isEqualToString:@"Alt Meanings"]) {
             if (!dict[@"altmeaning"]) {
-                dict[@"altmeaning"] = card[colstr];
+                dict[@"altmeaning"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -319,7 +325,7 @@
         }
         else if ([deststr isEqualToString:@"Notes"]) {
             if (!dict[@"notes"]) {
-                dict[@"notes"] = card[colstr];
+                dict[@"notes"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -327,7 +333,7 @@
         }
         else if ([deststr isEqualToString:@"Context Sentence 1"]) {
             if (!dict[@"contextsentence1"]) {
-                dict[@"contextsentence1"] = card[colstr];
+                dict[@"contextsentence1"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -335,7 +341,7 @@
         }
         else if ([deststr isEqualToString:@"Context Sentence 2"]) {
             if (!dict[@"contextsentence2"]) {
-                dict[@"contextsentence2"] = card[colstr];
+                dict[@"contextsentence2"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -343,7 +349,7 @@
         }
         else if ([deststr isEqualToString:@"English Sentence 1"]) {
             if (!dict[@"englishsentence1"]) {
-                dict[@"englishsentence1"] = card[colstr];
+                dict[@"englishsentence1"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -351,7 +357,7 @@
         }
         else if ([deststr isEqualToString:@"English Sentence 2"]) {
             if (!dict[@"englishsentence2"]) {
-                dict[@"englishsentence2"] = card[colstr];
+                dict[@"englishsentence2"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -359,7 +365,7 @@
         }
         else if ([deststr isEqualToString:@"Tags"]) {
             if (!dict[@"tags"]) {
-                dict[@"tags"] = card[colstr];
+                dict[@"tags"] = [self quotesCleanup:card[colstr]];
             }
             else {
                 return nil;
@@ -370,5 +376,13 @@
         return nil;
     }
     return dict;
+}
+- (NSString *)quotesCleanup:(NSString *)string {
+    if (string.length > 0) {
+        NSString *quotesubstr1 = [string substringWithRange:NSMakeRange(0, 1)];
+        NSString *quotesubstr2 = [string substringWithRange:NSMakeRange(string.length-1, 1)];
+        return [quotesubstr1 isEqualToString:@"\""] && [quotesubstr2 isEqualToString:@"\""] ? [string substringWithRange:NSMakeRange(1, string.length-2)] : string;
+    }
+    return string;
 }
 @end

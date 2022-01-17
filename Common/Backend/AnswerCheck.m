@@ -59,18 +59,22 @@ double const kFuzziness = 0.8;
     // Trim whitespace if any
     answer = [answer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     // Check if user accidentally entered Japanese
-    if ([card valueForKey:@"reading"]) {
-        NSString * romajireading = [(NSString *)[card valueForKey:@"reading"] stringKanaToRomaji];
-        if ([answer caseInsensitiveCompare:romajireading] == NSOrderedSame) {
-            // User entered reading, but we want the meaning.
-            return AnswerStateJapaneseReadingAnswer;
+    if ([card.entity.name isEqualToString:@"KanjiCards"]) {
+        if ([card valueForKey:@"reading"]) {
+            NSString * romajireading = [(NSString *)[card valueForKey:@"reading"] stringKanaToRomaji];
+            if ([answer caseInsensitiveCompare:romajireading] == NSOrderedSame) {
+                // User entered reading, but we want the meaning.
+                return AnswerStateJapaneseReadingAnswer;
+            }
         }
     }
-    else if ([card valueForKey:@"kanaWord"]) {
-        NSString * romajireading = [(NSString *)[card valueForKey:@"kanaWord"] stringKanaToRomaji];
-        if ([answer caseInsensitiveCompare:romajireading] == NSOrderedSame) {
-            // User entered reading, but we want the meaning.
-            return AnswerStateJapaneseReadingAnswer;
+    else if ([card.entity.name isEqualToString:@"VocabCards"]) {
+        if ([card valueForKey:@"kanaWord"]) {
+            NSString * romajireading = [(NSString *)[card valueForKey:@"kanaWord"] stringKanaToRomaji];
+            if ([answer caseInsensitiveCompare:romajireading] == NSOrderedSame) {
+                // User entered reading, but we want the meaning.
+                return AnswerStateJapaneseReadingAnswer;
+            }
         }
     }
     // Check Answers
