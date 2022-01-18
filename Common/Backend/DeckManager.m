@@ -34,6 +34,7 @@
 }
 
 - (bool)checkDeckExists:(NSString *)deckname withType:(int)type {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     fetchRequest.entity = [NSEntityDescription entityForName:@"Decks" inManagedObjectContext:_moc];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deckName == %@ AND deckType == %i",deckname, type];
@@ -43,6 +44,7 @@
 }
 
 - (bool)checkDeckUUIDExists:(NSUUID *)uuid {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     fetchRequest.entity = [NSEntityDescription entityForName:@"Decks" inManagedObjectContext:_moc];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deckUUID == %@",uuid];
@@ -70,6 +72,7 @@
 }
 
 - (NSArray *)retrieveDecks {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     fetchRequest.entity = [NSEntityDescription entityForName:@"Decks" inManagedObjectContext:_moc];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
@@ -80,6 +83,7 @@
 }
 
 - (NSManagedObject *)getDeckMetadataWithUUID:(NSUUID *)uuid {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     fetchRequest.entity = [NSEntityDescription entityForName:@"Decks" inManagedObjectContext:_moc];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deckUUID == %@",uuid];
@@ -93,6 +97,7 @@
 }
 
 - (NSUUID *)getDeckUUIDWithDeckName:(NSString *)deckname withDeckType:(DeckType)type {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     fetchRequest.entity = [NSEntityDescription entityForName:@"Decks" inManagedObjectContext:_moc];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deckName == %@ AND deckType == %i",deckname,type];
@@ -108,6 +113,7 @@
 # pragma mark Review Queue Methods
 
 - (NSArray *)retrieveReviewItemsForDeckUUID:(NSUUID *)uuid withType:(int)type {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSMutableArray *reviewqueue = [NSMutableArray new];
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     switch (type) {
@@ -154,6 +160,7 @@
 
 # pragma mark Learning Queue Methods
 - (NSArray *)setandretrieveLearnItemsForDeckUUID:(NSUUID *)uuid withType:(int)type {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSMutableArray *learnqueue = [NSMutableArray new];
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     NSFetchRequest *fetchRequestlearning = [NSFetchRequest new];
@@ -201,6 +208,7 @@
 }
 
 - (void)setLearnDateForDeckUUID:(NSUUID *)uuid setToday:(bool)today {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     fetchRequest.entity = [NSEntityDescription entityForName:@"Decks" inManagedObjectContext:_moc];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deckUUID == %@",uuid];
@@ -214,6 +222,7 @@
 }
 
 - (NSDate *)getLearnDateForDeckUUID: (NSUUID *)uuid {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     fetchRequest.entity = [NSEntityDescription entityForName:@"Decks" inManagedObjectContext:_moc];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deckUUID == %@",uuid];
@@ -233,6 +242,7 @@
 
 #pragma mark Card retrieval
 - (NSArray *)retrieveCardsForDeckUUID:(NSUUID *)uuid withType:(int)type {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     switch (type) {
         case DeckTypeKana:
@@ -266,6 +276,7 @@
 }
 
 - (NSArray *)retrieveAllCardswithType:(int)type withPredicate:(NSPredicate *)predicates {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     switch (type) {
         case DeckTypeKana:
@@ -370,6 +381,7 @@
 }
 
 - (bool)checkCardExistsInDeckWithDeckUUID:(NSUUID *)uuid withJapaneseWord:(NSString *)word withType:(DeckType)type {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     switch (type) {
         case DeckTypeKana:
@@ -391,6 +403,7 @@
 }
 
 - (NSDictionary *)getCardWithCardUUID:(NSUUID *)uuid withType:(DeckType)type {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     switch (type) {
         case DeckTypeKana:
@@ -421,6 +434,7 @@
 }
 
 - (void)resetCardWithCardUUID:(NSUUID *)uuid withType:(DeckType)type {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     switch (type) {
         case DeckTypeKana:
@@ -461,6 +475,7 @@
 }
 
 - (bool)deleteCardWithCardUUID:(NSUUID *)uuid withType:(DeckType)type {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     switch (type) {
         case DeckTypeKana:
@@ -491,6 +506,7 @@
 }
 
 - (void)deleteAllCardsForDeckUUID:(NSUUID *)uuid withType:(int)type {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     switch (type) {
         case DeckTypeKana:
@@ -521,6 +537,7 @@
 }
 
 - (void)togglesuspendCardForCardUUID:(NSUUID *)uuid withType:(int)type {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     switch (type) {
         case DeckTypeKana:
