@@ -157,6 +157,30 @@
 		FFB6145C278CB8AF001E5FAA /* DeckBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */; };
 		FFBE3C2E278DEF67003D3F06 /* SRSLevelValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C2D278DEF67003D3F06 /* SRSLevelValueTransformer.m */; };
 		FFBE3C31278DF05F003D3F06 /* UnixDatetoNSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C30278DF05F003D3F06 /* UnixDatetoNSDate.m */; };
+		FFD983662797415D0017730A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD983652797415D0017730A /* AppDelegate.m */; };
+		FFD983692797415D0017730A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD983682797415D0017730A /* SceneDelegate.m */; };
+		FFD9836C2797415D0017730A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD9836B2797415D0017730A /* ViewController.m */; };
+		FFD9836F2797415D0017730A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD9836D2797415D0017730A /* Main.storyboard */; };
+		FFD983742797415E0017730A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFD983732797415E0017730A /* Assets.xcassets */; };
+		FFD983772797415E0017730A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD983752797415E0017730A /* LaunchScreen.storyboard */; };
+		FFD9837A2797415E0017730A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD983792797415E0017730A /* main.m */; };
+		FFD98389279741D00017730A /* KaniManabu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF708867278C7CDF00DF399E /* KaniManabu.xcdatamodeld */; };
+		FFD9838A279742420017730A /* CSVDeckExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CB506927949A5000ECF326 /* CSVDeckExporter.m */; };
+		FFD9838B279742460017730A /* CSVDeckImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89D7122791EC92009B7C6F /* CSVDeckImporter.m */; };
+		FFD9838C279742490017730A /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */; };
+		FFD9838D2797424D0017730A /* AnswerCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122D5278CE93E00575A73 /* AnswerCheck.m */; };
+		FFD9838E279742530017730A /* DeckManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1579487C278CDB97000D984D /* DeckManager.m */; };
+		FFD9838F279742560017730A /* CardReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794872278CC083000D984D /* CardReview.m */; };
+		FFD983902797425A0017730A /* SRScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A80E278C941800D3744D /* SRScheduler.m */; };
+		FFD98391279742610017730A /* NSString+RomajiKanaConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122DB278CED4C00575A73 /* NSString+RomajiKanaConvert.m */; };
+		FFD98392279742640017730A /* PaRomajiKanaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122DA278CED4C00575A73 /* PaRomajiKanaConverter.m */; };
+		FFD98393279742670017730A /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89D70A2791D41D009B7C6F /* CHCSVParser.m */; };
+		FFD983942797426C0017730A /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A822278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m */; };
+		FFD98395279742710017730A /* string_score.c in Sources */ = {isa = PBXBuildFile; fileRef = 15B122D8278CEBE900575A73 /* string_score.c */; };
+		FFD98396279742760017730A /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE81727906AA500CA6A99 /* MSWeakTimer.m */; };
+		FFD98397279742900017730A /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF74655F278F2F960062E476 /* AFNetworking.framework */; };
+		FFD98398279742900017730A /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF74655F278F2F960062E476 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFD983A8279744760017730A /* Study.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD983A7279744760017730A /* Study.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -239,6 +263,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFD98399279742900017730A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FFD98398279742900017730A /* AFNetworking.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -269,7 +304,7 @@
 		154490822794ED760009CED4 /* LicenseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LicenseManager.h; sourceTree = "<group>"; };
 		154490832794ED760009CED4 /* LicenseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LicenseManager.m; sourceTree = "<group>"; };
 		1573293F2794B9C400587C05 /* KaniManabu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaniManabu.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		157329402794B9C400587C05 /* KaniManabu copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "KaniManabu copy-Info.plist"; path = "/Volumes/美咲野くくる/Development/beta new/WaniManabu/KaniManabu copy-Info.plist"; sourceTree = "<absolute>"; };
+		157329402794B9C400587C05 /* KaniManabu copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KaniManabu copy-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1579486B278CBFB0000D984D /* DeckAddDialogController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckAddDialogController.h; sourceTree = "<group>"; };
 		1579486C278CBFB0000D984D /* DeckAddDialogController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckAddDialogController.m; sourceTree = "<group>"; };
 		1579486E278CBFC9000D984D /* ItemInfoWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItemInfoWindowController.h; sourceTree = "<group>"; };
@@ -366,6 +401,19 @@
 		FFBE3C2D278DEF67003D3F06 /* SRSLevelValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRSLevelValueTransformer.m; sourceTree = "<group>"; };
 		FFBE3C2F278DF05F003D3F06 /* UnixDatetoNSDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnixDatetoNSDate.h; sourceTree = "<group>"; };
 		FFBE3C30278DF05F003D3F06 /* UnixDatetoNSDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnixDatetoNSDate.m; sourceTree = "<group>"; };
+		FFD983622797415D0017730A /* KaniManabu-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KaniManabu-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFD983642797415D0017730A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FFD983652797415D0017730A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FFD983672797415D0017730A /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		FFD983682797415D0017730A /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		FFD9836A2797415D0017730A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		FFD9836B2797415D0017730A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		FFD9836E2797415D0017730A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FFD983732797415E0017730A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FFD983762797415E0017730A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FFD983782797415E0017730A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFD983792797415E0017730A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FFD983A7279744760017730A /* Study.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Study.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -401,6 +449,14 @@
 				FF28A82A278CB50600D3744D /* PXSourceList.framework in Frameworks */,
 				FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */,
 				15C52D6C279237EA002ADE2B /* AppCenterCrashes.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFD9835F2797415D0017730A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFD98397279742900017730A /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +648,7 @@
 				15C52D7B27947773002ADE2B /* Common */,
 				FF746553278F2F8D0062E476 /* Dependencies */,
 				FF708863278C7CDF00DF399E /* KaniManabu-macOS */,
+				FFD983632797415D0017730A /* KaniManabu-iOS */,
 				FF708862278C7CDF00DF399E /* Products */,
 				FF708877278C83A000DF399E /* Frameworks */,
 				157329402794B9C400587C05 /* KaniManabu copy-Info.plist */,
@@ -603,6 +660,7 @@
 			children = (
 				FF708861278C7CDF00DF399E /* KaniManabu.app */,
 				1573293F2794B9C400587C05 /* KaniManabu.app */,
+				FFD983622797415D0017730A /* KaniManabu-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -679,6 +737,25 @@
 			path = ValueTransformers;
 			sourceTree = "<group>";
 		};
+		FFD983632797415D0017730A /* KaniManabu-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				FFD983642797415D0017730A /* AppDelegate.h */,
+				FFD983652797415D0017730A /* AppDelegate.m */,
+				FFD983672797415D0017730A /* SceneDelegate.h */,
+				FFD983682797415D0017730A /* SceneDelegate.m */,
+				FFD9836A2797415D0017730A /* ViewController.h */,
+				FFD9836B2797415D0017730A /* ViewController.m */,
+				FFD9836D2797415D0017730A /* Main.storyboard */,
+				FFD983732797415E0017730A /* Assets.xcassets */,
+				FFD983752797415E0017730A /* LaunchScreen.storyboard */,
+				FFD983782797415E0017730A /* Info.plist */,
+				FFD983792797415E0017730A /* main.m */,
+				FFD983A7279744760017730A /* Study.storyboard */,
+			);
+			path = "KaniManabu-iOS";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -718,6 +795,24 @@
 			productReference = FF708861278C7CDF00DF399E /* KaniManabu.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FFD983612797415D0017730A /* KaniManabu-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFD9837B2797415E0017730A /* Build configuration list for PBXNativeTarget "KaniManabu-iOS" */;
+			buildPhases = (
+				FFD9835E2797415D0017730A /* Sources */,
+				FFD9835F2797415D0017730A /* Frameworks */,
+				FFD983602797415D0017730A /* Resources */,
+				FFD98399279742900017730A /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KaniManabu-iOS";
+			productName = "KaniManabu-iOS";
+			productReference = FFD983622797415D0017730A /* KaniManabu-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -728,6 +823,9 @@
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					FF708860278C7CDF00DF399E = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					FFD983612797415D0017730A = {
 						CreatedOnToolsVersion = 13.1;
 					};
 				};
@@ -753,6 +851,7 @@
 			targets = (
 				FF708860278C7CDF00DF399E /* KaniManabu */,
 				157328F02794B9C400587C05 /* KaniManabu (AppStore) */,
+				FFD983612797415D0017730A /* KaniManabu-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -867,6 +966,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFD983602797415D0017730A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFD983A8279744760017730A /* Study.storyboard in Resources */,
+				FFD983772797415E0017730A /* LaunchScreen.storyboard in Resources */,
+				FFD983742797415E0017730A /* Assets.xcassets in Resources */,
+				FFD9836F2797415D0017730A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -963,6 +1073,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFD9835E2797415D0017730A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFD983902797425A0017730A /* SRScheduler.m in Sources */,
+				FFD983942797426C0017730A /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				FFD9838A279742420017730A /* CSVDeckExporter.m in Sources */,
+				FFD98391279742610017730A /* NSString+RomajiKanaConvert.m in Sources */,
+				FFD98395279742710017730A /* string_score.c in Sources */,
+				FFD9838C279742490017730A /* NSNumberFormatterNumberOnly.m in Sources */,
+				FFD9838E279742530017730A /* DeckManager.m in Sources */,
+				FFD98396279742760017730A /* MSWeakTimer.m in Sources */,
+				FFD9837A2797415E0017730A /* main.m in Sources */,
+				FFD98392279742640017730A /* PaRomajiKanaConverter.m in Sources */,
+				FFD9836C2797415D0017730A /* ViewController.m in Sources */,
+				FFD98393279742670017730A /* CHCSVParser.m in Sources */,
+				FFD9838F279742560017730A /* CardReview.m in Sources */,
+				FFD9838D2797424D0017730A /* AnswerCheck.m in Sources */,
+				FFD983662797415D0017730A /* AppDelegate.m in Sources */,
+				FFD98389279741D00017730A /* KaniManabu.xcdatamodeld in Sources */,
+				FFD983692797415D0017730A /* SceneDelegate.m in Sources */,
+				FFD9838B279742460017730A /* CSVDeckImporter.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -972,6 +1107,22 @@
 				FF70886D278C7CE000DF399E /* Base */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		FFD9836D2797415D0017730A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFD9836E2797415D0017730A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FFD983752797415E0017730A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFD983762797415E0017730A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1230,6 +1381,65 @@
 			};
 			name = Release;
 		};
+		FFD9837C2797415E0017730A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "KaniManabu-iOS/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.KaniManabu-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FFD9837D2797415E0017730A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "KaniManabu-iOS/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.KaniManabu-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1256,6 +1466,15 @@
 			buildConfigurations = (
 				FF708875278C7CE000DF399E /* Debug */,
 				FF708876278C7CE000DF399E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFD9837B2797415E0017730A /* Build configuration list for PBXNativeTarget "KaniManabu-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFD9837C2797415E0017730A /* Debug */,
+				FFD9837D2797415E0017730A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
