@@ -36,6 +36,51 @@
     }
 }
 
+- (void)performImportWithDeckUUID:(NSUUID *)deckuuid withDeckType:(int)type destinationMap:(NSArray *)map completionHandler:(void (^)(bool success)) completionHandler {
+    //Set Map
+    _destinationmap = map;
+    NSMutableArray *tmparray = [NSMutableArray new];
+    // Generate deck for importing
+    for (CHCSVOrderedDictionary *card in _loadedcsvdata) {
+        NSDictionary *savedata;
+        switch (type) {
+            case DeckTypeKanji:
+                savedata = [self mapKanjiCSVData:card];
+                break;
+            case DeckTypeVocab:
+                savedata = [self mapVocabCSVData:card];
+                break;
+            case DeckTypeKana:
+                savedata = [self mapKanaCSVData:card];
+                break;
+            default:
+                completionHandler(false);
+                return;
+        }
+        if (!savedata) {
+            // Invalid mapping, missing required fields, import failed
+            completionHandler(false);
+            return;
+        }
+        [tmparray addObject:savedata];
+    }
+    //Import cards to existing deck
+    DeckManager *dm = DeckManager.sharedInstance;
+    dm.importing = true;
+    for (NSDictionary *ncard in tmparray) {
+        if ([dm checkCardExistsInDeckWithDeckUUID:deckuuid withJapaneseWord:ncard[@"japanese"] withType:type]) {
+            continue;
+        }
+        [dm addCardWithDeckUUID:deckuuid withCardData:ncard withType:type];
+    }
+    dm.importing = false;
+    // Save the data
+    [dm.moc performBlockAndWait:^{
+        [dm.moc save:nil];
+    }];
+    completionHandler(true);
+}
+
 - (void)performimportWithDeckName:(NSString *)deckname withDeckType:(int)type destinationMap:(NSArray *)map completionHandler:(void (^)(bool success)) completionHandler {
     //Set Map
     _destinationmap = map;

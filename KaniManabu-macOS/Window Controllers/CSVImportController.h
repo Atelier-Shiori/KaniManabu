@@ -26,6 +26,9 @@
 @property (strong) IBOutlet NSPopUpButton *decktype;
 @property (strong) IBOutlet NSButton *importbtn;
 @property (strong) NSArray *maparray;
+@property (strong) IBOutlet NSPopUpButton *importdeck;
+@property (strong) IBOutlet NSButton *useexistingdeckoption;
+@property (strong) NSArray *decks;
 - (void)loadColumnNames:(NSArray *)colarray;
 @end
 

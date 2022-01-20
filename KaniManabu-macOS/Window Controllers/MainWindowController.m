@@ -19,7 +19,10 @@
 #import "CSVDeckImporter.h"
 #import "DeckOptions.h"
 #import "CSVDeckExporter.h"
+#if defined(AppStore)
+#else
 #import "LicenseManager.h"
+#endif
 #import "CSVLoadingWindow.h"
 
 @interface MainWindowController ()
@@ -400,36 +403,77 @@
                             self.csvlw = [CSVLoadingWindow new];
                             [self.window beginSheet:self.csvlw.window completionHandler:^(NSModalResponse returnCode) {
                             }];
+                            if (self.csvic.useexistingdeckoption) {
+                                NSUUID *selecteddeck = [((NSManagedObject *)self.csvic.decks[self.csvic.importdeck.indexOfSelectedItem]) valueForKey:@"deckUUID"];
+                                long selectedtype = self.csvic.decktype.selectedTag;
+                                    dispatch_async(self.privateQueue, ^{
+                                        [csvimporter performImportWithDeckUUID:selecteddeck withDeckType:selectedtype destinationMap:self.csvic.maparray completionHandler:^(bool success) {
+                                            dispatch_async(dispatch_get_main_queue(), ^{
+                                                [self.csvlw operationDone];
+                                                if (success) {
+                                                    [NSNotificationCenter.defaultCenter postNotificationName:@"DeckAdded" object:nil];
+                                                    NSAlert *alert = [[NSAlert alloc] init] ;
+                                                    [alert addButtonWithTitle:@"OK"];
+                                                    [alert setMessageText:@"Deck imported"];
+                                                    alert.informativeText = @"Deck as successfully imported";
+                                                    alert.alertStyle = NSAlertStyleInformational;
+                                                    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                                                        }];
+                                                }
+                                                else {
+                                                    NSAlert *alert = [[NSAlert alloc] init] ;
+                                                    [alert addButtonWithTitle:@"OK"];
+                                                    [alert setMessageText:@"Deck import failed"];
+                                                    alert.informativeText = @"Deck either already exists or the field mappings are not correctly set. Please try again.";
+                                                    alert.alertStyle = NSAlertStyleInformational;
+                                                    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                                                        }];
+                                                }
+                                            });
+                                        }];
+                                    });
+                            }
+                            else {
                             NSString *deckname = self.csvic.deckname.stringValue;
                             long selectedtype = self.csvic.decktype.selectedTag;
-                            dispatch_async(self.privateQueue, ^{
-                                [csvimporter performimportWithDeckName:deckname withDeckType:selectedtype destinationMap:self.csvic.maparray completionHandler:^(bool success) {
-                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                        [self.csvlw operationDone];
-                                        if (success) {
-                                            [NSNotificationCenter.defaultCenter postNotificationName:@"DeckAdded" object:nil];
-                                            NSAlert *alert = [[NSAlert alloc] init] ;
-                                            [alert addButtonWithTitle:@"OK"];
-                                            [alert setMessageText:@"Deck imported"];
-                                            alert.informativeText = @"Deck as successfully imported";
-                                            alert.alertStyle = NSAlertStyleInformational;
-                                            [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-                                                }];
-                                        }
-                                        else {
-                                            NSAlert *alert = [[NSAlert alloc] init] ;
-                                            [alert addButtonWithTitle:@"OK"];
-                                            [alert setMessageText:@"Deck import failed"];
-                                            alert.informativeText = @"Deck either already exists or the field mappings are not correctly set. Please try again.";
-                                            alert.alertStyle = NSAlertStyleInformational;
-                                            [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-                                                }];
-                                        }
-                                    });
-                                }];
-                            });
+                                dispatch_async(self.privateQueue, ^{
+                                    [csvimporter performimportWithDeckName:deckname withDeckType:selectedtype destinationMap:self.csvic.maparray completionHandler:^(bool success) {
+                                        dispatch_async(dispatch_get_main_queue(), ^{
+                                            [self.csvlw operationDone];
+                                            if (success) {
+                                                [NSNotificationCenter.defaultCenter postNotificationName:@"DeckAdded" object:nil];
+                                                NSAlert *alert = [[NSAlert alloc] init] ;
+                                                [alert addButtonWithTitle:@"OK"];
+                                                [alert setMessageText:@"Deck imported"];
+                                                alert.informativeText = @"Deck as successfully imported";
+                                                alert.alertStyle = NSAlertStyleInformational;
+                                                [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                                                    }];
+                                            }
+                                            else {
+                                                NSAlert *alert = [[NSAlert alloc] init] ;
+                                                [alert addButtonWithTitle:@"OK"];
+                                                [alert setMessageText:@"Deck import failed"];
+                                                alert.informativeText = @"Deck either already exists or the field mappings are not correctly set. Please try again.";
+                                                alert.alertStyle = NSAlertStyleInformational;
+                                                [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                                                    }];
+                                            }
+                                        });
+                                    }];
+                                });
+                            }
                         }
                     }];
+                }
+                else {
+                    NSAlert *alert = [[NSAlert alloc] init] ;
+                    [alert addButtonWithTitle:@"OK"];
+                    [alert setMessageText:@"Unable to load CSV file"];
+                    alert.informativeText = @"CSV file is invalid or corrupt.";
+                    alert.alertStyle = NSAlertStyleInformational;
+                    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                        }];
                 }
         }];
     }];
@@ -439,7 +483,7 @@
     }
 }
 - (IBAction)exportdeck:(id)sender {
-    if ([self checkDeckLimit:false]) {
+    if ([self checkDeckLimit:true]) {
     if (((NSMutableArray *)_arrayController.content).count == 0) {
         // No Cards, show error
         NSAlert *alert = [[NSAlert alloc] init] ;

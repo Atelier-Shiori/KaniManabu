@@ -368,11 +368,11 @@
 
 - (void)populateTableViewWithArray:(NSArray *)array {
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSMutableArray *a = [_arraycontroller mutableArrayValueForKey:@"content"];
+        NSMutableArray *a = [self.arraycontroller mutableArrayValueForKey:@"content"];
         [a removeAllObjects];
-        [_arraycontroller addObjects:array];
-        [_tb reloadData];
-        [_tb deselectAll:self];
+        [self.arraycontroller addObjects:array];
+        [self.tb reloadData];
+        [self.tb deselectAll:self];
         self.window.subtitle = array.count == 1 ? @"1 item" : [NSString stringWithFormat:@"%lu items",(unsigned long)array.count];
     });
 }

@@ -15,6 +15,7 @@
 @property (strong) NSArray *loadedcsvdata;
 @property (strong) NSArray *destinationmap;
 - (void)loadCSVWithURL:(NSURL *)url completionHandler:(void (^)(bool success, NSArray *columnnames)) completionHandler;
+- (void)performImportWithDeckUUID:(NSUUID *)deckuuid withDeckType:(int)type destinationMap:(NSArray *)map completionHandler:(void (^)(bool success)) completionHandler;
 - (void)performimportWithDeckName:(NSString *)deckname withDeckType:(int)type destinationMap:(NSArray *)map completionHandler:(void (^)(bool success)) completionHandler;
 @end
 

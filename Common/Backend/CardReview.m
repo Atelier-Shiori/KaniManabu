@@ -16,7 +16,7 @@
 }
 
 - (instancetype)initWithCard:(NSManagedObject *)card withCardType:(int)type {
-    if ([self init]) {
+    if (self = [self init]) {
         self.card = card;
         self.cardtype = type;
         self.proposedSRSStage = ((NSNumber *)[_card valueForKey:@"srsstage"]).intValue;

@@ -25,6 +25,7 @@
 		153FFE7B2794F6F900D481A2 /* DonationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153FFE7A2794F6F900D481A2 /* DonationWindow.xib */; };
 		153FFE7E2794F72100D481A2 /* PatreonLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE7C2794F72100D481A2 /* PatreonLicenseManager.m */; };
 		154490842794ED760009CED4 /* LicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 154490832794ED760009CED4 /* LicenseManager.m */; };
+		15706CB427976509004D639B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15706CB327976509004D639B /* CloudKit.framework */; };
 		157328F22794B9C400587C05 /* CardReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794872278CC083000D984D /* CardReview.m */; };
 		157328F32794B9C400587C05 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF74656E278F44A10062E476 /* PFAboutWindowController.m */; };
 		157328F52794B9C400587C05 /* PaRomajiKanaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122DA278CED4C00575A73 /* PaRomajiKanaConverter.m */; };
@@ -303,6 +304,8 @@
 		153FFE7D2794F72100D481A2 /* PatreonLicenseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatreonLicenseManager.h; sourceTree = "<group>"; };
 		154490822794ED760009CED4 /* LicenseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LicenseManager.h; sourceTree = "<group>"; };
 		154490832794ED760009CED4 /* LicenseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LicenseManager.m; sourceTree = "<group>"; };
+		15706CB2279764FE004D639B /* KaniManabu-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KaniManabu-iOS.entitlements"; sourceTree = "<group>"; };
+		15706CB327976509004D639B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		1573293F2794B9C400587C05 /* KaniManabu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaniManabu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		157329402794B9C400587C05 /* KaniManabu copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KaniManabu copy-Info.plist"; sourceTree = SOURCE_ROOT; };
 		1579486B278CBFB0000D984D /* DeckAddDialogController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckAddDialogController.h; sourceTree = "<group>"; };
@@ -457,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFD98397279742900017730A /* AFNetworking.framework in Frameworks */,
+				15706CB427976509004D639B /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,6 +696,7 @@
 		FF708877278C83A000DF399E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15706CB327976509004D639B /* CloudKit.framework */,
 				FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */,
 				1516232B278F762300A09568 /* QuartzCore.framework */,
 				FFA14B84278F04E10038B9C2 /* AVFoundation.framework */,
@@ -740,6 +745,7 @@
 		FFD983632797415D0017730A /* KaniManabu-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				15706CB2279764FE004D639B /* KaniManabu-iOS.entitlements */,
 				FFD983642797415D0017730A /* AppDelegate.h */,
 				FFD983652797415D0017730A /* AppDelegate.m */,
 				FFD983672797415D0017730A /* SceneDelegate.h */,
@@ -1156,7 +1162,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "1.0-alpha1";
+				MARKETING_VERSION = "1.0-alpha2";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = KaniManabu;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1191,7 +1197,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "1.0-alpha1";
+				MARKETING_VERSION = "1.0-alpha2";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = KaniManabu;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1338,7 +1344,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "1.0-alpha1";
+				MARKETING_VERSION = "1.0-alpha2";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1374,7 +1380,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "1.0-alpha1";
+				MARKETING_VERSION = "1.0-alpha2";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1386,6 +1392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "KaniManabu-iOS/KaniManabu-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9HDZTER525;
@@ -1415,6 +1422,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "KaniManabu-iOS/KaniManabu-iOS.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9HDZTER525;

@@ -206,6 +206,12 @@
         _currentcard.reviewedmeaning = true;
         _answered = true;
         [_currentcard setCorrect:CardReviewTypeMeaning];
+        if (_currentcard.cardtype == CardTypeKana) {
+            // Say Vocab reading if user enabled option
+            if ([NSUserDefaults.standardUserDefaults boolForKey:@"SayKanaReadingAnswer"]) {
+                [self sayAnswer:[_currentcard.card valueForKey:@"kanareading"]];
+            }
+        }
     }
     else if (_questiontype == CardReviewTypeReading) {
         int answerstate = _currentcard.cardtype == CardTypeKanji ? [AnswerCheck checkKanjiReading:_answertextfield.stringValue withCard:_currentcard.card] : [AnswerCheck checkVocabReading:_answertextfield.stringValue withCard:_currentcard.card];
