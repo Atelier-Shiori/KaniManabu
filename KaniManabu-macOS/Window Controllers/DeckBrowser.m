@@ -68,7 +68,7 @@
                 }
             }
             else {
-                sleep(90);
+                sleep(60);
             }
         }
         if (!DeckManager.sharedInstance.importing && !_refreshinprogress) {

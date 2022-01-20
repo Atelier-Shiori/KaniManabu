@@ -109,7 +109,7 @@
                 }
             }
             else {
-                sleep(90);
+                sleep(60);
             }
         }
         // Reload
