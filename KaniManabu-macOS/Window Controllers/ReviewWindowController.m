@@ -518,6 +518,7 @@
 }
 
 - (void)shake:(NSTextField *)textfield {
+    @try {
     NSRect textFieldFrame = [textfield frame];
 
     CGFloat centerX = textFieldFrame.origin.x;
@@ -571,6 +572,10 @@
     [[NSAnimationContext currentContext] setTimingFunction: [CAMediaTimingFunction functionWithName: kCAMediaTimingFunctionEaseOut]];
     [[textfield animator] setFrameOrigin:one];
     [NSAnimationContext endGrouping];
+    }
+    @catch (NSException *ex) {
+        
+    }
 }
 
 - (void)sayAnswer:(NSString *)answer {

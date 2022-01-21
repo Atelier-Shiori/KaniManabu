@@ -22,9 +22,10 @@
  Master -> Enloghtened : 1 month
  Enlightened -> Burned : 4 months
  see https://knowledge.wanikani.com/wanikani/srs-stages/
+ If user fails to answer the question in learning session, the wait time is 2 hours instead of immediately
  */
 typedef NS_ENUM(int,SRSTimings) {
-    SRSApprentice1 = 0,
+    SRSApprentice1 = 7200,
     SRSApprentice2 = 14400,
     SRSApprentice3 = 28800,
     SRSApprentice4 = 86400,
