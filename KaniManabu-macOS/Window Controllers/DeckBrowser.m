@@ -368,8 +368,9 @@
 
 - (void)populateTableViewWithArray:(NSArray *)array {
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSMutableArray *a = [self.arraycontroller mutableArrayValueForKey:@"content"];
-        [a removeAllObjects];
+        //NSMutableArray *a = [self.arraycontroller mutableArrayValueForKey:@"content"];
+        //[a removeAllObjects];
+        [self.arraycontroller setContent:nil];
         [self.arraycontroller addObjects:array];
         [self.tb reloadData];
         [self.tb deselectAll:self];
