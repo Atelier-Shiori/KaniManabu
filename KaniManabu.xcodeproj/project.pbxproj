@@ -25,6 +25,7 @@
 		153FFE7B2794F6F900D481A2 /* DonationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153FFE7A2794F6F900D481A2 /* DonationWindow.xib */; };
 		153FFE7E2794F72100D481A2 /* PatreonLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE7C2794F72100D481A2 /* PatreonLicenseManager.m */; };
 		154490842794ED760009CED4 /* LicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 154490832794ED760009CED4 /* LicenseManager.m */; };
+		1548200A279DFA5A001B6D92 /* DeckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 15482009279DFA5A001B6D92 /* DeckCell.m */; };
 		15706CB427976509004D639B /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15706CB327976509004D639B /* CloudKit.framework */; };
 		157328F22794B9C400587C05 /* CardReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794872278CC083000D984D /* CardReview.m */; };
 		157328F32794B9C400587C05 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF74656E278F44A10062E476 /* PFAboutWindowController.m */; };
@@ -304,6 +305,8 @@
 		153FFE7D2794F72100D481A2 /* PatreonLicenseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatreonLicenseManager.h; sourceTree = "<group>"; };
 		154490822794ED760009CED4 /* LicenseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LicenseManager.h; sourceTree = "<group>"; };
 		154490832794ED760009CED4 /* LicenseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LicenseManager.m; sourceTree = "<group>"; };
+		15482008279DFA5A001B6D92 /* DeckCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckCell.h; sourceTree = "<group>"; };
+		15482009279DFA5A001B6D92 /* DeckCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckCell.m; sourceTree = "<group>"; };
 		15706CB2279764FE004D639B /* KaniManabu-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "KaniManabu-iOS.entitlements"; sourceTree = "<group>"; };
 		15706CB327976509004D639B /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		1573293F2794B9C400587C05 /* KaniManabu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaniManabu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -758,6 +761,8 @@
 				FFD983782797415E0017730A /* Info.plist */,
 				FFD983792797415E0017730A /* main.m */,
 				FFD983A7279744760017730A /* Study.storyboard */,
+				15482008279DFA5A001B6D92 /* DeckCell.h */,
+				15482009279DFA5A001B6D92 /* DeckCell.m */,
 			);
 			path = "KaniManabu-iOS";
 			sourceTree = "<group>";
@@ -1096,6 +1101,7 @@
 				FFD9836C2797415D0017730A /* ViewController.m in Sources */,
 				FFD98393279742670017730A /* CHCSVParser.m in Sources */,
 				FFD9838F279742560017730A /* CardReview.m in Sources */,
+				1548200A279DFA5A001B6D92 /* DeckCell.m in Sources */,
 				FFD9838D2797424D0017730A /* AnswerCheck.m in Sources */,
 				FFD983662797415D0017730A /* AppDelegate.m in Sources */,
 				FFD98389279741D00017730A /* KaniManabu.xcdatamodeld in Sources */,

@@ -97,6 +97,9 @@
             _proposedSRSStage = 1;
         }
     }
+    else {
+        _proposedSRSStage = 1;
+    }
 }
 
 - (void)finishReview {

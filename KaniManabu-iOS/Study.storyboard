@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +27,7 @@
         <!--Review View Controller-->
         <scene sceneID="wWD-HB-ys3">
             <objects>
-                <viewController storyboardIdentifier="reviewViewController" id="R6h-Yz-Pm9" customClass="ReviewViewController" customModule="Tsurukame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reviewViewController" id="R6h-Yz-Pm9" customClass="ReviewViewController" customModule="KaniManabu_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="bwk-Kk-gCE" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vMz-uZ-YIB" customClass="AnswerTextField" customModule="Tsurukame" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vMz-uZ-YIB" customClass="AnswerTextField" customModule="KaniManabu_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="832" width="414" height="64"/>
                                 <accessibility key="accessibilityConfiguration" label="Answer field"/>
                                 <constraints>
@@ -133,7 +133,9 @@
                             <constraint firstAttribute="trailing" secondItem="sJv-Tf-ggf" secondAttribute="trailing" id="yZg-sz-eMh"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="svF-8D-peP"/>
+                    <navigationItem key="navigationItem" id="svF-8D-peP">
+                        <barButtonItem key="leftBarButtonItem" title="Wrap Up" id="BAD-ty-o5T"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="answerField" destination="vMz-uZ-YIB" id="vV5-O3-3tO"/>
                         <outlet property="answerFieldToBottomConstraint" destination="mHq-Za-wmo" id="k4d-vd-VR1"/>
