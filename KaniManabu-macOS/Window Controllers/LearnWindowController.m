@@ -180,7 +180,7 @@
             break;
         }
         case DeckTypeVocab: {
-            [infostr appendFormat:@"<p>%@</p>",[_currentcard.card valueForKey:@"kanaWord"]];
+            [infostr appendFormat:@"<h2>Japanese Kana</h2><p>%@</p>",[_currentcard.card valueForKey:@"kanaWord"]];
             [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"english"]];
             if (((NSString *)[_currentcard.card valueForKey:@"altmeaning"]).length > 0) {
                 [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"altmeaning"]];
@@ -215,6 +215,10 @@
     __weak LearnWindowController* weakSelf = self;
     [_infotextview setTextToHTML:infostr withLoadingText:@"Loading" completion:^(NSAttributedString * _Nonnull astr) {
         weakSelf.infotextview.textColor = NSColor.controlTextColor;
+        // Say Vocab reading if user enabled option
+        if ([NSUserDefaults.standardUserDefaults boolForKey:@"SayKanaReadingAnswer"]) {
+            [self playvoice:nil];
+        }
     }];
 }
 
