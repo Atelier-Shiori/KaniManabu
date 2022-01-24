@@ -148,6 +148,18 @@
 		FF746572278F44AE0062E476 /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF746571278F44AE0062E476 /* PFAboutWindow.xib */; };
 		FF746574278F47330062E476 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF746573278F47330062E476 /* EULA.rtf */; };
 		FF746576278F47380062E476 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF746575278F47380062E476 /* Credits.rtf */; };
+		FF778DBC279EEB5F0055AF2D /* WaniKaniPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = FF778DBA279EEB5F0055AF2D /* WaniKaniPreferences.m */; };
+		FF778DBD279EEB5F0055AF2D /* WaniKaniPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = FF778DBA279EEB5F0055AF2D /* WaniKaniPreferences.m */; };
+		FF778DBE279EEB5F0055AF2D /* WaniKaniPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF778DBB279EEB5F0055AF2D /* WaniKaniPreferences.xib */; };
+		FF778DBF279EEB5F0055AF2D /* WaniKaniPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF778DBB279EEB5F0055AF2D /* WaniKaniPreferences.xib */; };
+		FF778DC9279EEC740055AF2D /* WaniKani.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF778DC7279EEC740055AF2D /* WaniKani.xcdatamodeld */; };
+		FF778DCA279EEC740055AF2D /* WaniKani.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF778DC7279EEC740055AF2D /* WaniKani.xcdatamodeld */; };
+		FF778DE3279EEE970055AF2D /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF778DDA279EEE830055AF2D /* SAMKeychain.framework */; };
+		FF778DE4279EEE970055AF2D /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF778DDA279EEE830055AF2D /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF778DE7279EEEDA0055AF2D /* WaniKani.m in Sources */ = {isa = PBXBuildFile; fileRef = FF778DE6279EEEDA0055AF2D /* WaniKani.m */; };
+		FF778DE8279EEEDA0055AF2D /* WaniKani.m in Sources */ = {isa = PBXBuildFile; fileRef = FF778DE6279EEEDA0055AF2D /* WaniKani.m */; };
+		FF778E01279F18A50055AF2D /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF778DDA279EEE830055AF2D /* SAMKeychain.framework */; };
+		FF778E02279F18A50055AF2D /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF778DDA279EEE830055AF2D /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF89D70B2791D41D009B7C6F /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89D70A2791D41D009B7C6F /* CHCSVParser.m */; };
 		FF89D70F2791DFE8009B7C6F /* CSVImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89D70D2791DFE8009B7C6F /* CSVImportController.m */; };
 		FF89D7102791DFE8009B7C6F /* CSVImportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF89D70E2791DFE8009B7C6F /* CSVImportController.xib */; };
@@ -235,6 +247,55 @@
 			remoteGlobalIDString = 2987B0AE1BC408A200179A4C;
 			remoteInfo = "AFNetworking tvOS Tests";
 		};
+		FF778DD5279EEE830055AF2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF778DCB279EEE830055AF2D /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E8A666341A844CC400287CA3;
+			remoteInfo = "SAMKeychain-iOS";
+		};
+		FF778DD7279EEE830055AF2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF778DCB279EEE830055AF2D /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E8A666551A844D3A00287CA3;
+			remoteInfo = "SAMKeychainTests-iOS";
+		};
+		FF778DD9279EEE830055AF2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF778DCB279EEE830055AF2D /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E8A6666F1A844E4100287CA3;
+			remoteInfo = "SAMKeychain-macOS";
+		};
+		FF778DDB279EEE830055AF2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF778DCB279EEE830055AF2D /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E8A666791A844E4100287CA3;
+			remoteInfo = "SAMKeychainTests-macOS";
+		};
+		FF778DDD279EEE830055AF2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF778DCB279EEE830055AF2D /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 21632D981C925A3C00C40D7D;
+			remoteInfo = "SAMKeychain-tvOS";
+		};
+		FF778DDF279EEE830055AF2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF778DCB279EEE830055AF2D /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 21632DA11C925A3C00C40D7D;
+			remoteInfo = "SAMKeychainTests-tvOS";
+		};
+		FF778DE1279EEE830055AF2D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF778DCB279EEE830055AF2D /* SAMKeychain.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 21632DBC1C925B1F00C40D7D;
+			remoteInfo = "SAMKeychain-watchOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -246,6 +307,7 @@
 			files = (
 				157329382794B9C400587C05 /* MASPreferences.framework in Embed Frameworks */,
 				157329392794B9C400587C05 /* AFNetworking.framework in Embed Frameworks */,
+				FF778DE4279EEE970055AF2D /* SAMKeychain.framework in Embed Frameworks */,
 				1573293A2794B9C400587C05 /* PXSourceList.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -259,6 +321,7 @@
 			files = (
 				FF28A828278CB50500D3744D /* MASPreferences.framework in Embed Frameworks */,
 				FF74656D278F2FAE0062E476 /* AFNetworking.framework in Embed Frameworks */,
+				FF778E02279F18A50055AF2D /* SAMKeychain.framework in Embed Frameworks */,
 				FF28A82B278CB50600D3744D /* PXSourceList.framework in Embed Frameworks */,
 				159E65CF2794797C000023C0 /* Sparkle.framework in Embed Frameworks */,
 			);
@@ -388,6 +451,13 @@
 		FF746571278F44AE0062E476 /* PFAboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PFAboutWindow.xib; sourceTree = "<group>"; };
 		FF746573278F47330062E476 /* EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = EULA.rtf; sourceTree = "<group>"; };
 		FF746575278F47380062E476 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		FF778DB9279EEB5F0055AF2D /* WaniKaniPreferences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaniKaniPreferences.h; sourceTree = "<group>"; };
+		FF778DBA279EEB5F0055AF2D /* WaniKaniPreferences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaniKaniPreferences.m; sourceTree = "<group>"; };
+		FF778DBB279EEB5F0055AF2D /* WaniKaniPreferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaniKaniPreferences.xib; sourceTree = "<group>"; };
+		FF778DC8279EEC740055AF2D /* WaniKani.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WaniKani.xcdatamodel; sourceTree = "<group>"; };
+		FF778DCB279EEE830055AF2D /* SAMKeychain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SAMKeychain.xcodeproj; path = ../KaniManabu/Dependencies/SAMKeychain/SAMKeychain.xcodeproj; sourceTree = "<group>"; };
+		FF778DE5279EEEDA0055AF2D /* WaniKani.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaniKani.h; sourceTree = "<group>"; };
+		FF778DE6279EEEDA0055AF2D /* WaniKani.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaniKani.m; sourceTree = "<group>"; };
 		FF89D7092791D41D009B7C6F /* CHCSVParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHCSVParser.h; sourceTree = "<group>"; };
 		FF89D70A2791D41D009B7C6F /* CHCSVParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		FF89D70C2791DFE8009B7C6F /* CSVImportController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVImportController.h; sourceTree = "<group>"; };
@@ -432,6 +502,7 @@
 				1573291A2794B9C400587C05 /* AFNetworking.framework in Frameworks */,
 				1573291B2794B9C400587C05 /* QuartzCore.framework in Frameworks */,
 				1573291C2794B9C400587C05 /* AppCenterAnalytics.framework in Frameworks */,
+				FF778DE3279EEE970055AF2D /* SAMKeychain.framework in Frameworks */,
 				1573291D2794B9C400587C05 /* MASPreferences.framework in Frameworks */,
 				1573291E2794B9C400587C05 /* CloudKit.framework in Frameworks */,
 				1573291F2794B9C400587C05 /* PXSourceList.framework in Frameworks */,
@@ -454,6 +525,7 @@
 				FF708879278C83A000DF399E /* CloudKit.framework in Frameworks */,
 				FF28A82A278CB50600D3744D /* PXSourceList.framework in Frameworks */,
 				FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */,
+				FF778E01279F18A50055AF2D /* SAMKeychain.framework in Frameworks */,
 				15C52D6C279237EA002ADE2B /* AppCenterCrashes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,6 +572,9 @@
 				15794877278CD407000D984D /* GeneralPreferences.xib */,
 				1579487A278CD496000D984D /* PreferencesControllers.h */,
 				15C52D73279476EB002ADE2B /* SoftwareUpdateView.xib */,
+				FF778DB9279EEB5F0055AF2D /* WaniKaniPreferences.h */,
+				FF778DBA279EEB5F0055AF2D /* WaniKaniPreferences.m */,
+				FF778DBB279EEB5F0055AF2D /* WaniKaniPreferences.xib */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -521,6 +596,8 @@
 				FF89D7122791EC92009B7C6F /* CSVDeckImporter.m */,
 				15CB506827949A5000ECF326 /* CSVDeckExporter.h */,
 				15CB506927949A5000ECF326 /* CSVDeckExporter.m */,
+				FF778DE5279EEEDA0055AF2D /* WaniKani.h */,
+				FF778DE6279EEEDA0055AF2D /* WaniKani.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -692,6 +769,7 @@
 				FF746573278F47330062E476 /* EULA.rtf */,
 				FF746575278F47380062E476 /* Credits.rtf */,
 				15C52D7E2794780A002ADE2B /* dsa_pub.pem */,
+				FF778DC7279EEC740055AF2D /* WaniKani.xcdatamodeld */,
 			);
 			path = "KaniManabu-macOS";
 			sourceTree = "<group>";
@@ -713,6 +791,7 @@
 		FF746553278F2F8D0062E476 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				FF778DCB279EEE830055AF2D /* SAMKeychain.xcodeproj */,
 				15C52D7827947744002ADE2B /* macOS */,
 				FF1BE81527906A9900CA6A99 /* MSWeakTimer */,
 				FF746554278F2F950062E476 /* AFNetworking.xcodeproj */,
@@ -730,6 +809,20 @@
 				FF746567278F2F960062E476 /* AFNetworking iOS Tests.xctest */,
 				FF746569278F2F960062E476 /* AFNetworking macOS Tests.xctest */,
 				FF74656B278F2F960062E476 /* AFNetworking tvOS Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF778DCC279EEE830055AF2D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF778DD6279EEE830055AF2D /* SAMKeychain.framework */,
+				FF778DD8279EEE830055AF2D /* SAMKeychainTests-iOS.xctest */,
+				FF778DDA279EEE830055AF2D /* SAMKeychain.framework */,
+				FF778DDC279EEE830055AF2D /* SAMKeychainTests-macOS.xctest */,
+				FF778DDE279EEE830055AF2D /* SAMKeychain.framework */,
+				FF778DE0279EEE830055AF2D /* SAMKeychainTests.xctest */,
+				FF778DE2279EEE830055AF2D /* SAMKeychain.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -857,6 +950,10 @@
 					ProductGroup = FF746555278F2F950062E476 /* Products */;
 					ProjectRef = FF746554278F2F950062E476 /* AFNetworking.xcodeproj */;
 				},
+				{
+					ProductGroup = FF778DCC279EEE830055AF2D /* Products */;
+					ProjectRef = FF778DCB279EEE830055AF2D /* SAMKeychain.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -917,6 +1014,55 @@
 			remoteRef = FF74656A278F2F960062E476 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		FF778DD6279EEE830055AF2D /* SAMKeychain.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SAMKeychain.framework;
+			remoteRef = FF778DD5279EEE830055AF2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF778DD8279EEE830055AF2D /* SAMKeychainTests-iOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SAMKeychainTests-iOS.xctest";
+			remoteRef = FF778DD7279EEE830055AF2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF778DDA279EEE830055AF2D /* SAMKeychain.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SAMKeychain.framework;
+			remoteRef = FF778DD9279EEE830055AF2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF778DDC279EEE830055AF2D /* SAMKeychainTests-macOS.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SAMKeychainTests-macOS.xctest";
+			remoteRef = FF778DDB279EEE830055AF2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF778DDE279EEE830055AF2D /* SAMKeychain.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SAMKeychain.framework;
+			remoteRef = FF778DDD279EEE830055AF2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF778DE0279EEE830055AF2D /* SAMKeychainTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SAMKeychainTests.xctest;
+			remoteRef = FF778DDF279EEE830055AF2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF778DE2279EEE830055AF2D /* SAMKeychain.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SAMKeychain.framework;
+			remoteRef = FF778DE1279EEE830055AF2D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -942,6 +1088,7 @@
 				157329312794B9C400587C05 /* MainMenu.xib in Resources */,
 				157329322794B9C400587C05 /* PFAboutWindow.xib in Resources */,
 				157329332794B9C400587C05 /* Review.xib in Resources */,
+				FF778DBF279EEB5F0055AF2D /* WaniKaniPreferences.xib in Resources */,
 				157329342794B9C400587C05 /* VocabEditor.xib in Resources */,
 				157329352794B9C400587C05 /* ItemInfoWindow.xib in Resources */,
 				157329362794B9C400587C05 /* DeckBrowser.xib in Resources */,
@@ -970,6 +1117,7 @@
 				FF70886E278C7CE000DF399E /* MainMenu.xib in Resources */,
 				FF746572278F44AE0062E476 /* PFAboutWindow.xib in Resources */,
 				FF70887B278C852700DF399E /* Review.xib in Resources */,
+				FF778DBE279EEB5F0055AF2D /* WaniKaniPreferences.xib in Resources */,
 				15B122D2278CE45300575A73 /* VocabEditor.xib in Resources */,
 				153E9F0F2795CF170094A306 /* CSVLoadingWindow.xib in Resources */,
 				FFA14B92278F18340038B9C2 /* ItemInfoWindow.xib in Resources */,
@@ -1006,9 +1154,12 @@
 				157328FB2794B9C400587C05 /* CHCSVParser.m in Sources */,
 				157328FC2794B9C400587C05 /* NSTableViewAction.m in Sources */,
 				157328FD2794B9C400587C05 /* DeckAddDialogController.m in Sources */,
+				FF778DE8279EEEDA0055AF2D /* WaniKani.m in Sources */,
+				FF778DBD279EEB5F0055AF2D /* WaniKaniPreferences.m in Sources */,
 				157328FE2794B9C400587C05 /* MainWindowController.m in Sources */,
 				157328FF2794B9C400587C05 /* UnixDatetoNSDate.m in Sources */,
 				157329002794B9C400587C05 /* DeckBrowser.m in Sources */,
+				FF778DCA279EEC740055AF2D /* WaniKani.xcdatamodeld in Sources */,
 				157329012794B9C400587C05 /* GeneralPreferencesViewController.m in Sources */,
 				157329022794B9C400587C05 /* DeckManager.m in Sources */,
 				157329032794B9C400587C05 /* SRScheduler.m in Sources */,
@@ -1057,6 +1208,7 @@
 				FFB6145C278CB8AF001E5FAA /* DeckBrowser.m in Sources */,
 				15794878278CD407000D984D /* GeneralPreferencesViewController.m in Sources */,
 				153E9F0D2795CF170094A306 /* CSVLoadingWindow.m in Sources */,
+				FF778DE7279EEEDA0055AF2D /* WaniKani.m in Sources */,
 				1579487D278CDB97000D984D /* DeckManager.m in Sources */,
 				FF28A80F278C941800D3744D /* SRScheduler.m in Sources */,
 				FF28A81D278CB19E00D3744D /* ReviewWindowController.m in Sources */,
@@ -1066,6 +1218,7 @@
 				FF1BE8112790542900CA6A99 /* NSNumberFormatterNumberOnly.m in Sources */,
 				FF89D7132791EC92009B7C6F /* CSVDeckImporter.m in Sources */,
 				FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */,
+				FF778DBC279EEB5F0055AF2D /* WaniKaniPreferences.m in Sources */,
 				151F3AB7278D07AB00953ECD /* DeckViewCell.m in Sources */,
 				15CB506A27949A5000ECF326 /* CSVDeckExporter.m in Sources */,
 				15B122D9278CEBE900575A73 /* string_score.c in Sources */,
@@ -1079,6 +1232,7 @@
 				FF708866278C7CDF00DF399E /* AppDelegate.m in Sources */,
 				FF28A826278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m in Sources */,
 				15C52D71279398E3002ADE2B /* DeckOptions.m in Sources */,
+				FF778DC9279EEC740055AF2D /* WaniKani.xcdatamodeld in Sources */,
 				15B122D6278CE93E00575A73 /* AnswerCheck.m in Sources */,
 				FFBE3C2E278DEF67003D3F06 /* SRSLevelValueTransformer.m in Sources */,
 			);
@@ -1330,7 +1484,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20220120;
+				CURRENT_PROJECT_VERSION = 20220124;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1350,7 +1504,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "1.0-alpha2";
+				MARKETING_VERSION = "1.0-alpha3";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1366,7 +1520,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20220120;
+				CURRENT_PROJECT_VERSION = 20220124;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1386,7 +1540,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "1.0-alpha2";
+				MARKETING_VERSION = "1.0-alpha3";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1503,6 +1657,16 @@
 			);
 			currentVersion = FF708868278C7CDF00DF399E /* WaniManabu.xcdatamodel */;
 			path = KaniManabu.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		FF778DC7279EEC740055AF2D /* WaniKani.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FF778DC8279EEC740055AF2D /* WaniKani.xcdatamodel */,
+			);
+			currentVersion = FF778DC8279EEC740055AF2D /* WaniKani.xcdatamodel */;
+			path = WaniKani.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

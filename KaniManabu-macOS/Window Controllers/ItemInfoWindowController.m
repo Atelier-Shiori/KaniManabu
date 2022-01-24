@@ -10,12 +10,13 @@
 #import "NSTextView+SetHTMLAttributedText.h"
 #import <AVFoundation/AVFoundation.h>
 #import "DeckManager.h"
+#import "WaniKani.h"
 
 @interface ItemInfoWindowController ()
 @property (strong) IBOutlet NSTextField *wordlabel;
 @property (strong) IBOutlet NSTextView *infotextview;
 @property (strong) IBOutlet NSToolbarItem *playvoicetoolbaritem;
-
+@property (strong, nonatomic) dispatch_queue_t privateQueue;
 @end
 
 @implementation ItemInfoWindowController
@@ -43,6 +44,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"CardBrowserClosed" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewAdvanced" object:nil];
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    _privateQueue = dispatch_queue_create("moe.ateliershiori.KaniManabu.Info", DISPATCH_QUEUE_CONCURRENT);
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
@@ -153,6 +155,47 @@
             break;
         }
     }
+    if ([WaniKani.sharedInstance getToken] && _cardType == DeckTypeVocab) {
+        _infotextview.string = @"Loading";
+        dispatch_async(self.privateQueue, ^{
+            [WaniKani.sharedInstance analyzeWord:_cardMeta[@"japanese"] completionHandler:^(NSArray * _Nonnull data) {
+                if (data.count > 0) {
+                    [infostr appendString:@"<h1>Kanji Breakdown</h1>"];
+                    for (NSDictionary *kanji in data) {
+                        [infostr appendFormat:@"<h2>%@ - %@</h2>", kanji[@"data"][@"slug"], kanji[@"data"][@"meanings"][0][@"meaning"]];
+                        NSMutableArray *othermeanings = [NSMutableArray new];
+                        for (NSDictionary *omeanings in kanji[@"data"][@"meanings"]) {
+                            if (!((NSNumber *)omeanings[@"primary"]).boolValue && ((NSNumber *)omeanings[@"accepted_answer"]).boolValue) {
+                                [othermeanings addObject:omeanings[@"meaning"]];
+                            }
+                        }
+                        if (othermeanings.count > 0 ) {
+                            [infostr appendFormat:@"<h3>Other Meanings</h3><p>%@</p>", [othermeanings componentsJoinedByString:@", "]];
+                        }
+                        [infostr appendFormat:@"<h3>Level</h3><p>%@</p>",kanji[@"data"][@"level"]];
+                        [infostr appendFormat:@"<h3>Characters</h3><p>%@</p>",kanji[@"data"][@"characters"]];
+                        for (NSDictionary *readings in kanji[@"data"][@"readings"]) {
+                            [infostr appendFormat:((NSNumber *)readings[@"primary"]).boolValue ? @"<h3>%@</h3><p><b>%@</b></p>" : @"<h3>%@</h3><p>%@</p>", ((NSString *)readings[@"type"]).capitalizedString, readings[@"reading"]];
+                        }
+                        [infostr appendFormat:@"<h3>Reading Mnemonic</h3><p>%@</p>",kanji[@"data"][@"reading_mnemonic"]];
+                        [infostr appendFormat:@"<h3>Reading Hint</h3><p>%@</p>",kanji[@"data"][@"reading_hint"]];
+                    }
+                }
+                [self loadreviewinfo:infostr];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self loadInfo:infostr];
+                });
+            }];
+        });
+    }
+    else {
+        [self loadreviewinfo:infostr];
+        [self loadInfo:infostr];
+    }
+
+}
+
+- (void)loadreviewinfo:(NSMutableString *)infostr {
     [infostr appendString:@"<h1>Review Information</h1>"];
     NSDateFormatter *df = [NSDateFormatter new];
     df.dateStyle = NSDateFormatterMediumStyle;
@@ -162,7 +205,9 @@
         [infostr appendFormat:@"<h3>Next Review</h3><p>%@</p>",[df stringFromDate:[NSDate dateWithTimeIntervalSince1970:((NSNumber *)_cardMeta[@"nextreviewinterval"]).doubleValue]]];
     }
     [infostr appendFormat:@"<h3>Date Created</h3><p>%@</p>",[df stringFromDate:[NSDate dateWithTimeIntervalSince1970:((NSNumber *)_cardMeta[@"datecreated"]).doubleValue]]];
-    
+}
+
+- (void)loadInfo:(NSMutableString *)infostr {
     __weak ItemInfoWindowController* weakSelf = self;
     [_infotextview setTextToHTML:infostr withLoadingText:@"Loading" completion:^(NSAttributedString * _Nonnull astr) {
         weakSelf.infotextview.textColor = NSColor.controlTextColor;

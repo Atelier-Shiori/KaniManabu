@@ -22,6 +22,7 @@ KaniManbu is a lot easier to use with three different card types (Kanji, Kana, a
 * Anki mode (see answer and click correct/incorrect button)
 * Ability to enable/disable decks
 * Ability to reset cards to the first SRS level
+* WaniKani integration (view information of kanji used in words in item info/lesson sessions and check if the vocab exists on Wanikani before adding. (Note that free users are limited to content available in levels 1-3)
 
 # Planned features
 * Ability to import and export decks (KaniManabu JSON format)
@@ -32,18 +33,17 @@ KaniManbu is a lot easier to use with three different card types (Kanji, Kana, a
 * iOS/iPadOS App
 * Flashy animations to show when the answer is correct.
 * English -> Japanese mode
-* Wanikani integration (view information of kanji used in words in item info, check if the vocab exists on Wanikani before adding, etc). This feature will require an active Wanikani subscription, no Free subscriptions.
 * EPWing support for autofilling words for vocab card creation (EPWing dictionaries will not be included)
 
 
 # Supporting this Project
-While this app is open source, the binaries are not free since time and resources (web hosting and the Apple Developer Program to distribute the app) are needed to develop the app. However, users can self-compile, but the user will need an Apple Developer account since the Core Data database is stored in iCloud, allowing users to sync their decks to all their Macs and eventually iOS devices. You need a membership to use the iCloud features with your own apps.
+While this app is open source and libre software, the binaries are not free since time and resources (web hosting and the Apple Developer Program to distribute the app) are needed to develop the app. However, users can self-compile, but the user will need an Apple Developer account since the Core Data database is stored in iCloud, allowing users to sync their decks to all their Macs and eventually iOS devices. You need a membership to use the iCloud features with your own apps.
 
 This app will have a free and registered version. The free version will be restricted to only three decks and will have a reminder message appear at launch. The free version, upgradable to the full version will release outside the App Store. I feel that two decks are enough for most users to learn kana only/additional vocabulary or additional kanji. The full version will cost $4.99 as a one time purchase with free updates. 
 
 The iOS/iPadOS version will only be a paid as you need an Apple Developer Program membership to distribute apps on the device. When released, it will be able to sync with the Mac version. I plan to price it at $2.99 as a one time purchase. The proceeds will go towards supporting the development of this app. The iOS/iPad version will be in the same repo as the macOS version.
 
-You can purchase [Donate](https://malupdaterosx.moe/donate/) to unlock all the features. You may also choose to support us on [Patreon](https://www.patreon.com/malupdaterosx) as well, which you can also unlock the app for free as long you remain an active patron. 
+You can [Donate](https://malupdaterosx.moe/donate/) to unlock all the features. You may also choose to support us on [Patreon](https://www.patreon.com/malupdaterosx) as well, which you can also unlock the app for free as long you remain an active patron. 
 
 # How to Compile in XCode
 Warning: This won't work if you don't have a Developer ID installed. If you don't have one, obtain one by joining the Apple Developer Program or turn off code signing.

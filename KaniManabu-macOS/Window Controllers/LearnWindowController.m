@@ -11,6 +11,7 @@
 #import "NSString+HTMLtoNSAttributedString.h"
 #import "NSTextView+SetHTMLAttributedText.h"
 #import <AVFoundation/AVFoundation.h>
+#import "WaniKani.h"
 
 @interface LearnWindowController ()
 @property (strong) IBOutlet NSTextField *wordlabel;
@@ -21,6 +22,7 @@
 @property (strong) CardReview *currentcard;
 @property int currentitem;
 @property bool promptacknowledged;
+@property (strong, nonatomic) dispatch_queue_t privateQueue;
 @end
 
 @implementation LearnWindowController
@@ -93,6 +95,7 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    _privateQueue = dispatch_queue_create("moe.ateliershiori.KaniManabu.Learn", DISPATCH_QUEUE_CONCURRENT);
 }
 
 - (BOOL)windowShouldClose:(id)sender {
@@ -212,15 +215,51 @@
             break;
         }
     }
+    if ([WaniKani.sharedInstance getToken] && _currentcard.cardtype == DeckTypeVocab) {
+        _infotextview.string = @"Loading";
+        dispatch_async(self.privateQueue, ^{
+            [WaniKani.sharedInstance analyzeWord:[self.currentcard.card valueForKey:@"japanese"] completionHandler:^(NSArray * _Nonnull data) {
+                if (data.count > 0) {
+                    [infostr appendString:@"<h1>Kanji Breakdown</h1>"];
+                    for (NSDictionary *kanji in data) {
+                        [infostr appendFormat:@"<h2>%@ - %@</h2>", kanji[@"data"][@"slug"], kanji[@"data"][@"meanings"][0][@"meaning"]];
+                        NSMutableArray *othermeanings = [NSMutableArray new];
+                        for (NSDictionary *omeanings in kanji[@"data"][@"meanings"]) {
+                            if (!((NSNumber *)omeanings[@"primary"]).boolValue && ((NSNumber *)omeanings[@"accepted_answer"]).boolValue) {
+                                [othermeanings addObject:omeanings[@"meaning"]];
+                            }
+                        }
+                        if (othermeanings.count > 0 ) {
+                            [infostr appendFormat:@"<h3>Other Meanings</h3><p>%@</p>", [othermeanings componentsJoinedByString:@", "]];
+                        }
+                        [infostr appendFormat:@"<h3>Level</h3><p>%@</p>",kanji[@"data"][@"level"]];
+                        [infostr appendFormat:@"<h3>Characters</h3><p>%@</p>",kanji[@"data"][@"characters"]];
+                        for (NSDictionary *readings in kanji[@"data"][@"readings"]) {
+                            [infostr appendFormat:((NSNumber *)readings[@"primary"]).boolValue ? @"<h3>%@</h3><p><b>%@</b></p>" : @"<h3>%@</h3><p>%@</p>", ((NSString *)readings[@"type"]).capitalizedString, readings[@"reading"]];
+                        }
+                        [infostr appendFormat:@"<h3>Reading Mnemonic</h3><p>%@</p>",kanji[@"data"][@"reading_mnemonic"]];
+                        [infostr appendFormat:@"<h3>Reading Hint</h3><p>%@</p>",kanji[@"data"][@"reading_hint"]];
+                    }
+                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self loadInfo:infostr];
+                });
+            }];
+        });
+    }
+    else {
+        [self loadInfo:infostr];
+    }
+
+}
+
+- (void)loadInfo:(NSMutableString *)infostr {
     __weak LearnWindowController* weakSelf = self;
     [_infotextview setTextToHTML:infostr withLoadingText:@"Loading" completion:^(NSAttributedString * _Nonnull astr) {
         weakSelf.infotextview.textColor = NSColor.controlTextColor;
-        // Say Vocab reading if user enabled option
-        if ([NSUserDefaults.standardUserDefaults boolForKey:@"SayKanaReadingAnswer"]) {
-            [self playvoice:nil];
-        }
     }];
 }
+
 
 - (IBAction)playvoice:(id)sender {
     AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc]init];

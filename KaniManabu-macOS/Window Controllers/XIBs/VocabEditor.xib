@@ -16,6 +16,7 @@
                 <outlet property="englishsentence1" destination="hwa-NU-L8i" id="zAI-7A-YJN"/>
                 <outlet property="englishsentence2" destination="gdF-zz-xVN" id="ZmR-et-gbX"/>
                 <outlet property="englishsentence3" destination="v5a-fx-5iX" id="wjK-gL-u5S"/>
+                <outlet property="existsonwanikani" destination="hAM-r1-tP2" id="j96-eY-pc6"/>
                 <outlet property="japaneseword" destination="yOh-lT-ej8" id="Lga-Gw-qdj"/>
                 <outlet property="kana" destination="p3x-6C-MUH" id="jkM-Pb-gYq"/>
                 <outlet property="kanareadings" destination="DTV-rQ-Nd7" id="lo2-Wm-mor"/>
@@ -46,7 +47,7 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yOh-lT-ej8">
+                    <textField identifier="japaneseword" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yOh-lT-ej8">
                         <rect key="frame" x="179" y="528" width="230" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="UzK-Ga-KDo">
@@ -337,6 +338,11 @@ Gw
                             <action selector="useKanaReadings:" target="-2" id="K89-x4-BAC"/>
                         </connections>
                     </button>
+                    <imageView hidden="YES" toolTip="Vocabulary exists on WaniKani" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAM-r1-tP2">
+                        <rect key="frame" x="417" y="528" width="22" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSCaution" id="cH9-hY-PeE"/>
+                    </imageView>
                 </subviews>
             </view>
             <connections>
@@ -345,4 +351,7 @@ Gw
             <point key="canvasLocation" x="159" y="158.5"/>
         </window>
     </objects>
+    <resources>
+        <image name="NSCaution" width="32" height="32"/>
+    </resources>
 </document>

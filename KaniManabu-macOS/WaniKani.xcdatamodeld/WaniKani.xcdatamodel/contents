@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Subjects" representedClassName="Subjects" syncable="YES" codeGenerationType="class">
+        <attribute name="jsondata" optional="YES" attributeType="String"/>
+        <attribute name="lastupdated" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="slug" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="VocabSubjects" representedClassName="VocabSubjects" syncable="YES" codeGenerationType="class">
+        <attribute name="jsondata" optional="YES" attributeType="String"/>
+        <attribute name="lastupdated" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="slug" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Subjects" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="VocabSubjects" positionX="-54" positionY="18" width="128" height="74"/>
+    </elements>
+</model>

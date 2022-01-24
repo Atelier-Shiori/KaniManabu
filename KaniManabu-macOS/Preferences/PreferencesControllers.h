@@ -6,6 +6,7 @@
 //
 
 #import "GeneralPreferencesViewController.h"
+#import "WaniKaniPreferences.h"
 #import <MASPreferences/MASPreferences.h>
 #if defined(AppStore)
 #else
