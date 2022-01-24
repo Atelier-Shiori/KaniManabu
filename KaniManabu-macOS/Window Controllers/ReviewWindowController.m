@@ -581,7 +581,7 @@
 - (void)sayAnswer:(NSString *)answer {
     AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc]init];
     AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:answer];
-    utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"ja-JP"];
+    utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier: [NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 0 ? @"com.apple.speech.synthesis.voice.kyoko.premium" : @"com.apple.speech.synthesis.voice.otoya.premium"];
     [synthesizer speakUtterance:utterance];
 }
 

@@ -38,6 +38,7 @@
     defaultValues[@"DeckNewCardLimitPerDay"] = @(5);
     defaultValues[@"SayKanaReadingAnswer"] = @YES;
     defaultValues[@"sendanalytics"] = @YES;
+    defaultValues[@"ttsvoice"] = @(0);
 #if defined(AppStore)
     defaultValues[@"donated"] = @YES;
 #else

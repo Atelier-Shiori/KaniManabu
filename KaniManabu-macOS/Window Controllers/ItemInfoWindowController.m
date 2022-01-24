@@ -217,7 +217,7 @@
 - (IBAction)playvoice:(id)sender {
     AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc]init];
     AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:_cardType == DeckTypeKana ? _cardMeta[@"kanareading"] : _cardMeta[@"reading"]];
-    utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"ja-JP"];
+    utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier: [NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 0 ? @"com.apple.speech.synthesis.voice.kyoko.premium" : @"com.apple.speech.synthesis.voice.otoya.premium"];
     [synthesizer speakUtterance:utterance];
 }
 

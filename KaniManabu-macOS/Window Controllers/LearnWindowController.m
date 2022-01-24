@@ -257,6 +257,9 @@
     __weak LearnWindowController* weakSelf = self;
     [_infotextview setTextToHTML:infostr withLoadingText:@"Loading" completion:^(NSAttributedString * _Nonnull astr) {
         weakSelf.infotextview.textColor = NSColor.controlTextColor;
+        if ([NSUserDefaults.standardUserDefaults boolForKey:@"SayKanaReadingAnswer"] && (weakSelf.currentcard.cardtype == CardTypeKana || weakSelf.currentcard.cardtype == CardTypeVocab )) {
+            [weakSelf playvoice:nil];
+        }
     }];
 }
 
@@ -264,7 +267,7 @@
 - (IBAction)playvoice:(id)sender {
     AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc]init];
     AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:_currentcard.cardtype == DeckTypeKana ? [_currentcard.card valueForKey:@"kanareading"] : [_currentcard.card valueForKey:@"reading"]];
-    utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"ja-JP"];
+    utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier: [NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 0 ? @"com.apple.speech.synthesis.voice.kyoko.premium" : @"com.apple.speech.synthesis.voice.otoya.premium"];
     [synthesizer speakUtterance:utterance];
 }
 
