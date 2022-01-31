@@ -83,79 +83,84 @@ NSString *const kKanacharacterset = @"ーぁあぃいぅうぇえぉおかがき
 }
 
 - (void)getSubject:(NSString *)subject isKanji:(bool)isKanji completionHandler:(void (^)(bool success, bool notauthorized, NSDictionary *data)) completionHandler {
-    NSManagedObject *subjectobj = [self retrieveSubject:subject isKanji:isKanji];
-    if (subjectobj) {
-        double lastupdated = ((NSNumber *)[subjectobj valueForKey:@"lastupdated"]).doubleValue;
-        if ([NSDate dateWithTimeIntervalSince1970:lastupdated].timeIntervalSinceNow > -604800) {
-            NSError *jsonError;
-            NSData *objectData = [[subjectobj valueForKey:@"jsondata"] dataUsingEncoding:NSUTF8StringEncoding];
-            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
-                                                  options:NSJSONReadingMutableContainers
-                                                    error:&jsonError];
-            if (![NSUserDefaults.standardUserDefaults boolForKey:@"WaniKaniSubscribed"]) {
-                if (((NSNumber *)json[@"data"][@"level"]).intValue >= 4) {
-                    // User not subscribed, don't return information
-                    completionHandler(false, true, nil);
-                    return;
+    if (subject && subject.length == 1) {
+        NSManagedObject *subjectobj = [self retrieveSubject:subject isKanji:isKanji];
+        if (subjectobj) {
+            double lastupdated = ((NSNumber *)[subjectobj valueForKey:@"lastupdated"]).doubleValue;
+            if ([NSDate dateWithTimeIntervalSince1970:lastupdated].timeIntervalSinceNow > -604800) {
+                NSError *jsonError;
+                NSData *objectData = [[subjectobj valueForKey:@"jsondata"] dataUsingEncoding:NSUTF8StringEncoding];
+                NSDictionary *json = [NSJSONSerialization JSONObjectWithData:objectData
+                                                      options:NSJSONReadingMutableContainers
+                                                        error:&jsonError];
+                if (![NSUserDefaults.standardUserDefaults boolForKey:@"WaniKaniSubscribed"]) {
+                    if (((NSNumber *)json[@"data"][@"level"]).intValue >= 4) {
+                        // User not subscribed, don't return information
+                        completionHandler(false, true, nil);
+                        return;
+                    }
+                    else {
+                        completionHandler(true, false, json);
+                        return;
+                    }
                 }
                 else {
-                    completionHandler(true, false, json);
+                    completionHandler(true,false, json);
                     return;
                 }
             }
-            else {
-                completionHandler(true,false, json);
-                return;
-            }
         }
-    }
-    [_manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", [self getToken]] forHTTPHeaderField:@"Authorization"];
-    [_manager GET:@"https://api.wanikani.com/v2/subjects" parameters:@{@"types" : isKanji ? @"kanji" : @"vocabulary", @"slugs" : subject} headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSArray *data = responseObject[@"data"];
-        if (data.count > 0) {
-            NSDictionary *subdata = data[0];
-            if (![NSUserDefaults.standardUserDefaults boolForKey:@"WaniKaniSubscribed"]) {
-                if (((NSNumber *)subdata[@"data"][@"level"]).intValue >= 4) {
-                    // User not subscribed, don't return information
-                    completionHandler(false, true, nil);
-                }
-            }
-            else {
-                // Save data
-                NSError *error;
-                NSData *jsonData = [NSJSONSerialization dataWithJSONObject:subdata
-                                                                   options:NSJSONWritingPrettyPrinted
-                                                                     error:&error];
-
-                if (! jsonData) {
-                    NSLog(@"Got an error: %@", error);
-                    completionHandler(false, false, nil);
-                } else {
-                    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-                    NSManagedObject *subjectobj = [self retrieveSubject:subject isKanji:isKanji];
-                    if (!subjectobj) {
-                        subjectobj = isKanji ? [NSEntityDescription insertNewObjectForEntityForName:@"Subjects" inManagedObjectContext:self.moc] : [NSEntityDescription insertNewObjectForEntityForName:@"VocabSubjects" inManagedObjectContext:self.moc];
-                        [subjectobj setValue:subject forKey:@"slug"];
+        [_manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", [self getToken]] forHTTPHeaderField:@"Authorization"];
+        [_manager GET:@"https://api.wanikani.com/v2/subjects" parameters:@{@"types" : isKanji ? @"kanji" : @"vocabulary", @"slugs" : subject} headers:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSArray *data = responseObject[@"data"];
+            if (data.count > 0) {
+                NSDictionary *subdata = data[0];
+                if (![NSUserDefaults.standardUserDefaults boolForKey:@"WaniKaniSubscribed"]) {
+                    if (((NSNumber *)subdata[@"data"][@"level"]).intValue >= 4) {
+                        // User not subscribed, don't return information
+                        completionHandler(false, true, nil);
                     }
-                    [subjectobj setValue:jsonString forKey:@"jsondata"];
-                    [subjectobj setValue:@(NSDate.date.timeIntervalSince1970) forKey:@"lastupdated"];
-                    __block NSError *serror = nil;
-                    [self.moc performBlockAndWait:^{
-                        [self.moc save:&serror];
-                        if (error) {
-                            NSLog(@"Error: %@", error.localizedDescription);
+                }
+                else {
+                    // Save data
+                    NSError *error;
+                    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:subdata
+                                                                       options:NSJSONWritingPrettyPrinted
+                                                                         error:&error];
+
+                    if (! jsonData) {
+                        NSLog(@"Got an error: %@", error);
+                        completionHandler(false, false, nil);
+                    } else {
+                        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+                        NSManagedObject *subjectobj = [self retrieveSubject:subject isKanji:isKanji];
+                        if (!subjectobj) {
+                            subjectobj = isKanji ? [NSEntityDescription insertNewObjectForEntityForName:@"Subjects" inManagedObjectContext:self.moc] : [NSEntityDescription insertNewObjectForEntityForName:@"VocabSubjects" inManagedObjectContext:self.moc];
+                            [subjectobj setValue:subject forKey:@"slug"];
                         }
-                    }];
-                    completionHandler(true,false,subdata);
+                        [subjectobj setValue:jsonString forKey:@"jsondata"];
+                        [subjectobj setValue:@(NSDate.date.timeIntervalSince1970) forKey:@"lastupdated"];
+                        __block NSError *serror = nil;
+                        [self.moc performBlockAndWait:^{
+                            [self.moc save:&serror];
+                            if (error) {
+                                NSLog(@"Error: %@", error.localizedDescription);
+                            }
+                        }];
+                        completionHandler(true,false,subdata);
+                    }
                 }
             }
-        }
-        else {
+            else {
+                completionHandler(false, false, nil);
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             completionHandler(false, false, nil);
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        }];
+    }
+    else {
         completionHandler(false, false, nil);
-    }];
+    }
 }
 
 - (NSManagedObject *)retrieveSubject:(NSString *)slug isKanji:(bool)isKanji {
