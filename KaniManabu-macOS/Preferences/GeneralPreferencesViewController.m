@@ -35,7 +35,9 @@
     alert.informativeText = @"Do you want to remove orphaned cards? Once done, it cannot be undone.";
     [alert addButtonWithTitle:NSLocalizedString(@"Remove",nil)];
     [alert addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
-    [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    if (@available(macOS 11.0, *)) {
+        [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    } 
     [(NSButton *)alert.buttons[0] setKeyEquivalent: @""];
     [(NSButton *)alert.buttons[1] setKeyEquivalent: @"\033"];
     [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
@@ -59,7 +61,12 @@
 }
 
 - (NSImage *)toolbarItemImage {
-    return [NSImage imageWithSystemSymbolName:@"gear" accessibilityDescription:@""];
+    if (@available(macOS 11.0, *)) {
+        return [NSImage imageWithSystemSymbolName:@"gear" accessibilityDescription:@""];
+    } else {
+        // Fallback on earlier versions
+        return [NSImage imageNamed:@"gear"];
+    }
 }
 
 - (NSString *)toolbarItemLabel {

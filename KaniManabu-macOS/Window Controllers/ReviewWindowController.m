@@ -44,6 +44,7 @@
 @property (strong) IBOutlet NSButton *ankishowanswerbtn;
 @property (strong) IBOutlet NSPopover *popovervalidationmessage;
 @property (strong) IBOutlet NSTextField *validationmessage;
+@property (strong) IBOutlet NSToolbarItem *lasttentoolbaritem;
 @end
 
 @implementation ReviewWindowController
@@ -57,6 +58,22 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    if (@available(macOS 11.0, *)) {
+        self.window.titleVisibility = NSWindowTitleHidden;
+        self.window.toolbarStyle = NSWindowToolbarStyleUnified;
+    }
+    else {
+        // Fix toolbar icons
+        self.window.titleVisibility = NSWindowTitleHidden;
+        _scoreitem.image = [NSImage imageNamed:@"thumbsup"];
+        _correctitem.image = [NSImage imageNamed:@"check"];
+        _pendingitem.image = [NSImage imageNamed:@"inbox"];
+        _iteminfotoolbaritem.image = [NSImage imageNamed:@"eye"];
+        _lasttentoolbaritem.image = [NSImage imageNamed:@"clock"];
+        _answerbtn.image = [NSImage imageNamed:@"arrowright"];
+    }
+}
 
 - (void)windowDidLoad {
     [super windowDidLoad];

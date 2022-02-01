@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width initial-scale=1"/>
+	<title>Importing and Exporting Lists</title>
+	
+	<meta name="description" content="About the Import and Export features in Shukofukurou."/>
+	<meta name="keywords" content="importing, kitsu, exporting, backup lists, syncing lists, anidb"/>
+	
+	<link rel="stylesheet" href="../css/main.css"/>
+	
+	<script src="../nav.js"></script>
+	
+</head>
+
+	<body class="help-page">
+		<header class="banner">
+	
+	<nav id="menu" class="dynamic">
+		
+		
+		<ul>
+		
+			
+				
+				<li>
+					<a href="../English.lproj/gettingstarted.html"><nav>Getting Started</nav></a>
+				</li>
+				
+			
+		
+			
+				
+				<li class="active">
+					<a href="../English.lproj/Importing%20Exporting%20Lists.html"><nav>Importing and Exporting Lists</nav></a>
+				</li>
+				
+			
+		
+			
+				
+				<li>
+					<a href="../English.lproj/Registering.html"><nav>Registering</nav></a>
+				</li>
+				
+			
+		
+			
+				
+				<li>
+					<a href="../English.lproj/aboutairingnotifications.html"><nav>Airing Notifications</nav></a>
+				</li>
+				
+			
+		
+			
+				
+				<li>
+					<a href="../English.lproj/addingupdateentries.html"><nav>Adding and Editing Entries</nav></a>
+				</li>
+				
+			
+		
+			
+				
+			
+		
+			
+				
+				<li>
+					<a href="../English.lproj/preferences.html"><nav>Preferences</nav></a>
+				</li>
+				
+			
+		
+			
+				
+				<li>
+					<a href="../English.lproj/profilebrowser.html"><nav>Profile Browser</nav></a>
+				</li>
+				
+			
+		
+			
+				
+				<li>
+					<a href="../English.lproj/thirdparty.html"><nav>Third Party Licenses</nav></a>
+				</li>
+				
+			
+		
+			
+				
+				<li>
+					<a href="../English.lproj/credits.html"><nav>Credits</nav></a>
+				</li>
+				
+			
+		
+			
+				
+				<li>
+					<a href="../English.lproj/keyboard.html"><nav>Keyboard Shortcuts</nav></a>
+				</li>
+				
+			
+		
+			
+				
+				<li>
+					<a href="../English.lproj/license.html"><nav>License Agreement</nav></a>
+				</li>
+				
+			
+		
+		</ul>
+	</nav>
+</header>
+
+		<main>
+			<h1>Importing and Exporting Lists</h1>
+
+<p>In Shukofukurou, you can import lists from other services to the current service.</p>
+
+<p>Here are the formats that Shukofukurou supports:</p>
+<ul>
+  <li>MyAnimeList XML Format (generated from the website or export done in Shukofukurou)</li>
+  <li>AniDB XML (full) Lists.</li>
+  <li>Kitsu (Anime only for now).</li>
+  <li>AniList (Anime only for now).</li>
+</ul>
+
+<p><strong>Note: Manga importing for Kitsu and AniList lists will come at a later date</strong></p>
+
+<p>If there are titles that could not be imported, it will show them after the import is complete. You can save the list to a JSON file for inspection.</p>
+
+<h2 id="import-compatibility">Import Compatibility</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><strong>Fields</strong></th>
+      <th style="text-align: center"><strong>MyAnimeList XML</strong></th>
+      <th style="text-align: center"><strong>AniDB XML</strong></th>
+      <th style="text-align: center"><strong>Kitsu</strong></th>
+      <th style="text-align: center"><strong>AniList</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Watched Episodes</td>
+      <td style="text-align: center">Y</td>
+      <td style="text-align: center">Y</td>
+      <td style="text-align: center">Y</td>
+      <td style="text-align: center">Y</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Watched Status</td>
+      <td style="text-align: center">Y</td>
+      <td style="text-align: center">-*</td>
+      <td style="text-align: center">Y</td>
+      <td style="text-align: center">Y</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Score</td>
+      <td style="text-align: center">Y</td>
+      <td style="text-align: center">N</td>
+      <td style="text-align: center">Y</td>
+      <td style="text-align: center">Y</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Tags</td>
+      <td style="text-align: center">Y</td>
+      <td style="text-align: center">N</td>
+      <td style="text-align: center">N</td>
+      <td style="text-align: center">N</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Custom Lists</td>
+      <td style="text-align: center">N</td>
+      <td style="text-align: center">N</td>
+      <td style="text-align: center">N</td>
+      <td style="text-align: center">N</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>(*) Only completed, plan to watch and watching status. The XML does not contain state/watch status information nor score.</p>
+
+<p>Note: You cannot import Kitsu/Anilist lists if your current service is the same as the list you are importing.</p>
+
+<h2 id="how-to-export-lists-from-other-sites-and-import-them">How to export lists from other sites and import them</h2>
+
+<h3 id="myanimelist">MyAnimeList</h3>
+<p>Note: Manga list importing is only available for App Store users.</p>
+<ol>
+  <li>In the library view on MyAnimeList, click “Export” option.</li>
+  <li>Select what list you want to export and click “Export My List.” It will prompt you if you want to export your list. Click OK.</li>
+  <li>Download your list. Rename the downloaded file to add the “.gz” extension. Then, extract the list.</li>
+  <li>In Shukofukurou, click on Tools &gt; Import List &gt; Import MyAnimeList XML  from the menubar.. Select your list to import.
+Note: To overwrite entries, click “Options” and check “Replace entries if exist”</li>
+  <li>Click Open and it will import the list to your library. If there is any titles that couldn’t be imported, it will show a list.</li>
+</ol>
+
+<h3 id="anidb">AniDB</h3>
+<ol>
+  <li>Click Export under “My Stuff” on AniDB.</li>
+  <li>Choose XML from the template selector and click Request Export. You will have to wait until the export is ready.</li>
+  <li>Download the export and extract it.</li>
+  <li>In Shukofukurou, Click on Tools &gt; Import List &gt; Import AniDB XML from the menubar.</li>
+  <li>Go to the extracted folder and select file “mylist.xml.” 
+Note: To overwrite entries, click “Options” and check “Replace entries if exist”</li>
+  <li>Click open to start the import. If there is any titles that couldn’t be imported, it will show a list.</li>
+</ol>
+
+<h3 id="kitsu-and-anilist">Kitsu and AniList</h3>
+<ol>
+  <li>In Shukofukurou, click on Tools &gt; Import List &gt; Import from Kitsu or Import from AniList from the menubar.</li>
+  <li>Specify your username that you want to import your library from.
+Note: To overwrite entries, check “Replace existing entries”</li>
+  <li>Click import to start the import. If there is any titles that couldn’t be imported, it will show a list.</li>
+</ol>
+
+<h2 id="export">Export</h2>
+<p>You can export lists for backup or use on other services.</p>
+
+<h3 id="myanimelist-xml-export-myanimelist-only">MyAnimeList XML Export (MyAnimeList only)</h3>
+<p>You can export your list to MyAnimeList XML compatible format. Note that some information that is not exposed by the API <strong>will not</strong> exported. However, your progress, status, personal tags and scores will be exported.</p>
+
+<h3 id="other-formats-donors-only">Other Formats (Donors only)</h3>
+<p>You can export your lists to JSON or CSV format. Note that you cannot import these formats yet. They are meant as a backup or use in other third party applications.</p>
+
+<ul>
+  <li>JSON (JavaScript Object Notation File) - JSON format allows you to use lists in other third party applications.</li>
+  <li>CSV (Comma Delimited File) - CSV format allows you to view your lists in Spreadsheet applications such as Microsoft Excel or Apple’s Numbers.</li>
+</ul>
+
+<p><strong>Note:</strong> Fields like custom lists, tags (MyAnimeList), and privacy settings are not exported with CSV format. Scores/Ratings are converted to a 0-100 scale.</p>
+
+<h3 id="export-converted-lists">Export Converted Lists</h3>
+<p>You can export converted MyAnimeList XML Anime or Manga lists from AniList or Kitsu with this option. Note that not all titles will be exported if the title does not exist on MyAnimeList.</p>
+
+<p>Note that scores will be converted to a 1-10 scale and privacy settings will not apply.</p>
+
+
+		</main>
+		
+<footer>
+</footer>
+
+	</body>
+	
+</html>

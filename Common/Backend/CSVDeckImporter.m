@@ -37,6 +37,9 @@
 }
 
 - (void)performImportWithDeckUUID:(NSUUID *)deckuuid withDeckType:(int)type destinationMap:(NSArray *)map completionHandler:(void (^)(bool success)) completionHandler {
+    if (!deckuuid) {
+        completionHandler(false);
+    }
     //Set Map
     _destinationmap = map;
     NSMutableArray *tmparray = [NSMutableArray new];
@@ -166,7 +169,7 @@
                 return nil;
             }
         }
-        else if ([deststr isEqualToString:@"Primary Reading"]) {
+        else if ([deststr isEqualToString:@"On'yomi"]) {
             if (!dict[@"kanareading"]) {
                 dict[@"kanareading"] = [self quotesCleanup:card[colstr]];
             }
@@ -174,7 +177,7 @@
                 return nil;
             }
         }
-        else if ([deststr isEqualToString:@"Primary Reading Type"]) {
+        else if ([deststr isEqualToString:@"Primary Reading"]) {
             if (!dict[@"readingtype"]) {
                 NSString *value =  card[colstr];
                 NSNumber *readingtype = @(0);
@@ -190,7 +193,7 @@
                 return nil;
             }
         }
-        else if ([deststr isEqualToString:@"Alt Reading"]) {
+        else if ([deststr isEqualToString:@"Kun'yomi"]) {
             if (!dict[@"altreading"]) {
                 dict[@"altreading"] = [self quotesCleanup:card[colstr]];
             }

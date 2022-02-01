@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController">
             <connections>
                 <outlet property="arrayController" destination="aN6-8N-XoP" id="3Ai-FU-IxC"/>
+                <outlet property="browsetoolbaritem" destination="ByB-ZQ-AA5" id="Z3g-5r-3hM"/>
+                <outlet property="exportdecktoolbaritem" destination="krx-0y-Zsr" id="fSJ-gc-vxd"/>
+                <outlet property="importdecktoolbaritem" destination="xFG-tM-t4u" id="vHd-OL-4Gh"/>
+                <outlet property="newdecktoolbaritem" destination="7dU-lF-Vhj" id="NKn-Iw-xK7"/>
                 <outlet property="tb" destination="26o-mf-wcx" id="Y2a-4P-OOK"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="N31-TV-vfg"/>
             </connections>
@@ -19,7 +23,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="409"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
             <value key="minSize" type="size" width="480" height="409"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="409"/>

@@ -8,6 +8,14 @@
 #import "DeckViewCell.h"
 #import "DeckManager.h"
 
+@interface DeckViewCell ()
+@property (strong) IBOutlet NSImageView *inboxicon;
+@property (strong) IBOutlet NSImageView *learnicon;
+@property (strong) IBOutlet NSButton *deckoptionsbtn;
+@property (strong) IBOutlet NSButton *deletebtn;
+
+@end
+
 @implementation DeckViewCell
 
 - (void)dealloc {
@@ -22,6 +30,14 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LearnEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"TimerFired" object:nil];
+    if (@available(macOS 11.0, *)) {
+    }
+    else {
+        _inboxicon.image = [NSImage imageNamed:@"inbox"];
+        _learnicon.image = [NSImage imageNamed:@"book"];
+        _deckoptionsbtn.image = [NSImage imageNamed:@"gear"];
+        _deletebtn.image = [NSImage imageNamed:@"delete"];
+    }
 }
 
 - (void)drawRect:(NSRect)dirtyRect {

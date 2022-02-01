@@ -149,6 +149,11 @@
     [self.aboutWindowController showWindow:nil];
 }
 
+- (IBAction)reportIssue:(id)sender{
+    //Show Help
+     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://support.malupdaterosx.moe/index.php?forums/kanimanabu-bug-tracker.23/"]];
+}
+
 #pragma mark - Core Data stack
 
 @synthesize persistentContainer = _persistentContainer;

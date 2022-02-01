@@ -23,7 +23,12 @@
 }
 
 - (NSImage *)toolbarItemImage {
-    return [NSImage imageWithSystemSymbolName:@"arrow.triangle.2.circlepath" accessibilityDescription:@""];
+    if (@available(macOS 11.0, *)) {
+        return [NSImage imageWithSystemSymbolName:@"arrow.triangle.2.circlepath" accessibilityDescription:@""];
+    } else {
+        // Fallback on earlier versions
+        return [NSImage imageNamed:@"update"];
+    }
 }
 
 - (NSString *)toolbarItemLabel {

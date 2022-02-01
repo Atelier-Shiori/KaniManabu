@@ -19,6 +19,8 @@
 @property (strong) IBOutlet NSToolbarItem *playvoicetoolbaritem;
 @property (strong) IBOutlet NSProgressIndicator *progress;
 @property (strong) IBOutlet NSToolbarItem *backtoolbaritem;
+@property (strong) IBOutlet NSToolbarItem *lookupindictionarytoolbaritem;
+@property (strong) IBOutlet NSToolbarItem *otherresourcestoolbaritem;
 @property (strong) CardReview *currentcard;
 @property int currentitem;
 @property bool promptacknowledged;
@@ -32,6 +34,20 @@
         return nil;
     return self;
 }
+
+- (void)awakeFromNib {
+    if (@available(macOS 11.0, *)) {
+        self.window.titleVisibility = NSWindowTitleHidden;
+        self.window.toolbarStyle = NSWindowToolbarStyleUnified;
+    }
+    else {
+        self.window.titleVisibility = NSWindowTitleHidden;
+        _playvoicetoolbaritem.image = [NSImage imageNamed:@"play"];
+        _lookupindictionarytoolbaritem.image = [NSImage imageNamed:@"bookshelf"];
+        _otherresourcestoolbaritem.image = [NSImage imageNamed:@"safari"];;
+    }
+}
+
 
 - (void)loadStudyItemsForDeckUUID:(NSUUID *)uuid withType:(int)deckType {
     NSArray *learnitems = [DeckManager.sharedInstance setandretrieveLearnItemsForDeckUUID:uuid withType:deckType];
@@ -169,12 +185,8 @@
                 [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"altmeaning"]];
             }
             int readingtype = ((NSNumber *)[_currentcard.card valueForKey:@"readingtype"]).intValue;
-            [infostr appendFormat:@"<h1>%@(Primary)</h1><p>%@</p>",readingtype == 0 ? @"On'yomi" : @"Kun'yomi",[_currentcard.card valueForKey:@"kanareading"]];
-            if ([_currentcard.card valueForKey:@"altreading"]) {
-                if (((NSString *)[_currentcard.card valueForKey:@"altreading"]).length > 0) {
-                    [infostr appendFormat:@"<h1>%@ (Alt.)</h1><p>%@</p>",readingtype == 0 ? @"Kun'yomi" : @"On'yomi",[_currentcard.card valueForKey:@"altreading"]];
-                }
-            }
+            [infostr appendFormat:readingtype == 0 ? @"<h1>On'yomi</h1><p><b>%@</b></p>" : @"<h1>On'yomi</h1><p>%@</p>", [_currentcard.card valueForKey:@"kanareading"]];
+            [infostr appendFormat:readingtype == 0 ? @"<h1>Kun'yomi</h1><p>%@</p>" : @"<h1>Kun'yomi</h1><p><b>%@</b></p>", [_currentcard.card valueForKey:@"altreading"] ? [_currentcard.card valueForKey:@"altreading"] : @""];
             if ([_currentcard.card valueForKey:@"notes"]) {
                 if (((NSString *)[_currentcard.card valueForKey:@"notes"]).length > 0) {
                     [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",[_currentcard.card valueForKey:@"notes"]];

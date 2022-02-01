@@ -1,7 +1,7 @@
 # KaniManabu
 KaniManu (蟹学ぶ) is an open source flashcard app for macOS (and soon iOS/iPadOS) specifically for learning Japanese. It incorporates close to the same spaced reputation system used on WaniKani. 
 
-Requires macOS 11 Big Sur or later.
+Requires macOS 10.15 Catalina or later.
 
 # What is different about KaniManabu compared to other SRS Flashcard software like Anki?
 KaniManbu is a lot easier to use with three different card types (Kanji, Kana, and Vocab). Unlike Anki, the user needs to type in the answer for both the meaning and reading instead of seeing the back of the card and picking the difficulty. This allows the learner to reinforce their knowledge.

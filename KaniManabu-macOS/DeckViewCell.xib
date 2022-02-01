@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -117,8 +116,12 @@
             </subviews>
             <connections>
                 <outlet property="DeckName" destination="uoj-LB-obo" id="6Vf-1L-WWF"/>
+                <outlet property="deckoptionsbtn" destination="kle-OU-8HE" id="SmE-zU-EPF"/>
                 <outlet property="decktypestr" destination="xYN-13-EEr" id="CPL-md-DIc"/>
+                <outlet property="deletebtn" destination="vXY-Es-isH" id="a3w-K7-Tik"/>
+                <outlet property="inboxicon" destination="D7g-TP-Uyg" id="g83-lq-KAm"/>
                 <outlet property="learnbtn" destination="Unq-EN-UIB" id="m9k-jT-8ei"/>
+                <outlet property="learnicon" destination="PuZ-gh-ayd" id="HRQ-nT-JPK"/>
                 <outlet property="learningcount" destination="Wnw-Tt-zdk" id="nJ8-tw-p9i"/>
                 <outlet property="reviewbtn" destination="Xd6-M7-TFv" id="glv-Sj-Dch"/>
                 <outlet property="reviewcount" destination="Ix9-9m-daV" id="PI3-YA-8YO"/>

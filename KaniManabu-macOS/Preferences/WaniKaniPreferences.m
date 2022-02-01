@@ -37,7 +37,7 @@
                 if (success) {
                     [self setbuttons];
                     [self loadUserInformation];
-                    _apikey.stringValue = @"";
+                    self.apikey.stringValue = @"";
                 }
                 else {
                     [WaniKani.sharedInstance removeToken];
@@ -109,7 +109,12 @@
 }
 
 - (NSImage *)toolbarItemImage {
-    return [NSImage imageWithSystemSymbolName:@"tortoise" accessibilityDescription:@""];
+    if (@available(macOS 11.0, *)) {
+        return [NSImage imageWithSystemSymbolName:@"tortoise" accessibilityDescription:@""];
+    } else {
+        // Fallback on earlier versions
+        return [NSImage imageNamed:@"turtle"];
+    }
 }
 
 - (NSString *)toolbarItemLabel {

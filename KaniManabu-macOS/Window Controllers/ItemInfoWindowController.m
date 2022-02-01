@@ -17,6 +17,8 @@
 @property (strong) IBOutlet NSTextView *infotextview;
 @property (strong) IBOutlet NSToolbarItem *playvoicetoolbaritem;
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
+@property (strong) IBOutlet NSToolbarItem *lookupindictionarytoolbaritem;
+@property (strong) IBOutlet NSToolbarItem *otherresourcestoolbaritem;
 @end
 
 @implementation ItemInfoWindowController
@@ -35,6 +37,19 @@
 
 - (void)dealloc {
     [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
+- (void)awakeFromNib {
+    if (@available(macOS 11.0, *)) {
+        self.window.titleVisibility = NSWindowTitleHidden;
+        self.window.toolbarStyle = NSWindowToolbarStyleUnified;
+    }
+    else {
+        self.window.titleVisibility = NSWindowTitleHidden;
+        _playvoicetoolbaritem.image = [NSImage imageNamed:@"play"];
+        _lookupindictionarytoolbaritem.image = [NSImage imageNamed:@"bookshelf"];
+        _otherresourcestoolbaritem.image = [NSImage imageNamed:@"safari"];;
+    }
 }
 
 - (void)windowDidLoad {
@@ -109,12 +124,8 @@
                 [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",_cardMeta[@"altmeaning"]];
             }
             int readingtype = ((NSNumber *)_cardMeta[@"readingtype"]).intValue;
-            [infostr appendFormat:@"<h1>%@(Primary)</h1><p>%@</p>",readingtype == 0 ? @"On'yomi" : @"Kun'yomi",_cardMeta[@"kanareading"]];
-            if (_cardMeta[@"altreading"] != [NSNull null]) {
-                if (((NSString *)_cardMeta[@"altreading"]).length > 0) {
-                    [infostr appendFormat:@"<h1>%@ (Alt.)</h1><p>%@</p>",readingtype == 0 ? @"Kun'yomi" : @"On'yomi",_cardMeta[@"altreading"]];
-                }
-            }
+            [infostr appendFormat:readingtype == 0 ? @"<h1>On'yomi</h1><p><b>%@</b></p>" : @"<h1>On'yomi</h1><p>%@</p>", _cardMeta[@"kanareading"]];
+            [infostr appendFormat:readingtype == 0 ? @"<h1>Kun'yomi</h1><p>%@</p>" : @"<h1>Kun'yomi</h1><p><b>%@</b></p>", _cardMeta[@"altreading"] != [NSNull null] ? _cardMeta[@"altreading"] : @""];
             if (_cardMeta[@"notes"] != [NSNull null]) {
                 if (((NSString *)_cardMeta[@"notes"]).length > 0) {
                     [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",_cardMeta[@"notes"]];

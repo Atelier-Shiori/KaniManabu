@@ -31,11 +31,26 @@
         for (NSDictionary *card in cards) {
             NSMutableDictionary *ncard = [NSMutableDictionary new];
             for (NSString *key in keys) {
-                ncard[key] = card[key] != [NSNull null] ? card[key] : @"";
+                NSString *nkey = key;
+                if (((NSNumber *)[deck valueForKey:@"deckType"]).intValue == DeckTypeKanji) {
+                    if ([key isEqualToString:@"kanareading"]) {
+                        nkey = @"onyomi";
+                    }
+                    else if ([key isEqualToString:@"altreading"]) {
+                        nkey = @"kunyomi";
+                    }
+                    else if ([key isEqualToString:@"readingtype"]) {
+                        nkey = @"primaryreadingtype";
+                    }
+                }
+                ncard[nkey] = card[key] != [NSNull null] ? card[key] : @"";
             }
             [tmparray addObject:ncard];
         }
         CHCSVWriter *writer = [[CHCSVWriter alloc] initForWritingToCSVFile:url.path];
+        if (((NSNumber *)[deck valueForKey:@"deckType"]).intValue == DeckTypeKanji) {
+            keys = @[@"japanese",@"english",@"altmeaning",@"onyomi",@"kunyomi",@"primaryreadingtype",@"notes",@"tags"];
+        }
         [writer writeLineOfFields:keys];
         for (NSDictionary *card in tmparray) {
             [writer writeLineWithDictionary:card];

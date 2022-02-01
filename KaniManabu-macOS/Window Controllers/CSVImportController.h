@@ -28,6 +28,7 @@
 @property (strong) NSArray *maparray;
 @property (strong) IBOutlet NSPopUpButton *importdeck;
 @property (strong) IBOutlet NSButton *useexistingdeckoption;
+@property (strong) IBOutlet NSMenuItem *kunyomimenuitem;
 @property (strong) NSArray *decks;
 - (void)loadColumnNames:(NSArray *)colarray;
 @end

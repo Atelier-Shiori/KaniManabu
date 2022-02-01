@@ -153,8 +153,10 @@ double const kFuzziness = 0.8;
     answer = [answer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     // Convert answer to Hiragana
     answer = [answer stringKatakanaToHiragana];
+    // Get Primary Reading Type
+    int primaryreadingtype = ((NSString *)[card valueForKey:@"readingtype"]).intValue;
     // Check alt reading
-    NSArray *altAnswers = [(NSString *)[card valueForKey:@"altreading"] componentsSeparatedByString:@"、"];
+    NSArray *altAnswers = primaryreadingtype == 0 ? [(NSString *)[card valueForKey:@"altreading"] componentsSeparatedByString:@"、"] : [(NSString *)[card valueForKey:@"kanareading"] componentsSeparatedByString:@"、"];
     // Check alternative answers
     for (NSString *altAnswer in altAnswers) {
         NSString * taltAnswer = [altAnswer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -167,7 +169,7 @@ double const kFuzziness = 0.8;
         }
     }
     // Check answer
-    NSArray *correctAnswers = [(NSString *)[card valueForKey:@"kanareading"] componentsSeparatedByString:@"、"];
+    NSArray *correctAnswers = primaryreadingtype == 0 ? [(NSString *)[card valueForKey:@"kanareading"] componentsSeparatedByString:@"、"] :  [(NSString *)[card valueForKey:@"altreading"] componentsSeparatedByString:@"、"];
     for (NSString *correctAnswer in correctAnswers) {
         NSString * tcorrectAnswer = [correctAnswer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         tcorrectAnswer = [tcorrectAnswer stringKatakanaToHiragana];

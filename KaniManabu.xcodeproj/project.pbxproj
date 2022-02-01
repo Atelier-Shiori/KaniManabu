@@ -1321,7 +1321,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = "1.0-alpha2";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = KaniManabu;
@@ -1356,7 +1356,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MARKETING_VERSION = "1.0-alpha2";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = KaniManabu;
@@ -1484,7 +1484,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20220124;
+				CURRENT_PROJECT_VERSION = 20220201;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1503,8 +1503,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "1.0-alpha3";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = "1.0-alpha4";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1520,7 +1520,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20220124;
+				CURRENT_PROJECT_VERSION = 20220201;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1539,8 +1539,8 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "1.0-alpha3";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = "1.0-alpha4";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

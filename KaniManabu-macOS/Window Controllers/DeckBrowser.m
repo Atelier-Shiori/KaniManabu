@@ -15,7 +15,7 @@
 @interface DeckBrowser ()
 @property (strong) NSSplitViewController *splitview;
 @property (strong) NSMutableArray *sourceListItems;
-@property (strong) IBOutlet NSSearchToolbarItem *filterfield;
+@property (strong) IBOutlet NSSearchField *filterfield;
 @property (strong) ItemInfoWindowController *iiwc;
 @property (strong) IBOutlet NSMenuItem *contextEditCardMenuItem;
 @property (strong) IBOutlet NSMenuItem *contextDeleteCardMenuItem;
@@ -25,6 +25,8 @@
 @property bool refreshinprogress;
 @property (strong) NSDate* nextAllowableiCloudUIRefreshDate;
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
+@property (strong) IBOutlet NSToolbarItem *edittoolbaritem;
+@property (strong) IBOutlet NSToolbarItem *deletetoolbaritem;
 @end
 
 @implementation DeckBrowser
@@ -39,7 +41,14 @@
     // Setup Splitview
     [self setUpSplitView];
     [self generateSourceList];
-    self.window.toolbarStyle = NSWindowToolbarStyleUnified;
+    if (@available(macOS 11.0, *)) {
+        self.window.toolbarStyle = NSWindowToolbarStyleUnified;
+    }
+    else {
+        _addcardtoolbaritem.image = [NSImage imageNamed:@"newdeck"];
+        _edittoolbaritem.image = [NSImage imageNamed:@"edit"];
+        _deletetoolbaritem.image = [NSImage imageNamed:@"delete"];
+    }
 }
 
 - (void)dealloc {
@@ -108,50 +117,77 @@
     PXSourceListItem *decksItem = [PXSourceListItem itemWithTitle:@"DECKS" identifier:@"decks"];
     for (NSManagedObject *deck in [[DeckManager sharedInstance] retrieveDecks]) {
         PXSourceListItem *sourceItem = [PXSourceListItem itemWithTitle:[deck valueForKey:@"deckName"] identifier:((NSUUID *)[deck valueForKey:@"deckUUID"]).UUIDString];
-        sourceItem.icon = [NSImage imageWithSystemSymbolName:@"menucard" accessibilityDescription:@""];
+        if (@available(macOS 11.0, *)) {
+            sourceItem.icon = [NSImage imageWithSystemSymbolName:@"menucard" accessibilityDescription:@""];
+        } else {
+            // Fallback on earlier versions
+            sourceItem.icon = [NSImage imageNamed:@"deck"];
+        }
         [decks addObject:sourceItem];
     }
     decksItem.children = decks;
     PXSourceListItem *stagesItem = [PXSourceListItem itemWithTitle:@"STAGES" identifier:@"stagegroup"];
     NSMutableArray *stageitems = [NSMutableArray new];
+    bool oldmacOSVersion = false;
+    if (@available(macOS 11.0, *)) {
+        oldmacOSVersion = false;
+    }
+    else {
+        oldmacOSVersion = true;
+    }
     for (int i=0; i <5; i++) {
         NSString *stagename = @"";
         NSString *imagename = @"";
         switch (i) {
             case 0:
                 stagename = @"Apprentice";
-                imagename = @"oval.portrait";
+                imagename = !oldmacOSVersion ? @"oval.portrait" : @"egg";
                 break;
             case 1:
                 stagename = @"Guru";
-                imagename = @"tortoise";
+                imagename = !oldmacOSVersion ? @"tortoise" : @"turtle";
                 break;
             case 2:
                 stagename = @"Master";
-                imagename = @"hare";
+                imagename = !oldmacOSVersion ? @"hare" : @"rabbit";
                 break;
             case 3:
                 stagename =  @"Enlightened";
-                imagename = @"star";
+                imagename = !oldmacOSVersion ? @"star" : @"star";
                 break;
             case 4:
                 stagename = @"Burned";
-                imagename = @"graduationcap";
+                imagename = !oldmacOSVersion ? @"graduationcap" : @"gradhat";
                 break;
             default:
                 break;
         }
         PXSourceListItem *sourceItem = [PXSourceListItem itemWithTitle:stagename identifier:[NSString stringWithFormat:@"srsstage-%i",i]];
-        sourceItem.icon = [NSImage imageWithSystemSymbolName:imagename accessibilityDescription:@""];
+        if (@available(macOS 11.0, *)) {
+            sourceItem.icon = [NSImage imageWithSystemSymbolName:imagename accessibilityDescription:@""];
+        } else {
+            // Fallback on earlier versions
+            sourceItem.icon = [NSImage imageNamed:imagename];
+        }
         [stageitems addObject:sourceItem];
     }
     stagesItem.children = stageitems;
 
     PXSourceListItem *otherItem = [PXSourceListItem itemWithTitle:@"OTHER" identifier:@"othergroup"];
     PXSourceListItem *allItem = [PXSourceListItem itemWithTitle:@"All Cards" identifier:@"allcards"];
-    allItem.icon = [NSImage imageWithSystemSymbolName:@"menucard" accessibilityDescription:@""];
+    if (@available(macOS 12.0, *)) {
+        allItem.icon = [NSImage imageWithSystemSymbolName:@"menucard" accessibilityDescription:@""];
+    } else {
+        // Fallback on earlier versions
+        allItem.icon = [NSImage imageNamed:@"deck"];
+    }
     PXSourceListItem *criticalItem = [PXSourceListItem itemWithTitle:@"Critical Items" identifier:@"criticalitems"];
-    criticalItem.icon = [NSImage imageWithSystemSymbolName:@"exclamationmark.triangle" accessibilityDescription:@""];
+    if (@available(macOS 11.0, *)) {
+        criticalItem.icon = [NSImage imageWithSystemSymbolName:@"exclamationmark.triangle" accessibilityDescription:@""];
+    } else {
+        // Fallback on earlier versions
+        criticalItem.icon = [NSImage imageNamed:@"critical"];
+    }
     otherItem.children = @[allItem, criticalItem];
     // Populate Source List
     [self.sourceListItems addObject:decksItem];
@@ -226,6 +262,7 @@
 
 - (void)sourceListSelectionDidChange:(NSNotification *)notification
 {
+    _filterfield.stringValue = @"";
     [[NSUserDefaults standardUserDefaults] setValue:@(_sourceList.selectedRow) forKey:@"selecteddeck"];
     [self loadDeck];
 }
@@ -319,7 +356,9 @@
     alert.informativeText = [NSString stringWithFormat:@"Do you want to delete card, %@? This cannot be undone", [card valueForKey:@"japanese"]];
     [alert addButtonWithTitle:NSLocalizedString(@"Delete",nil)];
     [alert addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
-    [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    if (@available(macOS 11.0, *)) {
+        [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    }
     [(NSButton *)alert.buttons[0] setKeyEquivalent: @""];
     [(NSButton *)alert.buttons[1] setKeyEquivalent: @"\033"];
     [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
@@ -375,7 +414,12 @@
         [self.arraycontroller addObjects:array];
         [self.tb reloadData];
         [self.tb deselectAll:self];
-        self.window.subtitle = array.count == 1 ? @"1 item" : [NSString stringWithFormat:@"%lu items",(unsigned long)array.count];
+        if (@available(macOS 11.0, *)) {
+            self.window.subtitle = array.count == 1 ? @"1 item" : [NSString stringWithFormat:@"%lu items",(unsigned long)array.count];
+        } else {
+            // Fallback on earlier versions
+            self.window.title = [NSString stringWithFormat:@"Deck Browser (%@)", array.count == 1 ? @"1 item" : [NSString stringWithFormat:@"%lu items",(unsigned long)array.count]];
+        }
     });
 }
 
@@ -452,7 +496,9 @@
     alert.informativeText = [NSString stringWithFormat:@"Do you want to reset the review progress for card, %@ and put it back in the learning queue? This cannot be undone", [card valueForKey:@"japanese"]];
     [alert addButtonWithTitle:NSLocalizedString(@"Reset",nil)];
     [alert addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
-    [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    if (@available(macOS 11.0, *)) {
+        [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    }
     [(NSButton *)alert.buttons[0] setKeyEquivalent: @""];
     [(NSButton *)alert.buttons[1] setKeyEquivalent: @"\033"];
     [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
@@ -512,8 +558,8 @@
 }
 
 - (void)filteritems {
-    if (_filterfield.searchField.stringValue.length > 0) {
-        NSString *str = _filterfield.searchField.stringValue;
+    if (_filterfield.stringValue.length > 0) {
+        NSString *str = _filterfield.stringValue;
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"japanese CONTAINS[cd] %@ OR english CONTAINS[cd] %@ OR altmeaning CONTAINS[cd] %@ OR kanaWord CONTAINS[cd] %@ OR altreading CONTAINS[cd] %@ OR reading CONTAINS[cd] %@ OR tags CONTAINS[cd] %@", str,str,str,str,str,str,str];
         _arraycontroller.filterPredicate = predicate;
         [_tb reloadData];

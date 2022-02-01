@@ -37,6 +37,10 @@
 @property (strong) CSVLoadingWindow *csvlw;
 @property bool refreshinprogress;
 @property (strong) NSDate* nextAllowableiCloudUIRefreshDate;
+@property (strong) IBOutlet NSToolbarItem *browsetoolbaritem;
+@property (strong) IBOutlet NSToolbarItem *newdecktoolbaritem;
+@property (strong) IBOutlet NSToolbarItem *importdecktoolbaritem;
+@property (strong) IBOutlet NSToolbarItem *exportdecktoolbaritem;
 @end
 
 @implementation MainWindowController
@@ -51,6 +55,19 @@
     [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
+- (void)awakeFromNib {
+    if (@available(macOS 11.0, *)) {
+        self.window.titleVisibility = NSWindowTitleVisible;
+        self.window.toolbarStyle = NSWindowToolbarStyleUnified;
+    }
+    else {
+        _browsetoolbaritem.image = [NSImage imageNamed:@"browse"];
+        _newdecktoolbaritem.image = [NSImage imageNamed:@"newdeck"];
+        _importdecktoolbaritem.image = [NSImage imageNamed:@"import"];
+        _exportdecktoolbaritem.image = [NSImage imageNamed:@"export"];
+    }
+}
+
 - (void)windowDidLoad {
     [super windowDidLoad];
     
@@ -61,6 +78,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LearnEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckAdded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckRemoved" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"DeckOptionsChanged" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"StartLearning" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"StartReviewing" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ActionDeleteDeck" object:nil];
@@ -100,7 +118,7 @@
         }];
         }
     }
-    else if ([notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification] || [notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"]) {
+    else if ([notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification] || [notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:@"DeckAdded"] || [notification.name isEqualToString:@"DeckRemoved"] || [notification.name isEqualToString:@"DeckOptionsChanged"]) {
         // To prevent NSPresistentStoreRemoteChangeNotification triggering UI freshing several times and cause the app to perform slowly, check an allowable date before allowing its operation.
         if ([notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification] || [notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification]) {
             if (_nextAllowableiCloudUIRefreshDate) {
@@ -280,20 +298,23 @@
     _dc = [DeckOptions new];
     [_dc.window makeKeyAndOrderFront:self];
     [_dc loadSettings:deck];
+    [_dc.window orderOut:self];
     [self.window beginSheet:_dc.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
             for (NSString *key in self.dc.newsettings) {
                 [deck setValue:self.dc.newsettings[key] forKey:key];
             }
             [self.moc save:nil];
+            [NSNotificationCenter.defaultCenter postNotificationName:@"DeckOptionsChanged" object:nil];
         }
     }];
 }
 
 - (void)loadDeckArrayAndPopulate {
     _refreshinprogress = true;
-    NSMutableArray *a = [_arrayController mutableArrayValueForKey:@"content"];
-    [a removeAllObjects];
+    //NSMutableArray *a = [_arrayController mutableArrayValueForKey:@"content"];
+    //[a removeAllObjects];
+    [_arrayController setContent:nil];
     [_arrayController addObjects:[DeckManager.sharedInstance retrieveDecks]];
     [_tb reloadData];
     [_tb deselectAll:self];
@@ -365,7 +386,9 @@
     alert.informativeText = [NSString stringWithFormat:@"Do you want to delete deck, %@? This cannot be undone", [selectedDeck valueForKey:@"deckName"]];
     [alert addButtonWithTitle:NSLocalizedString(@"Delete",nil)];
     [alert addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
-    [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    if (@available(macOS 11.0, *)) {
+        [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    }
     [(NSButton *)alert.buttons[0] setKeyEquivalent: @""];
     [(NSButton *)alert.buttons[1] setKeyEquivalent: @"\033"];
     [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
@@ -398,12 +421,13 @@
                 if (success) {
                     [self.csvic.window makeKeyAndOrderFront:self];
                     [self.csvic loadColumnNames:columnnames];
+                    [self.csvic.window orderOut:self];
                     [self.window beginSheet:self.csvic.window completionHandler:^(NSModalResponse returnCode) {
                         if (returnCode == NSModalResponseOK) {
                             self.csvlw = [CSVLoadingWindow new];
                             [self.window beginSheet:self.csvlw.window completionHandler:^(NSModalResponse returnCode) {
                             }];
-                            if (self.csvic.useexistingdeckoption) {
+                            if (self.csvic.useexistingdeckoption.state) {
                                 NSUUID *selecteddeck = [((NSManagedObject *)self.csvic.decks[self.csvic.importdeck.indexOfSelectedItem]) valueForKey:@"deckUUID"];
                                 long selectedtype = self.csvic.decktype.selectedTag;
                                     dispatch_async(self.privateQueue, ^{

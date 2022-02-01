@@ -21,6 +21,8 @@
         ve.deckUUID = uuid;//_currentDeckUUID;
     }
     ve.newcard = newCard;
+    [ve.window makeKeyAndOrderFront:self];
+    [ve.window orderOut:self];
     [w beginSheet:ve.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
             if (newCard) {
@@ -71,6 +73,8 @@
         kje.deckUUID = uuid;
     }
     kje.newcard = newCard;
+    [kje.window makeKeyAndOrderFront:self];
+    [kje.window orderOut:self];
     [w beginSheet:kje.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
             if (newCard) {
@@ -121,6 +125,8 @@
         ke.deckUUID = uuid;
     }
     ke.newcard = newCard;
+    [ke.window makeKeyAndOrderFront:self];
+    [ke.window orderOut:self];
     [w beginSheet:ke.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
             if (newCard) {
