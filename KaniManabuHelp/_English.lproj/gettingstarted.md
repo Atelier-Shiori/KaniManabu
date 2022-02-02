@@ -1,15 +1,44 @@
 ---
 title: Getting Started
 description: Getting Started with KaniManabu
-keyword: overview
+keyword: overview,ime,input method editor,enabling tts, tts voices
 order: -.INF
 ---
 
 # What is KaniManabu?
 KaniManabu is a WaniKani-style SRS app for macOS that allows users to memorize words by typing instead of viewing the card and picking a difficulty. KaniManabu has built in card types, which makes it easy for users to create their own decks without messing with templates.
 
-# Main Interface
+# Things to look out before using KaniManabu
+## Enable Japanese Input Method
+KaniManabu requires the Japanese Input Method to be enabled to enter Hiragana or Katakana for readings when prompted.
+
+You can enable the Japanese IME in macOS by following these steps.
+
+1. Open System Preferences
+2. Click on Keyboard
+3. Clickl the Input Sources tab in Keyboard Preferences
+4. Click the + button to add a new input method.
+5. Type Japanese in the search field and select "Japanese - Romaji". Then click the Add button.
+6. Enable Katakana and Romaji input modes.
+
+To switch between Hiragana and Romaji mode, press CONTROL + Shift + ; for Romaji and CONTROL + Shift + J for Hiragana. For Japanese (JIS) keyboard layout, press かな for Hiragana and 英数 (えいすう, lit. letters and numbers) for Romaji. Make sure you choose the hiragana when using IME. Kanji words will not be accepted as the answer for readings. However, it will not mark the answer wrong, just warn the user.
+
+## Install Japanese TTS Voices
+With the "Automatically play audio after answer" option enabled in preferences, your Mac will say the Japanese word after you answered it correctly, except for Kanji. KaniManabu relies on the built in Text to Speech in macOS to provide this feature. You need to have the Japanese Text to Speech voices installed for this to work properly.
+
+You can install the Japanese TTS voices by doing the following:
+
+1. Open System Preferences.
+2. Click on Accessibility
+3. From the sidebar, choose **Spoken Content** for macOS 11 Big Sur or later or **Speech** in macOS 10.15 Catalina.
+4. From the voice dropdown, click on it and choose the "Customize" option.
+5. In the search field, type Japanese. Enable **Kyoko** and **Otoya** and click Ok
+6. The voices should now download and KaniManabu should now say the Japanese words properly.
+
+# Using the App
+## Main Interface
 ![Main Interface](maininterface.png)
+
 1. **Deck Browser** - The Deck Browser allows you to browse cards from decks you have, by SRS level, and view call cards and critical items. You can manage cards in the Deck Browser.
 2. **New Deck** - Creates a new deck.
 3. **Import Deck** - This option allows you to import decks from a CSV file, see Importing Decks.
@@ -24,6 +53,7 @@ KaniManabu is a WaniKani-style SRS app for macOS that allows users to memorize w
 
 ## Deck Browser
 ![Deck Browser](deckbrowser.png)
+
 1. **Cards** - Your cards in the deck/SRS Level/Critical Items will appear here.
 2. **Add Card** - Adds a new card to the current deck (Does not apply to viewing cards by SRS Stage, All Cards, and Critical Items)
 3. **Modify Card** - Modifies the current card
@@ -33,8 +63,11 @@ KaniManabu is a WaniKani-style SRS app for macOS that allows users to memorize w
 7. **SRS Stages** - View cards by SRS stage
 8. **Critical Items** - These are cards that you answered correctly less than 70% of the time.
 
+Right clicking a card also allows you to modify, delete, suspend, and reset a card.
+
 ## Learning Mode
 ![Learn Mode](learnmode.png)
+
 In learning mode, you get to preview the cards before taking a quiz on them. Once you finish the quiz, the newly learned cards goes into the review queue.
 
 1. **Go Back/Advances** - You can advance or view the previous card in the learning queue. Once you reach the end of the queue, you can start the review quiz.
@@ -46,6 +79,7 @@ In learning mode, you get to preview the cards before taking a quiz on them. Onc
 
 ## Review Mode (Default)
 ![Review](review.png)
+
 This is the review interface where you review items that are in the queue.
 
 1. **Last 10 Items** - Views the list of 10 items you have reviewed in the current session
@@ -61,5 +95,7 @@ Note: Once you answered all the questions for a card, it will show the next SRS 
 ## Review Mode (Anki Mode)
 ![Anki Mode](ankimode1.png)
 In Anki Mode, you guess the answer on paper or in your mind and click the **Show Answer** button.
+
 ![Anki Mode](ankimode2.png)
+
 After clicking the **Show Answer**, you select if you got the card **Correct** or **Wrong**. The next SRS level will appear above the **Correct** and **Wrong** buttons.
