@@ -481,6 +481,9 @@
         NSMutableArray *tmparray = [NSMutableArray new];
         NSArray *decks = [DeckManager.sharedInstance retrieveDecks];
         for (NSManagedObject *deck in decks) {
+            if (!((NSNumber *)[deck valueForKey:@"enabled"]).boolValue) {
+                continue;
+            }
             NSArray *cards = [DeckManager.sharedInstance retrieveReviewItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
             for (NSManagedObject *obj in cards) {
                 NSArray *keys = obj.entity.attributesByName.allKeys;

@@ -33,32 +33,33 @@
     NSDate *today = [NSDate date];
     int newinterval = 0;
     switch (currentSRSStage) {
-        case SRSStageApprentice2:
+        case SRSStageApprentice0:
+        case SRSStageApprentice1:
             newinterval = SRSApprentice2;
-            break;
-        case SRSStageApprentice3:
+        case SRSStageApprentice2:
             newinterval = SRSApprentice3;
             break;
-        case SRSStageApprentice4:
+        case SRSStageApprentice3:
             newinterval = SRSApprentice4;
             break;
-        case SRSStageGuru1:
+        case SRSStageApprentice4:
             newinterval = SRSGuru1;
             break;
-        case SRSStageGuru2:
+        case SRSStageGuru1:
             newinterval = SRSGuru2;
             break;
-        case SRSStageMaster:
+        case SRSStageGuru2:
             newinterval = SRSMaster;
             break;
-        case SRSStageEnlightened:
+        case SRSStageMaster:
             newinterval = SRSEnlightened;
             break;
-        case SRSStageBurned:
-            // Item no longer being reviewed, return no future date
-            return nil;
-        default:
+        case SRSStageEnlightened:
+            newinterval = SRSBurned;
             break;
+        case SRSStageBurned:
+        default:
+            return nil;
     }
     return [today dateByAddingTimeInterval:newinterval];
 }

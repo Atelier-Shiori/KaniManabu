@@ -25,14 +25,14 @@
  If user fails to answer the question in learning session, the wait time is 2 hours instead of immediately
  */
 typedef NS_ENUM(int,SRSTimings) {
-    SRSApprentice1 = 7200,
     SRSApprentice2 = 14400,
     SRSApprentice3 = 28800,
     SRSApprentice4 = 86400,
     SRSGuru1 = 172800,
-    SRSGuru2 = 345600,
-    SRSMaster = 864000,
-    SRSEnlightened = 3456000
+    SRSGuru2 = 604800,
+    SRSMaster = 1209600,
+    SRSEnlightened = 2592000,
+    SRSBurned = 10368000
 };
 /*
  These are the SRS Stages enumerated
