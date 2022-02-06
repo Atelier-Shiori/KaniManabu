@@ -19,6 +19,7 @@
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property (strong) IBOutlet NSToolbarItem *lookupindictionarytoolbaritem;
 @property (strong) IBOutlet NSToolbarItem *otherresourcestoolbaritem;
+@property (strong) IBOutlet NSTextField *furiganas;
 @end
 
 @implementation ItemInfoWindowController
@@ -96,29 +97,31 @@
     NSMutableString *infostr = [NSMutableString new];
     switch (_cardType) {
         case DeckTypeKana: {
+            _furiganas.stringValue = @"";
                 [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",_cardMeta[@"english"]];
-                if (((NSString *)_cardMeta[@"altmeaning"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",_cardMeta[@"altmeaning"]];
-                }
+            if (((NSString *)_cardMeta[@"altmeaning"]).length > 0) {
+                [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",_cardMeta[@"altmeaning"]];
+            }
             if (_cardMeta[@"notes"] != [NSNull null]) {
                 if (((NSString *)_cardMeta[@"notes"]).length > 0) {
                     [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",_cardMeta[@"notes"]];
                 }
             }
-                if (_cardMeta[@"contextsentence1"] != [NSNull null] && _cardMeta[@"englishsentence1"] != [NSNull null]) {
-                    if (((NSString *)_cardMeta[@"contextsentence1"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence1"]).length > 0) {
-                        [infostr appendString:@"<h1>Example Sentences</h1>"];
-                        [infostr appendFormat:@"<p>%@<br />%@</p>",_cardMeta[@"contextsentence1"],_cardMeta[@"englishsentence1"]];
-                    }
+            if (_cardMeta[@"contextsentence1"] != [NSNull null] && _cardMeta[@"englishsentence1"] != [NSNull null]) {
+                if (((NSString *)_cardMeta[@"contextsentence1"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence1"]).length > 0) {
+                    [infostr appendString:@"<h1>Example Sentences</h1>"];
+                    [infostr appendFormat:@"<p>%@<br />%@</p>",_cardMeta[@"contextsentence1"],_cardMeta[@"englishsentence1"]];
                 }
-                if (_cardMeta[@"contextsentence2"] != [NSNull null] && _cardMeta[@"englishsentence2"] != [NSNull null]) {
-                    if (((NSString *)_cardMeta[@"contextsentence2"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence2"]).length > 0) {
-                        [infostr appendFormat:@"<p>%@<br />%@</p>",_cardMeta[@"contextsentence2"],_cardMeta[@"englishsentence2"]];
-                    }
+            }
+            if (_cardMeta[@"contextsentence2"] != [NSNull null] && _cardMeta[@"englishsentence2"] != [NSNull null]) {
+                if (((NSString *)_cardMeta[@"contextsentence2"]).length > 0 && ((NSString *)_cardMeta[@"englishsentence2"]).length > 0) {
+                    [infostr appendFormat:@"<p>%@<br />%@</p>",_cardMeta[@"contextsentence2"],_cardMeta[@"englishsentence2"]];
                 }
+            }
             break;
         }
         case DeckTypeKanji: {
+            _furiganas.stringValue = @"";
             [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",_cardMeta[@"english"]];
             if (((NSString *)_cardMeta[@"altmeaning"]).length > 0) {
                 [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",_cardMeta[@"altmeaning"]];
@@ -134,6 +137,7 @@
             break;
         }
         case DeckTypeVocab: {
+            _furiganas.stringValue = _cardMeta[@"kanaWord"];
             [infostr appendFormat:@"<h1>Kana Reading</h1><p>%@</p>",_cardMeta[@"kanaWord"]];
             [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",_cardMeta[@"english"]];
             if (((NSString *)_cardMeta[@"altmeaning"]).length > 0) {

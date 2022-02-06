@@ -181,6 +181,13 @@
         // Fallback on earlier versions
         allItem.icon = [NSImage imageNamed:@"deck"];
     }
+    PXSourceListItem *reviewItem = [PXSourceListItem itemWithTitle:@"Review Queue" identifier:@"reviewqueue"];
+    if (@available(macOS 12.0, *)) {
+        reviewItem.icon = [NSImage imageWithSystemSymbolName:@"menucard" accessibilityDescription:@""];
+    } else {
+        // Fallback on earlier versions
+        reviewItem.icon = [NSImage imageNamed:@"deck"];
+    }
     PXSourceListItem *criticalItem = [PXSourceListItem itemWithTitle:@"Critical Items" identifier:@"criticalitems"];
     if (@available(macOS 11.0, *)) {
         criticalItem.icon = [NSImage imageWithSystemSymbolName:@"exclamationmark.triangle" accessibilityDescription:@""];
@@ -188,7 +195,7 @@
         // Fallback on earlier versions
         criticalItem.icon = [NSImage imageNamed:@"critical"];
     }
-    otherItem.children = @[allItem, criticalItem];
+    otherItem.children = @[allItem, reviewItem, criticalItem];
     // Populate Source List
     [self.sourceListItems addObject:decksItem];
     [self.sourceListItems addObject:stagesItem];
@@ -394,6 +401,12 @@
         _addcardtoolbaritem.enabled = false;
         [self loadallitems];
     }
+    else if ([identifier isEqualToString:@"reviewqueue"]) {
+        _currentDeckUUID = nil;
+        _currentDeckType = -1;
+        _addcardtoolbaritem.enabled = false;
+        [self loadreviewitems];
+    }
     else {
         _addcardtoolbaritem.enabled = true;
         _currentDeckUUID = [[NSUUID alloc] initWithUUIDString:identifier];
@@ -428,19 +441,19 @@
         NSPredicate *predicate;
         switch (stage) {
             case 0:
-                predicate = [NSPredicate predicateWithFormat:@"srsstage <= %i AND learned == %@" , 3, @YES];
+                predicate = [NSPredicate predicateWithFormat:@"srsstage <= %i AND learned == %@" , 4, @YES];
                 break;
             case 1:
-                predicate = [NSPredicate predicateWithFormat:@"srsstage <= %i && srsstage >= %i AND learned == %@" , 5, 4, @YES];
+                predicate = [NSPredicate predicateWithFormat:@"srsstage <= %i && srsstage >= %i AND learned == %@" , 6, 5, @YES];
                 break;
             case 2:
-                predicate = [NSPredicate predicateWithFormat:@"srsstage == %i AND learned == %@" , 6, @YES];
-                break;
-            case 3:
                 predicate = [NSPredicate predicateWithFormat:@"srsstage == %i AND learned == %@" , 7, @YES];
                 break;
-            case 4:
+            case 3:
                 predicate = [NSPredicate predicateWithFormat:@"srsstage == %i AND learned == %@" , 8, @YES];
+                break;
+            case 4:
+                predicate = [NSPredicate predicateWithFormat:@"srsstage == %i AND learned == %@" , 9, @YES];
                 break;
             default:
                 break;
@@ -458,6 +471,24 @@
         NSMutableArray *tmparray = [NSMutableArray new];
         for (int i = 0; i < 3; i++) {
             [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCriticalCardswithType:i]];
+        }
+        [self populateTableViewWithArray:tmparray];
+    }];
+}
+
+- (void)loadreviewitems {
+    [DeckManager.sharedInstance.moc performBlock:^{
+        NSMutableArray *tmparray = [NSMutableArray new];
+        NSArray *decks = [DeckManager.sharedInstance retrieveDecks];
+        for (NSManagedObject *deck in decks) {
+            NSArray *cards = [DeckManager.sharedInstance retrieveReviewItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
+            for (NSManagedObject *obj in cards) {
+                NSArray *keys = obj.entity.attributesByName.allKeys;
+                NSMutableDictionary *tmpdict = [NSMutableDictionary dictionaryWithDictionary:[obj dictionaryWithValuesForKeys:keys]];
+                tmpdict[@"managedObject"] = obj;
+                tmpdict[@"cardtype"] = [deck valueForKey:@"deckType"];
+                [tmparray addObject:tmpdict];
+            }
         }
         [self populateTableViewWithArray:tmparray];
     }];

@@ -25,6 +25,7 @@
 @property int currentitem;
 @property bool promptacknowledged;
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
+@property (strong) IBOutlet NSTextField *furiganas;
 @end
 
 @implementation LearnWindowController
@@ -157,29 +158,31 @@
     NSMutableString *infostr = [NSMutableString new];
     switch (_currentcard.cardtype) {
         case DeckTypeKana: {
-                [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"english"]];
-                if (((NSString *)[_currentcard.card valueForKey:@"altmeaning"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"altmeaning"]];
-                }
+            _furiganas.stringValue = @"";
+            [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"english"]];
+            if (((NSString *)[_currentcard.card valueForKey:@"altmeaning"]).length > 0) {
+                [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"altmeaning"]];
+            }
             if ([_currentcard.card valueForKey:@"notes"]) {
                 if (((NSString *)[_currentcard.card valueForKey:@"notes"]).length > 0) {
                     [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",[_currentcard.card valueForKey:@"notes"]];
                 }
             }
-                if ([_currentcard.card valueForKey:@"contextsentence1"] && [_currentcard.card valueForKey:@"englishsentence1"]) {
-                    if (((NSString *)[_currentcard.card valueForKey:@"contextsentence1"]).length > 0 && ((NSString *)[_currentcard.card valueForKey:@"englishsentence1"]).length > 0) {
-                        [infostr appendString:@"<h1>Example Sentences</h1>"];
-                        [infostr appendFormat:@"<p>%@<br />%@</p>",[_currentcard.card valueForKey:@"contextsentence1"],[_currentcard.card valueForKey:@"englishsentence1"]];
-                    }
+            if ([_currentcard.card valueForKey:@"contextsentence1"] && [_currentcard.card valueForKey:@"englishsentence1"]) {
+                if (((NSString *)[_currentcard.card valueForKey:@"contextsentence1"]).length > 0 && ((NSString *)[_currentcard.card valueForKey:@"englishsentence1"]).length > 0) {
+                    [infostr appendString:@"<h1>Example Sentences</h1>"];
+                    [infostr appendFormat:@"<p>%@<br />%@</p>",[_currentcard.card valueForKey:@"contextsentence1"],[_currentcard.card valueForKey:@"englishsentence1"]];
                 }
-                if ([_currentcard.card valueForKey:@"contextsentence2"] && [_currentcard.card valueForKey:@"englishsentence2"]) {
-                    if (((NSString *)[_currentcard.card valueForKey:@"contextsentence2"]).length > 0 && ((NSString *)[_currentcard.card valueForKey:@"englishsentence2"]).length > 0) {
-                        [infostr appendFormat:@"<p>%@<br />%@</p>",[_currentcard.card valueForKey:@"contextsentence2"],[_currentcard.card valueForKey:@"englishsentence2"]];
-                    }
+            }
+            if ([_currentcard.card valueForKey:@"contextsentence2"] && [_currentcard.card valueForKey:@"englishsentence2"]) {
+                if (((NSString *)[_currentcard.card valueForKey:@"contextsentence2"]).length > 0 && ((NSString *)[_currentcard.card valueForKey:@"englishsentence2"]).length > 0) {
+                    [infostr appendFormat:@"<p>%@<br />%@</p>",[_currentcard.card valueForKey:@"contextsentence2"],[_currentcard.card valueForKey:@"englishsentence2"]];
                 }
+            }
             break;
         }
         case DeckTypeKanji: {
+            _furiganas.stringValue = @"";
             [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"english"]];
             if (((NSString *)[_currentcard.card valueForKey:@"altmeaning"]).length > 0) {
                 [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"altmeaning"]];
@@ -195,6 +198,7 @@
             break;
         }
         case DeckTypeVocab: {
+            _furiganas.stringValue = [_currentcard.card valueForKey:@"kanaWord"];
             [infostr appendFormat:@"<h2>Japanese Kana</h2><p>%@</p>",[_currentcard.card valueForKey:@"kanaWord"]];
             [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"english"]];
             if (((NSString *)[_currentcard.card valueForKey:@"altmeaning"]).length > 0) {

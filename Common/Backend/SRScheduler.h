@@ -38,15 +38,16 @@ typedef NS_ENUM(int,SRSTimings) {
  These are the SRS Stages enumerated
  */
 typedef NS_ENUM(int,SRSStages) {
-    SRSStageApprentice1 = 0,
-    SRSStageApprentice2 = 1,
-    SRSStageApprentice3 = 2,
-    SRSStageApprentice4 = 3,
-    SRSStageGuru1 = 4,
-    SRSStageGuru2 = 5,
-    SRSStageMaster = 6,
-    SRSStageEnlightened = 7,
-    SRSStageBurned = 8
+    SRSStageApprentice0 = 0,
+    SRSStageApprentice1 = 1,
+    SRSStageApprentice2 = 2,
+    SRSStageApprentice3 = 3,
+    SRSStageApprentice4 = 4,
+    SRSStageGuru1 = 5,
+    SRSStageGuru2 = 6,
+    SRSStageMaster = 7,
+    SRSStageEnlightened = 8,
+    SRSStageBurned = 9
 };
 
 + (int)calculatedDeIncrementSRSStageWithCurrentStage:(int)currentSRSStage withIncorrectCount:(long)numincorrect;

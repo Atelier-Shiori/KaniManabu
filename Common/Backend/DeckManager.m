@@ -129,8 +129,8 @@
         default:
             return nil;
     }
-    // Check for only learned cards, not suspended cards and not burned cards (SRS Stage 8)
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deckUUID == %@ AND learned == %@ AND suspended == %@ AND srsstage < %i",uuid, @YES, @NO, 8];
+    // Check for only learned cards, not suspended cards and not burned cards (SRS Stage 9)
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deckUUID == %@ AND learned == %@ AND suspended == %@ AND srsstage < %i",uuid, @YES, @NO, 9];
     fetchRequest.predicate = predicate;
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                         initWithKey:@"nextreviewinterval" ascending:YES];
