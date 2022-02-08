@@ -45,6 +45,7 @@
 @property (strong) IBOutlet NSPopover *popovervalidationmessage;
 @property (strong) IBOutlet NSTextField *validationmessage;
 @property (strong) IBOutlet NSToolbarItem *lasttentoolbaritem;
+@property (strong) AVSpeechSynthesizer *synthesizer;
 @end
 
 @implementation ReviewWindowController
@@ -79,6 +80,7 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    _synthesizer = [AVSpeechSynthesizer new];
 }
 
 - (void)startReview:(NSArray *)reviewitems {
@@ -596,10 +598,9 @@
 }
 
 - (void)sayAnswer:(NSString *)answer {
-    AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc]init];
     AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:answer];
     utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier: [NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 0 ? @"com.apple.speech.synthesis.voice.kyoko.premium" : @"com.apple.speech.synthesis.voice.otoya.premium"];
-    [synthesizer speakUtterance:utterance];
+    [_synthesizer speakUtterance:utterance];
 }
 
 - (void)showvalidationmessage:(NSString *)text {

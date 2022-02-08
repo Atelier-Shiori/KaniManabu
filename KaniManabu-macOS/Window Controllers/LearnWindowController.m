@@ -26,6 +26,7 @@
 @property bool promptacknowledged;
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property (strong) IBOutlet NSTextField *furiganas;
+@property (strong) AVSpeechSynthesizer *synthesizer;
 @end
 
 @implementation LearnWindowController
@@ -113,6 +114,7 @@
     [super windowDidLoad];
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     _privateQueue = dispatch_queue_create("moe.ateliershiori.KaniManabu.Learn", DISPATCH_QUEUE_CONCURRENT);
+    _synthesizer = [[AVSpeechSynthesizer alloc]init];
 }
 
 - (BOOL)windowShouldClose:(id)sender {
@@ -281,10 +283,9 @@
 
 
 - (IBAction)playvoice:(id)sender {
-    AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc]init];
     AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:_currentcard.cardtype == DeckTypeKana ? [_currentcard.card valueForKey:@"kanareading"] : [_currentcard.card valueForKey:@"reading"]];
     utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier: [NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 0 ? @"com.apple.speech.synthesis.voice.kyoko.premium" : @"com.apple.speech.synthesis.voice.otoya.premium"];
-    [synthesizer speakUtterance:utterance];
+    [_synthesizer speakUtterance:utterance];
 }
 
 - (IBAction)lookupworddictionary:(id)sender {
