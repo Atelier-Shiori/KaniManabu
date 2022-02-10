@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) NSManagedObjectContext *moc;
 + (instancetype)sharedInstance;
 - (void)sayText:(NSString *)text;
+- (void)storeSubscriptionKey:(NSString *)key;
+- (NSString *)getSubscriptionKey;
+- (void)removeSubscriptionKey;
 @end
 
 NS_ASSUME_NONNULL_END

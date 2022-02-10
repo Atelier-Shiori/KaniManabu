@@ -125,9 +125,6 @@
 		FF16A09127B56A9700AA385E /* SpeechSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16A09027B56A9700AA385E /* SpeechSynthesis.m */; };
 		FF16A09227B56A9700AA385E /* SpeechSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16A09027B56A9700AA385E /* SpeechSynthesis.m */; };
 		FF16A09327B56A9700AA385E /* SpeechSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16A09027B56A9700AA385E /* SpeechSynthesis.m */; };
-		FF16A0A427B570E100AA385E /* MicrosoftSpeechConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16A0A327B570E100AA385E /* MicrosoftSpeechConstants.m */; };
-		FF16A0A527B570E100AA385E /* MicrosoftSpeechConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16A0A327B570E100AA385E /* MicrosoftSpeechConstants.m */; };
-		FF16A0A627B570E100AA385E /* MicrosoftSpeechConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16A0A327B570E100AA385E /* MicrosoftSpeechConstants.m */; };
 		FF16A0B327B57BDF00AA385E /* AudioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF16A0B127B57BDF00AA385E /* AudioContainer.xcdatamodeld */; };
 		FF16A0B427B57BDF00AA385E /* AudioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF16A0B127B57BDF00AA385E /* AudioContainer.xcdatamodeld */; };
 		FF16A0B527B57BDF00AA385E /* AudioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF16A0B127B57BDF00AA385E /* AudioContainer.xcdatamodeld */; };
@@ -432,8 +429,6 @@
 		15CBBB262794BB7600B4FA4A /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "KaniManabu-macOS/Base.lproj/AppStore/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
 		FF16A08F27B56A9700AA385E /* SpeechSynthesis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeechSynthesis.h; sourceTree = "<group>"; };
 		FF16A09027B56A9700AA385E /* SpeechSynthesis.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeechSynthesis.m; sourceTree = "<group>"; };
-		FF16A0A227B570E100AA385E /* MicrosoftSpeechConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MicrosoftSpeechConstants.h; sourceTree = "<group>"; };
-		FF16A0A327B570E100AA385E /* MicrosoftSpeechConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MicrosoftSpeechConstants.m; sourceTree = "<group>"; };
 		FF16A0B227B57BDF00AA385E /* texttospeech.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = texttospeech.xcdatamodel; sourceTree = "<group>"; };
 		FF16A0D927B5B1D200AA385E /* MicrosoftCognitiveServicesSpeech.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MicrosoftCognitiveServicesSpeech.xcframework; path = Dependencies/MicrosoftCognitiveServicesSpeech.xcframework; sourceTree = "<group>"; };
 		FF1BE8082790542900CA6A99 /* NSNumberFormatterNumberOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberFormatterNumberOnly.h; sourceTree = "<group>"; };
@@ -641,8 +636,6 @@
 				FF778DE6279EEEDA0055AF2D /* WaniKani.m */,
 				FF16A08F27B56A9700AA385E /* SpeechSynthesis.h */,
 				FF16A09027B56A9700AA385E /* SpeechSynthesis.m */,
-				FF16A0A227B570E100AA385E /* MicrosoftSpeechConstants.h */,
-				FF16A0A327B570E100AA385E /* MicrosoftSpeechConstants.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1209,7 +1202,6 @@
 				FF16A09227B56A9700AA385E /* SpeechSynthesis.m in Sources */,
 				157329062794B9C400587C05 /* NSNumberFormatterNumberOnly.m in Sources */,
 				157329072794B9C400587C05 /* CSVDeckImporter.m in Sources */,
-				FF16A0A527B570E100AA385E /* MicrosoftSpeechConstants.m in Sources */,
 				157329082794B9C400587C05 /* MSWeakTimer.m in Sources */,
 				FF16A0B427B57BDF00AA385E /* AudioContainer.xcdatamodeld in Sources */,
 				157329092794B9C400587C05 /* DeckViewCell.m in Sources */,
@@ -1265,7 +1257,6 @@
 				FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */,
 				FF778DBC279EEB5F0055AF2D /* WaniKaniPreferences.m in Sources */,
 				151F3AB7278D07AB00953ECD /* DeckViewCell.m in Sources */,
-				FF16A0A427B570E100AA385E /* MicrosoftSpeechConstants.m in Sources */,
 				15CB506A27949A5000ECF326 /* CSVDeckExporter.m in Sources */,
 				15B122D9278CEBE900575A73 /* string_score.c in Sources */,
 				FFA14B7B278EF1560038B9C2 /* CardEditor.m in Sources */,
@@ -1291,7 +1282,6 @@
 			files = (
 				FFD983902797425A0017730A /* SRScheduler.m in Sources */,
 				FFD983942797426C0017730A /* NSString+HTMLtoNSAttributedString.m in Sources */,
-				FF16A0A627B570E100AA385E /* MicrosoftSpeechConstants.m in Sources */,
 				FF16A09327B56A9700AA385E /* SpeechSynthesis.m in Sources */,
 				FFD9838A279742420017730A /* CSVDeckExporter.m in Sources */,
 				FF16A0B527B57BDF00AA385E /* AudioContainer.xcdatamodeld in Sources */,

@@ -35,7 +35,17 @@ You can install the Japanese TTS voices by doing the following:
 5. In the search field, type Japanese. Enable **Kyoko** and **Otoya** and click Ok
 6. The voices should now download and KaniManabu should now say the Japanese words properly.
 
-If you are using the Microsoft Voice, you do not need to follow these steps.
+If you are using the Microsoft Voice, you do not need to follow these steps, but you need to add an API key.
+
+## Setting up Microsoft TTS
+You need an API key to use Microsoft TTS. There is a 500k character limit per month, but for most, if not all users won't reach this limit.
+
+1. Create an account on https://portal.azure.com
+2. Create a Subscription which will have your billing information
+3. Create a Resource Group in East US
+4. Create a Speech Service entry. Use the Free P0 plan.
+5. In your Speech Service entry, your API key can be found under Resource Management -> Keys and Endpoint
+6. In Preferences, copy the API key and paste it in the MS Azure TTS API key field and click save and select the Microsoft TTS voice. Microsoft TTS should now work in your learning and review sessions.
 
 # Using the App
 ## Main Interface
@@ -105,7 +115,7 @@ After clicking the **Show Answer**, you select if you got the card **Correct** o
 # Preferences
 ## General
 * **Automatically play audio after answer** - For **Kana** and **Vocabulary** decks only, you can have the TTS (Text to Speech) play back the word after you answered the reading correctly.
-* **TTS Voice**: This allows you to select what voice to use. There are three voices you can choose form. **Kyoko** and **Otoya** are voices that are built into macOS and doesn't require an internet connection to use (see Install Japanese TTS Voices to learn how to enable the voices). The **Microsoft Speech** voice uses the [Microsoft Azure Cognitive Speech Service](https://azure.microsoft.com/en-us/services/cognitive-services/text-to-speech/), which gives a more accurate pronunciation of the word. However, it requires an internet connection to use initially with a slight delay. However, the voice sample will be reused in future reviews and other words that use the same kana reading.
+* **TTS Voice**: This allows you to select what voice to use. There are three voices you can choose form. **Kyoko** and **Otoya** are voices that are built into macOS and doesn't require an internet connection to use (see Install Japanese TTS Voices to learn how to enable the voices). The **Microsoft Speech** voice uses the [Microsoft Azure Cognitive Speech Service](https://azure.microsoft.com/en-us/services/cognitive-services/text-to-speech/), which gives a more accurate pronunciation of the word. However, it requires an internet connection to use initially with a slight delay. However, the voice sample will be reused in future reviews and other words that use the same kana reading. You need to add a subscription key first before using this. Otherwise, it will fall back to the macOS TTS.
 * **New Card Limit** - The global limit for learning new cards for each deck. This can be overridden in the deck settings
 * **Remove Orphaned Cards** - This button removes any cards that are not associated with a deck. This is useful if the card for an associated deck wasn't deleted when the user deleted a deck.
 

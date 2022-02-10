@@ -7,11 +7,15 @@
 
 #import "GeneralPreferencesViewController.h"
 #import "DeckManager.h"
+#import "SpeechSynthesis.h"
 
 @import AppCenterAnalytics;
 @import AppCenterCrashes;
 
 @interface GeneralPreferencesViewController ()
+@property (strong) IBOutlet NSSecureTextField *msazureapikey;
+@property (strong) IBOutlet NSButton *savebtn;
+@property (strong) IBOutlet NSButton *clearbtn;
 
 @end
 
@@ -20,6 +24,10 @@
 - (instancetype)init
 {
     return [super initWithNibName:@"GeneralPreferences" bundle:nil];
+}
+
+- (void)awakeFromNib {
+    [self checkAPIState];
 }
 
 - (IBAction)sendstatstoggle:(id)sender {
@@ -53,6 +61,35 @@
     }];
 }
 
+- (IBAction)clearapikey:(id)sender {
+    [SpeechSynthesis.sharedInstance removeSubscriptionKey];
+    [self checkAPIState];
+}
+
+- (IBAction)saveapi:(id)sender {
+    if (_msazureapikey.stringValue.length > 0) {
+        [SpeechSynthesis.sharedInstance storeSubscriptionKey:_msazureapikey.stringValue];
+        _msazureapikey.stringValue = @"";
+        [self checkAPIState];
+    }
+    else {
+        NSBeep();
+    }
+}
+
+
+- (void)checkAPIState {
+    if ([SpeechSynthesis.sharedInstance getSubscriptionKey]) {
+        _msazureapikey.enabled = NO;
+        _savebtn.enabled = NO;
+        _clearbtn.enabled = YES;
+    }
+    else {
+        _msazureapikey.enabled = YES;
+        _savebtn.enabled = YES;
+        _clearbtn.enabled = NO;
+    }
+}
 #pragma mark -
 #pragma mark MASPreferencesViewController
 

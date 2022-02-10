@@ -7,13 +7,12 @@
 
 #import "SpeechSynthesis.h"
 #import <AVFoundation/AVFoundation.h>
-#import "MicrosoftSpeechConstants.h"
 #import <MicrosoftCognitiveServicesSpeech/SPXSpeechApi.h>
+#import <SAMKeychain/SAMKeychain.h>
 
 @interface SpeechSynthesis ()
 @property (strong) AVSpeechSynthesizer *synthesizer;
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
-@property (strong) SPXSpeechConfiguration *configuration;
 @property (strong) AVAudioPlayer *player;
 @end
 
@@ -30,8 +29,6 @@
 - (instancetype)init {
     if (self = [super init]) {
         _synthesizer = [AVSpeechSynthesizer new];
-        _configuration = [[SPXSpeechConfiguration alloc] initWithSubscription:subscriptionKey region:@"eastus"];
-        _configuration.speechSynthesisLanguage = @"ja-JP";
         _privateQueue = dispatch_queue_create("moe.ateliershiori.KaniManabu.speechsynthesis", DISPATCH_QUEUE_CONCURRENT);
         return self;
     }
@@ -50,6 +47,8 @@
                     [self saveAudioWithWord:text withAudioData:speechData];
                 }
                 else {
+                    // Fallback to TTS
+                    [self macOSSayText:text];
                     return;
                 }
             }
@@ -57,11 +56,15 @@
         });
     }
     else {
-        // Use macOS Speech Synthesis
-        AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:text];
-        utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier: [NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 0 ? @"com.apple.speech.synthesis.voice.kyoko.premium" : @"com.apple.speech.synthesis.voice.otoya.premium"];
-        [_synthesizer speakUtterance:utterance];
+        [self macOSSayText:text];
     }
+}
+
+- (void)macOSSayText:(NSString *)text {
+    // Use macOS Speech Synthesis
+    AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:text];
+    utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier: [NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 0 || [NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 2 ? @"com.apple.speech.synthesis.voice.kyoko.premium" : @"com.apple.speech.synthesis.voice.otoya.premium"];
+    [_synthesizer speakUtterance:utterance];
 }
 
 - (NSData *)getStoredAudio:(NSString *)text {
@@ -77,7 +80,25 @@
     return nil;
 }
 
+- (void)storeSubscriptionKey:(NSString *)key {
+    [SAMKeychain setPassword:key forService:@"KaniManabu" account:@"Azure Subscription Key"];
+}
+
+- (NSString *)getSubscriptionKey {
+    return [SAMKeychain passwordForService:@"KaniManabu" account:@"Azure Subscription Key"];
+}
+
+- (void)removeSubscriptionKey {
+    [SAMKeychain deletePasswordForService:@"KaniManabu" account:@"Azure Subscription Key"];
+}
+
 - (NSData *)getSpeechDataFromText:(NSString *)text {
+    NSString *skey = [self getSubscriptionKey];
+    if (!skey) {
+            return nil;
+    }
+    SPXSpeechConfiguration *configuration = [[SPXSpeechConfiguration alloc] initWithSubscription:skey region:@"eastus"];
+    configuration.speechSynthesisLanguage = @"ja-JP";
     NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *fileName = @"/KaniManabu/pullStream.wav";
     NSString *fileAtPath = [filePath stringByAppendingString:fileName];
@@ -86,7 +107,7 @@
     }
     SPXAudioConfiguration *audioConfig = [[SPXAudioConfiguration alloc] initWithWavFileOutput:fileAtPath];
     
-    SPXSpeechSynthesizer *synthesizer = [[SPXSpeechSynthesizer alloc] initWithSpeechConfiguration:_configuration audioConfiguration:audioConfig];
+    SPXSpeechSynthesizer *synthesizer = [[SPXSpeechSynthesizer alloc] initWithSpeechConfiguration:configuration audioConfiguration:audioConfig];
     
     if (!synthesizer) {
         NSLog(@"Could not create speech synthesizer");
