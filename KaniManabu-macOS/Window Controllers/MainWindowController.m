@@ -188,8 +188,13 @@
                             if (returnCode == NSAlertFirstButtonReturn) {
                                 [DeckManager.sharedInstance setLearnDateForDeckUUID:[deck valueForKey:@"deckUUID"] setToday:YES];
                                 [DeckManager.sharedInstance getQueuedLearnItemsCountforUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
-                                [NSNotificationCenter.defaultCenter postNotificationName:@"StartLearning" object:deck];
-                                [NSNotificationCenter.defaultCenter postNotificationName:@"LearnItemsAdded" object:nil];
+                                dispatch_async(self.privateQueue, ^{
+                                    sleep(2);
+                                    dispatch_async(dispatch_get_main_queue(), ^{
+                                        [NSNotificationCenter.defaultCenter postNotificationName:@"StartLearning" object:deck];
+                                        [NSNotificationCenter.defaultCenter postNotificationName:@"LearnItemsAdded" object:nil];
+                                    });
+                                });
                             }
                         }];
                     }
