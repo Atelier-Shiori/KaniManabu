@@ -30,6 +30,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LearnEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"TimerFired" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LearnItemsAdded" object:nil];
     if (@available(macOS 11.0, *)) {
     }
     else {
@@ -46,12 +47,7 @@
     // Drawing code here.
 }
 - (IBAction)startLearnSession:(id)sender {
-    if (_learningcount.stringValue.intValue > 0) {
-        [NSNotificationCenter.defaultCenter postNotificationName:@"StartLearning" object:_deckMeta];
-    }
-    else {
-        [NSNotificationCenter.defaultCenter postNotificationName:@"StartLearning" object:[NSNull null]];
-    }
+    [NSNotificationCenter.defaultCenter postNotificationName:@"StartLearning" object:_deckMeta];
 }
 - (IBAction)startReviewSession:(id)sender {
     if (_reviewcount.stringValue.intValue > 0) {
@@ -63,7 +59,7 @@
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"CardAdded"]||[notification.name isEqualToString:@"CardRemoved"]||[notification.name isEqualToString:@"CardModified"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:@"ReviewEnded"] || [notification.name isEqualToString:@"TimerFired"]) {
+    if ([notification.name isEqualToString:@"CardAdded"]||[notification.name isEqualToString:@"CardRemoved"]||[notification.name isEqualToString:@"CardModified"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:@"ReviewEnded"] || [notification.name isEqualToString:@"TimerFired"] || [notification.name isEqualToString:@"LearnItemsAdded"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             // Reload
             [self reloadQueueCount];

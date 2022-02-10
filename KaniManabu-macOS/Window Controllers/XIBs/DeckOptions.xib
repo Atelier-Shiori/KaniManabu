@@ -11,6 +11,9 @@
                 <outlet property="deckankimode" destination="Vq3-9y-lEv" id="EyB-mN-kgJ"/>
                 <outlet property="deckenabled" destination="ZkG-Jo-5bX" id="Hyc-sI-mHW"/>
                 <outlet property="deckname" destination="zFN-Ef-jpw" id="lHy-EZ-JcF"/>
+                <outlet property="newcardlimit" destination="cWX-nL-9fc" id="lr8-6T-hog"/>
+                <outlet property="newcardmode" destination="cXF-4h-UQc" id="fyJ-Uh-DYI"/>
+                <outlet property="overridenewcardlimit" destination="rR2-Eo-xxj" id="uGt-cB-mxM"/>
                 <outlet property="savebtn" destination="qoL-AR-kUi" id="Jyw-Xf-aKm"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -20,14 +23,14 @@
         <window title="Deck Options" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="147"/>
+            <rect key="contentRect" x="196" y="240" width="480" height="241"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="147"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="241"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Mh-5L-1q6">
-                        <rect key="frame" x="55" y="109" width="133" height="16"/>
+                        <rect key="frame" x="55" y="203" width="133" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Deck Name:" id="q1u-5t-Ia6">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -36,7 +39,7 @@
                         </textFieldCell>
                     </textField>
                     <textField identifier="deckname" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zFN-Ef-jpw">
-                        <rect key="frame" x="194" y="106" width="230" height="21"/>
+                        <rect key="frame" x="194" y="200" width="230" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="M7R-vz-eKW">
                             <font key="font" metaFont="system"/>
@@ -45,7 +48,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZkG-Jo-5bX">
-                        <rect key="frame" x="197" y="81" width="210" height="18"/>
+                        <rect key="frame" x="197" y="175" width="210" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Enabled" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fA3-bv-4uM">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -53,7 +56,7 @@
                         </buttonCell>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vq3-9y-lEv">
-                        <rect key="frame" x="197" y="59" width="227" height="18"/>
+                        <rect key="frame" x="197" y="153" width="227" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Anki Mode" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="MUX-KV-IgV">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -61,7 +64,7 @@
                         </buttonCell>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoL-AR-kUi">
-                        <rect key="frame" x="398" y="13" width="64" height="32"/>
+                        <rect key="frame" x="403" y="13" width="64" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="x1Q-lX-kLk">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -75,7 +78,7 @@ DQ
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TcY-qm-K6l">
-                        <rect key="frame" x="318" y="13" width="76" height="32"/>
+                        <rect key="frame" x="323" y="13" width="76" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nf3-CM-yXI">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -88,12 +91,74 @@ Gw
                             <action selector="cancelbtn:" target="-2" id="Z5j-2e-TCs"/>
                         </connections>
                     </button>
+                    <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cWX-nL-9fc">
+                        <rect key="frame" x="194" y="101" width="96" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" focusRingType="none" title="5" drawsBackground="YES" id="tFs-pK-lZe">
+                            <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" formatWidth="-1" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="42" id="417-JM-cQv" customClass="NSNumberFormatterNumberOnly">
+                                <real key="minimum" value="5"/>
+                            </numberFormatter>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hc2-Ir-naA">
+                        <rect key="frame" x="52" y="104" width="136" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="New Card Limit:" id="jZa-mn-f5Q">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jIE-Fg-Hb9">
+                        <rect key="frame" x="298" y="104" width="184" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" title="per day per deck" id="QvL-Zr-bqX">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rR2-Eo-xxj">
+                        <rect key="frame" x="197" y="129" width="227" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Override global new card limit" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Mxe-JD-TBm">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AWe-aR-ue3">
+                        <rect key="frame" x="52" y="73" width="136" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="New Card Mode:" id="NUl-Ap-yR7">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXF-4h-UQc">
+                        <rect key="frame" x="191" y="65" width="188" height="25"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <popUpButtonCell key="cell" type="push" title="Old Cards First" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="DVf-Fs-m2N" id="vBa-XF-EhG">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="Ylx-9U-u9i">
+                                <items>
+                                    <menuItem title="Old Cards First" state="on" id="DVf-Fs-m2N"/>
+                                    <menuItem title="New Cards First" tag="1" id="wg9-in-I3L"/>
+                                    <menuItem title="Random" tag="2" id="v9d-1X-Y0J"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="195" y="-8.5"/>
+            <point key="canvasLocation" x="195" y="38.5"/>
         </window>
     </objects>
 </document>

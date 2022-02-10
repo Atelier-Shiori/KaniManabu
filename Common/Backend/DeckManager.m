@@ -161,6 +161,7 @@
 # pragma mark Learning Queue Methods
 - (NSArray *)setandretrieveLearnItemsForDeckUUID:(NSUUID *)uuid withType:(int)type {
     @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
+    NSManagedObject *deckmeta = [self getDeckMetadataWithUUID:uuid];
     NSMutableArray *learnqueue = [NSMutableArray new];
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     NSFetchRequest *fetchRequestlearning = [NSFetchRequest new];
@@ -181,22 +182,56 @@
     // Check for cards not learned yet, but not suspended ones
     fetchRequest.predicate = [NSPredicate predicateWithFormat:@"deckUUID == %@ AND learned == %@ AND suspended == %@" ,uuid, @NO, @NO];
     fetchRequestlearning.predicate = [NSPredicate predicateWithFormat:@"deckUUID == %@ AND learned == %@ AND learning == %@ AND suspended == %@" ,uuid, @NO, @YES, @NO];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"datecreated" ascending:YES];
+    NSSortDescriptor *sortDescriptor;
+    switch (((NSNumber *)[deckmeta valueForKey:@"newcardmode"]).intValue) {
+        case OldCardsFirst:
+        case NewCardsRandom:
+        default:{
+            sortDescriptor = [[NSSortDescriptor alloc]
+                              initWithKey:@"datecreated" ascending:YES];
+            break;
+        }
+        case NewCardsFirst: {
+            sortDescriptor = [[NSSortDescriptor alloc]
+                                                initWithKey:@"datecreated" ascending:NO];
+            break;
+        }
+    }
+    
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     // Add cards that the user is still learning
     NSError *error = nil;
     NSArray *learningcards = [_moc executeFetchRequest:fetchRequestlearning error:&error];
     [learnqueue addObjectsFromArray:learningcards];
-    int maxlearnlimit = ((NSNumber *)[NSUserDefaults.standardUserDefaults valueForKey:@"DeckNewCardLimitPerDay"]).intValue;
+    bool overridelimit = ((NSNumber *)[deckmeta valueForKey:@"overridenewcardlimit"]).boolValue;
+    int maxlearnlimit = overridelimit ? ((NSNumber *)[deckmeta valueForKey:@"newcardlimit"]).intValue : ((NSNumber *)[NSUserDefaults.standardUserDefaults valueForKey:@"DeckNewCardLimitPerDay"]).intValue;
     if (((learnqueue.count <= maxlearnlimit && maxlearnlimit != 0) || maxlearnlimit == 0 )&& [self getLearnDateForDeckUUID:uuid].timeIntervalSinceNow <= 0) {
         NSArray *newcards = [_moc executeFetchRequest:fetchRequest error:&error];
-        for (NSManagedObject *card in newcards) {
-            [card setValue:@YES forKey:@"learning"];
-            [learnqueue addObject:card];
-            if (learnqueue.count >= maxlearnlimit) {
-                // Learn limit reached, stop adding cards
-                break;
+        if (((NSNumber *)[deckmeta valueForKey:@"newcardmode"]).intValue == NewCardsRandom) {
+            NSMutableArray *usedRandomNumbers = [NSMutableArray new];
+            do {
+                int ranindex = arc4random_uniform((int)newcards.count);
+                for (NSNumber *usednum in usedRandomNumbers) {
+                    if (usednum.intValue == ranindex) {
+                        // Number used, generate another
+                        continue;
+                    }
+                }
+                [usedRandomNumbers addObject:@(ranindex)];
+                NSManagedObject *card = newcards[ranindex];
+                [card setValue:@YES forKey:@"learning"];
+                [learnqueue addObject:card];
+            }
+            while (learnqueue.count < maxlearnlimit);
+        }
+        else {
+            for (NSManagedObject *card in newcards) {
+                [card setValue:@YES forKey:@"learning"];
+                [learnqueue addObject:card];
+                if (learnqueue.count >= maxlearnlimit) {
+                    // Learn limit reached, stop adding cards
+                    break;
+                }
             }
         }
         [self setLearnDateForDeckUUID:uuid setToday:NO];
@@ -238,6 +273,34 @@
 
 - (long)getQueuedLearnItemsCountforUUID:(NSUUID *)uuid withType:(int)type {
     return [self setandretrieveLearnItemsForDeckUUID:uuid withType:type].count;
+}
+
+- (long)getNotLearnedItemCountForUUID:(NSUUID *)uuid withType:(int)type {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
+    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+    NSFetchRequest *fetchRequestlearning = [NSFetchRequest new];
+    switch (type) {
+        case DeckTypeKana:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"KanaCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeKanji:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"KanjiCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeVocab:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+            break;
+        default:
+            return 0;
+    }
+    fetchRequestlearning.entity = fetchRequest.entity;
+    // Check for cards not learned yet, but not suspended ones
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"deckUUID == %@ AND learned == %@ AND suspended == %@" ,uuid, @NO, @NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"datecreated" ascending:YES];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    // Add cards that the user is still learning
+    NSError *error = nil;
+    return [_moc executeFetchRequest:fetchRequest error:&error].count;
 }
 
 #pragma mark Card retrieval

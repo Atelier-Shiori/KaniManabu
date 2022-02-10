@@ -8,8 +8,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-
-
 @interface DeckManager : NSObject
 @property (strong) NSManagedObjectContext *moc;
 @property bool importing;
@@ -17,6 +15,12 @@ typedef NS_ENUM(int,DeckType) {
     DeckTypeKanji = 0,
     DeckTypeVocab = 1,
     DeckTypeKana = 2
+};
+
+typedef NS_ENUM(int,NewCardReviewMode) {
+    OldCardsFirst = 0,
+    NewCardsFirst = 1,
+    NewCardsRandom = 2
 };
 
 + (instancetype)sharedInstance;
@@ -30,6 +34,7 @@ typedef NS_ENUM(int,DeckType) {
 - (void)setLearnDateForDeckUUID:(NSUUID *)uuid setToday:(bool)today;
 - (NSDate *)getLearnDateForDeckUUID: (NSUUID *)uuid;
 - (long)getQueuedLearnItemsCountforUUID:(NSUUID *)uuid withType:(int)type;
+- (long)getNotLearnedItemCountForUUID:(NSUUID *)uuid withType:(int)type;
 - (NSArray *)retrieveCardsForDeckUUID:(NSUUID *)uuid withType:(int)type;
 - (NSArray *)retrieveAllCardswithType:(int)type withPredicate:(NSPredicate *)predicates;
 - (NSArray *)retrieveAllCriticalCardswithType:(int)type;

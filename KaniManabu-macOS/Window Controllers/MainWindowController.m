@@ -170,16 +170,39 @@
         if ([self checkDeckLimit:false]) {
             if ([notification.object isKindOfClass:[NSManagedObject class]]) {
                 NSManagedObject *deck = notification.object;
-                [self performStartLearnWithDeck:deck];
-            }
-            else {
-                NSAlert *alert = [[NSAlert alloc] init] ;
-                [alert addButtonWithTitle:@"OK"];
-                [alert setMessageText:@"No cards in learning queue."];
-                alert.informativeText = @"This deck has no cards in the learning queue.";
-                alert.alertStyle = NSAlertStyleInformational;
-                [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-                    }];
+                long learningqueuecount = [DeckManager.sharedInstance getQueuedLearnItemsCountforUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
+                if (learningqueuecount > 0) {
+                    [self performStartLearnWithDeck:deck];
+                }
+                else {
+                    long remainingcount = [DeckManager.sharedInstance getNotLearnedItemCountForUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
+                    if (remainingcount > 0) {
+                        NSAlert *alert = [[NSAlert alloc] init] ;
+                        [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
+                        [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
+                        [alert setMessageText:NSLocalizedString(@"Do you want to learn more items?",nil)];
+                        [alert setInformativeText:NSLocalizedString(@"While there are no items in the learning queue, you can put in more cards to learn in the queue if you wish. Do you want to continue?",nil)];
+                        // Set Message type to Warning
+                        alert.alertStyle = NSAlertStyleInformational;
+                        [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                            if (returnCode == NSAlertFirstButtonReturn) {
+                                [DeckManager.sharedInstance setLearnDateForDeckUUID:[deck valueForKey:@"deckUUID"] setToday:YES];
+                                [DeckManager.sharedInstance getQueuedLearnItemsCountforUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
+                                [self performStartLearnWithDeck:deck];
+                                [NSNotificationCenter.defaultCenter postNotificationName:@"LearnItemsAdded" object:nil];
+                            }
+                        }];
+                    }
+                    else {
+                        NSAlert *alert = [[NSAlert alloc] init] ;
+                        [alert addButtonWithTitle:@"OK"];
+                        [alert setMessageText:@"No cards in learning queue."];
+                        alert.informativeText = @"This deck has no cards in the learning queue.";
+                        alert.alertStyle = NSAlertStyleInformational;
+                        [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+                            }];
+                    }
+                }
             }
         }
         else {

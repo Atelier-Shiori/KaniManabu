@@ -26,3 +26,4 @@ KaniManabu.xcodeproj/project.xcworkspace/xcuserdata/*.*
 /KaniManabu-macOS/Support/Private/PatreonLicenseManager.m
 /KaniManabu.xcodeproj/xcuserdata/takeyayuki.xcuserdatad/xcschemes/xcschememanagement.plist
 /.DS_Store
+/Dependencies/MicrosoftCognitiveServicesSpeech.xcframework

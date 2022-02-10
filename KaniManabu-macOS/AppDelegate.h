@@ -13,6 +13,7 @@
 
 @property (readonly, strong) NSPersistentCloudKitContainer *persistentContainer;
 @property (readonly, strong) NSPersistentContainer *wanikaniContainer;
+@property (readonly, strong) NSPersistentContainer *audioContainer;
 @property (strong) MainWindowController *mwc;
 @property (strong) NSWindowController *_preferencesWindowController;
 

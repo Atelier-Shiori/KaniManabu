@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong) IBOutlet NSButton *deckankimode;
 @property (strong) IBOutlet NSButton *savebtn;
 @property (strong) NSDictionary *newsettings;
+@property (strong) IBOutlet NSButton *overridenewcardlimit;
+@property (strong) IBOutlet NSTextField *newcardlimit;
+@property (strong) IBOutlet NSPopUpButton *newcardmode;
 - (void)loadSettings:(NSManagedObject *)deckmeta;
 @end
 

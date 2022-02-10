@@ -11,7 +11,7 @@
 #import "ItemInfoWindowController.h"
 #import "DeckManager.h"
 #import <QuartzCore/QuartzCore.h>
-#import <AVFoundation/AVFoundation.h>
+#import "SpeechSynthesis.h"
 
 @interface ReviewWindowController ()
 @property (strong) IBOutlet NSButton *scoreitem;
@@ -45,7 +45,6 @@
 @property (strong) IBOutlet NSPopover *popovervalidationmessage;
 @property (strong) IBOutlet NSTextField *validationmessage;
 @property (strong) IBOutlet NSToolbarItem *lasttentoolbaritem;
-@property (strong) AVSpeechSynthesizer *synthesizer;
 @end
 
 @implementation ReviewWindowController
@@ -80,10 +79,14 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    _synthesizer = [AVSpeechSynthesizer new];
 }
 
 - (void)startReview:(NSArray *)reviewitems {
+    if (_learnmode) {
+        // Hide Score and correctitem, not applicable in learning mode.
+        _scoreitem.hidden = YES;
+        _correctitem.hidden = YES;
+    }
     if (_ankimode) {
         // Hide answer text field, buttons will show instead
         _answertextfield.hidden = YES;
@@ -91,6 +94,7 @@
         _answerbtn.hidden = YES;
     }
     [_reviewqueue addObjectsFromArray:reviewitems];
+    _pendingitem.title = @(_reviewqueue.count).stringValue;
     [self nextQuestion];
 }
 
@@ -273,8 +277,10 @@
         [_currentcard setCorrect:CardReviewTypeReading];
     }
     if (_currentcard.reviewedmeaning && _currentcard.reviewedreading) {
-        // Show New SRS Level
-        [self showNewSRSStage:YES];
+        if (!_learnmode) {
+            // Show New SRS Level
+            [self showNewSRSStage:YES];
+        }
         _iteminfotoolbaritem.enabled = true;
     }
 }
@@ -598,9 +604,7 @@
 }
 
 - (void)sayAnswer:(NSString *)answer {
-    AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:answer];
-    utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier: [NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 0 ? @"com.apple.speech.synthesis.voice.kyoko.premium" : @"com.apple.speech.synthesis.voice.otoya.premium"];
-    [_synthesizer speakUtterance:utterance];
+    [SpeechSynthesis.sharedInstance sayText:answer];
 }
 
 - (void)showvalidationmessage:(NSString *)text {

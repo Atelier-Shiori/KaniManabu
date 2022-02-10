@@ -11,6 +11,7 @@
 #import "DeckManager.h"
 #import "PFAboutWindowController.h"
 #import "WaniKani.h"
+#import "SpeechSynthesis.h"
 
 #if defined(AppStore)
 #else
@@ -53,6 +54,7 @@
     // Insert code here to initialize your application
     DeckManager.sharedInstance.moc = self.persistentContainer.viewContext;
     WaniKani.sharedInstance.moc = self.wanikaniContainer.viewContext;
+    SpeechSynthesis.sharedInstance.moc = self.audioContainer.viewContext;
     _mwc = [MainWindowController new];
     _mwc.moc = DeckManager.sharedInstance.moc;
     
@@ -158,6 +160,7 @@
 
 @synthesize persistentContainer = _persistentContainer;
 @synthesize wanikaniContainer = _wanikaniContainer;
+@synthesize audioContainer = _audioContainer;
 
 - (NSPersistentCloudKitContainer *)persistentContainer {
     // The persistent container for the application. This implementation creates and returns a container, having loaded the store for the application to it.
@@ -218,6 +221,34 @@
     }
     
     return _wanikaniContainer;
+}
+
+- (NSPersistentContainer *)audioContainer {
+    // The persistent container for the application. This implementation creates and returns a container, having loaded the store for the application to it.
+    @synchronized (self) {
+        if (_audioContainer == nil) {
+            _audioContainer = [[NSPersistentContainer alloc] initWithName:@"AudioContainer"];
+            [_audioContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
+                if (error != nil) {
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    
+                    /*
+                     Typical reasons for an error here include:
+                     * The parent directory does not exist, cannot be created, or disallows writing.
+                     * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                     * The device is out of space.
+                     * The store could not be migrated to the current model version.
+                     Check the error message to determine what the actual problem was.
+                    */
+                    NSLog(@"Unresolved error %@, %@", error, error.userInfo);
+                    abort();
+                }
+            }];
+        }
+    }
+    
+    return _audioContainer;
 }
 
 #pragma mark - Core Data Saving and Undo support
@@ -316,6 +347,43 @@
             return NSTerminateCancel;
         }
     }
+    
+    NSManagedObjectContext *acontext = self.audioContainer.viewContext;
+
+    if (![acontext commitEditing]) {
+        NSLog(@"%@:%@ unable to commit editing to terminate", [self class], NSStringFromSelector(_cmd));
+        return NSTerminateCancel;
+    }
+    
+    if (!acontext.hasChanges) {
+        return NSTerminateNow;
+    }
+    
+    if (![acontext save:&error]) {
+
+        // Customize this code block to include application-specific recovery steps.
+        BOOL result = [sender presentError:error];
+        if (result) {
+            return NSTerminateCancel;
+        }
+
+        NSString *question = NSLocalizedString(@"Could not save changes while quitting. Quit anyway?", @"Quit without saves error question message");
+        NSString *info = NSLocalizedString(@"Quitting now will lose any changes you have made since the last successful save", @"Quit without saves error question info");
+        NSString *quitButton = NSLocalizedString(@"Quit anyway", @"Quit anyway button title");
+        NSString *cancelButton = NSLocalizedString(@"Cancel", @"Cancel button title");
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setMessageText:question];
+        [alert setInformativeText:info];
+        [alert addButtonWithTitle:quitButton];
+        [alert addButtonWithTitle:cancelButton];
+
+        NSInteger answer = [alert runModal];
+        
+        if (answer == NSAlertSecondButtonReturn) {
+            return NSTerminateCancel;
+        }
+    }
+
 
     return NSTerminateNow;
 }

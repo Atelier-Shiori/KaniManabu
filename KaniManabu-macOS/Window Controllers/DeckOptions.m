@@ -34,16 +34,19 @@
     _deckankimode.state = ((NSNumber *)[deckmeta valueForKey:@"ankimode"]).boolValue;
     _deckenabled.state = ((NSNumber *)[deckmeta valueForKey:@"enabled"]).boolValue;
     _deckType = ((NSNumber *)[deckmeta valueForKey:@"deckType"]).intValue;
+    [_newcardmode selectItemWithTag:((NSNumber *)[deckmeta valueForKey:@"newcardmode"]).intValue];
+    _newcardlimit.stringValue = ((NSNumber *)[deckmeta valueForKey:@"newcardlimit"]).stringValue;
+    _overridenewcardlimit.state = ((NSNumber *)[deckmeta valueForKey:@"overridenewcardlimit"]).boolValue;
 }
 
 - (IBAction)savebtn:(id)sender {
     if (![DeckManager.sharedInstance checkDeckExists:_deckname.stringValue withType:_deckType]) {
-        _newsettings = @{@"deckName" : _deckname.stringValue, @"ankimode" : @(_deckankimode.state), @"enabled" : @(_deckenabled.state)};
+        _newsettings = @{@"deckName" : _deckname.stringValue, @"ankimode" : @(_deckankimode.state), @"enabled" : @(_deckenabled.state), @"overridenewcardlimit" : @(_overridenewcardlimit.state), @"newcardlimit" : @(_newcardlimit.stringValue.intValue), @"newcardmode" : @(_newcardmode.selectedTag)};
         [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
         [self.window close];
     }
     else if ([_deckname.stringValue isEqualToString:_origname]) {
-        _newsettings = @{@"ankimode" : @(_deckankimode.state), @"enabled" : @(_deckenabled.state)};
+        _newsettings = @{@"ankimode" : @(_deckankimode.state), @"enabled" : @(_deckenabled.state), @"overridenewcardlimit" : @(_overridenewcardlimit.state), @"newcardlimit" : @(_newcardlimit.stringValue.intValue), @"newcardmode" : @(_newcardmode.selectedTag)};
         [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
         [self.window close];
     }

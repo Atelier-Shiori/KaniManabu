@@ -8,7 +8,7 @@
 #import "ItemInfoWindowController.h"
 #import "NSString+HTMLtoNSAttributedString.h"
 #import "NSTextView+SetHTMLAttributedText.h"
-#import <AVFoundation/AVFoundation.h>
+#import "SpeechSynthesis.h"
 #import "DeckManager.h"
 #import "WaniKani.h"
 
@@ -230,10 +230,7 @@
 }
 
 - (IBAction)playvoice:(id)sender {
-    AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc]init];
-    AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:_cardType == DeckTypeKana ? _cardMeta[@"kanareading"] : _cardMeta[@"reading"]];
-    utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier: [NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 0 ? @"com.apple.speech.synthesis.voice.kyoko.premium" : @"com.apple.speech.synthesis.voice.otoya.premium"];
-    [synthesizer speakUtterance:utterance];
+    [SpeechSynthesis.sharedInstance sayText:_cardType == DeckTypeKana ? _cardMeta[@"kanareading"] : _cardMeta[@"reading"]];
 }
 
 - (IBAction)lookupworddictionary:(id)sender {
