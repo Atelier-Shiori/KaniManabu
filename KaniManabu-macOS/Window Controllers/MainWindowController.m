@@ -188,7 +188,7 @@
                             if (returnCode == NSAlertFirstButtonReturn) {
                                 [DeckManager.sharedInstance setLearnDateForDeckUUID:[deck valueForKey:@"deckUUID"] setToday:YES];
                                 [DeckManager.sharedInstance getQueuedLearnItemsCountforUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
-                                [self performStartLearnWithDeck:deck];
+                                [NSNotificationCenter.defaultCenter postNotificationName:@"StartLearning" object:deck];
                                 [NSNotificationCenter.defaultCenter postNotificationName:@"LearnItemsAdded" object:nil];
                             }
                         }];

@@ -152,8 +152,12 @@
 }
 
 - (IBAction)reportIssue:(id)sender{
-    //Show Help
      [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://support.malupdaterosx.moe/index.php?forums/kanimanabu-bug-tracker.23/"]];
+}
+
+- (IBAction)showhelp:(id)sender{
+    //Show Help
+     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://help.malupdaterosx.moe/kanimanabu/"]];
 }
 
 #pragma mark - Core Data stack

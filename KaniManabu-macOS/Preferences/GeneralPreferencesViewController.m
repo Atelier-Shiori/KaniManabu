@@ -90,6 +90,11 @@
         _clearbtn.enabled = NO;
     }
 }
+
+- (IBAction)showhelp:(id)sender{
+    //Show Help
+     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://help.malupdaterosx.moe/kanimanabu/"]];
+}
 #pragma mark -
 #pragma mark MASPreferencesViewController
 
