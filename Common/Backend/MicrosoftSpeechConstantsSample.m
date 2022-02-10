@@ -8,5 +8,5 @@
 #import "MicrosoftSpeechConstants.h"
 
 @implementation MicrosoftSpeechConstants
-NSString *const subscriptionkey = @"";
+NSString *const subscriptionKey = @"";
 @end
