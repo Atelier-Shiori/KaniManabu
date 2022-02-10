@@ -27,3 +27,4 @@ KaniManabu.xcodeproj/project.xcworkspace/xcuserdata/*.*
 /KaniManabu.xcodeproj/xcuserdata/takeyayuki.xcuserdatad/xcschemes/xcschememanagement.plist
 /.DS_Store
 /Dependencies/MicrosoftCognitiveServicesSpeech.xcframework
+/Common/Backend/MicrosoftSpeechConstants.m

@@ -14,7 +14,7 @@ KaniManbu is a lot easier to use with three different card types (Kanji, Kana, a
 * Learning mode, which allow you to "learn" the cards before reviewing them. After a learning session, the newly learned cards goes into the review queue.
 * Ability to lookup words from other resources (Dictionary.app, Monokakido's Dictionaries app, and online resources)
 * Ability to tag cards for future reference.
-* TTS support
+* TTS support (macOS and Microsoft TTS)
 * Browse cards by SRS stage and critical condition items (cards that are answered correctly less than 70% of the time).
 * Ability to suspend cards
 * Ability to import and export decks (CSV format)
@@ -23,6 +23,7 @@ KaniManbu is a lot easier to use with three different card types (Kanji, Kana, a
 * Ability to enable/disable decks
 * Ability to reset cards to the first SRS level
 * WaniKani integration (view information of kanji used in words in item info/lesson sessions and check if the vocab exists on Wanikani before adding. (Note that free users are limited to content available in levels 1-3)
+* Ability to learn more items and set per deck new card limit
 
 # Planned features
 * Ability to import and export decks (KaniManabu JSON format)
@@ -50,7 +51,9 @@ Warning: This won't work if you don't have a Developer ID installed. If you don'
 
 1. Get the Source
 2. Set up the CloudKit entitlement settings on your developer account
-2. Type 'xcodebuild' in the terminal to build
+3. Download the [Microsoft Cognitive Services Speech](https://aka.ms/csspeech/iosbinary) framework. Unzip and move the MicrosoftCognitiveServicesSpeech.xcframework to the Dependencies folder.
+4. Copy MicrosoftSpeechConstantsSample.m and rename it to MicrosoftSpeechConstants.m. Specify a speech resource subscription key. You can get the subsription key from [Speech Studio](https://speech.microsoft.com/portal). Note that you need to sign up for a free Microsoft Azure Account to get a subscription key and create a free Speech resource.
+5. Type 'xcodebuild' in the terminal to build
 
 If you are going to distribute your own version and change the name, please change the bundle identifier to something else.
 
