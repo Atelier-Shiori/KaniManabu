@@ -40,6 +40,7 @@
     defaultValues[@"SayKanaReadingAnswer"] = @YES;
     defaultValues[@"sendanalytics"] = @YES;
     defaultValues[@"ttsvoice"] = @(0);
+    defaultValues[@"usekanimanabuime"] = @YES;
 #if defined(AppStore)
     defaultValues[@"donated"] = @YES;
 #else

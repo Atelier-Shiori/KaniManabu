@@ -12,6 +12,7 @@
 #import "DeckManager.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SpeechSynthesis.h"
+#import "TKMKanaInput.h"
 
 @interface ReviewWindowController ()
 @property (strong) IBOutlet NSButton *scoreitem;
@@ -45,6 +46,11 @@
 @property (strong) IBOutlet NSPopover *popovervalidationmessage;
 @property (strong) IBOutlet NSTextField *validationmessage;
 @property (strong) IBOutlet NSToolbarItem *lasttentoolbaritem;
+@property (strong) NSString *oldanswerstr;
+@property NSRange oldrange;
+@property NSRange currentrange;
+@property (strong) TKMKanaInput *kanainput;
+@property bool useKaniManabuIME;
 @end
 
 @implementation ReviewWindowController
@@ -55,6 +61,7 @@
         return nil;
     _reviewqueue = [NSMutableArray new];
     _completeditems = [NSMutableArray new];
+    _kanainput = [TKMKanaInput new];
     return self;
 }
 
@@ -93,6 +100,7 @@
         _answertextfield.enabled = NO;
         _answerbtn.hidden = YES;
     }
+    _useKaniManabuIME = [NSUserDefaults.standardUserDefaults boolForKey:@"usekanimanabuime"];
     [_reviewqueue addObjectsFromArray:reviewitems];
     _pendingitem.title = @(_reviewqueue.count).stringValue;
     [self nextQuestion];
@@ -134,6 +142,35 @@
             [self showReviewComplete];
         }
     }];
+}
+
+- (void)controlTextDidChange:(NSNotification *)obj {
+    if (_questiontype == CardReviewTypeReading) {
+        _currentrange = NSMakeRange(_answertextfield.currentEditor.selectedRange.location, 0);
+        if (_answertextfield.currentEditor.selectedRange.location < _oldrange.location) {
+            _oldrange = _currentrange;
+        }
+        bool usecurrentlocation = false;
+        if (_currentrange.location > 1) {
+            NSString *astring = [_answertextfield.stringValue substringWithRange:NSMakeRange(_currentrange.location-1, 1)];
+            NSString *bstring = [_answertextfield.stringValue substringWithRange:NSMakeRange(_currentrange.location-2, 1)];
+            if ([astring isEqualToString:bstring] && [astring caseInsensitiveCompare:@"n"] != NSOrderedSame && [bstring caseInsensitiveCompare:@"n"] != NSOrderedSame) {
+                usecurrentlocation = true;
+            }
+        }
+        @try{
+            NSRange substr = NSMakeRange(usecurrentlocation ? _currentrange.location-1 : _oldrange.location, usecurrentlocation ? 1 : _currentrange.location-_oldrange.location);
+            NSString *replacementstr = [_answertextfield.stringValue substringWithRange:substr];
+            NSString *proposedstr = [_kanainput checkString:_answertextfield.stringValue withReplacementString:replacementstr withOldRange:_oldrange withCurrentRange:_currentrange useCurrentRange:usecurrentlocation];
+            if (![proposedstr isEqualToString:_answertextfield.stringValue]) {
+                _answertextfield.stringValue = proposedstr;
+                _oldrange = NSMakeRange(usecurrentlocation ? _answertextfield.currentEditor.selectedRange.location - 1 : _answertextfield.currentEditor.selectedRange.location, 0);
+                _currentrange = NSMakeRange(_answertextfield.currentEditor.selectedRange.location, 0);
+            }
+        }
+        @catch (NSException *ex){}
+        _oldanswerstr = _answertextfield.stringValue;
+    }
 }
 
 - (void)controlTextDidEndEditing:(NSNotification *)notification {
@@ -405,7 +442,7 @@
             }
             _answertextfield.placeholderString = @"答えを入力してください";
             _oldanswerstr = @"";
-            _currentrange = NSMakeRange(_answertextfield.currentEditor.selectedRange.location, 0);
+            _oldrange = NSMakeRange(0, 0);
         }
     }
 }

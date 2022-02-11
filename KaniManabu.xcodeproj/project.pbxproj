@@ -145,6 +145,8 @@
 		FF173E0327B69E4100E5CD37 /* CSVLoadingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173E0527B69E4100E5CD37 /* CSVLoadingWindow.xib */; };
 		FF173E0627B69E4D00E5CD37 /* DeckViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173E0927B69E4D00E5CD37 /* DeckViewCell.xib */; };
 		FF173E0727B69E4D00E5CD37 /* DeckViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173E0927B69E4D00E5CD37 /* DeckViewCell.xib */; };
+		FF173E4027B70FA800E5CD37 /* TKMKanaInput.m in Sources */ = {isa = PBXBuildFile; fileRef = FF173E3F27B70FA800E5CD37 /* TKMKanaInput.m */; };
+		FF173E4127B70FA800E5CD37 /* TKMKanaInput.m in Sources */ = {isa = PBXBuildFile; fileRef = FF173E3F27B70FA800E5CD37 /* TKMKanaInput.m */; };
 		FF1BE8112790542900CA6A99 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */; };
 		FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE81727906AA500CA6A99 /* MSWeakTimer.m */; };
 		FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */; platformFilter = maccatalyst; };
@@ -442,6 +444,9 @@
 		FF173E0027B69E3B00E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ItemInfoWindow.xib; sourceTree = "<group>"; };
 		FF173E0427B69E4100E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CSVLoadingWindow.xib; sourceTree = "<group>"; };
 		FF173E0827B69E4D00E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DeckViewCell.xib; sourceTree = "<group>"; };
+		FF173E3D27B70FA700E5CD37 /* TKMKanaInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMKanaInput.h; sourceTree = "<group>"; };
+		FF173E3E27B70FA700E5CD37 /* TKMKanaInput+Internals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TKMKanaInput+Internals.h"; sourceTree = "<group>"; };
+		FF173E3F27B70FA800E5CD37 /* TKMKanaInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMKanaInput.m; sourceTree = "<group>"; };
 		FF1BE8082790542900CA6A99 /* NSNumberFormatterNumberOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberFormatterNumberOnly.h; sourceTree = "<group>"; };
 		FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberFormatterNumberOnly.m; sourceTree = "<group>"; };
 		FF1BE81627906AA500CA6A99 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSWeakTimer.h; path = Dependencies/MSWeakTimer/MSWeakTimer.h; sourceTree = "<group>"; };
@@ -771,6 +776,9 @@
 				FF74656F278F44A10062E476 /* PFAboutWindowController.h */,
 				FF74656E278F44A10062E476 /* PFAboutWindowController.m */,
 				FF746571278F44AE0062E476 /* PFAboutWindow.xib */,
+				FF173E3D27B70FA700E5CD37 /* TKMKanaInput.h */,
+				FF173E3F27B70FA800E5CD37 /* TKMKanaInput.m */,
+				FF173E3E27B70FA700E5CD37 /* TKMKanaInput+Internals.h */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -1223,6 +1231,7 @@
 				157329132794B9C400587C05 /* DeckOptions.m in Sources */,
 				157329142794B9C400587C05 /* AnswerCheck.m in Sources */,
 				157329152794B9C400587C05 /* SRSLevelValueTransformer.m in Sources */,
+				FF173E4127B70FA800E5CD37 /* TKMKanaInput.m in Sources */,
 				153E9F0E2795CF170094A306 /* CSVLoadingWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1271,6 +1280,7 @@
 				15794870278CBFC9000D984D /* ItemInfoWindowController.m in Sources */,
 				FF708870278C7CE000DF399E /* main.m in Sources */,
 				FF89D70F2791DFE8009B7C6F /* CSVImportController.m in Sources */,
+				FF173E4027B70FA800E5CD37 /* TKMKanaInput.m in Sources */,
 				153FFE762794F33500D481A2 /* CFobError.m in Sources */,
 				FF708866278C7CDF00DF399E /* AppDelegate.m in Sources */,
 				FF28A826278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m in Sources */,
