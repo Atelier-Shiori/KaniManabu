@@ -160,6 +160,9 @@
 
 # pragma mark Learning Queue Methods
 - (NSArray *)setandretrieveLearnItemsForDeckUUID:(NSUUID *)uuid withType:(int)type {
+    return [self setandretrieveLearnItemsForDeckUUID:uuid withType:type learningmore:NO];
+}
+- (NSArray *)setandretrieveLearnItemsForDeckUUID:(NSUUID *)uuid withType:(int)type learningmore:(bool)learningmore {
     @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSManagedObject *deckmeta = [self getDeckMetadataWithUUID:uuid];
     NSMutableArray *learnqueue = [NSMutableArray new];
@@ -205,7 +208,7 @@
     [learnqueue addObjectsFromArray:learningcards];
     bool overridelimit = ((NSNumber *)[deckmeta valueForKey:@"overridenewcardlimit"]).boolValue;
     int maxlearnlimit = overridelimit ? ((NSNumber *)[deckmeta valueForKey:@"newcardlimit"]).intValue : ((NSNumber *)[NSUserDefaults.standardUserDefaults valueForKey:@"DeckNewCardLimitPerDay"]).intValue;
-    if (((learnqueue.count <= maxlearnlimit && maxlearnlimit != 0) || maxlearnlimit == 0 )&& [self getLearnDateForDeckUUID:uuid].timeIntervalSinceNow <= 0) {
+    if (((learnqueue.count <= maxlearnlimit && maxlearnlimit != 0) || maxlearnlimit == 0 )&& ([self getLearnDateForDeckUUID:uuid].timeIntervalSinceNow <= 0 || learningmore)) {
         NSArray *newcards = [_moc executeFetchRequest:fetchRequest error:&error];
         if (((NSNumber *)[deckmeta valueForKey:@"newcardmode"]).intValue == NewCardsRandom) {
             NSMutableArray *usedRandomNumbers = [NSMutableArray new];
@@ -234,8 +237,10 @@
                 }
             }
         }
-        [self setLearnDateForDeckUUID:uuid setToday:NO];
-                [_moc performBlockAndWait:^{
+        if (!learningmore) {
+            [self setLearnDateForDeckUUID:uuid setToday:NO];
+        }
+        [_moc performBlockAndWait:^{
             [_moc save:nil];
         }];
     }
@@ -417,8 +422,6 @@
         [newCard setValue:NSUUID.UUID forKey:@"carduuid"];
         [newCard setValue:uuid forKey:@"deckUUID"];
         [newCard setValue:@(NSDate.date.timeIntervalSince1970) forKey:@"datecreated"];
-        // Set deck learn date so it can refresh the learning queue with new cards
-        [self setLearnDateForDeckUUID:uuid setToday:YES];
         // Only save card when the add card operation is from the editor, not an import to prevent notifications from triggering multiple times.
         [_moc performBlockAndWait:^{
             [_moc save:nil];

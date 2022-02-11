@@ -31,6 +31,7 @@ typedef NS_ENUM(int,NewCardReviewMode) {
 - (NSUUID *)getDeckUUIDWithDeckName:(NSString *)deckname withDeckType:(DeckType)type;
 - (long)getQueuedReviewItemsCountforUUID:(NSUUID *)uuid withType:(int)type;
 - (NSArray *)setandretrieveLearnItemsForDeckUUID:(NSUUID *)uuid withType:(int)type;
+- (NSArray *)setandretrieveLearnItemsForDeckUUID:(NSUUID *)uuid withType:(int)type learningmore:(bool)learningmore;
 - (void)setLearnDateForDeckUUID:(NSUUID *)uuid setToday:(bool)today;
 - (NSDate *)getLearnDateForDeckUUID: (NSUUID *)uuid;
 - (long)getQueuedLearnItemsCountforUUID:(NSUUID *)uuid withType:(int)type;

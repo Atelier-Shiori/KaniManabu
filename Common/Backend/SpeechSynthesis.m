@@ -9,11 +9,13 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MicrosoftCognitiveServicesSpeech/SPXSpeechApi.h>
 #import <SAMKeychain/SAMKeychain.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface SpeechSynthesis ()
 @property (strong) AVSpeechSynthesizer *synthesizer;
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property (strong) AVAudioPlayer *player;
+@property bool playing;
 @end
 
 @implementation SpeechSynthesis
@@ -36,27 +38,38 @@
 }
 
 - (void)sayText:(NSString *)text {
-    if ([NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 2) {
-        dispatch_async(self.privateQueue, ^{
-            // Use Microsoft Speech Synthesis. Get the audio synthesis from Microsoft Speech Services and then save it to Core Data for later use.
-            NSData *speechData = [self getStoredAudio:text];
-            if (!speechData) {
-                // Get Speech Synthesis Audio and store it in the AudioContainer Core Data for later use
-                speechData = [self getSpeechDataFromText:text];
-                if (speechData) {
-                    [self saveAudioWithWord:text withAudioData:speechData];
+    if (!_playing) {
+        _playing = YES;
+        if ([NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 2) {
+            dispatch_async(self.privateQueue, ^{
+                // Use Microsoft Speech Synthesis. Get the audio synthesis from Microsoft Speech Services and then save it to Core Data for later use.
+                NSData *speechData = [self getStoredAudio:text];
+                if (!speechData) {
+                    // Get the speech audio and save it
+                    [self getSpeechDataFromText:text completionHandler:^(bool success, NSData *audiodata) {
+                        if (success) {
+                            [self saveAudioWithWord:text withAudioData:audiodata];
+                            self.playing = NO;
+                        }
+                        else {
+                            // Fallback to TTS
+                            [self macOSSayText:text];
+                            self.playing = NO;
+                        }
+                    }];
                 }
                 else {
-                    // Fallback to TTS
-                    [self macOSSayText:text];
-                    return;
+                    // Play back stored audio
+                    [self playAudioWithData:speechData];
+                    self.playing = NO;
                 }
-            }
-            [self playAudioWithData:speechData];
-        });
-    }
-    else {
-        [self macOSSayText:text];
+            });
+        }
+        else {
+            // Use MacOS Speech Synthesizer
+            [self macOSSayText:text];
+            _playing = NO;
+        }
     }
 }
 
@@ -68,6 +81,7 @@
 }
 
 - (NSData *)getStoredAudio:(NSString *)text {
+    // Gets the stored audio for the word from the AudioContainer Core Data container
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     fetchRequest.entity = [NSEntityDescription entityForName:@"Speech" inManagedObjectContext:_moc];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word == %@",text];
@@ -92,11 +106,14 @@
     [SAMKeychain deletePasswordForService:@"KaniManabu" account:@"Azure Subscription Key"];
 }
 
-- (NSData *)getSpeechDataFromText:(NSString *)text {
+- (void)getSpeechDataFromText:(NSString *)text completionHandler:(void (^)(bool success, NSData *audiodata)) completionHandler {
     NSString *skey = [self getSubscriptionKey];
     if (!skey) {
-            return nil;
+        // No Subscription Key
+        completionHandler(false, nil);
+        return;
     }
+    // Configure the speech synthesizer and output location
     SPXSpeechConfiguration *configuration = [[SPXSpeechConfiguration alloc] initWithSubscription:skey region:@"eastus"];
     configuration.speechSynthesisLanguage = @"ja-JP";
     NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -111,7 +128,8 @@
     
     if (!synthesizer) {
         NSLog(@"Could not create speech synthesizer");
-        return nil;
+        completionHandler(false, nil);
+        return;
     }
     SPXSpeechSynthesisResult *speechResult = [synthesizer speakText:text];
 
@@ -119,19 +137,32 @@
     if (SPXResultReason_Canceled == speechResult.reason) {
         SPXSpeechSynthesisCancellationDetails *details = [[SPXSpeechSynthesisCancellationDetails alloc] initFromCanceledSynthesisResult:speechResult];
         NSLog(@"Speech synthesis was canceled: %@. Did you pass the correct key/region combination?", details.errorDetails);
-        return nil;
+        completionHandler(false, nil);
+        return;
     } else if (SPXResultReason_SynthesizingAudioCompleted == speechResult.reason) {
         NSLog(@"Speech synthesis was completed");
     } else {
         NSLog(@"There was an error.");
-        return nil;
+        completionHandler(false, nil);
+        return;
     }
-    NSData *fileData = [NSData dataWithContentsOfURL:[[NSURL alloc] initFileURLWithPath:fileAtPath]];
-    [NSFileManager.defaultManager removeItemAtPath:fileAtPath error:nil];
-    return fileData;
+    // Play audio while conversion is in progress
+    [self playAudioWithData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:fileAtPath]]];
+    //Convert to AAC
+    [self convertWithFileName:fileAtPath completionHandler:^(NSData *audiodata) {
+        if (audiodata) {
+            [NSFileManager.defaultManager removeItemAtPath:fileAtPath error:nil];
+            [NSFileManager.defaultManager removeItemAtPath:[fileAtPath stringByReplacingOccurrencesOfString:@".wav" withString:@".m4a"] error:nil];
+            completionHandler(true, audiodata);
+        }
+        else {
+            completionHandler(false, nil);
+        }
+    }];
 }
 
 - (void)saveAudioWithWord:(NSString *)word withAudioData:(NSData *)data {
+    // Stores the audio file with the kana word for later use
     NSManagedObject *newAudio = [NSEntityDescription insertNewObjectForEntityForName:@"Speech" inManagedObjectContext:_moc];
     [newAudio setValue:word forKey:@"word"];
     [newAudio setValue:data forKey:@"audio"];
@@ -141,6 +172,7 @@
 }
 
 - (void)playAudioWithData:(NSData *)data {
+    // Plays the audio data
     NSError *error = nil;
     _player = [[AVAudioPlayer alloc] initWithData:data error:&error];
     if (!error) {
@@ -149,5 +181,22 @@
     else {
         NSLog(@"%@", error.localizedDescription);
     }
+}
+
+- (void)convertWithFileName:(NSString *)filenamepath completionHandler:(void (^)(NSData *audiodata)) completionHandler {
+    // Convert the TTS WAV file to an AAC one to use less space
+    AVURLAsset *source = [[AVURLAsset alloc] initWithURL:[NSURL fileURLWithPath:filenamepath] options:nil];
+    AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset:source presetName:AVAssetExportPresetAppleM4A];
+    exporter.outputFileType = AVFileTypeAppleM4A;
+    exporter.outputURL = [NSURL fileURLWithPath:[filenamepath stringByReplacingOccurrencesOfString:@".wav" withString:@".m4a"]];
+    [exporter exportAsynchronouslyWithCompletionHandler:^{
+        if (exporter.status == AVAssetExportSessionStatusFailed) {
+            completionHandler(nil);
+        }
+        else {
+            NSData *audiodata = [NSData dataWithContentsOfURL:[NSURL fileURLWithPath:[filenamepath stringByReplacingOccurrencesOfString:@".wav" withString:@".m4a"]]];
+            completionHandler(audiodata);
+        }
+    }];
 }
 @end

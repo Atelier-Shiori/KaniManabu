@@ -9,15 +9,10 @@
 /* Begin PBXBuildFile section */
 		15162333278F762300A09568 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1516232B278F762300A09568 /* QuartzCore.framework */; platformFilter = maccatalyst; };
 		151F3AB7278D07AB00953ECD /* DeckViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3AB6278D07AB00953ECD /* DeckViewCell.m */; };
-		151F3AB9278D07C100953ECD /* DeckViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3AB8278D07C100953ECD /* DeckViewCell.xib */; };
 		151F3ABD278E23CD00953ECD /* KanjiEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3ABB278E23CD00953ECD /* KanjiEditor.m */; };
-		151F3ABE278E23CD00953ECD /* KanjiEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3ABC278E23CD00953ECD /* KanjiEditor.xib */; };
 		151F3AC2278E23D800953ECD /* KanaEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3AC0278E23D800953ECD /* KanaEditor.m */; };
-		151F3AC3278E23D800953ECD /* KanaEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3AC1278E23D800953ECD /* KanaEditor.xib */; };
 		153E9F0D2795CF170094A306 /* CSVLoadingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */; };
 		153E9F0E2795CF170094A306 /* CSVLoadingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */; };
-		153E9F0F2795CF170094A306 /* CSVLoadingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153E9F0C2795CF170094A306 /* CSVLoadingWindow.xib */; };
-		153E9F102795CF170094A306 /* CSVLoadingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 153E9F0C2795CF170094A306 /* CSVLoadingWindow.xib */; };
 		153FFE742794F33500D481A2 /* CFobLicVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE702794F33500D481A2 /* CFobLicVerifier.m */; };
 		153FFE752794F33500D481A2 /* DonationKeyVerify.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE722794F33500D481A2 /* DonationKeyVerify.m */; };
 		153FFE762794F33500D481A2 /* CFobError.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE732794F33500D481A2 /* CFobError.m */; };
@@ -72,25 +67,12 @@
 		1573291F2794B9C400587C05 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A809278C8D5500D3744D /* PXSourceList.framework */; };
 		157329202794B9C400587C05 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */; platformFilter = maccatalyst; };
 		157329212794B9C400587C05 /* AppCenterCrashes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D67279237E3002ADE2B /* AppCenterCrashes.framework */; };
-		157329232794B9C400587C05 /* DeckViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3AB8278D07C100953ECD /* DeckViewCell.xib */; };
-		157329242794B9C400587C05 /* DeckOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C52D70279398E3002ADE2B /* DeckOptions.xib */; };
-		157329262794B9C400587C05 /* KanaEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3AC1278E23D800953ECD /* KanaEditor.xib */; };
-		157329272794B9C400587C05 /* mainwindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70887C278C853400DF399E /* mainwindow.xib */; };
 		157329282794B9C400587C05 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 15C52D7E2794780A002ADE2B /* dsa_pub.pem */; };
 		157329292794B9C400587C05 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF746575278F47380062E476 /* Credits.rtf */; };
-		1573292A2794B9C400587C05 /* NewDeckDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF28A810278CA23B00D3744D /* NewDeckDialog.xib */; };
-		1573292B2794B9C400587C05 /* CSVImportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF89D70E2791DFE8009B7C6F /* CSVImportController.xib */; };
-		1573292C2794B9C400587C05 /* KanjiEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151F3ABC278E23CD00953ECD /* KanjiEditor.xib */; };
 		1573292D2794B9C400587C05 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF746573278F47330062E476 /* EULA.rtf */; };
-		1573292E2794B9C400587C05 /* GeneralPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15794877278CD407000D984D /* GeneralPreferences.xib */; };
 		1573292F2794B9C400587C05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF70886A278C7CE000DF399E /* Assets.xcassets */; };
-		157329302794B9C400587C05 /* Learn.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF28A812278CA4AF00D3744D /* Learn.xib */; };
 		157329312794B9C400587C05 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70886C278C7CE000DF399E /* MainMenu.xib */; };
 		157329322794B9C400587C05 /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF746571278F44AE0062E476 /* PFAboutWindow.xib */; };
-		157329332794B9C400587C05 /* Review.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70887A278C852700DF399E /* Review.xib */; };
-		157329342794B9C400587C05 /* VocabEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15B122D0278CE45300575A73 /* VocabEditor.xib */; };
-		157329352794B9C400587C05 /* ItemInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA14B91278F18340038B9C2 /* ItemInfoWindow.xib */; };
-		157329362794B9C400587C05 /* DeckBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70887E278C854000DF399E /* DeckBrowser.xib */; };
 		157329382794B9C400587C05 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A80B278C8D5F00D3744D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		157329392794B9C400587C05 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF746563278F2F960062E476 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1573293A2794B9C400587C05 /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A809278C8D5500D3744D /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -98,12 +80,10 @@
 		15794870278CBFC9000D984D /* ItemInfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1579486F278CBFC9000D984D /* ItemInfoWindowController.m */; };
 		15794873278CC083000D984D /* CardReview.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794872278CC083000D984D /* CardReview.m */; };
 		15794878278CD407000D984D /* GeneralPreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 15794876278CD407000D984D /* GeneralPreferencesViewController.m */; };
-		15794879278CD407000D984D /* GeneralPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15794877278CD407000D984D /* GeneralPreferences.xib */; };
 		1579487D278CDB97000D984D /* DeckManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1579487C278CDB97000D984D /* DeckManager.m */; };
 		159E65CE2794797C000023C0 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D7927947757002ADE2B /* Sparkle.framework */; };
 		159E65CF2794797C000023C0 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D7927947757002ADE2B /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		15B122D1278CE45300575A73 /* VocabEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122CF278CE45300575A73 /* VocabEditor.m */; };
-		15B122D2278CE45300575A73 /* VocabEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15B122D0278CE45300575A73 /* VocabEditor.xib */; };
 		15B122D6278CE93E00575A73 /* AnswerCheck.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122D5278CE93E00575A73 /* AnswerCheck.m */; };
 		15B122D9278CEBE900575A73 /* string_score.c in Sources */ = {isa = PBXBuildFile; fileRef = 15B122D8278CEBE900575A73 /* string_score.c */; };
 		15B122DE278CED4C00575A73 /* PaRomajiKanaConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15B122DA278CED4C00575A73 /* PaRomajiKanaConverter.m */; };
@@ -112,8 +92,6 @@
 		15C52D6A279237EA002ADE2B /* AppCenterAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D66279237E3002ADE2B /* AppCenterAnalytics.framework */; };
 		15C52D6C279237EA002ADE2B /* AppCenterCrashes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15C52D67279237E3002ADE2B /* AppCenterCrashes.framework */; };
 		15C52D71279398E3002ADE2B /* DeckOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C52D6F279398E3002ADE2B /* DeckOptions.m */; };
-		15C52D72279398E3002ADE2B /* DeckOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C52D70279398E3002ADE2B /* DeckOptions.xib */; };
-		15C52D74279476EB002ADE2B /* SoftwareUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15C52D73279476EB002ADE2B /* SoftwareUpdateView.xib */; };
 		15C52D77279476FB002ADE2B /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 15C52D75279476FB002ADE2B /* SoftwareUpdatesPref.m */; };
 		15C52D7F2794780A002ADE2B /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 15C52D7E2794780A002ADE2B /* dsa_pub.pem */; };
 		15CB506A27949A5000ECF326 /* CSVDeckExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 15CB506927949A5000ECF326 /* CSVDeckExporter.m */; };
@@ -134,12 +112,43 @@
 		FF16A0EE27B5B1F900AA385E /* MicrosoftCognitiveServicesSpeech.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF16A0D927B5B1D200AA385E /* MicrosoftCognitiveServicesSpeech.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF16A0EF27B5B20100AA385E /* MicrosoftCognitiveServicesSpeech.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF16A0D927B5B1D200AA385E /* MicrosoftCognitiveServicesSpeech.xcframework */; };
 		FF16A0F027B5B20100AA385E /* MicrosoftCognitiveServicesSpeech.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF16A0D927B5B1D200AA385E /* MicrosoftCognitiveServicesSpeech.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF173DC827B6924900E5CD37 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF173DB927B6924900E5CD37 /* AudioToolbox.framework */; };
+		FF173DC927B6925300E5CD37 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF173DB927B6924900E5CD37 /* AudioToolbox.framework */; };
+		FF173DCA27B69DFA00E5CD37 /* GeneralPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DCD27B69DFA00E5CD37 /* GeneralPreferences.xib */; };
+		FF173DCB27B69DFA00E5CD37 /* GeneralPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DCD27B69DFA00E5CD37 /* GeneralPreferences.xib */; };
+		FF173DCE27B69DFE00E5CD37 /* SoftwareUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DD027B69DFE00E5CD37 /* SoftwareUpdateView.xib */; };
+		FF173DD227B69E0600E5CD37 /* WaniKaniPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DD527B69E0600E5CD37 /* WaniKaniPreferences.xib */; };
+		FF173DD327B69E0600E5CD37 /* WaniKaniPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DD527B69E0600E5CD37 /* WaniKaniPreferences.xib */; };
+		FF173DD627B69E1300E5CD37 /* Review.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DD927B69E1300E5CD37 /* Review.xib */; };
+		FF173DD727B69E1300E5CD37 /* Review.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DD927B69E1300E5CD37 /* Review.xib */; };
+		FF173DDA27B69E1700E5CD37 /* Learn.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DDD27B69E1700E5CD37 /* Learn.xib */; };
+		FF173DDB27B69E1700E5CD37 /* Learn.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DDD27B69E1700E5CD37 /* Learn.xib */; };
+		FF173DDE27B69E1B00E5CD37 /* mainwindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DE127B69E1B00E5CD37 /* mainwindow.xib */; };
+		FF173DDF27B69E1B00E5CD37 /* mainwindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DE127B69E1B00E5CD37 /* mainwindow.xib */; };
+		FF173DE227B69E1F00E5CD37 /* NewDeckDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DE527B69E1F00E5CD37 /* NewDeckDialog.xib */; };
+		FF173DE327B69E1F00E5CD37 /* NewDeckDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DE527B69E1F00E5CD37 /* NewDeckDialog.xib */; };
+		FF173DE627B69E2300E5CD37 /* DeckBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DE927B69E2300E5CD37 /* DeckBrowser.xib */; };
+		FF173DE727B69E2300E5CD37 /* DeckBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DE927B69E2300E5CD37 /* DeckBrowser.xib */; };
+		FF173DEA27B69E2700E5CD37 /* VocabEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DED27B69E2700E5CD37 /* VocabEditor.xib */; };
+		FF173DEB27B69E2700E5CD37 /* VocabEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DED27B69E2700E5CD37 /* VocabEditor.xib */; };
+		FF173DEE27B69E2B00E5CD37 /* KanjiEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DF127B69E2B00E5CD37 /* KanjiEditor.xib */; };
+		FF173DEF27B69E2B00E5CD37 /* KanjiEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DF127B69E2B00E5CD37 /* KanjiEditor.xib */; };
+		FF173DF227B69E3000E5CD37 /* KanaEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DF527B69E3000E5CD37 /* KanaEditor.xib */; };
+		FF173DF327B69E3000E5CD37 /* KanaEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DF527B69E3000E5CD37 /* KanaEditor.xib */; };
+		FF173DF627B69E3300E5CD37 /* CSVImportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DF927B69E3300E5CD37 /* CSVImportController.xib */; };
+		FF173DF727B69E3300E5CD37 /* CSVImportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DF927B69E3300E5CD37 /* CSVImportController.xib */; };
+		FF173DFA27B69E3700E5CD37 /* DeckOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DFD27B69E3700E5CD37 /* DeckOptions.xib */; };
+		FF173DFB27B69E3700E5CD37 /* DeckOptions.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173DFD27B69E3700E5CD37 /* DeckOptions.xib */; };
+		FF173DFE27B69E3A00E5CD37 /* ItemInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173E0127B69E3B00E5CD37 /* ItemInfoWindow.xib */; };
+		FF173DFF27B69E3B00E5CD37 /* ItemInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173E0127B69E3B00E5CD37 /* ItemInfoWindow.xib */; };
+		FF173E0227B69E4100E5CD37 /* CSVLoadingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173E0527B69E4100E5CD37 /* CSVLoadingWindow.xib */; };
+		FF173E0327B69E4100E5CD37 /* CSVLoadingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173E0527B69E4100E5CD37 /* CSVLoadingWindow.xib */; };
+		FF173E0627B69E4D00E5CD37 /* DeckViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173E0927B69E4D00E5CD37 /* DeckViewCell.xib */; };
+		FF173E0727B69E4D00E5CD37 /* DeckViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173E0927B69E4D00E5CD37 /* DeckViewCell.xib */; };
 		FF1BE8112790542900CA6A99 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */; };
 		FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE81727906AA500CA6A99 /* MSWeakTimer.m */; };
 		FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */; platformFilter = maccatalyst; };
 		FF28A80F278C941800D3744D /* SRScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A80E278C941800D3744D /* SRScheduler.m */; };
-		FF28A811278CA23B00D3744D /* NewDeckDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF28A810278CA23B00D3744D /* NewDeckDialog.xib */; };
-		FF28A813278CA4AF00D3744D /* Learn.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF28A812278CA4AF00D3744D /* Learn.xib */; };
 		FF28A817278CB16D00D3744D /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A816278CB16D00D3744D /* MainWindowController.m */; };
 		FF28A81A278CB17F00D3744D /* LearnWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A819278CB17F00D3744D /* LearnWindowController.m */; };
 		FF28A81D278CB19E00D3744D /* ReviewWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF28A81C278CB19E00D3744D /* ReviewWindowController.m */; };
@@ -155,9 +164,6 @@
 		FF70886E278C7CE000DF399E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70886C278C7CE000DF399E /* MainMenu.xib */; };
 		FF708870278C7CE000DF399E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FF70886F278C7CE000DF399E /* main.m */; };
 		FF708879278C83A000DF399E /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF708878278C83A000DF399E /* CloudKit.framework */; };
-		FF70887B278C852700DF399E /* Review.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70887A278C852700DF399E /* Review.xib */; };
-		FF70887D278C853400DF399E /* mainwindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70887C278C853400DF399E /* mainwindow.xib */; };
-		FF70887F278C854000DF399E /* DeckBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF70887E278C854000DF399E /* DeckBrowser.xib */; };
 		FF74656C278F2FAE0062E476 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF746563278F2F960062E476 /* AFNetworking.framework */; };
 		FF74656D278F2FAE0062E476 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF746563278F2F960062E476 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF746570278F44A10062E476 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF74656E278F44A10062E476 /* PFAboutWindowController.m */; };
@@ -166,20 +172,16 @@
 		FF746576278F47380062E476 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FF746575278F47380062E476 /* Credits.rtf */; };
 		FF778DBC279EEB5F0055AF2D /* WaniKaniPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = FF778DBA279EEB5F0055AF2D /* WaniKaniPreferences.m */; };
 		FF778DBD279EEB5F0055AF2D /* WaniKaniPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = FF778DBA279EEB5F0055AF2D /* WaniKaniPreferences.m */; };
-		FF778DBE279EEB5F0055AF2D /* WaniKaniPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF778DBB279EEB5F0055AF2D /* WaniKaniPreferences.xib */; };
-		FF778DBF279EEB5F0055AF2D /* WaniKaniPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF778DBB279EEB5F0055AF2D /* WaniKaniPreferences.xib */; };
 		FF778DC9279EEC740055AF2D /* WaniKani.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF778DC7279EEC740055AF2D /* WaniKani.xcdatamodeld */; };
 		FF778DCA279EEC740055AF2D /* WaniKani.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF778DC7279EEC740055AF2D /* WaniKani.xcdatamodeld */; };
 		FF778DE7279EEEDA0055AF2D /* WaniKani.m in Sources */ = {isa = PBXBuildFile; fileRef = FF778DE6279EEEDA0055AF2D /* WaniKani.m */; };
 		FF778DE8279EEEDA0055AF2D /* WaniKani.m in Sources */ = {isa = PBXBuildFile; fileRef = FF778DE6279EEEDA0055AF2D /* WaniKani.m */; };
 		FF89D70B2791D41D009B7C6F /* CHCSVParser.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89D70A2791D41D009B7C6F /* CHCSVParser.m */; };
 		FF89D70F2791DFE8009B7C6F /* CSVImportController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89D70D2791DFE8009B7C6F /* CSVImportController.m */; };
-		FF89D7102791DFE8009B7C6F /* CSVImportController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF89D70E2791DFE8009B7C6F /* CSVImportController.xib */; };
 		FF89D7132791EC92009B7C6F /* CSVDeckImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = FF89D7122791EC92009B7C6F /* CSVDeckImporter.m */; };
 		FFA14B7B278EF1560038B9C2 /* CardEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA14B7A278EF1560038B9C2 /* CardEditor.m */; };
 		FFA14B85278F04E10038B9C2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA14B84278F04E10038B9C2 /* AVFoundation.framework */; };
 		FFA14B90278F0F8C0038B9C2 /* NSTableViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA14B8F278F0F8C0038B9C2 /* NSTableViewAction.m */; };
-		FFA14B92278F18340038B9C2 /* ItemInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA14B91278F18340038B9C2 /* ItemInfoWindow.xib */; };
 		FFB6145C278CB8AF001E5FAA /* DeckBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */; };
 		FFBE3C2E278DEF67003D3F06 /* SRSLevelValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C2D278DEF67003D3F06 /* SRSLevelValueTransformer.m */; };
 		FFBE3C31278DF05F003D3F06 /* UnixDatetoNSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C30278DF05F003D3F06 /* UnixDatetoNSDate.m */; };
@@ -360,16 +362,12 @@
 		1516232B278F762300A09568 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		151F3AB5278D07AB00953ECD /* DeckViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckViewCell.h; sourceTree = "<group>"; };
 		151F3AB6278D07AB00953ECD /* DeckViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckViewCell.m; sourceTree = "<group>"; };
-		151F3AB8278D07C100953ECD /* DeckViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckViewCell.xib; sourceTree = "<group>"; };
 		151F3ABA278E23CD00953ECD /* KanjiEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KanjiEditor.h; sourceTree = "<group>"; };
 		151F3ABB278E23CD00953ECD /* KanjiEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KanjiEditor.m; sourceTree = "<group>"; };
-		151F3ABC278E23CD00953ECD /* KanjiEditor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KanjiEditor.xib; sourceTree = "<group>"; };
 		151F3ABF278E23D800953ECD /* KanaEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KanaEditor.h; sourceTree = "<group>"; };
 		151F3AC0278E23D800953ECD /* KanaEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KanaEditor.m; sourceTree = "<group>"; };
-		151F3AC1278E23D800953ECD /* KanaEditor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KanaEditor.xib; sourceTree = "<group>"; };
 		153E9F0A2795CF170094A306 /* CSVLoadingWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVLoadingWindow.h; sourceTree = "<group>"; };
 		153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSVLoadingWindow.m; sourceTree = "<group>"; };
-		153E9F0C2795CF170094A306 /* CSVLoadingWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CSVLoadingWindow.xib; sourceTree = "<group>"; };
 		153FFE6E2794F33500D481A2 /* CFobError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFobError.h; sourceTree = "<group>"; };
 		153FFE6F2794F33500D481A2 /* CFobLicVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFobLicVerifier.h; sourceTree = "<group>"; };
 		153FFE702794F33500D481A2 /* CFobLicVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFobLicVerifier.m; sourceTree = "<group>"; };
@@ -397,13 +395,11 @@
 		15794872278CC083000D984D /* CardReview.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardReview.m; sourceTree = "<group>"; };
 		15794875278CD407000D984D /* GeneralPreferencesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneralPreferencesViewController.h; sourceTree = "<group>"; };
 		15794876278CD407000D984D /* GeneralPreferencesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeneralPreferencesViewController.m; sourceTree = "<group>"; };
-		15794877278CD407000D984D /* GeneralPreferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralPreferences.xib; sourceTree = "<group>"; };
 		1579487A278CD496000D984D /* PreferencesControllers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferencesControllers.h; sourceTree = "<group>"; };
 		1579487B278CDB97000D984D /* DeckManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckManager.h; sourceTree = "<group>"; };
 		1579487C278CDB97000D984D /* DeckManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckManager.m; sourceTree = "<group>"; };
 		15B122CE278CE45300575A73 /* VocabEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VocabEditor.h; sourceTree = "<group>"; };
 		15B122CF278CE45300575A73 /* VocabEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VocabEditor.m; sourceTree = "<group>"; };
-		15B122D0278CE45300575A73 /* VocabEditor.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VocabEditor.xib; sourceTree = "<group>"; };
 		15B122D4278CE93E00575A73 /* AnswerCheck.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnswerCheck.h; sourceTree = "<group>"; };
 		15B122D5278CE93E00575A73 /* AnswerCheck.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AnswerCheck.m; sourceTree = "<group>"; };
 		15B122D7278CEBE900575A73 /* string_score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_score.h; sourceTree = "<group>"; };
@@ -417,8 +413,6 @@
 		15C52D67279237E3002ADE2B /* AppCenterCrashes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterCrashes.framework; path = "Dependencies/macOS Only/AppCenterCrashes.framework"; sourceTree = "<group>"; };
 		15C52D6E279398E3002ADE2B /* DeckOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckOptions.h; sourceTree = "<group>"; };
 		15C52D6F279398E3002ADE2B /* DeckOptions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckOptions.m; sourceTree = "<group>"; };
-		15C52D70279398E3002ADE2B /* DeckOptions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckOptions.xib; sourceTree = "<group>"; };
-		15C52D73279476EB002ADE2B /* SoftwareUpdateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SoftwareUpdateView.xib; sourceTree = "<group>"; };
 		15C52D75279476FB002ADE2B /* SoftwareUpdatesPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareUpdatesPref.m; sourceTree = "<group>"; };
 		15C52D76279476FB002ADE2B /* SoftwareUpdatesPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareUpdatesPref.h; sourceTree = "<group>"; };
 		15C52D7927947757002ADE2B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = "Dependencies/macOS Only/Sparkle.framework"; sourceTree = "<group>"; };
@@ -431,6 +425,23 @@
 		FF16A09027B56A9700AA385E /* SpeechSynthesis.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeechSynthesis.m; sourceTree = "<group>"; };
 		FF16A0B227B57BDF00AA385E /* texttospeech.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = texttospeech.xcdatamodel; sourceTree = "<group>"; };
 		FF16A0D927B5B1D200AA385E /* MicrosoftCognitiveServicesSpeech.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = MicrosoftCognitiveServicesSpeech.xcframework; path = Dependencies/MicrosoftCognitiveServicesSpeech.xcframework; sourceTree = "<group>"; };
+		FF173DB927B6924900E5CD37 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		FF173DCC27B69DFA00E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GeneralPreferences.xib; sourceTree = "<group>"; };
+		FF173DCF27B69DFE00E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SoftwareUpdateView.xib; sourceTree = "<group>"; };
+		FF173DD427B69E0600E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/WaniKaniPreferences.xib; sourceTree = "<group>"; };
+		FF173DD827B69E1300E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Review.xib; sourceTree = "<group>"; };
+		FF173DDC27B69E1700E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Learn.xib; sourceTree = "<group>"; };
+		FF173DE027B69E1B00E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/mainwindow.xib; sourceTree = "<group>"; };
+		FF173DE427B69E1F00E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NewDeckDialog.xib; sourceTree = "<group>"; };
+		FF173DE827B69E2300E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DeckBrowser.xib; sourceTree = "<group>"; };
+		FF173DEC27B69E2700E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/VocabEditor.xib; sourceTree = "<group>"; };
+		FF173DF027B69E2B00E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/KanjiEditor.xib; sourceTree = "<group>"; };
+		FF173DF427B69E3000E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/KanaEditor.xib; sourceTree = "<group>"; };
+		FF173DF827B69E3300E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CSVImportController.xib; sourceTree = "<group>"; };
+		FF173DFC27B69E3700E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DeckOptions.xib; sourceTree = "<group>"; };
+		FF173E0027B69E3B00E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ItemInfoWindow.xib; sourceTree = "<group>"; };
+		FF173E0427B69E4100E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CSVLoadingWindow.xib; sourceTree = "<group>"; };
+		FF173E0827B69E4D00E5CD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DeckViewCell.xib; sourceTree = "<group>"; };
 		FF1BE8082790542900CA6A99 /* NSNumberFormatterNumberOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberFormatterNumberOnly.h; sourceTree = "<group>"; };
 		FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberFormatterNumberOnly.m; sourceTree = "<group>"; };
 		FF1BE81627906AA500CA6A99 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSWeakTimer.h; path = Dependencies/MSWeakTimer/MSWeakTimer.h; sourceTree = "<group>"; };
@@ -440,8 +451,6 @@
 		FF28A80B278C8D5F00D3744D /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MASPreferences.framework; path = "Dependencies/macOS Only/MASPreferences.framework"; sourceTree = "<group>"; };
 		FF28A80D278C941800D3744D /* SRScheduler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRScheduler.h; sourceTree = "<group>"; };
 		FF28A80E278C941800D3744D /* SRScheduler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRScheduler.m; sourceTree = "<group>"; };
-		FF28A810278CA23B00D3744D /* NewDeckDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewDeckDialog.xib; sourceTree = "<group>"; };
-		FF28A812278CA4AF00D3744D /* Learn.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Learn.xib; sourceTree = "<group>"; };
 		FF28A815278CB16D00D3744D /* MainWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
 		FF28A816278CB16D00D3744D /* MainWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
 		FF28A818278CB17F00D3744D /* LearnWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearnWindowController.h; sourceTree = "<group>"; };
@@ -461,9 +470,6 @@
 		FF70886F278C7CE000DF399E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FF708871278C7CE000DF399E /* KaniManabu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KaniManabu.entitlements; sourceTree = "<group>"; };
 		FF708878278C83A000DF399E /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		FF70887A278C852700DF399E /* Review.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Review.xib; sourceTree = "<group>"; };
-		FF70887C278C853400DF399E /* mainwindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = mainwindow.xib; sourceTree = "<group>"; };
-		FF70887E278C854000DF399E /* DeckBrowser.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckBrowser.xib; sourceTree = "<group>"; };
 		FF746554278F2F950062E476 /* AFNetworking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AFNetworking.xcodeproj; path = "Dependencies/AFNetworking 4/AFNetworking.xcodeproj"; sourceTree = "<group>"; };
 		FF74656E278F44A10062E476 /* PFAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PFAboutWindowController.m; sourceTree = "<group>"; };
 		FF74656F278F44A10062E476 /* PFAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PFAboutWindowController.h; sourceTree = "<group>"; };
@@ -472,7 +478,6 @@
 		FF746575278F47380062E476 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		FF778DB9279EEB5F0055AF2D /* WaniKaniPreferences.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaniKaniPreferences.h; sourceTree = "<group>"; };
 		FF778DBA279EEB5F0055AF2D /* WaniKaniPreferences.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WaniKaniPreferences.m; sourceTree = "<group>"; };
-		FF778DBB279EEB5F0055AF2D /* WaniKaniPreferences.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WaniKaniPreferences.xib; sourceTree = "<group>"; };
 		FF778DC8279EEC740055AF2D /* WaniKani.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WaniKani.xcdatamodel; sourceTree = "<group>"; };
 		FF778DCB279EEE830055AF2D /* SAMKeychain.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SAMKeychain.xcodeproj; path = Dependencies/SAMKeychain/SAMKeychain.xcodeproj; sourceTree = "<group>"; };
 		FF778DE5279EEEDA0055AF2D /* WaniKani.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaniKani.h; sourceTree = "<group>"; };
@@ -481,7 +486,6 @@
 		FF89D70A2791D41D009B7C6F /* CHCSVParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHCSVParser.m; sourceTree = "<group>"; };
 		FF89D70C2791DFE8009B7C6F /* CSVImportController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVImportController.h; sourceTree = "<group>"; };
 		FF89D70D2791DFE8009B7C6F /* CSVImportController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSVImportController.m; sourceTree = "<group>"; };
-		FF89D70E2791DFE8009B7C6F /* CSVImportController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CSVImportController.xib; sourceTree = "<group>"; };
 		FF89D7112791EC92009B7C6F /* CSVDeckImporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVDeckImporter.h; sourceTree = "<group>"; };
 		FF89D7122791EC92009B7C6F /* CSVDeckImporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSVDeckImporter.m; sourceTree = "<group>"; };
 		FFA14B79278EF1560038B9C2 /* CardEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardEditor.h; sourceTree = "<group>"; };
@@ -489,7 +493,6 @@
 		FFA14B84278F04E10038B9C2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FFA14B8E278F0F8C0038B9C2 /* NSTableViewAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTableViewAction.h; sourceTree = "<group>"; };
 		FFA14B8F278F0F8C0038B9C2 /* NSTableViewAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTableViewAction.m; sourceTree = "<group>"; };
-		FFA14B91278F18340038B9C2 /* ItemInfoWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemInfoWindow.xib; sourceTree = "<group>"; };
 		FFB6145A278CB8AF001E5FAA /* DeckBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckBrowser.h; sourceTree = "<group>"; };
 		FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckBrowser.m; sourceTree = "<group>"; };
 		FFBE3C2C278DEF67003D3F06 /* SRSLevelValueTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRSLevelValueTransformer.h; sourceTree = "<group>"; };
@@ -521,6 +524,7 @@
 				1573291A2794B9C400587C05 /* AFNetworking.framework in Frameworks */,
 				1573291B2794B9C400587C05 /* QuartzCore.framework in Frameworks */,
 				1573291C2794B9C400587C05 /* AppCenterAnalytics.framework in Frameworks */,
+				FF173DC927B6925300E5CD37 /* AudioToolbox.framework in Frameworks */,
 				FF16A0ED27B5B1F900AA385E /* MicrosoftCognitiveServicesSpeech.xcframework in Frameworks */,
 				15F77947279F4B5500982BF9 /* SAMKeychain.framework in Frameworks */,
 				1573291D2794B9C400587C05 /* MASPreferences.framework in Frameworks */,
@@ -546,6 +550,7 @@
 				FF28A82A278CB50600D3744D /* PXSourceList.framework in Frameworks */,
 				FF16A0EB27B5B1F500AA385E /* MicrosoftCognitiveServicesSpeech.xcframework in Frameworks */,
 				FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */,
+				FF173DC827B6924900E5CD37 /* AudioToolbox.framework in Frameworks */,
 				15F7793E279F4B4B00982BF9 /* SAMKeychain.framework in Frameworks */,
 				15C52D6C279237EA002ADE2B /* AppCenterCrashes.framework in Frameworks */,
 			);
@@ -605,12 +610,12 @@
 				15794876278CD407000D984D /* GeneralPreferencesViewController.m */,
 				15C52D76279476FB002ADE2B /* SoftwareUpdatesPref.h */,
 				15C52D75279476FB002ADE2B /* SoftwareUpdatesPref.m */,
-				15794877278CD407000D984D /* GeneralPreferences.xib */,
+				FF173DCD27B69DFA00E5CD37 /* GeneralPreferences.xib */,
 				1579487A278CD496000D984D /* PreferencesControllers.h */,
-				15C52D73279476EB002ADE2B /* SoftwareUpdateView.xib */,
+				FF173DD027B69DFE00E5CD37 /* SoftwareUpdateView.xib */,
 				FF778DB9279EEB5F0055AF2D /* WaniKaniPreferences.h */,
 				FF778DBA279EEB5F0055AF2D /* WaniKaniPreferences.m */,
-				FF778DBB279EEB5F0055AF2D /* WaniKaniPreferences.xib */,
+				FF173DD527B69E0600E5CD37 /* WaniKaniPreferences.xib */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -680,17 +685,17 @@
 		15C52D7D279477D1002ADE2B /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
-				FF70887A278C852700DF399E /* Review.xib */,
-				FF28A812278CA4AF00D3744D /* Learn.xib */,
-				FF70887C278C853400DF399E /* mainwindow.xib */,
-				FF28A810278CA23B00D3744D /* NewDeckDialog.xib */,
-				FF70887E278C854000DF399E /* DeckBrowser.xib */,
-				15B122D0278CE45300575A73 /* VocabEditor.xib */,
-				151F3ABC278E23CD00953ECD /* KanjiEditor.xib */,
-				151F3AC1278E23D800953ECD /* KanaEditor.xib */,
-				FF89D70E2791DFE8009B7C6F /* CSVImportController.xib */,
-				15C52D70279398E3002ADE2B /* DeckOptions.xib */,
-				FFA14B91278F18340038B9C2 /* ItemInfoWindow.xib */,
+				FF173DD927B69E1300E5CD37 /* Review.xib */,
+				FF173DDD27B69E1700E5CD37 /* Learn.xib */,
+				FF173DE127B69E1B00E5CD37 /* mainwindow.xib */,
+				FF173DE527B69E1F00E5CD37 /* NewDeckDialog.xib */,
+				FF173DE927B69E2300E5CD37 /* DeckBrowser.xib */,
+				FF173DED27B69E2700E5CD37 /* VocabEditor.xib */,
+				FF173DF127B69E2B00E5CD37 /* KanjiEditor.xib */,
+				FF173DF527B69E3000E5CD37 /* KanaEditor.xib */,
+				FF173DF927B69E3300E5CD37 /* CSVImportController.xib */,
+				FF173DFD27B69E3700E5CD37 /* DeckOptions.xib */,
+				FF173E0127B69E3B00E5CD37 /* ItemInfoWindow.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -750,7 +755,7 @@
 				FFA14B7A278EF1560038B9C2 /* CardEditor.m */,
 				153E9F0A2795CF170094A306 /* CSVLoadingWindow.h */,
 				153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */,
-				153E9F0C2795CF170094A306 /* CSVLoadingWindow.xib */,
+				FF173E0527B69E4100E5CD37 /* CSVLoadingWindow.xib */,
 			);
 			path = "Window Controllers";
 			sourceTree = "<group>";
@@ -809,7 +814,7 @@
 				FF708871278C7CE000DF399E /* KaniManabu.entitlements */,
 				FF708867278C7CDF00DF399E /* KaniManabu.xcdatamodeld */,
 				151F3AB5278D07AB00953ECD /* DeckViewCell.h */,
-				151F3AB8278D07C100953ECD /* DeckViewCell.xib */,
+				FF173E0927B69E4D00E5CD37 /* DeckViewCell.xib */,
 				151F3AB6278D07AB00953ECD /* DeckViewCell.m */,
 				FF746573278F47330062E476 /* EULA.rtf */,
 				FF746575278F47380062E476 /* Credits.rtf */,
@@ -823,6 +828,7 @@
 		FF708877278C83A000DF399E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FF173DB927B6924900E5CD37 /* AudioToolbox.framework */,
 				15706CB327976509004D639B /* CloudKit.framework */,
 				FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */,
 				1516232B278F762300A09568 /* QuartzCore.framework */,
@@ -1104,28 +1110,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				157329232794B9C400587C05 /* DeckViewCell.xib in Resources */,
-				157329242794B9C400587C05 /* DeckOptions.xib in Resources */,
-				157329262794B9C400587C05 /* KanaEditor.xib in Resources */,
-				157329272794B9C400587C05 /* mainwindow.xib in Resources */,
+				FF173E0727B69E4D00E5CD37 /* DeckViewCell.xib in Resources */,
+				FF173DFB27B69E3700E5CD37 /* DeckOptions.xib in Resources */,
+				FF173DF327B69E3000E5CD37 /* KanaEditor.xib in Resources */,
+				FF173DDF27B69E1B00E5CD37 /* mainwindow.xib in Resources */,
 				15CBBB272794BB7600B4FA4A /* MainMenu.xib in Resources */,
 				157329282794B9C400587C05 /* dsa_pub.pem in Resources */,
 				157329292794B9C400587C05 /* Credits.rtf in Resources */,
-				1573292A2794B9C400587C05 /* NewDeckDialog.xib in Resources */,
-				1573292B2794B9C400587C05 /* CSVImportController.xib in Resources */,
-				1573292C2794B9C400587C05 /* KanjiEditor.xib in Resources */,
-				153E9F102795CF170094A306 /* CSVLoadingWindow.xib in Resources */,
+				FF173DE327B69E1F00E5CD37 /* NewDeckDialog.xib in Resources */,
+				FF173DF727B69E3300E5CD37 /* CSVImportController.xib in Resources */,
+				FF173DEF27B69E2B00E5CD37 /* KanjiEditor.xib in Resources */,
+				FF173E0327B69E4100E5CD37 /* CSVLoadingWindow.xib in Resources */,
 				1573292D2794B9C400587C05 /* EULA.rtf in Resources */,
-				1573292E2794B9C400587C05 /* GeneralPreferences.xib in Resources */,
+				FF173DCB27B69DFA00E5CD37 /* GeneralPreferences.xib in Resources */,
 				1573292F2794B9C400587C05 /* Assets.xcassets in Resources */,
-				157329302794B9C400587C05 /* Learn.xib in Resources */,
+				FF173DDB27B69E1700E5CD37 /* Learn.xib in Resources */,
 				157329312794B9C400587C05 /* MainMenu.xib in Resources */,
 				157329322794B9C400587C05 /* PFAboutWindow.xib in Resources */,
-				157329332794B9C400587C05 /* Review.xib in Resources */,
-				FF778DBF279EEB5F0055AF2D /* WaniKaniPreferences.xib in Resources */,
-				157329342794B9C400587C05 /* VocabEditor.xib in Resources */,
-				157329352794B9C400587C05 /* ItemInfoWindow.xib in Resources */,
-				157329362794B9C400587C05 /* DeckBrowser.xib in Resources */,
+				FF173DD727B69E1300E5CD37 /* Review.xib in Resources */,
+				FF173DD327B69E0600E5CD37 /* WaniKaniPreferences.xib in Resources */,
+				FF173DEB27B69E2700E5CD37 /* VocabEditor.xib in Resources */,
+				FF173DFF27B69E3B00E5CD37 /* ItemInfoWindow.xib in Resources */,
+				FF173DE727B69E2300E5CD37 /* DeckBrowser.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1133,29 +1139,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				151F3AB9278D07C100953ECD /* DeckViewCell.xib in Resources */,
-				15C52D72279398E3002ADE2B /* DeckOptions.xib in Resources */,
-				15C52D74279476EB002ADE2B /* SoftwareUpdateView.xib in Resources */,
-				151F3AC3278E23D800953ECD /* KanaEditor.xib in Resources */,
-				FF70887D278C853400DF399E /* mainwindow.xib in Resources */,
+				FF173E0627B69E4D00E5CD37 /* DeckViewCell.xib in Resources */,
+				FF173DFA27B69E3700E5CD37 /* DeckOptions.xib in Resources */,
+				FF173DCE27B69DFE00E5CD37 /* SoftwareUpdateView.xib in Resources */,
+				FF173DF227B69E3000E5CD37 /* KanaEditor.xib in Resources */,
+				FF173DDE27B69E1B00E5CD37 /* mainwindow.xib in Resources */,
 				153FFE7B2794F6F900D481A2 /* DonationWindow.xib in Resources */,
 				15C52D7F2794780A002ADE2B /* dsa_pub.pem in Resources */,
 				FF746576278F47380062E476 /* Credits.rtf in Resources */,
-				FF28A811278CA23B00D3744D /* NewDeckDialog.xib in Resources */,
-				FF89D7102791DFE8009B7C6F /* CSVImportController.xib in Resources */,
-				151F3ABE278E23CD00953ECD /* KanjiEditor.xib in Resources */,
+				FF173DE227B69E1F00E5CD37 /* NewDeckDialog.xib in Resources */,
+				FF173DF627B69E3300E5CD37 /* CSVImportController.xib in Resources */,
+				FF173DEE27B69E2B00E5CD37 /* KanjiEditor.xib in Resources */,
 				FF746574278F47330062E476 /* EULA.rtf in Resources */,
-				15794879278CD407000D984D /* GeneralPreferences.xib in Resources */,
+				FF173DCA27B69DFA00E5CD37 /* GeneralPreferences.xib in Resources */,
 				FF70886B278C7CE000DF399E /* Assets.xcassets in Resources */,
-				FF28A813278CA4AF00D3744D /* Learn.xib in Resources */,
+				FF173DDA27B69E1700E5CD37 /* Learn.xib in Resources */,
 				FF70886E278C7CE000DF399E /* MainMenu.xib in Resources */,
 				FF746572278F44AE0062E476 /* PFAboutWindow.xib in Resources */,
-				FF70887B278C852700DF399E /* Review.xib in Resources */,
-				FF778DBE279EEB5F0055AF2D /* WaniKaniPreferences.xib in Resources */,
-				15B122D2278CE45300575A73 /* VocabEditor.xib in Resources */,
-				153E9F0F2795CF170094A306 /* CSVLoadingWindow.xib in Resources */,
-				FFA14B92278F18340038B9C2 /* ItemInfoWindow.xib in Resources */,
-				FF70887F278C854000DF399E /* DeckBrowser.xib in Resources */,
+				FF173DD627B69E1300E5CD37 /* Review.xib in Resources */,
+				FF173DD227B69E0600E5CD37 /* WaniKaniPreferences.xib in Resources */,
+				FF173DEA27B69E2700E5CD37 /* VocabEditor.xib in Resources */,
+				FF173E0227B69E4100E5CD37 /* CSVLoadingWindow.xib in Resources */,
+				FF173DFE27B69E3A00E5CD37 /* ItemInfoWindow.xib in Resources */,
+				FF173DE627B69E2300E5CD37 /* DeckBrowser.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1307,6 +1313,134 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		FF173DCD27B69DFA00E5CD37 /* GeneralPreferences.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173DCC27B69DFA00E5CD37 /* Base */,
+			);
+			name = GeneralPreferences.xib;
+			sourceTree = "<group>";
+		};
+		FF173DD027B69DFE00E5CD37 /* SoftwareUpdateView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173DCF27B69DFE00E5CD37 /* Base */,
+			);
+			name = SoftwareUpdateView.xib;
+			sourceTree = "<group>";
+		};
+		FF173DD527B69E0600E5CD37 /* WaniKaniPreferences.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173DD427B69E0600E5CD37 /* Base */,
+			);
+			name = WaniKaniPreferences.xib;
+			sourceTree = "<group>";
+		};
+		FF173DD927B69E1300E5CD37 /* Review.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173DD827B69E1300E5CD37 /* Base */,
+			);
+			name = Review.xib;
+			sourceTree = "<group>";
+		};
+		FF173DDD27B69E1700E5CD37 /* Learn.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173DDC27B69E1700E5CD37 /* Base */,
+			);
+			name = Learn.xib;
+			sourceTree = "<group>";
+		};
+		FF173DE127B69E1B00E5CD37 /* mainwindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173DE027B69E1B00E5CD37 /* Base */,
+			);
+			name = mainwindow.xib;
+			sourceTree = "<group>";
+		};
+		FF173DE527B69E1F00E5CD37 /* NewDeckDialog.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173DE427B69E1F00E5CD37 /* Base */,
+			);
+			name = NewDeckDialog.xib;
+			sourceTree = "<group>";
+		};
+		FF173DE927B69E2300E5CD37 /* DeckBrowser.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173DE827B69E2300E5CD37 /* Base */,
+			);
+			name = DeckBrowser.xib;
+			sourceTree = "<group>";
+		};
+		FF173DED27B69E2700E5CD37 /* VocabEditor.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173DEC27B69E2700E5CD37 /* Base */,
+			);
+			name = VocabEditor.xib;
+			sourceTree = "<group>";
+		};
+		FF173DF127B69E2B00E5CD37 /* KanjiEditor.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173DF027B69E2B00E5CD37 /* Base */,
+			);
+			name = KanjiEditor.xib;
+			sourceTree = "<group>";
+		};
+		FF173DF527B69E3000E5CD37 /* KanaEditor.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173DF427B69E3000E5CD37 /* Base */,
+			);
+			name = KanaEditor.xib;
+			sourceTree = "<group>";
+		};
+		FF173DF927B69E3300E5CD37 /* CSVImportController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173DF827B69E3300E5CD37 /* Base */,
+			);
+			name = CSVImportController.xib;
+			sourceTree = "<group>";
+		};
+		FF173DFD27B69E3700E5CD37 /* DeckOptions.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173DFC27B69E3700E5CD37 /* Base */,
+			);
+			name = DeckOptions.xib;
+			sourceTree = "<group>";
+		};
+		FF173E0127B69E3B00E5CD37 /* ItemInfoWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173E0027B69E3B00E5CD37 /* Base */,
+			);
+			name = ItemInfoWindow.xib;
+			sourceTree = "<group>";
+		};
+		FF173E0527B69E4100E5CD37 /* CSVLoadingWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173E0427B69E4100E5CD37 /* Base */,
+			);
+			name = CSVLoadingWindow.xib;
+			sourceTree = "<group>";
+		};
+		FF173E0927B69E4D00E5CD37 /* DeckViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FF173E0827B69E4D00E5CD37 /* Base */,
+			);
+			name = DeckViewCell.xib;
+			sourceTree = "<group>";
+		};
 		FF70886C278C7CE000DF399E /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1530,7 +1664,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20220210;
+				CURRENT_PROJECT_VERSION = 20220211;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1570,7 +1704,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20220210;
+				CURRENT_PROJECT_VERSION = 20220211;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (

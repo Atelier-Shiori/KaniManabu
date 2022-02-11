@@ -404,6 +404,8 @@
                 }
             }
             _answertextfield.placeholderString = @"答えを入力してください";
+            _oldanswerstr = @"";
+            _currentrange = NSMakeRange(_answertextfield.currentEditor.selectedRange.location, 0);
         }
     }
 }

@@ -52,8 +52,7 @@ Warning: This won't work if you don't have a Developer ID installed. If you don'
 1. Get the Source
 2. Set up the CloudKit entitlement settings on your developer account
 3. Download the [Microsoft Cognitive Services Speech](https://aka.ms/csspeech/iosbinary) framework. Unzip and move the MicrosoftCognitiveServicesSpeech.xcframework to the Dependencies folder.
-4. Copy MicrosoftSpeechConstantsSample.m and rename it to MicrosoftSpeechConstants.m. Specify a speech resource subscription key. You can get the subsription key from [Speech Studio](https://speech.microsoft.com/portal). Note that you need to sign up for a free Microsoft Azure Account to get a subscription key and create a free Speech resource.
-5. Type 'xcodebuild' in the terminal to build
+4. Type 'xcodebuild' in the terminal to build
 
 If you are going to distribute your own version and change the name, please change the bundle identifier to something else.
 
