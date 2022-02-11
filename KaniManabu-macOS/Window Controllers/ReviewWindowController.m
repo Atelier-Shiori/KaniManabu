@@ -145,7 +145,7 @@
 }
 
 - (void)controlTextDidChange:(NSNotification *)obj {
-    if (_questiontype == CardReviewTypeReading) {
+    if (_questiontype == CardReviewTypeReading && _useKaniManabuIME) {
         _currentrange = NSMakeRange(_answertextfield.currentEditor.selectedRange.location, 0);
         if (_answertextfield.currentEditor.selectedRange.location < _oldrange.location) {
             _oldrange = _currentrange;

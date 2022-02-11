@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -79,7 +79,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpS-b0-viT">
-                    <rect key="frame" x="153" y="68" width="265" height="18"/>
+                    <rect key="frame" x="153" y="78" width="265" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Send Crash Data and Statistics" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="MIo-cj-scw">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -91,7 +91,7 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxK-0G-AYX">
-                    <rect key="frame" x="15" y="89" width="106" height="17"/>
+                    <rect key="frame" x="15" y="99" width="106" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Privacy" id="42W-P2-cOr">
                         <font key="font" metaFont="systemBold"/>
@@ -100,7 +100,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ao0-Ot-Ivw">
-                    <rect key="frame" x="333" y="36" width="109" height="32"/>
+                    <rect key="frame" x="333" y="46" width="109" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Learn More" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DUF-hE-7CC">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -111,7 +111,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w1X-Zj-zG7">
-                    <rect key="frame" x="147" y="43" width="191" height="17"/>
+                    <rect key="frame" x="147" y="53" width="191" height="17"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Help us improve KaniManabu." id="pyY-rP-VKd">
                         <font key="font" metaFont="system"/>
@@ -226,14 +226,18 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="97r-8S-rOk">
-                    <rect key="frame" x="156" y="108" width="278" height="18"/>
+                    <rect key="frame" x="153" y="118" width="278" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Use KaniManabu's IME for Readings" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xys-AQ-XDM">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <binding destination="AMl-7q-YBz" name="value" keyPath="values.usekanimanabuime" id="vH6-DG-06p"/>
+                        <binding destination="AMl-7q-YBz" name="value" keyPath="values.usekanimanabuime" id="UsY-Ms-WZW">
+                            <dictionary key="options">
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </button>
             </subviews>
