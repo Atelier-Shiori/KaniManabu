@@ -373,7 +373,6 @@ NSString *TKMConvertKanaText(NSString *input) {
     if (event.keyCode == 123 || event.keyCode == 124) {
         self.StartLocation = self.currentEditor.selectedRange.location;
     }
-    [super keyDown:event];
 }
 
 - (BOOL)becomeFirstResponder
