@@ -449,6 +449,7 @@
             _answertextfield.placeholderString = @"答えを入力してください";
             _oldanswerstr = @"";
             _oldrange = NSMakeRange(0, 0);
+            _answertextfield.StartLocation = 0;
         }
     }
 }
