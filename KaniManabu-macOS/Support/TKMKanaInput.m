@@ -368,6 +368,7 @@ NSString *TKMConvertKanaText(NSString *input) {
 }
 
 @implementation TKMKanaInputTextField
+
 - (void)keyUp:(NSEvent *)event {
     if (event.keyCode == 123 || event.keyCode == 124) {
         self.StartLocation = self.currentEditor.selectedRange.location;
@@ -383,27 +384,23 @@ NSString *TKMConvertKanaText(NSString *input) {
 
     NSTextView * fieldEditor = (NSTextView *)[[self window] fieldEditor:YES forObject:self];
     fieldEditor.delegate = self;
-    self.textvieweditor = fieldEditor;
-    NSClickGestureRecognizer *recognizer = [[NSClickGestureRecognizer alloc] initWithTarget:self action:@selector(singleClickGesture:)];
-    [self.textvieweditor addGestureRecognizer:recognizer];
+    //[NSNotificationCenter.defaultCenter addObserver:self selector:@selector(kanaTextViewClicked:) name:@"KanaEditorTextViewClicked" object:nil];
+    //NSClickGestureRecognizer *recognizer = [[NSClickGestureRecognizer alloc] initWithTarget:self action:@selector(singleClickGesture:)];
+    //[self.textvieweditor addGestureRecognizer:recognizer];
     return YES;
 }
 
-- (void)singleClickGesture:(NSClickGestureRecognizer *)recognizer {
-    NSLog(@"qq");
-    if (recognizer.state == NSGestureRecognizerStateEnded) {
-        [self.textvieweditor setEditable:YES];
-        if ([self.window makeFirstResponder:self.textvieweditor]) {
-            NSPoint location = [recognizer locationInView:self.textvieweditor];
-            NSUInteger position = [_textvieweditor characterIndexForInsertionAtPoint:location];
-            _textvieweditor.selectedRange = NSMakeRange(position, 0);
-            self.StartLocation = self.currentEditor.selectedRange.location;
-        }
+- (void)textViewDidChangeSelection:(NSNotification *)notification {
+    NSEvent *event = NSApplication.sharedApplication.currentEvent;
+    if (event.type == NSEventTypeLeftMouseUp) {
+        //NSLog(@"Mouse clicked");
+        self.StartLocation = self.currentEditor.selectedRange.location;
+        //NSLog(@"New Location: %i",_StartLocation);
     }
 }
 
-
 @end
+
 
 @implementation TKMKanaInput
 

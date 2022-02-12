@@ -17,11 +17,10 @@
 
 #import <AppKit/AppKit.h>
 
-
 @interface TKMKanaInputTextField : NSTextField <NSTextViewDelegate>
 @property int StartLocation;
-@property (strong)NSTextView *textvieweditor;
 @end
+
 
 NS_ASSUME_NONNULL_BEGIN
 
