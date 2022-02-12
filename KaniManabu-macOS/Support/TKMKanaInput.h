@@ -17,6 +17,12 @@
 
 #import <AppKit/AppKit.h>
 
+
+@interface TKMKanaInputTextField : NSTextField <NSTextViewDelegate>
+@property int StartLocation;
+@property (strong)NSTextView *textvieweditor;
+@end
+
 NS_ASSUME_NONNULL_BEGIN
 
 extern NSString *TKMConvertKanaText(NSString *text);
@@ -28,7 +34,7 @@ typedef NS_ENUM(NSInteger, TKMAlphabet) {
 
 @interface TKMKanaInput : NSObject
 @property(nonatomic) TKMAlphabet alphabet;
-- (NSString *)checkString:(NSString *)currentstring withReplacementString:(NSString *)replacementstring withOldRange:(NSRange)range withCurrentRange:(NSRange)currentRange useCurrentRange:(bool)useCurrentRange;
+- (NSDictionary *)checkString:(NSString *)currentstring withReplacementString:(NSString *)replacementstring withOldRange:(NSRange)range withCurrentRange:(NSRange)currentRange useCurrentRange:(bool)useCurrentRange;
 @end
 
 NS_ASSUME_NONNULL_END

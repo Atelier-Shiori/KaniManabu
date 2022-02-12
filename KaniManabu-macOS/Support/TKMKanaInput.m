@@ -367,6 +367,44 @@ NSString *TKMConvertKanaText(NSString *input) {
   return ret;
 }
 
+@implementation TKMKanaInputTextField
+- (void)keyUp:(NSEvent *)event {
+    if (event.keyCode == 123 || event.keyCode == 124) {
+        self.StartLocation = self.currentEditor.selectedRange.location;
+    }
+    [super keyDown:event];
+}
+
+- (BOOL)becomeFirstResponder
+{
+    if (![super becomeFirstResponder]) {
+        return NO;
+    }
+
+    NSTextView * fieldEditor = (NSTextView *)[[self window] fieldEditor:YES forObject:self];
+    fieldEditor.delegate = self;
+    self.textvieweditor = fieldEditor;
+    NSClickGestureRecognizer *recognizer = [[NSClickGestureRecognizer alloc] initWithTarget:self action:@selector(singleClickGesture:)];
+    [self.textvieweditor addGestureRecognizer:recognizer];
+    return YES;
+}
+
+- (void)singleClickGesture:(NSClickGestureRecognizer *)recognizer {
+    NSLog(@"qq");
+    if (recognizer.state == NSGestureRecognizerStateEnded) {
+        [self.textvieweditor setEditable:YES];
+        if ([self.window makeFirstResponder:self.textvieweditor]) {
+            NSPoint location = [recognizer locationInView:self.textvieweditor];
+            NSUInteger position = [_textvieweditor characterIndexForInsertionAtPoint:location];
+            _textvieweditor.selectedRange = NSMakeRange(position, 0);
+            self.StartLocation = self.currentEditor.selectedRange.location;
+        }
+    }
+}
+
+
+@end
+
 @implementation TKMKanaInput
 
 - (instancetype)init {
@@ -377,9 +415,9 @@ NSString *TKMConvertKanaText(NSString *input) {
     return nil;
 }
 
-- (NSString *)checkString:(NSString *)currentstring withReplacementString:(NSString *)replacementstring withOldRange:(NSRange)range withCurrentRange:(NSRange)currentRange useCurrentRange:(bool)useCurrentRange {
+- (NSDictionary *)checkString:(NSString *)currentstring withReplacementString:(NSString *)replacementstring withOldRange:(NSRange)range withCurrentRange:(NSRange)currentRange useCurrentRange:(bool)useCurrentRange {
     if (range.length != 0 || replacementstring.length == 0) {
-        return currentstring;
+        return @{@"string" : currentstring, @"newposition" : @(currentRange.location+1)};
     }
   if (currentRange.location > 0 && replacementstring.length == 1 && useCurrentRange) {
     unichar newChar = [replacementstring characterAtIndex:0];
@@ -399,7 +437,7 @@ NSString *TKMConvertKanaText(NSString *input) {
         NSRange newrange = NSMakeRange(currentRange.location - 2, 1);
         NSString *newstring = [currentstring stringByReplacingCharactersInRange:newrange
                                                                      withString:replacementString];
-        return newstring;
+        return @{@"string" : newstring, @"newposition" : @(currentRange.location)};
     }
 
     // Replace n followed by a consonant.
@@ -407,8 +445,10 @@ NSString *TKMConvertKanaText(NSString *input) {
         ![kCanFollowN characterIsMember:newChar]) {
       NSString *replacementString =
           (lastCharWasUppercase || _alphabet == kTKMAlphabetKatakana) ? @"ン" : @"ん";
-      return [currentstring stringByReplacingCharactersInRange:NSMakeRange(currentRange.location - 2, 1)
-                                                  withString:replacementString];
+        NSRange newrange = NSMakeRange(currentRange.location - 2, 1);
+        NSString *newstring = [currentstring stringByReplacingCharactersInRange:newrange
+                                                                     withString:replacementString];
+        return @{@"string" : newstring,  @"newposition" : @(currentRange.location)};
     }
   }
 
@@ -431,12 +471,14 @@ NSString *TKMConvertKanaText(NSString *input) {
         replacement = [replacement stringByApplyingTransform:NSStringTransformHiraganaToKatakana
                                                      reverse:NO];
       }
-        NSRange newrange = NSMakeRange(range.location, currentstring.length-range.location);
-      return [currentstring stringByReplacingCharactersInRange:newrange
-                                                               withString:replacement];
+        NSRange newrange = NSMakeRange(range.location, text.length);
+        NSString *nstring = [currentstring stringByReplacingCharactersInRange:newrange
+                                                                   withString:replacement];
+        int newposition = replacement.length == 2 ? currentRange.location-1 : currentRange.location-(newrange.length-1);
+        return @{@"string" : nstring,  @"newposition" : @(newposition)};
     }
   }
-    return currentstring;
+    return @{@"string" : currentstring, @"newposition" : @(currentRange.location+1)};
 }
 
 @end

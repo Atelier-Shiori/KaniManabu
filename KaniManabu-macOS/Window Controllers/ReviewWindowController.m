@@ -24,7 +24,7 @@
 @property (strong) IBOutlet NSTextField *word;
 @property (strong) IBOutlet NSTextField *questionprompt;
 @property (strong) IBOutlet NSTextField *answerstatus;
-@property (strong) IBOutlet NSTextField *answertextfield;
+@property (strong) IBOutlet TKMKanaInputTextField *answertextfield;
 @property (strong) IBOutlet NSTextField *srslevellabel;
 @property (strong) IBOutlet NSButton *answerbtn;
 @property int totalitems;
@@ -146,30 +146,36 @@
 
 - (void)controlTextDidChange:(NSNotification *)obj {
     if (_questiontype == CardReviewTypeReading && _useKaniManabuIME) {
-        _currentrange = NSMakeRange(_answertextfield.currentEditor.selectedRange.location, 0);
-        if (_answertextfield.currentEditor.selectedRange.location < _oldrange.location) {
-            _oldrange = _currentrange;
-        }
-        bool usecurrentlocation = false;
-        if (_currentrange.location > 1) {
-            NSString *astring = [_answertextfield.stringValue substringWithRange:NSMakeRange(_currentrange.location-1, 1)];
-            NSString *bstring = [_answertextfield.stringValue substringWithRange:NSMakeRange(_currentrange.location-2, 1)];
-            if ([astring isEqualToString:bstring] && [astring caseInsensitiveCompare:@"n"] != NSOrderedSame && [bstring caseInsensitiveCompare:@"n"] != NSOrderedSame) {
-                usecurrentlocation = true;
-            }
-        }
-        @try{
-            NSRange substr = NSMakeRange(usecurrentlocation ? _currentrange.location-1 : _oldrange.location, usecurrentlocation ? 1 : _currentrange.location-_oldrange.location);
-            NSString *replacementstr = [_answertextfield.stringValue substringWithRange:substr];
-            NSString *proposedstr = [_kanainput checkString:_answertextfield.stringValue withReplacementString:replacementstr withOldRange:_oldrange withCurrentRange:_currentrange useCurrentRange:usecurrentlocation];
-            if (![proposedstr isEqualToString:_answertextfield.stringValue]) {
-                _answertextfield.stringValue = proposedstr;
-                _oldrange = NSMakeRange(usecurrentlocation ? _answertextfield.currentEditor.selectedRange.location - 1 : _answertextfield.currentEditor.selectedRange.location, 0);
+        if ([obj.object isEqual:_answertextfield]) {
                 _currentrange = NSMakeRange(_answertextfield.currentEditor.selectedRange.location, 0);
+                _oldrange = NSMakeRange(_answertextfield.StartLocation, 0);
+                if (_oldrange.location > _currentrange.location) {
+                    _oldrange = _currentrange;
+                _answertextfield.StartLocation = _oldrange.location;
+                }
+                bool usecurrentlocation = false;
+                if (_currentrange.location > 1) {
+                    NSString *astring = [_answertextfield.stringValue substringWithRange:NSMakeRange(_currentrange.location-1, 1)];
+                    NSString *bstring = [_answertextfield.stringValue substringWithRange:NSMakeRange(_currentrange.location-2, 1)];
+                    if ([astring isEqualToString:bstring] && [astring caseInsensitiveCompare:@"n"] != NSOrderedSame && [bstring caseInsensitiveCompare:@"n"] != NSOrderedSame) {
+                        usecurrentlocation = true;
+                    }
+                }
+                @try{
+                    NSRange substr = NSMakeRange(usecurrentlocation ? _currentrange.location-1 : _oldrange.location, usecurrentlocation ? 1 : _currentrange.location-_oldrange.location);            NSString *replacementstr = [_answertextfield.stringValue substringWithRange:substr];
+                    NSDictionary *proposed = [_kanainput checkString:_answertextfield.stringValue withReplacementString:replacementstr withOldRange:_oldrange withCurrentRange:_currentrange useCurrentRange:usecurrentlocation];
+                    NSString *newstring = proposed[@"string"];
+                    if (![newstring isEqualToString:_answertextfield.stringValue]) {
+                        _answertextfield.stringValue = newstring;
+                        _answertextfield.currentEditor.selectedRange = NSMakeRange(((NSNumber *)proposed[@"newposition"]).intValue, 0);
+                        _currentrange = NSMakeRange(_answertextfield.currentEditor.selectedRange.location, 0);
+                        _answertextfield.StartLocation = usecurrentlocation ? _answertextfield.currentEditor.selectedRange.location - 1 : _answertextfield.currentEditor.selectedRange.location;
+                        _oldrange = NSMakeRange(_answertextfield.StartLocation, 0);
+                    }
+                }
+                @catch (NSException *ex){}
+                _oldanswerstr = _answertextfield.stringValue;
             }
-        }
-        @catch (NSException *ex){}
-        _oldanswerstr = _answertextfield.stringValue;
     }
 }
 
