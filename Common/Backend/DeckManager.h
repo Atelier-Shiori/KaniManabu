@@ -40,7 +40,7 @@ typedef NS_ENUM(int,NewCardReviewMode) {
 - (NSArray *)getAllLearnItems;
 - (NSArray *)retrieveCardsForDeckUUID:(NSUUID *)uuid withType:(int)type;
 - (NSArray *)retrieveAllCardswithPredicate:(NSPredicate *)predicates;
-- (NSArray *)retrieveAllCriticalCardswithType:(int)type;
+- (NSArray *)retrieveAllCriticalCards;
 - (NSArray *)retrieveDecks;
 - (NSManagedObject *)getDeckMetadataWithUUID:(NSUUID *)uuid;
 - (bool)addCardWithDeckUUID:(NSUUID *)uuid withCardData:(NSDictionary *)cardData withType:(DeckType)type;

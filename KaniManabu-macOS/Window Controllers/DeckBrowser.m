@@ -442,9 +442,7 @@
                 break;
         }
         NSMutableArray *tmparray = [NSMutableArray new];
-        for (int i = 0; i < 3; i++) {
-            [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithPredicate:predicate]];
-        }
+        [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithPredicate:predicate]];
         [self populateTableViewWithArray:tmparray];
     }];
 }
@@ -452,9 +450,7 @@
 - (void)loadcriticalitems {
     [DeckManager.sharedInstance.moc performBlock:^{
         NSMutableArray *tmparray = [NSMutableArray new];
-        for (int i = 0; i < 3; i++) {
-            [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCriticalCardswithType:i]];
-        }
+        [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCriticalCards]];
         [self populateTableViewWithArray:tmparray];
     }];
 }
@@ -483,9 +479,7 @@
 - (void)loadallitems {
     [DeckManager.sharedInstance.moc performBlock:^{
         NSMutableArray *tmparray = [NSMutableArray new];
-        for (int i = 0; i < 3; i++) {
-            [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithPredicate:nil]];
-        }
+        [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithPredicate:nil]];
         [self populateTableViewWithArray:tmparray];
     }];
 }

@@ -503,7 +503,7 @@
     return tmpcardslist;
 }
 
-- (NSArray *)retrieveAllCriticalCardswithType:(int)type {
+- (NSArray *)retrieveAllCriticalCards {
     NSArray *tmparray = [self retrieveAllCardswithPredicate:[NSPredicate predicateWithFormat:@"learned == %@", @YES]];
     NSMutableArray *criticalitems = [NSMutableArray new];
     for (NSDictionary *card in tmparray) {

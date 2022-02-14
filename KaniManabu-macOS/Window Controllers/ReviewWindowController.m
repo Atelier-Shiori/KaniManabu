@@ -545,21 +545,39 @@
 
 - (void)setTextFieldAnswerBackground:(int)state {
     switch (state) {
-        case 0:
+        case 0: {
             //Incorrect
-            _answertextfield.backgroundColor = NSColor.systemRedColor;
-            _answertextfield.textColor = NSColor.whiteColor;
+            [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+                [NSAnimationContext beginGrouping];
+                context.duration = 3;
+                _answertextfield.animator.backgroundColor = NSColor.systemRedColor;
+                _answertextfield.animator.textColor = NSColor.whiteColor;
+                [NSAnimationContext endGrouping];
+                [context setCompletionHandler:^{
+                    
+                }];
+            }];
             _answertextfield.editable = NO;
             _answertextfield.currentEditor.selectedRange = NSMakeRange(0, 0);
             break;
-        case 1:
+            }
+        case 1: {
             //Correct
-            _answertextfield.backgroundColor = NSColor.systemGreenColor;
-            _answertextfield.textColor = NSColor.whiteColor;
+            [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+                [NSAnimationContext beginGrouping];
+                context.duration = 3;
+                _answertextfield.animator.backgroundColor = NSColor.systemGreenColor;
+                _answertextfield.animator.textColor = NSColor.whiteColor;
+                [NSAnimationContext endGrouping];
+                [context setCompletionHandler:^{
+                    
+                }];
+            }];
             _answertextfield.editable = NO;
             _answertextfield.currentEditor.selectedRange = NSMakeRange(0, 0);
             break;
-        case 2:
+            }
+        case 2:{
             // Reset
             _answertextfield.backgroundColor = NSColor.textBackgroundColor;
             _answertextfield.textColor = NSColor.textColor;
@@ -567,6 +585,7 @@
             _answertextfield.editable = YES;
             _answerbtn.keyEquivalent = @"";
             break;
+        }
     }
 }
 
@@ -574,6 +593,7 @@
     if (show) {
         _srslevellabel.hidden = NO;
         _srslevellabel.drawsBackground = YES;
+        _srslevellabel.wantsLayer = YES;
         _srslevellabel.alphaValue = 0;
         int oriygorigin = _srslevellabel.frame.origin.y;
         [_srslevellabel setFrame:CGRectMake(_srslevellabel.frame.origin.x, oriygorigin-40, _srslevellabel.frame.size.width, _srslevellabel.frame.size.height)];
