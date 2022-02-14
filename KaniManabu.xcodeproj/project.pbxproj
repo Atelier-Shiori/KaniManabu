@@ -147,6 +147,8 @@
 		FF173E0727B69E4D00E5CD37 /* DeckViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF173E0927B69E4D00E5CD37 /* DeckViewCell.xib */; };
 		FF173E4027B70FA800E5CD37 /* TKMKanaInput.m in Sources */ = {isa = PBXBuildFile; fileRef = FF173E3F27B70FA800E5CD37 /* TKMKanaInput.m */; };
 		FF173E4127B70FA800E5CD37 /* TKMKanaInput.m in Sources */ = {isa = PBXBuildFile; fileRef = FF173E3F27B70FA800E5CD37 /* TKMKanaInput.m */; };
+		FF173E4C27BA791700E5CD37 /* DeckMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF173E4B27BA791700E5CD37 /* DeckMonitor.m */; };
+		FF173E4D27BA791700E5CD37 /* DeckMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF173E4B27BA791700E5CD37 /* DeckMonitor.m */; };
 		FF1BE8112790542900CA6A99 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */; };
 		FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF1BE81727906AA500CA6A99 /* MSWeakTimer.m */; };
 		FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */; platformFilter = maccatalyst; };
@@ -447,6 +449,8 @@
 		FF173E3D27B70FA700E5CD37 /* TKMKanaInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TKMKanaInput.h; sourceTree = "<group>"; };
 		FF173E3E27B70FA700E5CD37 /* TKMKanaInput+Internals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TKMKanaInput+Internals.h"; sourceTree = "<group>"; };
 		FF173E3F27B70FA800E5CD37 /* TKMKanaInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TKMKanaInput.m; sourceTree = "<group>"; };
+		FF173E4A27BA791700E5CD37 /* DeckMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckMonitor.h; sourceTree = "<group>"; };
+		FF173E4B27BA791700E5CD37 /* DeckMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckMonitor.m; sourceTree = "<group>"; };
 		FF1BE8082790542900CA6A99 /* NSNumberFormatterNumberOnly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberFormatterNumberOnly.h; sourceTree = "<group>"; };
 		FF1BE8102790542900CA6A99 /* NSNumberFormatterNumberOnly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSNumberFormatterNumberOnly.m; sourceTree = "<group>"; };
 		FF1BE81627906AA500CA6A99 /* MSWeakTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MSWeakTimer.h; path = Dependencies/MSWeakTimer/MSWeakTimer.h; sourceTree = "<group>"; };
@@ -646,6 +650,8 @@
 				FF778DE6279EEEDA0055AF2D /* WaniKani.m */,
 				FF16A08F27B56A9700AA385E /* SpeechSynthesis.h */,
 				FF16A09027B56A9700AA385E /* SpeechSynthesis.m */,
+				FF173E4A27BA791700E5CD37 /* DeckMonitor.h */,
+				FF173E4B27BA791700E5CD37 /* DeckMonitor.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1203,6 +1209,7 @@
 				157328FC2794B9C400587C05 /* NSTableViewAction.m in Sources */,
 				157328FD2794B9C400587C05 /* DeckAddDialogController.m in Sources */,
 				FF778DE8279EEEDA0055AF2D /* WaniKani.m in Sources */,
+				FF173E4D27BA791700E5CD37 /* DeckMonitor.m in Sources */,
 				FF778DBD279EEB5F0055AF2D /* WaniKaniPreferences.m in Sources */,
 				157328FE2794B9C400587C05 /* MainWindowController.m in Sources */,
 				157328FF2794B9C400587C05 /* UnixDatetoNSDate.m in Sources */,
@@ -1249,6 +1256,7 @@
 				151F3AC2278E23D800953ECD /* KanaEditor.m in Sources */,
 				FF28A81A278CB17F00D3744D /* LearnWindowController.m in Sources */,
 				FF28A825278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				FF173E4C27BA791700E5CD37 /* DeckMonitor.m in Sources */,
 				151F3ABD278E23CD00953ECD /* KanjiEditor.m in Sources */,
 				15B122DF278CED4C00575A73 /* NSString+RomajiKanaConvert.m in Sources */,
 				FF89D70B2791D41D009B7C6F /* CHCSVParser.m in Sources */,

@@ -28,6 +28,7 @@ typedef NS_ENUM(int,NewCardReviewMode) {
 - (bool)checkDeckExists:(NSString *)deckname withType:(int)type;
 - (bool)deleteDeckWithDeckUUID: (NSUUID *)uuid;
 - (NSArray *)retrieveReviewItemsForDeckUUID:(NSUUID *)uuid withType:(int)type;
+- (NSArray *)retrieveAllReviewItems;
 - (NSUUID *)getDeckUUIDWithDeckName:(NSString *)deckname withDeckType:(DeckType)type;
 - (long)getQueuedReviewItemsCountforUUID:(NSUUID *)uuid withType:(int)type;
 - (NSArray *)setandretrieveLearnItemsForDeckUUID:(NSUUID *)uuid withType:(int)type;
@@ -36,8 +37,9 @@ typedef NS_ENUM(int,NewCardReviewMode) {
 - (NSDate *)getLearnDateForDeckUUID: (NSUUID *)uuid;
 - (long)getQueuedLearnItemsCountforUUID:(NSUUID *)uuid withType:(int)type;
 - (long)getNotLearnedItemCountForUUID:(NSUUID *)uuid withType:(int)type;
+- (NSArray *)getAllLearnItems;
 - (NSArray *)retrieveCardsForDeckUUID:(NSUUID *)uuid withType:(int)type;
-- (NSArray *)retrieveAllCardswithType:(int)type withPredicate:(NSPredicate *)predicates;
+- (NSArray *)retrieveAllCardswithPredicate:(NSPredicate *)predicates;
 - (NSArray *)retrieveAllCriticalCardswithType:(int)type;
 - (NSArray *)retrieveDecks;
 - (NSManagedObject *)getDeckMetadataWithUUID:(NSUUID *)uuid;

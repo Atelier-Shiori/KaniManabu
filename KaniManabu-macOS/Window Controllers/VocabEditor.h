@@ -27,7 +27,7 @@
 @property (strong) NSUUID *deckUUID;
 @property (strong) NSUUID *cardUUID;
 @property bool newcard;
-- (void)populatefromDictionary;
+- (void)populatefromDictionary:(NSDictionary *)dict;
 @end
 
 

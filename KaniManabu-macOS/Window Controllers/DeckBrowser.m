@@ -62,34 +62,17 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LearnEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
-    AppDelegate *delegate = (AppDelegate *)NSApp.delegate;
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
-    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"NSPersistentStoreRemoteChangeNotification" object:delegate.persistentContainer.persistentStoreCoordinator];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"NewItemsSynced" object:nil];
     [self.window.toolbar insertItemWithItemIdentifier:NSToolbarToggleSidebarItemIdentifier atIndex:0];
 }
 
 - (void)receiveNotification:(NSNotification *)notification {
-    if ([notification.name isEqualToString:@"DeckAdded"]||[notification.name isEqualToString:@"DeckRemoved"]||[notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSManagedObjectContextDidSaveNotification] ||[notification.name isEqualToString:@"LearnEnded"]||[notification.name isEqualToString:@"ReviewEnded"]||[notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification]) {
-        if ([notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification] || [notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification]) {
-            if (_nextAllowableiCloudUIRefreshDate) {
-                if (_nextAllowableiCloudUIRefreshDate.timeIntervalSinceNow > 0) {
-                    return;
-                }
-            }
-            else {
-                sleep(60);
-            }
-        }
+    if ([notification.name isEqualToString:@"DeckAdded"]||[notification.name isEqualToString:@"DeckRemoved"] ||[notification.name isEqualToString:@"LearnEnded"]||[notification.name isEqualToString:@"ReviewEnded"]||[notification.name isEqualToString:@"NewItemsSynced"]) {
         if (!DeckManager.sharedInstance.importing && !_refreshinprogress) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Reload
                 [self generateSourceList];
             });
-        }
-        if ([notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
-            // Set next time CloudKit can refresh the UI
-            _nextAllowableiCloudUIRefreshDate = [NSDate.date dateByAddingTimeInterval:300];
         }
     }
 }
@@ -460,7 +443,7 @@
         }
         NSMutableArray *tmparray = [NSMutableArray new];
         for (int i = 0; i < 3; i++) {
-            [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithType:i withPredicate:predicate]];
+            [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithPredicate:predicate]];
         }
         [self populateTableViewWithArray:tmparray];
     }];
@@ -501,7 +484,7 @@
     [DeckManager.sharedInstance.moc performBlock:^{
         NSMutableArray *tmparray = [NSMutableArray new];
         for (int i = 0; i < 3; i++) {
-            [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithType:i withPredicate:nil]];
+            [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithPredicate:nil]];
         }
         [self populateTableViewWithArray:tmparray];
     }];

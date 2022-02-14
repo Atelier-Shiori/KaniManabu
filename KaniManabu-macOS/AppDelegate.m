@@ -12,6 +12,7 @@
 #import "PFAboutWindowController.h"
 #import "WaniKani.h"
 #import "SpeechSynthesis.h"
+#import "DeckMonitor.h"
 
 #if defined(AppStore)
 #else
@@ -25,6 +26,7 @@
 @interface AppDelegate ()
 
 @property PFAboutWindowController *aboutWindowController;
+@property (strong) DeckMonitor *deckMonitor;
 - (IBAction)saveAction:(id)sender;
 
 @end
@@ -56,6 +58,7 @@
     DeckManager.sharedInstance.moc = self.persistentContainer.viewContext;
     WaniKani.sharedInstance.moc = self.wanikaniContainer.viewContext;
     SpeechSynthesis.sharedInstance.moc = self.audioContainer.viewContext;
+    _deckMonitor = [DeckMonitor new];
     _mwc = [MainWindowController new];
     _mwc.moc = DeckManager.sharedInstance.moc;
     
@@ -279,6 +282,8 @@
 }
 
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
+    // Save current date for use with history tracking
+    [NSUserDefaults.standardUserDefaults setValue:NSDate.date forKey:@"LastLaunchSyncDate"];
     // Save changes in the application's managed object context before the application terminates.
     NSManagedObjectContext *context = self.persistentContainer.viewContext;
 
@@ -392,5 +397,4 @@
 
     return NSTerminateNow;
 }
-
 @end

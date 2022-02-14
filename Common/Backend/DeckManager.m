@@ -78,8 +78,12 @@
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                         initWithKey:@"deckName" ascending:YES];
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    NSError *error = nil;
-    return [_moc executeFetchRequest:fetchRequest error:&error];
+    __block NSError *error = nil;
+    __block NSArray *decks;
+    [_moc performBlockAndWait:^{
+        decks = [_moc executeFetchRequest:fetchRequest error:&error];
+    }];
+    return decks;
 }
 
 - (NSManagedObject *)getDeckMetadataWithUUID:(NSUUID *)uuid {
@@ -154,6 +158,53 @@
     return reviewqueue;
 }
 
+- (NSArray *)retrieveAllReviewItems {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
+    NSMutableArray *reviewqueue = [NSMutableArray new];
+    for (int type = 0; type < 3; type++) {
+        NSFetchRequest *fetchRequest = [NSFetchRequest new];
+        switch (type) {
+            case DeckTypeKana:
+                fetchRequest.entity = [NSEntityDescription entityForName:@"KanaCards" inManagedObjectContext:_moc];
+                break;
+            case DeckTypeKanji:
+                fetchRequest.entity = [NSEntityDescription entityForName:@"KanjiCards" inManagedObjectContext:_moc];
+                break;
+            case DeckTypeVocab:
+                fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+                break;
+            default:
+                return nil;
+        }
+        // Check for only learned cards, not suspended cards and not burned cards (SRS Stage 9)
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"learned == %@ AND suspended == %@ AND srsstage < %i",@YES, @NO, 9];
+        fetchRequest.predicate = predicate;
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                            initWithKey:@"nextreviewinterval" ascending:YES];
+        [fetchRequest setSortDescriptors:@[sortDescriptor]];
+        __block NSError *error = nil;
+        __block NSArray *cards;
+        [_moc performBlockAndWait:^{
+           cards = [_moc executeFetchRequest:fetchRequest error:&error];
+        }];
+        for (NSManagedObject *card in cards) {
+            if (((NSNumber *)[card valueForKey:@"inreview"]).boolValue) {
+                // Card not fully reviewed, add to the review queue
+                [reviewqueue addObject:card];
+            }
+            else {
+                // Check date
+                NSDate *nextReviewDate = [NSDate dateWithTimeIntervalSince1970:((NSNumber *)[card valueForKey:@"nextreviewinterval"]).doubleValue];
+                if (nextReviewDate.timeIntervalSinceNow < 0) {
+                    // Card up for review, add to review queue.
+                    [reviewqueue addObject:card];
+                }
+            }
+        }
+    }
+    return reviewqueue;
+}
+
 - (long)getQueuedReviewItemsCountforUUID:(NSUUID *)uuid withType:(int)type {
     return [self retrieveReviewItemsForDeckUUID:uuid withType:type].count;
 }
@@ -203,8 +254,11 @@
     
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     // Add cards that the user is still learning
-    NSError *error = nil;
-    NSArray *learningcards = [_moc executeFetchRequest:fetchRequestlearning error:&error];
+    __block NSError *error = nil;
+    __block NSArray *learningcards;
+    [_moc performBlockAndWait:^{
+        learningcards = [_moc executeFetchRequest:fetchRequestlearning error:&error];
+    }];
     [learnqueue addObjectsFromArray:learningcards];
     bool overridelimit = ((NSNumber *)[deckmeta valueForKey:@"overridenewcardlimit"]).boolValue;
     int maxlearnlimit = overridelimit ? ((NSNumber *)[deckmeta valueForKey:@"newcardlimit"]).intValue : ((NSNumber *)[NSUserDefaults.standardUserDefaults valueForKey:@"DeckNewCardLimitPerDay"]).intValue;
@@ -253,8 +307,12 @@
     fetchRequest.entity = [NSEntityDescription entityForName:@"Decks" inManagedObjectContext:_moc];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deckUUID == %@",uuid];
     fetchRequest.predicate = predicate;
-    NSError *error = nil;
-    NSArray *decks = [_moc executeFetchRequest:fetchRequest error:&error];
+    __block NSError *error = nil;
+    __block NSArray *decks;
+    [_moc performBlockAndWait:^{
+        decks = [_moc executeFetchRequest:fetchRequest error:&error];
+    }];
+    
     if (decks.count > 0) {
         NSManagedObject *deck = decks[0];
         [deck setValue:today ? @(0) :@([NSCalendar.currentCalendar startOfDayForDate:[NSDate.date dateByAddingTimeInterval:86400]].timeIntervalSince1970) forKey:@"nextLearnInterval"];
@@ -277,7 +335,35 @@
 }
 
 - (long)getQueuedLearnItemsCountforUUID:(NSUUID *)uuid withType:(int)type {
-    return [self setandretrieveLearnItemsForDeckUUID:uuid withType:type].count;
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
+    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+    NSFetchRequest *fetchRequestlearning = [NSFetchRequest new];
+    switch (type) {
+        case DeckTypeKana:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"KanaCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeKanji:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"KanjiCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeVocab:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+            break;
+        default:
+            return 0;
+    }
+    fetchRequestlearning.entity = fetchRequest.entity;
+    // Check for cards not learned yet, but not suspended ones
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"deckUUID == %@ AND learned == %@ AND learning == %@ AND suspended == %@" ,uuid, @NO, @YES , @NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                        initWithKey:@"datecreated" ascending:YES];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    // Add cards that the user is still learning
+    __block NSError *error = nil;
+    __block long count = 0;
+    [_moc performBlockAndWait:^{
+        count = [_moc executeFetchRequest:fetchRequest error:&error].count;
+    }];
+    return count;
 }
 
 - (long)getNotLearnedItemCountForUUID:(NSUUID *)uuid withType:(int)type {
@@ -306,6 +392,38 @@
     // Add cards that the user is still learning
     NSError *error = nil;
     return [_moc executeFetchRequest:fetchRequest error:&error].count;
+}
+
+- (NSArray *)getAllLearnItems {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (int type = 0; type < 3; type++) {
+        NSFetchRequest *fetchRequest = [NSFetchRequest new];
+        NSFetchRequest *fetchRequestlearning = [NSFetchRequest new];
+        switch (type) {
+            case DeckTypeKana:
+                fetchRequest.entity = [NSEntityDescription entityForName:@"KanaCards" inManagedObjectContext:_moc];
+                break;
+            case DeckTypeKanji:
+                fetchRequest.entity = [NSEntityDescription entityForName:@"KanjiCards" inManagedObjectContext:_moc];
+                break;
+            case DeckTypeVocab:
+                fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+                break;
+            default:
+                break;
+        }
+        fetchRequestlearning.entity = fetchRequest.entity;
+        // Check for cards not learned yet, but not suspended ones
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"learned == %@ AND learning == %@ AND suspended == %@" , @NO, @YES , @NO];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                            initWithKey:@"datecreated" ascending:YES];
+        [fetchRequest setSortDescriptors:@[sortDescriptor]];
+        // Add cards that the user is still learning
+        NSError *error = nil;
+        [tmparray addObjectsFromArray:[_moc executeFetchRequest:fetchRequest error:&error]];
+    }
+    return tmparray;
 }
 
 #pragma mark Card retrieval
@@ -343,45 +461,50 @@
     return tmpcardslist;
 }
 
-- (NSArray *)retrieveAllCardswithType:(int)type withPredicate:(NSPredicate *)predicates {
+- (NSArray *)retrieveAllCardswithPredicate:(NSPredicate *)predicates {
     @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
-    NSFetchRequest *fetchRequest = [NSFetchRequest new];
-    switch (type) {
-        case DeckTypeKana:
-            fetchRequest.entity = [NSEntityDescription entityForName:@"KanaCards" inManagedObjectContext:_moc];
-            break;
-        case DeckTypeKanji:
-            fetchRequest.entity = [NSEntityDescription entityForName:@"KanjiCards" inManagedObjectContext:_moc];
-            break;
-        case DeckTypeVocab:
-            fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
-            break;
-        default:
-            return nil;
-    }
-    NSPredicate *predicate;
-    if (predicates) {
-        predicate = predicates;
-        fetchRequest.predicate = predicate;
-    }
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@"datecreated" ascending:YES];
-    [fetchRequest setSortDescriptors:@[sortDescriptor]];
-    NSError *error = nil;
-    NSArray *cards = [_moc executeFetchRequest:fetchRequest error:&error];
     NSMutableArray *tmpcardslist = [NSMutableArray new];
-    for (NSManagedObject *obj in cards) {
-        NSArray *keys = obj.entity.attributesByName.allKeys;
-        NSMutableDictionary *tmpdict = [NSMutableDictionary dictionaryWithDictionary:[obj dictionaryWithValuesForKeys:keys]];
-        tmpdict[@"managedObject"] = obj;
-        tmpdict[@"cardtype"] = @(type);
-        [tmpcardslist addObject:tmpdict];
+    for (int type = 0; type < 3; type++) {
+        NSFetchRequest *fetchRequest = [NSFetchRequest new];
+        switch (type) {
+            case DeckTypeKana:
+                fetchRequest.entity = [NSEntityDescription entityForName:@"KanaCards" inManagedObjectContext:_moc];
+                break;
+            case DeckTypeKanji:
+                fetchRequest.entity = [NSEntityDescription entityForName:@"KanjiCards" inManagedObjectContext:_moc];
+                break;
+            case DeckTypeVocab:
+                fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+                break;
+            default:
+                return nil;
+        }
+        NSPredicate *predicate;
+        if (predicates) {
+            predicate = predicates;
+            fetchRequest.predicate = predicate;
+        }
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                            initWithKey:@"datecreated" ascending:YES];
+        [fetchRequest setSortDescriptors:@[sortDescriptor]];
+        __block NSError *error = nil;
+        __block NSArray *cards;
+        [_moc performBlockAndWait:^{
+            cards = [self.moc executeFetchRequest:fetchRequest error:&error];
+        }];
+        for (NSManagedObject *obj in cards) {
+            NSArray *keys = obj.entity.attributesByName.allKeys;
+            NSMutableDictionary *tmpdict = [NSMutableDictionary dictionaryWithDictionary:[obj dictionaryWithValuesForKeys:keys]];
+            tmpdict[@"managedObject"] = obj;
+            tmpdict[@"cardtype"] = @(type);
+            [tmpcardslist addObject:tmpdict];
+        }
     }
     return tmpcardslist;
 }
 
 - (NSArray *)retrieveAllCriticalCardswithType:(int)type {
-    NSArray *tmparray = [self retrieveAllCardswithType:type withPredicate:[NSPredicate predicateWithFormat:@"learned == %@", @YES]];
+    NSArray *tmparray = [self retrieveAllCardswithPredicate:[NSPredicate predicateWithFormat:@"learned == %@", @YES]];
     NSMutableArray *criticalitems = [NSMutableArray new];
     for (NSDictionary *card in tmparray) {
         int numbercorrect = ((NSNumber *)card[@"numansweredcorrect"]).intValue;
@@ -634,17 +757,15 @@
 
 - (void)removeOrphanedCards {
     _importing = true;
-    for (int i = 0; i <3; i++) {
-        NSArray *tmpcards = [self retrieveAllCardswithType:i withPredicate:nil];
-        for (NSDictionary *card in tmpcards) {
-            NSManagedObject *obj = card[@"managedObject"];
-            bool deckexists = [self checkDeckUUIDExists:card[@"deckUUID"]];
-            if (!deckexists) {
-                [_moc deleteObject:obj];
-                [_moc performBlockAndWait:^{
-                    [_moc save:nil];
-                }];
-            }
+    NSArray *tmpcards = [self retrieveAllCardswithPredicate:nil];
+    for (NSDictionary *card in tmpcards) {
+        NSManagedObject *obj = card[@"managedObject"];
+        bool deckexists = [self checkDeckUUIDExists:card[@"deckUUID"]];
+        if (!deckexists) {
+            [_moc deleteObject:obj];
+            [_moc performBlockAndWait:^{
+                [_moc save:nil];
+            }];
         }
     }
     _importing = false;

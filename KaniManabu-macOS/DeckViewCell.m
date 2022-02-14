@@ -79,6 +79,7 @@
             _decktypestr.stringValue = @"単語";
             break;
         default:
+            _decktypestr.stringValue = @"他の";
             break;
     }
 }

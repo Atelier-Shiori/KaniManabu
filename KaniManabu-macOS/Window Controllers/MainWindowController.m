@@ -86,6 +86,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"StartLearningReviewQuiz" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"AddToQueueCount" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ActionShowDeckOptions" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"NewItemsSynced" object:nil];
     AppDelegate *delegate = (AppDelegate *)NSApp.delegate;
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
@@ -118,19 +119,7 @@
         }];
         }
     }
-    else if ([notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification] || [notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:@"DeckAdded"] || [notification.name isEqualToString:@"DeckRemoved"] || [notification.name isEqualToString:@"DeckOptionsChanged"]) {
-        // To prevent NSPresistentStoreRemoteChangeNotification triggering UI freshing several times and cause the app to perform slowly, check an allowable date before allowing its operation.
-        if ([notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification] || [notification.name isEqualToString:NSPersistentStoreRemoteChangeNotification]) {
-            if (_nextAllowableiCloudUIRefreshDate) {
-                if (_nextAllowableiCloudUIRefreshDate.timeIntervalSinceNow > 0) {
-                    return;
-                }
-            }
-            else {
-                sleep(60);
-            }
-        }
-        // Reload
+    else if ([notification.name isEqualToString:@"NewItemsSynced"]) {
         if (!DeckManager.sharedInstance.importing && !_refreshinprogress) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.totalreviewitemcount = 0;
@@ -138,9 +127,15 @@
                 [self loadDeckArrayAndPopulate];
             });
         }
-        if ([notification.name isEqualToString:@"NSPersistentStoreRemoteChangeNotification"] || [notification.name isEqualToString:NSPersistentStoreCoordinatorStoresDidChangeNotification]) {
-            // Set next time CloudKit can refresh the UI
-            _nextAllowableiCloudUIRefreshDate = [NSDate.date dateByAddingTimeInterval:300];
+    }
+    else if ([notification.name isEqualToString:@"DeckAdded"] || [notification.name isEqualToString:@"DeckRemoved"] || [notification.name isEqualToString:@"DeckOptionsChanged"]) {
+        // Reload
+        if (!DeckManager.sharedInstance.importing && !_refreshinprogress) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.totalreviewitemcount = 0;
+                self.totallearnitemcount = 0;
+                [self loadDeckArrayAndPopulate];
+            });
         }
     }
     else if ([notification.name isEqualToString:@"ActionAddCard"]) {

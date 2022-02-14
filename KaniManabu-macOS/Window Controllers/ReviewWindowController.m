@@ -128,8 +128,8 @@
     NSAlert *alert = [[NSAlert alloc] init] ;
     [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
     [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
-    [alert setMessageText:NSLocalizedString(@"Do you want to end this learning session?",nil)];
-    [alert setInformativeText:NSLocalizedString(@"Your progress won't be saved until you reviewed the new items.",nil)];
+    [alert setMessageText:_learnmode ? NSLocalizedString(@"Do you want to end this learning session?",nil) :  NSLocalizedString(@"Do you want to end this review session?",nil)];
+    [alert setInformativeText:_learnmode ? NSLocalizedString(@"Your progress won't be saved until you reviewed the new items.",nil) : NSLocalizedString(@"Any review items not fully reviewed will remain in the review queue.",nil)];
     // Set Message type to Warning
     alert.alertStyle = NSAlertStyleInformational;
     [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
@@ -573,15 +573,48 @@
 - (void)showNewSRSStage:(bool)show {
     if (show) {
         _srslevellabel.hidden = NO;
+        _srslevellabel.drawsBackground = YES;
+        _srslevellabel.alphaValue = 0;
+        int oriygorigin = _srslevellabel.frame.origin.y;
+        [_srslevellabel setFrame:CGRectMake(_srslevellabel.frame.origin.x, oriygorigin-40, _srslevellabel.frame.size.width, _srslevellabel.frame.size.height)];
         if (_currentcard.currentreviewmeaningincorrect || _currentcard.currentreviewreadingincorrect) {
             _srslevellabel.backgroundColor = NSColor.systemRedColor;
             _srslevellabel.textColor = NSColor.whiteColor;
         }
         else {
             _srslevellabel.backgroundColor = NSColor.systemGreenColor;
-            _srslevellabel.textColor = NSColor.systemTealColor;
+            _srslevellabel.textColor = NSColor.whiteColor;
         }
         _srslevellabel.stringValue = [SRScheduler getSRSStageNameWithCurrentSRSStage:_currentcard.proposedSRSStage];
+        //Fade in
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+            [NSAnimationContext beginGrouping];
+            context.duration = 1;
+            _srslevellabel.animator.alphaValue = .25;
+            _srslevellabel.animator.frame = CGRectMake(_srslevellabel.frame.origin.x, oriygorigin-40, _srslevellabel.frame.size.width, _srslevellabel.frame.size.height);
+            [NSAnimationContext endGrouping];
+            [context setCompletionHandler:^{
+                [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+                    [NSAnimationContext beginGrouping];
+                    context.duration = 1;
+                    self.srslevellabel.animator.alphaValue = .7;
+                    self.srslevellabel.animator.frame = CGRectMake(self.srslevellabel.frame.origin.x, oriygorigin-20, self.srslevellabel.frame.size.width, self.srslevellabel.frame.size.height);
+                    [NSAnimationContext endGrouping];
+                    [context setCompletionHandler:^{
+                        [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+                            [NSAnimationContext beginGrouping];
+                            context.duration = 1;
+                            self.srslevellabel.animator.alphaValue = 1;
+                            self.srslevellabel.animator.frame = CGRectMake(self.srslevellabel.frame.origin.x, oriygorigin, self.srslevellabel.frame.size.width, self.srslevellabel.frame.size.height);
+                            [NSAnimationContext endGrouping];
+                            [context setCompletionHandler:^{
+                                
+                            }];
+                        }];
+                    }];
+                }];
+            }];
+        }];
     }
     else {
         _srslevellabel.hidden = YES;
