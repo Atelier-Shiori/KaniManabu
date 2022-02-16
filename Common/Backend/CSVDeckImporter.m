@@ -146,7 +146,7 @@
             continue;
         }
         if ([deststr isEqualToString:@"Japanese"]) {
-            if (!dict[@"japanese"]) {
+            if (!dict[@"japanese"] && ((NSString *)dict[@"japanese"]).length > 0) {
                 dict[@"japanese"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -154,7 +154,7 @@
             }
         }
         else if ([deststr isEqualToString:@"English"]) {
-            if (!dict[@"english"]) {
+            if (!dict[@"english"] && ((NSString *)dict[@"english"]).length > 0) {
                 dict[@"english"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -170,7 +170,7 @@
             }
         }
         else if ([deststr isEqualToString:@"On'yomi"]) {
-            if (!dict[@"kanareading"]) {
+            if (!dict[@"kanareading"] && ((NSString *)dict[@"kanareading"]).length > 0) {
                 dict[@"kanareading"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -234,7 +234,7 @@
             continue;
         }
         if ([deststr isEqualToString:@"Japanese"]) {
-            if (!dict[@"japanese"]) {
+            if (!dict[@"japanese"] && ((NSString *)dict[@"japanese"]).length > 0) {
                 dict[@"japanese"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -242,7 +242,7 @@
             }
         }
         else if ([deststr isEqualToString:@"English"]) {
-            if (!dict[@"english"]) {
+            if (!dict[@"english"] && ((NSString *)dict[@"english"]).length > 0) {
                 dict[@"english"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -258,7 +258,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Kana"]) {
-            if (!dict[@"kanaWord"]) {
+            if (!dict[@"kanaWord"] && ((NSString *)dict[@"kanaWord"]).length > 0) {
                 dict[@"kanaWord"] = [self quotesCleanup:card[colstr]];
                 dict[@"reading"] = [self quotesCleanup:card[colstr]];
             }
@@ -347,7 +347,7 @@
             continue;
         }
         if ([deststr isEqualToString:@"Japanese"]) {
-            if (!dict[@"japanese"]) {
+            if (!dict[@"japanese"] && ((NSString *)dict[@"japanese"]).length > 0) {
                 dict[@"japanese"] = [self quotesCleanup:card[colstr]];
                 dict[@"kanareading"] = [self quotesCleanup:card[colstr]];
             }
@@ -356,7 +356,7 @@
             }
         }
         else if ([deststr isEqualToString:@"English"]) {
-            if (!dict[@"english"]) {
+            if (!dict[@"english"] && ((NSString *)dict[@"english"]).length > 0) {
                 dict[@"english"] = [self quotesCleanup:card[colstr]];
             }
             else {

@@ -162,6 +162,10 @@
 		FF28A828278CB50500D3744D /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A80B278C8D5F00D3744D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF28A82A278CB50600D3744D /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A809278C8D5500D3744D /* PXSourceList.framework */; };
 		FF28A82B278CB50600D3744D /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A809278C8D5500D3744D /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF55FF4827BD763900EE389D /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF55FF3A27BD761700EE389D /* MMMarkdown.framework */; };
+		FF55FF4927BD763900EE389D /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF55FF3A27BD761700EE389D /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF55FF4A27BD764200EE389D /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF55FF3A27BD761700EE389D /* MMMarkdown.framework */; };
+		FF55FF4B27BD764200EE389D /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF55FF3A27BD761700EE389D /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF708866278C7CDF00DF399E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF708865278C7CDF00DF399E /* AppDelegate.m */; };
 		FF708869278C7CDF00DF399E /* KaniManabu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF708867278C7CDF00DF399E /* KaniManabu.xcdatamodeld */; };
 		FF70886B278C7CE000DF399E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF70886A278C7CE000DF399E /* Assets.xcassets */; };
@@ -265,6 +269,41 @@
 			remoteGlobalIDString = 21632DBC1C925B1F00C40D7D;
 			remoteInfo = "SAMKeychain-watchOS";
 		};
+		FF55FF3727BD761700EE389D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF55FF2827BD761700EE389D /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BED7620F1B37810000687B36;
+			remoteInfo = "MMMarkdown (iOS)";
+		};
+		FF55FF3927BD761700EE389D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF55FF2827BD761700EE389D /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BED761571B374D6700687B36;
+			remoteInfo = "MMMarkdown (OS X)";
+		};
+		FF55FF3B27BD761700EE389D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF55FF2827BD761700EE389D /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BE23E8F41C0CF3EF0087F587;
+			remoteInfo = "MMMarkdown (tvOS)";
+		};
+		FF55FF3D27BD761700EE389D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF55FF2827BD761700EE389D /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BE23E9131C0CF77D0087F587;
+			remoteInfo = "MMMarkdown (watchOS)";
+		};
+		FF55FF3F27BD761700EE389D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FF55FF2827BD761700EE389D /* MMMarkdown.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BED761611B374D6700687B36;
+			remoteInfo = MMMarkdownTests;
+		};
 		FF74655E278F2F960062E476 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FF746554278F2F950062E476 /* AFNetworking.xcodeproj */;
@@ -324,6 +363,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				FF16A0EE27B5B1F900AA385E /* MicrosoftCognitiveServicesSpeech.xcframework in Embed Frameworks */,
+				FF55FF4B27BD764200EE389D /* MMMarkdown.framework in Embed Frameworks */,
 				157329382794B9C400587C05 /* MASPreferences.framework in Embed Frameworks */,
 				157329392794B9C400587C05 /* AFNetworking.framework in Embed Frameworks */,
 				15F77948279F4B5500982BF9 /* SAMKeychain.framework in Embed Frameworks */,
@@ -341,6 +381,7 @@
 				FF28A828278CB50500D3744D /* MASPreferences.framework in Embed Frameworks */,
 				FF74656D278F2FAE0062E476 /* AFNetworking.framework in Embed Frameworks */,
 				15F7793F279F4B4B00982BF9 /* SAMKeychain.framework in Embed Frameworks */,
+				FF55FF4927BD763900EE389D /* MMMarkdown.framework in Embed Frameworks */,
 				FF28A82B278CB50600D3744D /* PXSourceList.framework in Embed Frameworks */,
 				159E65CF2794797C000023C0 /* Sparkle.framework in Embed Frameworks */,
 				FF16A0EC27B5B1F500AA385E /* MicrosoftCognitiveServicesSpeech.xcframework in Embed Frameworks */,
@@ -470,6 +511,7 @@
 		FF28A822278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLtoNSAttributedString.m"; sourceTree = "<group>"; };
 		FF28A823278CB31300D3744D /* NSTextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
 		FF28A824278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
+		FF55FF2827BD761700EE389D /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = "Dependencies/MMMarkdown-master/MMMarkdown.xcodeproj"; sourceTree = "<group>"; };
 		FF708861278C7CDF00DF399E /* KaniManabu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaniManabu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF708864278C7CDF00DF399E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF708865278C7CDF00DF399E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -531,6 +573,7 @@
 				157329182794B9C400587C05 /* AVFoundation.framework in Frameworks */,
 				157329192794B9C400587C05 /* AppCenter.framework in Frameworks */,
 				1573291A2794B9C400587C05 /* AFNetworking.framework in Frameworks */,
+				FF55FF4A27BD764200EE389D /* MMMarkdown.framework in Frameworks */,
 				1573291B2794B9C400587C05 /* QuartzCore.framework in Frameworks */,
 				1573291C2794B9C400587C05 /* AppCenterAnalytics.framework in Frameworks */,
 				FF173DC927B6925300E5CD37 /* AudioToolbox.framework in Frameworks */,
@@ -561,6 +604,7 @@
 				FF1BE81A2790AAC200CA6A99 /* UserNotifications.framework in Frameworks */,
 				FF173DC827B6924900E5CD37 /* AudioToolbox.framework in Frameworks */,
 				15F7793E279F4B4B00982BF9 /* SAMKeychain.framework in Frameworks */,
+				FF55FF4827BD763900EE389D /* MMMarkdown.framework in Frameworks */,
 				15C52D6C279237EA002ADE2B /* AppCenterCrashes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -789,6 +833,18 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		FF55FF2927BD761700EE389D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF55FF3827BD761700EE389D /* MMMarkdown.framework */,
+				FF55FF3A27BD761700EE389D /* MMMarkdown.framework */,
+				FF55FF3C27BD761700EE389D /* MMMarkdown.framework */,
+				FF55FF3E27BD761700EE389D /* MMMarkdown.framework */,
+				FF55FF4027BD761700EE389D /* MMMarkdownTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		FF708858278C7CDF00DF399E = {
 			isa = PBXGroup;
 			children = (
@@ -857,6 +913,7 @@
 		FF746553278F2F8D0062E476 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				FF55FF2827BD761700EE389D /* MMMarkdown.xcodeproj */,
 				FF16A0D927B5B1D200AA385E /* MicrosoftCognitiveServicesSpeech.xcframework */,
 				FF16A0AA27B571F000AA385E /* iOS */,
 				FF778DCB279EEE830055AF2D /* SAMKeychain.xcodeproj */,
@@ -1005,6 +1062,10 @@
 					ProjectRef = FF746554278F2F950062E476 /* AFNetworking.xcodeproj */;
 				},
 				{
+					ProductGroup = FF55FF2927BD761700EE389D /* Products */;
+					ProjectRef = FF55FF2827BD761700EE389D /* MMMarkdown.xcodeproj */;
+				},
+				{
 					ProductGroup = 153A3638279F4B0A004AC33F /* Products */;
 					ProjectRef = FF778DCB279EEE830055AF2D /* SAMKeychain.xcodeproj */;
 				},
@@ -1066,6 +1127,41 @@
 			fileType = wrapper.framework;
 			path = SAMKeychain.framework;
 			remoteRef = 153A364D279F4B0A004AC33F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF55FF3827BD761700EE389D /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = FF55FF3727BD761700EE389D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF55FF3A27BD761700EE389D /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = FF55FF3927BD761700EE389D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF55FF3C27BD761700EE389D /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = FF55FF3B27BD761700EE389D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF55FF3E27BD761700EE389D /* MMMarkdown.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MMMarkdown.framework;
+			remoteRef = FF55FF3D27BD761700EE389D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FF55FF4027BD761700EE389D /* MMMarkdownTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MMMarkdownTests.xctest;
+			remoteRef = FF55FF3F27BD761700EE389D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		FF74655F278F2F960062E476 /* AFNetworking.framework */ = {

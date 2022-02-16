@@ -404,8 +404,6 @@
 
 - (void)populateTableViewWithArray:(NSArray *)array {
     dispatch_async(dispatch_get_main_queue(), ^{
-        //NSMutableArray *a = [self.arraycontroller mutableArrayValueForKey:@"content"];
-        //[a removeAllObjects];
         [self.arraycontroller setContent:nil];
         [self.arraycontroller addObjects:array];
         [self.tb reloadData];
@@ -416,6 +414,7 @@
             // Fallback on earlier versions
             self.window.title = [NSString stringWithFormat:@"Deck Browser (%@)", array.count == 1 ? @"1 item" : [NSString stringWithFormat:@"%lu items",(unsigned long)array.count]];
         }
+        [self filteritems];
     });
 }
 

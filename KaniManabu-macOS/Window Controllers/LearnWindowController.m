@@ -12,6 +12,7 @@
 #import "NSTextView+SetHTMLAttributedText.h"
 #import "SpeechSynthesis.h"
 #import "WaniKani.h"
+#import <MMMarkdown/MMMarkdown.h>
 
 @interface LearnWindowController ()
 @property (strong) IBOutlet NSTextField *wordlabel;
@@ -165,7 +166,7 @@
             }
             if ([_currentcard.card valueForKey:@"notes"]) {
                 if (((NSString *)[_currentcard.card valueForKey:@"notes"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",[_currentcard.card valueForKey:@"notes"]];
+                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",[MMMarkdown HTMLStringWithMarkdown:[_currentcard.card valueForKey:@"notes"] error:nil]];
                 }
             }
             if ([_currentcard.card valueForKey:@"contextsentence1"] && [_currentcard.card valueForKey:@"englishsentence1"]) {
@@ -192,7 +193,7 @@
             [infostr appendFormat:readingtype == 0 ? @"<h1>Kun'yomi</h1><p>%@</p>" : @"<h1>Kun'yomi</h1><p><b>%@</b></p>", [_currentcard.card valueForKey:@"altreading"] ? [_currentcard.card valueForKey:@"altreading"] : @""];
             if ([_currentcard.card valueForKey:@"notes"]) {
                 if (((NSString *)[_currentcard.card valueForKey:@"notes"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",[_currentcard.card valueForKey:@"notes"]];
+                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",[MMMarkdown HTMLStringWithMarkdown:[_currentcard.card valueForKey:@"notes"] error:nil]];
                 }
             }
             break;
@@ -206,7 +207,7 @@
             }
             if ([_currentcard.card valueForKey:@"notes"]) {
                 if (((NSString *)[_currentcard.card valueForKey:@"notes"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",[_currentcard.card valueForKey:@"notes"]];
+                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",[MMMarkdown HTMLStringWithMarkdown:[_currentcard.card valueForKey:@"notes"] error:nil]];
                 }
             }
             if ([_currentcard.card valueForKey:@"contextsentence1"] && [_currentcard.card valueForKey:@"englishsentence1"]) {

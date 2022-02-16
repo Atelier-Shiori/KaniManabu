@@ -11,6 +11,7 @@
 #import "SpeechSynthesis.h"
 #import "DeckManager.h"
 #import "WaniKani.h"
+#import <MMMarkdown/MMMarkdown.h>
 
 @interface ItemInfoWindowController ()
 @property (strong) IBOutlet NSTextField *wordlabel;
@@ -104,7 +105,7 @@
             }
             if (_cardMeta[@"notes"] != [NSNull null]) {
                 if (((NSString *)_cardMeta[@"notes"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",_cardMeta[@"notes"]];
+                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",[MMMarkdown HTMLStringWithMarkdown:_cardMeta[@"notes"] error:nil]];
                 }
             }
             if (_cardMeta[@"contextsentence1"] != [NSNull null] && _cardMeta[@"englishsentence1"] != [NSNull null]) {
@@ -131,7 +132,7 @@
             [infostr appendFormat:readingtype == 0 ? @"<h1>Kun'yomi</h1><p>%@</p>" : @"<h1>Kun'yomi</h1><p><b>%@</b></p>", _cardMeta[@"altreading"] != [NSNull null] ? _cardMeta[@"altreading"] : @""];
             if (_cardMeta[@"notes"] != [NSNull null]) {
                 if (((NSString *)_cardMeta[@"notes"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",_cardMeta[@"notes"]];
+                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",[MMMarkdown HTMLStringWithMarkdown:_cardMeta[@"notes"] error:nil]];
                 }
             }
             break;
@@ -145,7 +146,7 @@
             }
             if (_cardMeta[@"notes"] != [NSNull null]) {
                 if (((NSString *)_cardMeta[@"notes"]).length > 0) {
-                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",_cardMeta[@"notes"]];
+                    [infostr appendFormat:@"<h1>Notes</h1><p>%@</p>",[MMMarkdown HTMLStringWithMarkdown:_cardMeta[@"notes"] error:nil]];
                 }
             }
             if (_cardMeta[@"contextsentence1"] != [NSNull null] && _cardMeta[@"englishsentence1"] != [NSNull null]) {

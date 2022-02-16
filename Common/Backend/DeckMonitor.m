@@ -44,30 +44,11 @@
         _syncdone = NO;
         _syncinginprogress = YES;
         [self startsynctimer];
-        [self monitorsync];
         _syncinginprogress = NO;
     }
     else {
         [self startsynctimer];
     }
-}
-
-- (void)monitorsync {
-    NSLog(@"Monitoring...");
-    while (!_syncdone) {
-        sleep(5);
-    }
-    NSLog(@"Sync Done");
-    bool changesindatabase = [self checkTransactionHistory];
-    if ([self cardtotalschanged] || changesindatabase) {
-        NSLog(@"New Items detected...");
-        [NSNotificationCenter.defaultCenter postNotificationName:@"NewItemsSynced" object:nil];
-        [self setCardTotals];
-        if (changesindatabase) {
-            [NSUserDefaults.standardUserDefaults setValue:NSDate.date forKey:@"LastLaunchSyncDate"];
-        }
-    }
-    [self setNewCards];
 }
 
 - (void)setCardTotals {
@@ -115,6 +96,16 @@
 - (void)firetimer {
     _syncdone = YES;
     _timeractive = NO;
+    bool changesindatabase = [self checkTransactionHistory];
+    if ([self cardtotalschanged] || changesindatabase) {
+        NSLog(@"New Items detected...");
+        [NSNotificationCenter.defaultCenter postNotificationName:@"NewItemsSynced" object:nil];
+        [self setCardTotals];
+        if (changesindatabase) {
+            [NSUserDefaults.standardUserDefaults setValue:NSDate.date forKey:@"LastLaunchSyncDate"];
+        }
+    }
+    [self setNewCards];
 }
 
 - (bool)checkTransactionHistory {
