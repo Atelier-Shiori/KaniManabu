@@ -686,6 +686,7 @@
     if (tmparray.count > 0) {
         NSManagedObject *obj = tmparray[0];
         [obj setValue:@(8) forKey:@"srsstage"];
+        [obj setValue:@(NSDate.date.timeIntervalSince1970) forKey:@"nextreviewinterval"];
         [_moc performBlockAndWait:^{
             [_moc save:nil];
         }];
