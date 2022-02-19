@@ -663,6 +663,35 @@
     }
 }
 
+- (void)resetCardToEnlightenedWithCardUUID:(NSUUID *)uuid withType:(DeckType)type {
+    @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
+    NSFetchRequest *fetchRequest = [NSFetchRequest new];
+    switch (type) {
+        case DeckTypeKana:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"KanaCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeKanji:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"KanjiCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeVocab:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+            break;
+        default:
+            return;
+    }
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"carduuid == %@", uuid];
+    fetchRequest.predicate = predicate;
+    NSError *error = nil;
+    NSArray *tmparray = [_moc executeFetchRequest:fetchRequest error:&error];
+    if (tmparray.count > 0) {
+        NSManagedObject *obj = tmparray[0];
+        [obj setValue:@(8) forKey:@"srsstage"];
+        [_moc performBlockAndWait:^{
+            [_moc save:nil];
+        }];
+    }
+}
+
 - (bool)deleteCardWithCardUUID:(NSUUID *)uuid withType:(DeckType)type {
     @try { [_moc setQueryGenerationFromToken:NSQueryGenerationToken.currentQueryGenerationToken error:nil];} @catch (NSException *ex) {}
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
