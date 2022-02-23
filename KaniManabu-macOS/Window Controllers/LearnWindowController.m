@@ -250,10 +250,27 @@
                             [infostr appendFormat:@"<h3>Other Meanings</h3><p>%@</p>", [othermeanings componentsJoinedByString:@", "]];
                         }
                         [infostr appendFormat:@"<h3>Level</h3><p>%@</p>",kanji[@"data"][@"level"]];
-                        [infostr appendFormat:@"<h3>Characters</h3><p>%@</p>",kanji[@"data"][@"characters"]];
+                        bool onyomiprimary = false;
+                        bool kunyomiprimary = false;
+                        NSMutableArray *onyomi = [NSMutableArray new];
+                        NSMutableArray *kunyomi = [NSMutableArray new];
+                        NSMutableArray *nanori = [NSMutableArray new];
                         for (NSDictionary *readings in kanji[@"data"][@"readings"]) {
-                            [infostr appendFormat:((NSNumber *)readings[@"primary"]).boolValue ? @"<h3>%@</h3><p><b>%@</b></p>" : @"<h3>%@</h3><p>%@</p>", ((NSString *)readings[@"type"]).capitalizedString, readings[@"reading"]];
+                            if ([(NSString *)readings[@"type"] isEqualToString:@"onyomi"]) {
+                                onyomiprimary = ((NSNumber *)readings[@"primary"]).boolValue;
+                                [onyomi addObject:readings[@"reading"]];
+                            }
+                            else if ([(NSString *)readings[@"type"] isEqualToString:@"kunyomi"]) {
+                                kunyomiprimary = ((NSNumber *)readings[@"primary"]).boolValue;
+                                [kunyomi addObject:readings[@"reading"]];
+                            }
+                            else if ([(NSString *)readings[@"type"] isEqualToString:@"nanori"]) {
+                                [nanori addObject:readings[@"reading"]];
+                            }
                         }
+                        [infostr appendFormat:onyomiprimary ? @"<h3>Onyomi</h3><p><b>%@</b></p>" : @"<h3>Onyomi</h3><p>%@</p>", onyomi.count > 0 ? [onyomi componentsJoinedByString:@"、"] : @"None"];
+                        [infostr appendFormat:kunyomiprimary ? @"<h3>Kunyomi</h3><p><b>%@</b></p>" : @"<h3>Kunyomi</h3><p>%@</p>", kunyomi.count > 0 ? [kunyomi componentsJoinedByString:@"、"] : @"None"];
+                        [infostr appendFormat:@"<h3>Nanori</h3><p>%@</p>", nanori.count > 0 ? [nanori componentsJoinedByString:@"、"] : @"None"];
                         [infostr appendFormat:@"<h3>Meaning Mnemonic</h3><p>%@</p>",kanji[@"data"][@"meaning_mnemonic"]];
                         [infostr appendFormat:@"<h3>Reading Mnemonic</h3><p>%@</p>",kanji[@"data"][@"reading_mnemonic"]];
                         [infostr appendFormat:@"<h3>Reading Hint</h3><p>%@</p>",kanji[@"data"][@"reading_hint"]];
