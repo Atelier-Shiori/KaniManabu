@@ -254,6 +254,7 @@
                         for (NSDictionary *readings in kanji[@"data"][@"readings"]) {
                             [infostr appendFormat:((NSNumber *)readings[@"primary"]).boolValue ? @"<h3>%@</h3><p><b>%@</b></p>" : @"<h3>%@</h3><p>%@</p>", ((NSString *)readings[@"type"]).capitalizedString, readings[@"reading"]];
                         }
+                        [infostr appendFormat:@"<h3>Meaning Mnemonic</h3><p>%@</p>",kanji[@"data"][@"meaning_mnemonic"]];
                         [infostr appendFormat:@"<h3>Reading Mnemonic</h3><p>%@</p>",kanji[@"data"][@"reading_mnemonic"]];
                         [infostr appendFormat:@"<h3>Reading Hint</h3><p>%@</p>",kanji[@"data"][@"reading_hint"]];
                     }

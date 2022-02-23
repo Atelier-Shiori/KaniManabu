@@ -193,6 +193,7 @@
                         for (NSDictionary *readings in kanji[@"data"][@"readings"]) {
                             [infostr appendFormat:((NSNumber *)readings[@"primary"]).boolValue ? @"<h3>%@</h3><p><b>%@</b></p>" : @"<h3>%@</h3><p>%@</p>", ((NSString *)readings[@"type"]).capitalizedString, readings[@"reading"]];
                         }
+                        [infostr appendFormat:@"<h3>Meaning Mnemonic</h3><p>%@</p>",kanji[@"data"][@"meaning_mnemonic"]];
                         [infostr appendFormat:@"<h3>Reading Mnemonic</h3><p>%@</p>",kanji[@"data"][@"reading_mnemonic"]];
                         [infostr appendFormat:@"<h3>Reading Hint</h3><p>%@</p>",kanji[@"data"][@"reading_hint"]];
                     }
@@ -217,6 +218,7 @@
     df.dateStyle = NSDateFormatterMediumStyle;
     df.timeStyle = NSDateFormatterMediumStyle;
     if (((NSNumber *)_cardMeta[@"learned"]).boolValue) {
+        [infostr appendFormat:@"<h3>Answered Correct</h3><p>%.2f%%</p>",(((NSNumber *)_cardMeta[@"numansweredcorrect"]).doubleValue / (((NSNumber *)_cardMeta[@"numansweredcorrect"]).doubleValue  + ((NSNumber *)_cardMeta[@"numansweredincorrect"]).doubleValue)) * 100];
         [infostr appendFormat:@"<h3>Last Reviewed</h3><p>%@</p>",[df stringFromDate:[NSDate dateWithTimeIntervalSince1970:((NSNumber *)_cardMeta[@"lastreviewed"]).doubleValue]]];
         [infostr appendFormat:@"<h3>Next Review</h3><p>%@</p>",[df stringFromDate:[NSDate dateWithTimeIntervalSince1970:((NSNumber *)_cardMeta[@"nextreviewinterval"]).doubleValue]]];
     }
