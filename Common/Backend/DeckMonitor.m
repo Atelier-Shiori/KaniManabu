@@ -9,6 +9,7 @@
 #import "DeckManager.h"
 #import "AppDelegate.h"
 #import "MSWeakTimer.h"
+#import <UserNotifications/UserNotifications.h>
 
 @interface DeckMonitor ()
 @property bool syncdone;
@@ -17,11 +18,15 @@
 @property (strong, nonatomic) MSWeakTimer *timer;
 @property (strong) NSPersistentCloudKitContainer *persistentContainer;
 @property (strong) NSDate *nextHistoryCheck;
+@property bool firstsync;
+@property bool firstsyncdone;
+@property (strong) UNUserNotificationCenter *notificationCenter;
 @end
 
 @implementation DeckMonitor
 - (instancetype)init {
     if (self = [super init]) {
+        self.notificationCenter = [UNUserNotificationCenter currentNotificationCenter];
         AppDelegate *delegate = (AppDelegate *)NSApp.delegate;
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
@@ -41,6 +46,10 @@
 - (void)receiveNotification:(NSNotification *)notification {
     NSLog(@"Notification Name: %@",notification.name);
     if (!_syncinginprogress) {
+        if (!_firstsync) {
+            _firstsync = YES;
+            [self notifyLaunchSync];
+        }
         _syncdone = NO;
         _syncinginprogress = YES;
         [self startsynctimer];
@@ -96,6 +105,10 @@
 - (void)firetimer {
     _syncdone = YES;
     _timeractive = NO;
+    if (!_firstsyncdone) {
+        _firstsyncdone = YES;
+        [self notifySyncDone];
+    }
     bool changesindatabase = [self checkTransactionHistory];
     if ([self cardtotalschanged] || changesindatabase) {
         NSLog(@"New Items detected...");
@@ -138,4 +151,39 @@
     }
     return false;
 }
+
+- (void)notifyLaunchSync {
+    [self showNotificationWithMessage:@"KaniManabu is syncing from iCloud since it last launched. Please wait one minute before reviewing/learning items."];
+}
+
+- (void)notifySyncDone {
+    [self showNotificationWithMessage:@"KaniManabu has finished syncing. You may begin reviewing/learning items."];
+}
+
+- (void)showNotificationWithMessage:(NSString *)message {
+    UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+    content.title = @"KaniManabu";
+    content.body = message;
+    content.sound = [UNNotificationSound defaultSound];
+    NSDateComponents *triggerDate = [[NSCalendar currentCalendar]
+                                     components:NSCalendarUnitYear +
+                                     NSCalendarUnitMonth + NSCalendarUnitDay +
+                                     NSCalendarUnitHour + NSCalendarUnitMinute +
+                                     NSCalendarUnitSecond fromDate:[NSDate.date dateByAddingTimeInterval:3]];
+    UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:triggerDate
+                            repeats:NO];
+    NSString *identifier = [NSString stringWithFormat:@"kanimanabu-sync-%.f",NSDate.date.timeIntervalSince1970];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
+                                                                          content:content
+                                                                          trigger:trigger];
+    [_notificationCenter addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Something went wrong: %@",error);
+        }
+        else {
+            NSLog(@"Successfully scheduled notification: %@", identifier);
+        }
+    }];
+}
+
 @end
