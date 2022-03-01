@@ -15,6 +15,7 @@
 #import "TKMKanaInput.h"
 
 @interface ReviewWindowController ()
+@property (strong) DeckManager *dm;
 @property (strong) IBOutlet NSButton *scoreitem;
 @property (strong) IBOutlet NSButton *correctitem;
 @property (strong) IBOutlet NSButton *pendingitem;
@@ -62,6 +63,7 @@
     _reviewqueue = [NSMutableArray new];
     _completeditems = [NSMutableArray new];
     _kanainput = [TKMKanaInput new];
+    _dm = [DeckManager sharedInstance];
     return self;
 }
 
@@ -111,7 +113,7 @@
         _iiwc = [ItemInfoWindowController new];
     }
     [_iiwc.window makeKeyAndOrderFront:self];
-    [_iiwc setDictionary:[DeckManager.sharedInstance getCardWithCardUUID:[_currentcard.card valueForKey:@"carduuid"] withType:_currentcard.cardtype] withWindowType:ParentWindowTypeReview];
+    [_iiwc setDictionary:[_dm getCardWithCardUUID:[_currentcard.card valueForKey:@"carduuid"] withType:_currentcard.cardtype] withWindowType:ParentWindowTypeReview];
 }
 
 - (BOOL)windowShouldClose:(id)sender {

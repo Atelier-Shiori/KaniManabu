@@ -146,7 +146,7 @@
             continue;
         }
         if ([deststr isEqualToString:@"Japanese"]) {
-            if (!dict[@"japanese"] && ((NSString *)dict[@"japanese"]).length > 0) {
+            if (card[colstr] && ((NSString *)card[colstr]).length > 0) {
                 dict[@"japanese"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -154,7 +154,7 @@
             }
         }
         else if ([deststr isEqualToString:@"English"]) {
-            if (!dict[@"english"] && ((NSString *)dict[@"english"]).length > 0) {
+            if (card[colstr] && ((NSString *)card[colstr]).length > 0) {
                 dict[@"english"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -162,7 +162,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Alt Meanings"]) {
-            if (!dict[@"altmeaning"]) {
+            if (card[colstr]) {
                 dict[@"altmeaning"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -170,7 +170,7 @@
             }
         }
         else if ([deststr isEqualToString:@"On'yomi"]) {
-            if (!dict[@"kanareading"] && ((NSString *)dict[@"kanareading"]).length > 0) {
+            if (card[colstr] && ((NSString *)card[colstr]).length > 0) {
                 dict[@"kanareading"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -178,7 +178,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Primary Reading"]) {
-            if (!dict[@"readingtype"]) {
+            if (card[colstr]) {
                 NSString *value =  card[colstr];
                 NSNumber *readingtype = @(0);
                 if (([value caseInsensitiveCompare:@"on'yomi"] == NSOrderedSame) || ([value caseInsensitiveCompare:@"onyomi"] == NSOrderedSame) || ([value caseInsensitiveCompare:@"on"] == NSOrderedSame)) {
@@ -194,7 +194,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Kun'yomi"]) {
-            if (!dict[@"altreading"]) {
+            if (card[colstr]) {
                 dict[@"altreading"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -202,7 +202,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Notes"]) {
-            if (!dict[@"notes"]) {
+            if (card[colstr]) {
                 dict[@"notes"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -210,7 +210,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Tags"]) {
-            if (!dict[@"tags"]) {
+            if (card[colstr]) {
                 dict[@"tags"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -234,7 +234,7 @@
             continue;
         }
         if ([deststr isEqualToString:@"Japanese"]) {
-            if (!dict[@"japanese"] && ((NSString *)dict[@"japanese"]).length > 0) {
+            if (card[colstr] && ((NSString *)card[colstr]).length > 0) {
                 dict[@"japanese"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -242,7 +242,7 @@
             }
         }
         else if ([deststr isEqualToString:@"English"]) {
-            if (!dict[@"english"] && ((NSString *)dict[@"english"]).length > 0) {
+            if (card[colstr] && ((NSString *)card[colstr]).length > 0) {
                 dict[@"english"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -250,7 +250,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Alt Meanings"]) {
-            if (!dict[@"altmeaning"]) {
+            if (card[colstr]) {
                 dict[@"altmeaning"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -258,7 +258,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Kana"]) {
-            if (!dict[@"kanaWord"] && ((NSString *)dict[@"kanaWord"]).length > 0) {
+            if (card[colstr] && ((NSString *)card[colstr]).length > 0) {
                 dict[@"kanaWord"] = [self quotesCleanup:card[colstr]];
                 dict[@"reading"] = [self quotesCleanup:card[colstr]];
             }
@@ -267,7 +267,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Notes"]) {
-            if (!dict[@"notes"]) {
+            if (card[colstr]) {
                 dict[@"notes"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -275,7 +275,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Context Sentence 1"]) {
-            if (!dict[@"contextsentence1"]) {
+            if (card[colstr]) {
                 dict[@"contextsentence1"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -283,7 +283,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Context Sentence 2"]) {
-            if (!dict[@"contextsentence2"]) {
+            if (card[colstr]) {
                 dict[@"contextsentence2"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -291,7 +291,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Context Sentence 3"]) {
-            if (!dict[@"contextsentence3"]) {
+            if (card[colstr]) {
                 dict[@"contextsentence3"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -299,7 +299,7 @@
             }
         }
         else if ([deststr isEqualToString:@"English Sentence 1"]) {
-            if (!dict[@"englishsentence1"]) {
+            if (card[colstr]) {
                 dict[@"englishsentence1"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -307,7 +307,7 @@
             }
         }
         else if ([deststr isEqualToString:@"English Sentence 2"]) {
-            if (!dict[@"englishsentence2"]) {
+            if (card[colstr]) {
                 dict[@"englishsentence2"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -315,7 +315,7 @@
             }
         }
         else if ([deststr isEqualToString:@"English Sentence 3"]) {
-            if (!dict[@"englishsentence3"]) {
+            if (card[colstr]) {
                 dict[@"englishsentence3"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -323,7 +323,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Tags"]) {
-            if (!dict[@"tags"]) {
+            if (card[colstr]) {
                 dict[@"tags"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -347,7 +347,7 @@
             continue;
         }
         if ([deststr isEqualToString:@"Japanese"]) {
-            if (!dict[@"japanese"] && ((NSString *)dict[@"japanese"]).length > 0) {
+            if (card[colstr] && ((NSString *)card[colstr]).length > 0) {
                 dict[@"japanese"] = [self quotesCleanup:card[colstr]];
                 dict[@"kanareading"] = [self quotesCleanup:card[colstr]];
             }
@@ -356,7 +356,7 @@
             }
         }
         else if ([deststr isEqualToString:@"English"]) {
-            if (!dict[@"english"] && ((NSString *)dict[@"english"]).length > 0) {
+            if (card[colstr] && ((NSString *)card[colstr]).length > 0) {
                 dict[@"english"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -364,7 +364,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Alt Meanings"]) {
-            if (!dict[@"altmeaning"]) {
+            if (card[colstr]) {
                 dict[@"altmeaning"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -372,7 +372,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Notes"]) {
-            if (!dict[@"notes"]) {
+            if (card[colstr]) {
                 dict[@"notes"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -380,7 +380,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Context Sentence 1"]) {
-            if (!dict[@"contextsentence1"]) {
+            if (card[colstr]) {
                 dict[@"contextsentence1"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -388,7 +388,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Context Sentence 2"]) {
-            if (!dict[@"contextsentence2"]) {
+            if (card[colstr]) {
                 dict[@"contextsentence2"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -396,7 +396,7 @@
             }
         }
         else if ([deststr isEqualToString:@"English Sentence 1"]) {
-            if (!dict[@"englishsentence1"]) {
+            if (card[colstr]) {
                 dict[@"englishsentence1"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -404,7 +404,7 @@
             }
         }
         else if ([deststr isEqualToString:@"English Sentence 2"]) {
-            if (!dict[@"englishsentence2"]) {
+            if (card[colstr]) {
                 dict[@"englishsentence2"] = [self quotesCleanup:card[colstr]];
             }
             else {
@@ -412,7 +412,7 @@
             }
         }
         else if ([deststr isEqualToString:@"Tags"]) {
-            if (!dict[@"tags"]) {
+            if (card[colstr]) {
                 dict[@"tags"] = [self quotesCleanup:card[colstr]];
             }
             else {

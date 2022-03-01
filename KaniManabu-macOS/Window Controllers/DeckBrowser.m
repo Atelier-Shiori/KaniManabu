@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 
 @interface DeckBrowser ()
+@property (strong) DeckManager *dm;
 @property (strong) NSSplitViewController *splitview;
 @property (strong) NSMutableArray *sourceListItems;
 @property (strong) IBOutlet NSSearchField *filterfield;
@@ -34,6 +35,7 @@
     self = [super initWithWindowNibName:@"DeckBrowser"];
     if (!self)
         return nil;
+    _dm = [DeckManager sharedInstance];
     return self;
 }
 
@@ -68,7 +70,7 @@
 
 - (void)receiveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"DeckAdded"]||[notification.name isEqualToString:@"DeckRemoved"] ||[notification.name isEqualToString:@"LearnEnded"]||[notification.name isEqualToString:@"ReviewEnded"]||[notification.name isEqualToString:@"NewItemsSynced"]) {
-        if (!DeckManager.sharedInstance.importing && !_refreshinprogress) {
+        if (!_dm.importing && !_refreshinprogress) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Reload
                 [self generateSourceList];
@@ -353,7 +355,7 @@
     [(NSButton *)alert.buttons[1] setKeyEquivalent: @"\033"];
     [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSAlertFirstButtonReturn) {
-            if ([DeckManager.sharedInstance deleteCardWithCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue]) {
+            if ([self.dm deleteCardWithCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue]) {
                 [NSNotificationCenter.defaultCenter postNotificationName:@"CardRemoved" object:[card valueForKey:@"carduuid"]];
                 [self loadDeck];
             }
@@ -393,9 +395,9 @@
     else {
         _addcardtoolbaritem.enabled = true;
         _currentDeckUUID = [[NSUUID alloc] initWithUUIDString:identifier];
-        NSManagedObject *deckMetadata = [DeckManager.sharedInstance getDeckMetadataWithUUID:_currentDeckUUID];
+        NSManagedObject *deckMetadata = [_dm getDeckMetadataWithUUID:_currentDeckUUID];
         _currentDeckType = ((NSNumber *)[deckMetadata valueForKey:@"deckType"]).intValue;
-        NSArray *cards = [DeckManager.sharedInstance retrieveCardsForDeckUUID:_currentDeckUUID withType:_currentDeckType];
+        NSArray *cards = [_dm retrieveCardsForDeckUUID:_currentDeckUUID withType:_currentDeckType];
         [self populateTableViewWithArray:cards];
     }
     [self filteritems];
@@ -419,7 +421,7 @@
 }
 
 - (void)loadSRSStageCards:(int)stage {
-    [DeckManager.sharedInstance.moc performBlock:^{
+    [_dm.moc performBlock:^{
         NSPredicate *predicate;
         switch (stage) {
             case 0:
@@ -441,28 +443,28 @@
                 break;
         }
         NSMutableArray *tmparray = [NSMutableArray new];
-        [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithPredicate:predicate]];
+        [tmparray addObjectsFromArray:[self.dm retrieveAllCardswithPredicate:predicate]];
         [self populateTableViewWithArray:tmparray];
     }];
 }
 
 - (void)loadcriticalitems {
-    [DeckManager.sharedInstance.moc performBlock:^{
+    [_dm.moc performBlock:^{
         NSMutableArray *tmparray = [NSMutableArray new];
-        [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCriticalCards]];
+        [tmparray addObjectsFromArray:[self.dm retrieveAllCriticalCards]];
         [self populateTableViewWithArray:tmparray];
     }];
 }
 
 - (void)loadreviewitems {
-    [DeckManager.sharedInstance.moc performBlock:^{
+    [_dm.moc performBlock:^{
         NSMutableArray *tmparray = [NSMutableArray new];
-        NSArray *decks = [DeckManager.sharedInstance retrieveDecks];
+        NSArray *decks = [self.dm retrieveDecks];
         for (NSManagedObject *deck in decks) {
             if (!((NSNumber *)[deck valueForKey:@"enabled"]).boolValue) {
                 continue;
             }
-            NSArray *cards = [DeckManager.sharedInstance retrieveReviewItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
+            NSArray *cards = [self.dm retrieveReviewItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
             for (NSManagedObject *obj in cards) {
                 NSArray *keys = obj.entity.attributesByName.allKeys;
                 NSMutableDictionary *tmpdict = [NSMutableDictionary dictionaryWithDictionary:[obj dictionaryWithValuesForKeys:keys]];
@@ -476,9 +478,9 @@
 }
 
 - (void)loadallitems {
-    [DeckManager.sharedInstance.moc performBlock:^{
+    [_dm.moc performBlock:^{
         NSMutableArray *tmparray = [NSMutableArray new];
-        [tmparray addObjectsFromArray:[DeckManager.sharedInstance retrieveAllCardswithPredicate:nil]];
+        [tmparray addObjectsFromArray:[self.dm retrieveAllCardswithPredicate:nil]];
         [self populateTableViewWithArray:tmparray];
     }];
 }
@@ -519,11 +521,11 @@
     [(NSButton *)alert.buttons[1] setKeyEquivalent: @"\033"];
     [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSAlertFirstButtonReturn) {
-            [DeckManager.sharedInstance resetCardWithCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue];
+            [self.dm resetCardWithCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue];
         }
         if (((NSNumber *)card[@"SRSStage"]).intValue == 9) {
             if (returnCode == NSAlertSecondButtonReturn) {
-                [DeckManager.sharedInstance resetCardToEnlightenedWithCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue];
+                [self.dm resetCardToEnlightenedWithCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue];
             }
         }
     }];
@@ -571,7 +573,7 @@
     long rightClickSelectedRow = self.tb.clickedRow;
     [self.tb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
     NSDictionary *card =  [_arraycontroller selectedObjects][0];
-    [DeckManager.sharedInstance togglesuspendCardForCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue];
+    [_dm togglesuspendCardForCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue];
     [self loadDeck];
 }
 - (IBAction)filteraction:(id)sender {

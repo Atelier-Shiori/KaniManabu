@@ -35,22 +35,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B45FCF3A-2AFD-462C-8B32-6FE64A2FDA97"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Common/Backend/CSVDeckImporter.m"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "-performImportWithDeckUUID:withDeckType:destinationMap:completionHandler:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "27EB8147-DE53-40AD-A98A-F6BD3CF0AE4E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -58,8 +42,8 @@
             filePath = "KaniManabu-macOS/Window Controllers/DeckBrowser.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "521"
-            endingLineNumber = "521"
+            startingLineNumber = "523"
+            endingLineNumber = "523"
             landmarkName = "-performResetProgress"
             landmarkType = "7">
          </BreakpointContent>

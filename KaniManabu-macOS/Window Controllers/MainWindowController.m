@@ -26,6 +26,7 @@
 #import "CSVLoadingWindow.h"
 
 @interface MainWindowController ()
+@property (strong) DeckManager *dm;
 @property (strong)LearnWindowController *lwc;
 @property (strong)ReviewWindowController *rwc;
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -48,6 +49,7 @@
     self = [super initWithWindowNibName:@"mainwindow"];
     if (!self)
         return nil;
+    self.dm = [DeckManager sharedInstance];
     return self;
 }
 
@@ -120,7 +122,7 @@
         }
     }
     else if ([notification.name isEqualToString:@"NewItemsSynced"]) {
-        if (!DeckManager.sharedInstance.importing && !_refreshinprogress) {
+        if (!_dm.importing && !_refreshinprogress) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.totalreviewitemcount = 0;
                 self.totallearnitemcount = 0;
@@ -130,7 +132,7 @@
     }
     else if ([notification.name isEqualToString:@"DeckAdded"] || [notification.name isEqualToString:@"DeckRemoved"] || [notification.name isEqualToString:@"DeckOptionsChanged"]) {
         // Reload
-        if (!DeckManager.sharedInstance.importing && !_refreshinprogress) {
+        if (!_dm.importing && !_refreshinprogress) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.totalreviewitemcount = 0;
                 self.totallearnitemcount = 0;
@@ -165,12 +167,12 @@
         if ([self checkDeckLimit:false]) {
             if ([notification.object isKindOfClass:[NSManagedObject class]]) {
                 NSManagedObject *deck = notification.object;
-                long learningqueuecount = [DeckManager.sharedInstance getQueuedLearnItemsCountforUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
+                long learningqueuecount = [_dm getQueuedLearnItemsCountforUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
                 if (learningqueuecount > 0) {
                     [self performStartLearnWithDeck:deck];
                 }
                 else {
-                    long remainingcount = [DeckManager.sharedInstance getNotLearnedItemCountForUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
+                    long remainingcount = [_dm getNotLearnedItemCountForUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
                     if (remainingcount > 0) {
                         NSAlert *alert = [[NSAlert alloc] init] ;
                         [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
@@ -181,7 +183,7 @@
                         alert.alertStyle = NSAlertStyleInformational;
                         [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
                             if (returnCode == NSAlertFirstButtonReturn) {
-                                [DeckManager.sharedInstance setandretrieveLearnItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue learningmore:YES];
+                                [self.dm setandretrieveLearnItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue learningmore:YES];
                                 dispatch_async(self.privateQueue, ^{
                                     sleep(1);
                                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -305,7 +307,7 @@
     [_rwc.window makeKeyAndOrderFront:self];
     int deckType = ((NSNumber *)[deck valueForKey:@"deckType"]).intValue;
     _rwc.ankimode = ((NSNumber *)[deck valueForKey:@"ankimode"]).boolValue;
-    NSArray *reviewitems = [DeckManager.sharedInstance retrieveReviewItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:deckType];
+    NSArray *reviewitems = [_dm retrieveReviewItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:deckType];
     NSMutableArray *tmparray = [NSMutableArray new];
     for (NSManagedObject *card in reviewitems) {
         CardReview *creview = [[CardReview alloc] initWithCard:card withCardType:deckType];
@@ -337,7 +339,7 @@
     //NSMutableArray *a = [_arrayController mutableArrayValueForKey:@"content"];
     //[a removeAllObjects];
     [_arrayController setContent:nil];
-    [_arrayController addObjects:[DeckManager.sharedInstance retrieveDecks]];
+    [_arrayController addObjects:[_dm retrieveDecks]];
     [_tb reloadData];
     [_tb deselectAll:self];
     _refreshinprogress = false;
@@ -370,7 +372,7 @@
         [self.window beginSheet:dadddialog.window completionHandler:^(NSModalResponse returnCode) {
                 if (returnCode == NSModalResponseOK) {
                     // Check if deck exists
-                    if ([DeckManager.sharedInstance checkDeckExists:dadddialog.deckname.stringValue withType:dadddialog.typebtn.selectedTag]) {
+                    if ([self.dm checkDeckExists:dadddialog.deckname.stringValue withType:dadddialog.typebtn.selectedTag]) {
                         NSAlert *alert = [[NSAlert alloc] init] ;
                         [alert addButtonWithTitle:@"OK"];
                         [alert setMessageText:@"Deck already exists"];
@@ -380,7 +382,7 @@
                             }];
                     }
                     else {
-                        bool success = [DeckManager.sharedInstance createDeck:dadddialog.deckname.stringValue withType:dadddialog.typebtn.selectedTag];
+                        bool success = [self.dm createDeck:dadddialog.deckname.stringValue withType:dadddialog.typebtn.selectedTag];
                         if (!success) {
                             NSAlert *alert = [[NSAlert alloc] init] ;
                             [alert addButtonWithTitle:@"OK"];
@@ -417,9 +419,9 @@
         if (returnCode == NSAlertFirstButtonReturn) {
             NSUUID *deckuuid = [selectedDeck valueForKey:@"deckUUID"];
             int decktype = ((NSNumber *)[selectedDeck valueForKey:@"deckType"]).intValue;
-            if ([DeckManager.sharedInstance deleteDeckWithDeckUUID:deckuuid]) {
+            if ([self.dm deleteDeckWithDeckUUID:deckuuid]) {
                 // Remove cards from associated deck and notify.
-                [DeckManager.sharedInstance deleteAllCardsForDeckUUID:deckuuid withType:decktype];
+                [self.dm deleteAllCardsForDeckUUID:deckuuid withType:decktype];
                 [NSNotificationCenter.defaultCenter postNotificationName:@"DeckRemoved" object:nil];
             }
         }
@@ -542,7 +544,7 @@
         return;
     }
     else {
-        NSArray *decks = [DeckManager.sharedInstance retrieveDecks];
+        NSArray *decks = [_dm retrieveDecks];
         NSSavePanel * sp = [NSSavePanel savePanel];
         sp.title = @"Export Deck";
         sp.allowedFileTypes = @[@"csv", @"Comma Delimited"];

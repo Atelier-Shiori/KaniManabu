@@ -12,6 +12,7 @@
 #import <UserNotifications/UserNotifications.h>
 
 @interface DeckMonitor ()
+@property (strong) DeckManager *dm;
 @property bool syncdone;
 @property bool timeractive;
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -26,6 +27,7 @@
 @implementation DeckMonitor
 - (instancetype)init {
     if (self = [super init]) {
+        _dm = [DeckManager sharedInstance];
         self.notificationCenter = [UNUserNotificationCenter currentNotificationCenter];
         AppDelegate *delegate = (AppDelegate *)NSApp.delegate;
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
@@ -61,26 +63,26 @@
 }
 
 - (void)setCardTotals {
-    _previousdeckcount = [DeckManager.sharedInstance retrieveDecks].count;
-    _totalcardcount = [DeckManager.sharedInstance retrieveAllCardswithPredicate:nil].count;
-    _totalreviewqueuecount = [DeckManager.sharedInstance retrieveAllReviewItems].count;
-    _totallearnqueuecount = [DeckManager.sharedInstance getAllLearnItems].count;
+    _previousdeckcount = [_dm retrieveDecks].count;
+    _totalcardcount = [_dm retrieveAllCardswithPredicate:nil].count;
+    _totalreviewqueuecount = [_dm retrieveAllReviewItems].count;
+    _totallearnqueuecount = [_dm getAllLearnItems].count;
 }
 
 - (bool)cardtotalschanged {
-    long ndeckcount = [DeckManager.sharedInstance retrieveDecks].count;
-    long ntotalcardcount = [DeckManager.sharedInstance retrieveAllCardswithPredicate:nil].count;
-    long ntotalreviewqueuecount = [DeckManager.sharedInstance retrieveAllReviewItems].count;
-    long ntotallearnqueuecount = [DeckManager.sharedInstance getAllLearnItems].count;
+    long ndeckcount = [_dm retrieveDecks].count;
+    long ntotalcardcount = [_dm retrieveAllCardswithPredicate:nil].count;
+    long ntotalreviewqueuecount = [_dm retrieveAllReviewItems].count;
+    long ntotallearnqueuecount = [_dm getAllLearnItems].count;
     return ndeckcount != _previousdeckcount || ntotalcardcount != _totalcardcount || ntotalreviewqueuecount != _totalreviewqueuecount || ntotallearnqueuecount != _totallearnqueuecount;
 }
 
 - (void)setNewCards {
-    NSArray *decks = [DeckManager.sharedInstance retrieveDecks];
+    NSArray *decks = [_dm retrieveDecks];
     for (NSManagedObject *deck in decks) {
         NSDate *nextdate = [NSDate dateWithTimeIntervalSince1970:((NSNumber *)[deck valueForKey:@"nextLearnInterval"]).doubleValue];
         if (nextdate.timeIntervalSinceNow <= 0) {
-            [DeckManager.sharedInstance setandretrieveLearnItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
+            [_dm setandretrieveLearnItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
         }
     }
 }
