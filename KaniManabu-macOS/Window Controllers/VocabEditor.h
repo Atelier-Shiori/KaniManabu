@@ -14,7 +14,6 @@
 @property (strong) IBOutlet NSTextField *englishmeaning;
 @property (strong) IBOutlet NSTextField *altmeanings;
 @property (strong) IBOutlet NSTextField *kana;
-@property (strong) IBOutlet NSTextField *kanareadings;
 @property (strong) IBOutlet NSTextView *notes;
 @property (strong) IBOutlet NSTextField *contextsentence1;
 @property (strong) IBOutlet NSTextField *englishsentence1;

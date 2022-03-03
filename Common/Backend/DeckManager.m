@@ -291,12 +291,12 @@
                 }
             }
         }
-        if (!learningmore) {
-            [self setLearnDateForDeckUUID:uuid setToday:NO];
-        }
         [_moc performBlockAndWait:^{
             [_moc save:nil];
         }];
+        if (!learningmore) {
+            [self setLearnDateForDeckUUID:uuid setToday:NO];
+        }
     }
     return learnqueue;
 }
@@ -317,6 +317,9 @@
         NSManagedObject *deck = decks[0];
         [deck setValue:today ? @(0) :@([NSCalendar.currentCalendar startOfDayForDate:[NSDate.date dateByAddingTimeInterval:86400]].timeIntervalSince1970) forKey:@"nextLearnInterval"];
     }
+    [_moc performBlockAndWait:^{
+        [_moc save:nil];
+    }];
 }
 
 - (NSDate *)getLearnDateForDeckUUID: (NSUUID *)uuid {

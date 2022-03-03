@@ -43,7 +43,7 @@
 
 - (bool)validateFields {
     // Check if meaning fields and reading fields have valid input
-    if (![AnswerCheck validateAlphaNumericString:_englishmeaning.stringValue] && ![AnswerCheck validateAlphaNumericString:_altmeanings.stringValue] && ![AnswerCheck validateKanaNumericString:_kana.stringValue] && ![AnswerCheck validateKanaNumericString:_kanareadings.stringValue]) {
+    if (![AnswerCheck validateAlphaNumericString:_englishmeaning.stringValue] && ![AnswerCheck validateAlphaNumericString:_altmeanings.stringValue] && ![AnswerCheck validateKanaNumericString:_kana.stringValue]) {
         return true;
     }
     return false;
@@ -66,13 +66,8 @@
     [self.window close];
 }
 
-- (IBAction)useKanaReadings:(id)sender {
-    _kanareadings.stringValue = _kana.stringValue;
-    [self textDidChange:nil];
-}
-
 - (void)textDidChange:(NSNotification *)aNotification {
-    if (_japaneseword.stringValue.length > 0 && _englishmeaning.stringValue.length > 0 && _kana.stringValue.length > 0 && _kanareadings.stringValue.length > 0) {
+    if (_japaneseword.stringValue.length > 0 && _englishmeaning.stringValue.length > 0 && _kana.stringValue.length > 0) {
         _savebtn.enabled = YES;
     }
     else {
@@ -91,7 +86,6 @@
     _englishmeaning.stringValue = dict[@"english"];
     _altmeanings.stringValue = dict[@"altmeaning"] != [NSNull null] ? dict[@"altmeaning"] : @"";
     _kana.stringValue = dict[@"kanaWord"];
-    _kanareadings.stringValue = dict[@"reading"];
     _notes.string = dict[@"notes"] != [NSNull null] ? dict[@"notes"] : @"";
     _contextsentence1.stringValue = dict[@"contextsentence1"] != [NSNull null] ? dict[@"contextsentence1"] : @"";
     _contextsentence2.stringValue = dict[@"contextsentence2"] != [NSNull null] ? dict[@"contextsentence2"] : @"";
@@ -110,7 +104,7 @@
     dict[@"english"] = _englishmeaning.stringValue;
     dict[@"altmeaning"] = _altmeanings.stringValue;
     dict[@"kanaWord"] = _kana.stringValue;
-    dict[@"reading"] = _kanareadings.stringValue;
+    dict[@"reading"] = _kana.stringValue;
     dict[@"notes"] = _notes.string;
     dict[@"contextsentence1"] = _contextsentence1.stringValue;
     dict[@"contextsentence2"] = _contextsentence2.stringValue;

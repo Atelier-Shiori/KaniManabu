@@ -19,7 +19,6 @@
                 <outlet property="existsonwanikani" destination="hAM-r1-tP2" id="j96-eY-pc6"/>
                 <outlet property="japaneseword" destination="yOh-lT-ej8" id="Lga-Gw-qdj"/>
                 <outlet property="kana" destination="p3x-6C-MUH" id="jkM-Pb-gYq"/>
-                <outlet property="kanareadings" destination="DTV-rQ-Nd7" id="lo2-Wm-mor"/>
                 <outlet property="notes" destination="jbJ-8c-YuC" id="7di-3D-r7h"/>
                 <outlet property="savebtn" destination="A31-8c-vb1" id="pcw-Mb-kGM"/>
                 <outlet property="savestatus" destination="hgK-Za-Uqu" id="hEA-f3-XMC"/>
@@ -32,14 +31,14 @@
         <window title="VocabEditor" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="643" y="490" width="480" height="569"/>
+            <rect key="contentRect" x="643" y="490" width="480" height="517"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="569"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="517"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3OS-e5-lcD">
-                        <rect key="frame" x="40" y="531" width="133" height="16"/>
+                        <rect key="frame" x="40" y="479" width="133" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Japanese Word:" id="aiH-bE-WBq">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -48,7 +47,7 @@
                         </textFieldCell>
                     </textField>
                     <textField identifier="japaneseword" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yOh-lT-ej8">
-                        <rect key="frame" x="179" y="528" width="230" height="21"/>
+                        <rect key="frame" x="179" y="476" width="230" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="UzK-Ga-KDo">
                             <font key="font" metaFont="system"/>
@@ -57,7 +56,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HFM-ij-cBm">
-                        <rect key="frame" x="40" y="502" width="133" height="16"/>
+                        <rect key="frame" x="40" y="450" width="133" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="English Meaning:" id="dj8-eg-Bad">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -66,7 +65,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mnd-Uo-yVe">
-                        <rect key="frame" x="179" y="499" width="230" height="21"/>
+                        <rect key="frame" x="179" y="447" width="230" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="aag-gG-wCJ">
                             <font key="font" metaFont="system"/>
@@ -75,7 +74,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s3l-eW-kCv">
-                        <rect key="frame" x="40" y="473" width="133" height="16"/>
+                        <rect key="frame" x="40" y="421" width="133" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Alt. Meanings:" id="3DP-w7-0QA">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -84,7 +83,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eZL-ZM-dZA">
-                        <rect key="frame" x="179" y="470" width="230" height="21"/>
+                        <rect key="frame" x="179" y="418" width="230" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="yQN-zd-sBD">
                             <font key="font" metaFont="system"/>
@@ -93,7 +92,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5yG-Or-0z8">
-                        <rect key="frame" x="40" y="444" width="133" height="16"/>
+                        <rect key="frame" x="40" y="392" width="133" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Kana:" id="6g8-E7-hVf">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -102,27 +101,9 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p3x-6C-MUH">
-                        <rect key="frame" x="179" y="441" width="230" height="21"/>
+                        <rect key="frame" x="179" y="389" width="230" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="PQx-o6-qGd">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xr2-HX-cgV">
-                        <rect key="frame" x="40" y="415" width="133" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Kana Reading:" id="afi-6F-YyQ">
-                            <font key="font" usesAppearanceFont="YES"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DTV-rQ-Nd7">
-                        <rect key="frame" x="179" y="412" width="230" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="dhV-HS-elV">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -327,19 +308,8 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nds-5Y-CVp">
-                        <rect key="frame" x="172" y="377" width="162" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Use Kana as Reading" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iDz-qE-NY9">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="useKanaReadings:" target="-2" id="K89-x4-BAC"/>
-                        </connections>
-                    </button>
                     <imageView hidden="YES" toolTip="Vocabulary exists on WaniKani" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hAM-r1-tP2">
-                        <rect key="frame" x="417" y="528" width="22" height="22"/>
+                        <rect key="frame" x="417" y="476" width="22" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSCaution" id="cH9-hY-PeE"/>
                     </imageView>
@@ -348,7 +318,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="159" y="158.5"/>
+            <point key="canvasLocation" x="159" y="132.5"/>
         </window>
     </objects>
     <resources>
