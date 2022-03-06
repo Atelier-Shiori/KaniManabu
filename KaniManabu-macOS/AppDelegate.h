@@ -9,8 +9,12 @@
 #import <CoreData/CoreData.h>
 #import "MainWindowController.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+#if defined(AppStore)
+#import "RCPurchases.h"
+#else
+#endif
 
+@interface AppDelegate : NSObject <NSApplicationDelegate>
 @property (readonly, strong) NSPersistentCloudKitContainer *persistentContainer;
 @property (readonly, strong) NSPersistentContainer *wanikaniContainer;
 @property (readonly, strong) NSPersistentContainer *audioContainer;

@@ -35,7 +35,7 @@
     [MSACAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
 }
 - (IBAction)viewprivacypolicy:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://malupdaterosx.moe/kanimanabu/privacy-policy/"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://kanimanabu.app/privacy-policy/"]];
 }
 - (IBAction)removeorphaned:(id)sender {
     NSAlert *alert = [NSAlert new];

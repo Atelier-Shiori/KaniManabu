@@ -43,11 +43,7 @@
     defaultValues[@"sendanalytics"] = @YES;
     defaultValues[@"ttsvoice"] = @(0);
     defaultValues[@"usekanimanabuime"] = @YES;
-#if defined(AppStore)
-    defaultValues[@"donated"] = @YES;
-#else
     defaultValues[@"donated"] = @NO;
-#endif
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];
@@ -81,6 +77,8 @@
     [MSACCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
     [MSACAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
 #if defined(AppStore)
+    RCPurchases.logLevel = RCLogLevelDebug;
+    [RCPurchases configureWithAPIKey:@"appl_BxccKpOFWMGPCHHzUFtVCqRInNx"];
 #else
     [LicenseManager.sharedInstance checkLicenseWithWindow:_mwc.window];
 #endif
@@ -125,7 +123,7 @@
     if (!_aboutWindowController) {
         _aboutWindowController = [PFAboutWindowController new];
     }
-    (self.aboutWindowController).appURL = [[NSURL alloc] initWithString:@"https://malupdaterosx.moe/kanimanabu/"];
+    (self.aboutWindowController).appURL = [[NSURL alloc] initWithString:@"https://kanimanabu.app"];
     NSMutableString *copyrightstr = [NSMutableString new];
     NSDictionary *bundleDict = [NSBundle mainBundle].infoDictionary;
     [copyrightstr appendFormat:@"%@ \r\r",bundleDict[@"NSHumanReadableCopyright"]];

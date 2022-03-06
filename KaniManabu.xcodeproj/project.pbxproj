@@ -11,6 +11,8 @@
 		151F3AB7278D07AB00953ECD /* DeckViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3AB6278D07AB00953ECD /* DeckViewCell.m */; };
 		151F3ABD278E23CD00953ECD /* KanjiEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3ABB278E23CD00953ECD /* KanjiEditor.m */; };
 		151F3AC2278E23D800953ECD /* KanaEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3AC0278E23D800953ECD /* KanaEditor.m */; };
+		152E08E227D184ED00699E98 /* RevenueCat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152E08CE27D184ED00699E98 /* RevenueCat.framework */; };
+		152E08E427D1853000699E98 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152E08E327D1853000699E98 /* StoreKit.framework */; };
 		153E9F0D2795CF170094A306 /* CSVLoadingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */; };
 		153E9F0E2795CF170094A306 /* CSVLoadingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */; };
 		153FFE742794F33500D481A2 /* CFobLicVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 153FFE702794F33500D481A2 /* CFobLicVerifier.m */; };
@@ -411,6 +413,8 @@
 		151F3ABB278E23CD00953ECD /* KanjiEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KanjiEditor.m; sourceTree = "<group>"; };
 		151F3ABF278E23D800953ECD /* KanaEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KanaEditor.h; sourceTree = "<group>"; };
 		151F3AC0278E23D800953ECD /* KanaEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KanaEditor.m; sourceTree = "<group>"; };
+		152E08CE27D184ED00699E98 /* RevenueCat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RevenueCat.framework; path = "Dependencies/macOS Only/RevenueCat.framework"; sourceTree = "<group>"; };
+		152E08E327D1853000699E98 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		153E9F0A2795CF170094A306 /* CSVLoadingWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVLoadingWindow.h; sourceTree = "<group>"; };
 		153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSVLoadingWindow.m; sourceTree = "<group>"; };
 		153FFE6E2794F33500D481A2 /* CFobError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFobError.h; sourceTree = "<group>"; };
@@ -570,8 +574,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				152E08E227D184ED00699E98 /* RevenueCat.framework in Frameworks */,
 				157329182794B9C400587C05 /* AVFoundation.framework in Frameworks */,
 				157329192794B9C400587C05 /* AppCenter.framework in Frameworks */,
+				152E08E427D1853000699E98 /* StoreKit.framework in Frameworks */,
 				1573291A2794B9C400587C05 /* AFNetworking.framework in Frameworks */,
 				FF55FF4A27BD764200EE389D /* MMMarkdown.framework in Frameworks */,
 				1573291B2794B9C400587C05 /* QuartzCore.framework in Frameworks */,
@@ -706,6 +712,7 @@
 				15C52D5E279237E3002ADE2B /* AppCenter.framework */,
 				15C52D66279237E3002ADE2B /* AppCenterAnalytics.framework */,
 				15C52D67279237E3002ADE2B /* AppCenterCrashes.framework */,
+				152E08CE27D184ED00699E98 /* RevenueCat.framework */,
 				15C52D7927947757002ADE2B /* Sparkle.framework */,
 			);
 			name = macOS;
@@ -898,6 +905,7 @@
 		FF708877278C83A000DF399E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				152E08E327D1853000699E98 /* StoreKit.framework */,
 				FF173DB927B6924900E5CD37 /* AudioToolbox.framework */,
 				15706CB327976509004D639B /* CloudKit.framework */,
 				FF1BE8192790AAC200CA6A99 /* UserNotifications.framework */,
@@ -1600,6 +1608,7 @@
 					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
 					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
 					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
+					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1635,6 +1644,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
 					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
 					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
 					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",

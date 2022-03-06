@@ -216,7 +216,7 @@
         for (NSDictionary *patron in responseObject) {
             [tmpstr appendFormat:@"<li>%@</li>", patron[@"name"]];
         }
-        [tmpstr appendString:@"</ul><p>You can learn more on how to become a Patron on <a href='https://malupdaterosx.moe'>our website</a></p>"];
+        [tmpstr appendString:@"</ul><p>You can learn more on how to become a Patron on <a href='https://kanimanabu.app/pricing'>our website</a></p>"];
         completionHandler([tmpstr convertHTMLtoAttStr]);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         completionHandler([(@"Unable to load Patrons list") convertHTMLtoAttStr]);
