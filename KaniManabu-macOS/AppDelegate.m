@@ -15,6 +15,7 @@
 #import "DeckMonitor.h"
 
 #if defined(AppStore)
+#import "SubscriptionManager.h"
 #else
 #import "LicenseManager.h"
 #endif
@@ -77,8 +78,15 @@
     [MSACCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
     [MSACAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
 #if defined(AppStore)
+    NSUUID *userid = [NSUbiquitousKeyValueStore.defaultStore valueForKey:@"RevenueCatUserID"];
+    if (!userid) {
+        // Set key in iCloud for RevenueCat to use
+        userid = [NSUUID new];
+        [NSUbiquitousKeyValueStore.defaultStore setValue:userid forKey:@"RevenueCatUserID"];
+        [NSUbiquitousKeyValueStore.defaultStore synchronize];
+    }
     RCPurchases.logLevel = RCLogLevelDebug;
-    [RCPurchases configureWithAPIKey:@"appl_BxccKpOFWMGPCHHzUFtVCqRInNx"];
+    [RCPurchases configureWithAPIKey:@"appl_tSCAgCTfPHikGbKqyzZgHXxBVcC"];
 #else
     [LicenseManager.sharedInstance checkLicenseWithWindow:_mwc.window];
 #endif
@@ -395,4 +403,12 @@
 
     return NSTerminateNow;
 }
+
+#pragma mark RevenueCat
+#if defined(AppStore)
+- (void)purchases:(RCPurchases *)purchases receivedUpdatedCustomerInfo:(RCCustomerInfo *)customerInfo {
+    [SubscriptionManager setDonationStateWithCustomer:customerInfo];
+}
+#else
+#endif
 @end

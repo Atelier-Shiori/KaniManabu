@@ -497,7 +497,10 @@
         }];
         for (NSManagedObject *obj in cards) {
             NSArray *keys = obj.entity.attributesByName.allKeys;
-            NSMutableDictionary *tmpdict = [NSMutableDictionary dictionaryWithDictionary:[obj dictionaryWithValuesForKeys:keys]];
+            __block NSMutableDictionary *tmpdict;
+            [_moc performBlockAndWait:^{
+                tmpdict = [NSMutableDictionary dictionaryWithDictionary:[obj dictionaryWithValuesForKeys:keys]];
+            }];
             tmpdict[@"managedObject"] = obj;
             tmpdict[@"cardtype"] = @(type);
             [tmpcardslist addObject:tmpdict];

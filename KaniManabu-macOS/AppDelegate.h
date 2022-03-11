@@ -10,11 +10,11 @@
 #import "MainWindowController.h"
 
 #if defined(AppStore)
-#import "RCPurchases.h"
+#import <RevenueCat/RevenueCat-Swift.h>
 #else
 #endif
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, RCPurchasesDelegate>
 @property (readonly, strong) NSPersistentCloudKitContainer *persistentContainer;
 @property (readonly, strong) NSPersistentContainer *wanikaniContainer;
 @property (readonly, strong) NSPersistentContainer *audioContainer;

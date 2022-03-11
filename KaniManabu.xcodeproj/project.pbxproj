@@ -11,7 +11,6 @@
 		151F3AB7278D07AB00953ECD /* DeckViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3AB6278D07AB00953ECD /* DeckViewCell.m */; };
 		151F3ABD278E23CD00953ECD /* KanjiEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3ABB278E23CD00953ECD /* KanjiEditor.m */; };
 		151F3AC2278E23D800953ECD /* KanaEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 151F3AC0278E23D800953ECD /* KanaEditor.m */; };
-		152E08E227D184ED00699E98 /* RevenueCat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152E08CE27D184ED00699E98 /* RevenueCat.framework */; };
 		152E08E427D1853000699E98 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152E08E327D1853000699E98 /* StoreKit.framework */; };
 		153E9F0D2795CF170094A306 /* CSVLoadingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */; };
 		153E9F0E2795CF170094A306 /* CSVLoadingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */; };
@@ -192,6 +191,10 @@
 		FFA14B7B278EF1560038B9C2 /* CardEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA14B7A278EF1560038B9C2 /* CardEditor.m */; };
 		FFA14B85278F04E10038B9C2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA14B84278F04E10038B9C2 /* AVFoundation.framework */; };
 		FFA14B90278F0F8C0038B9C2 /* NSTableViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA14B8F278F0F8C0038B9C2 /* NSTableViewAction.m */; };
+		FFA58AF127DBB9A90091146D /* SubscriptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58AF027DBB9A90091146D /* SubscriptionManager.m */; };
+		FFA58AF227DBB9A90091146D /* SubscriptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58AF027DBB9A90091146D /* SubscriptionManager.m */; };
+		FFA58B0627DBC7970091146D /* RevenueCat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152E08CE27D184ED00699E98 /* RevenueCat.framework */; };
+		FFA58B0727DBC7970091146D /* RevenueCat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 152E08CE27D184ED00699E98 /* RevenueCat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFB6145C278CB8AF001E5FAA /* DeckBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */; };
 		FFBE3C2E278DEF67003D3F06 /* SRSLevelValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C2D278DEF67003D3F06 /* SRSLevelValueTransformer.m */; };
 		FFBE3C31278DF05F003D3F06 /* UnixDatetoNSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C30278DF05F003D3F06 /* UnixDatetoNSDate.m */; };
@@ -367,6 +370,7 @@
 				FF16A0EE27B5B1F900AA385E /* MicrosoftCognitiveServicesSpeech.xcframework in Embed Frameworks */,
 				FF55FF4B27BD764200EE389D /* MMMarkdown.framework in Embed Frameworks */,
 				157329382794B9C400587C05 /* MASPreferences.framework in Embed Frameworks */,
+				FFA58B0727DBC7970091146D /* RevenueCat.framework in Embed Frameworks */,
 				157329392794B9C400587C05 /* AFNetworking.framework in Embed Frameworks */,
 				15F77948279F4B5500982BF9 /* SAMKeychain.framework in Embed Frameworks */,
 				1573293A2794B9C400587C05 /* PXSourceList.framework in Embed Frameworks */,
@@ -548,6 +552,8 @@
 		FFA14B84278F04E10038B9C2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FFA14B8E278F0F8C0038B9C2 /* NSTableViewAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTableViewAction.h; sourceTree = "<group>"; };
 		FFA14B8F278F0F8C0038B9C2 /* NSTableViewAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTableViewAction.m; sourceTree = "<group>"; };
+		FFA58AEF27DBB9A90091146D /* SubscriptionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubscriptionManager.h; sourceTree = "<group>"; };
+		FFA58AF027DBB9A90091146D /* SubscriptionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubscriptionManager.m; sourceTree = "<group>"; };
 		FFB6145A278CB8AF001E5FAA /* DeckBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckBrowser.h; sourceTree = "<group>"; };
 		FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckBrowser.m; sourceTree = "<group>"; };
 		FFBE3C2C278DEF67003D3F06 /* SRSLevelValueTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRSLevelValueTransformer.h; sourceTree = "<group>"; };
@@ -574,9 +580,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				152E08E227D184ED00699E98 /* RevenueCat.framework in Frameworks */,
 				157329182794B9C400587C05 /* AVFoundation.framework in Frameworks */,
 				157329192794B9C400587C05 /* AppCenter.framework in Frameworks */,
+				FFA58B0627DBC7970091146D /* RevenueCat.framework in Frameworks */,
 				152E08E427D1853000699E98 /* StoreKit.framework in Frameworks */,
 				1573291A2794B9C400587C05 /* AFNetworking.framework in Frameworks */,
 				FF55FF4A27BD764200EE389D /* MMMarkdown.framework in Frameworks */,
@@ -702,6 +708,8 @@
 				FF16A09027B56A9700AA385E /* SpeechSynthesis.m */,
 				FF173E4A27BA791700E5CD37 /* DeckMonitor.h */,
 				FF173E4B27BA791700E5CD37 /* DeckMonitor.m */,
+				FFA58AEF27DBB9A90091146D /* SubscriptionManager.h */,
+				FFA58AF027DBB9A90091146D /* SubscriptionManager.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -1305,6 +1313,7 @@
 				157328F32794B9C400587C05 /* PFAboutWindowController.m in Sources */,
 				157328F52794B9C400587C05 /* PaRomajiKanaConverter.m in Sources */,
 				157328F62794B9C400587C05 /* KanaEditor.m in Sources */,
+				FFA58AF127DBB9A90091146D /* SubscriptionManager.m in Sources */,
 				157328F72794B9C400587C05 /* LearnWindowController.m in Sources */,
 				157328F82794B9C400587C05 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				157328F92794B9C400587C05 /* KanjiEditor.m in Sources */,
@@ -1412,6 +1421,7 @@
 				FFD983942797426C0017730A /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				FF16A09327B56A9700AA385E /* SpeechSynthesis.m in Sources */,
 				FFD9838A279742420017730A /* CSVDeckExporter.m in Sources */,
+				FFA58AF227DBB9A90091146D /* SubscriptionManager.m in Sources */,
 				FF16A0B527B57BDF00AA385E /* AudioContainer.xcdatamodeld in Sources */,
 				FFD98391279742610017730A /* NSString+RomajiKanaConvert.m in Sources */,
 				FFD98395279742710017730A /* string_score.c in Sources */,
@@ -1609,6 +1619,7 @@
 					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
 					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
 					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
+					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1644,6 +1655,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
 					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
 					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
 					"$(PROJECT_DIR)/Dependencies/macOS\\ Only",
