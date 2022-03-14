@@ -6,6 +6,7 @@
 //
 
 #import "SubscriptionManager.h"
+#import "DeckManager.h"
 
 @implementation SubscriptionManager
 + (void)getOfferingsWithcompletionHandler:(void (^)(bool success, RCOfferings *offerings)) completionHandler {
@@ -59,5 +60,24 @@
             completionHandler(true, customerinfo);
         }
     }];
+}
++ (bool)checkDeckLimit:(bool)adding {
+    bool donated = [NSUserDefaults.standardUserDefaults boolForKey:@"donated"];
+    if (donated) {
+        return true;
+    }
+    else {
+        if (adding) {
+            if ([DeckManager.sharedInstance retrieveDecks].count < 3) {
+                return true;
+            }
+        }
+        else {
+            if ([DeckManager.sharedInstance retrieveDecks].count <= 3) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 @end

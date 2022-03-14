@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -151,9 +151,6 @@
                                 <menuItem title="Otoya (Male)" tag="1" id="mtI-RV-TFw"/>
                                 <menuItem title="Microsoft Speech" tag="2" id="e3i-8b-wpg">
                                     <modifierMask key="keyEquivalentModifierMask"/>
-                                    <connections>
-                                        <binding destination="AMl-7q-YBz" name="enabled" keyPath="values.donated" id="Rg9-n8-60I"/>
-                                    </connections>
                                 </menuItem>
                             </items>
                         </menu>

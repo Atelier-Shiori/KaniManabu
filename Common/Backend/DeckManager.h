@@ -53,6 +53,7 @@ typedef NS_ENUM(int,NewCardReviewMode) {
 - (void)resetCardToEnlightenedWithCardUUID:(NSUUID *)uuid withType:(DeckType)type ;
 - (void)togglesuspendCardForCardUUID:(NSUUID *)uuid withType:(int)type;
 - (void)removeOrphanedCards;
+- (bool)checkiCloudLoggedIn;
 @end
 
 

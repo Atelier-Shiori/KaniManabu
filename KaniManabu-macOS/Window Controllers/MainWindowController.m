@@ -20,6 +20,7 @@
 #import "DeckOptions.h"
 #import "CSVDeckExporter.h"
 #if defined(AppStore)
+#import "SubscriptionManager.h"
 #else
 #import "LicenseManager.h"
 #endif
@@ -600,7 +601,7 @@
 
 - (bool)checkDeckLimit:(bool)adding {
 #if defined(AppStore)
-    return true;
+    return [SubscriptionManager checkDeckLimit:adding];
 #else
     return [LicenseManager.sharedInstance checkDeckLimit:adding];
 #endif

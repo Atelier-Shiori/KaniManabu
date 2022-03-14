@@ -14,6 +14,7 @@
                 <outlet property="ankishowanswerbtn" destination="daM-Ci-IZE" id="mue-WG-606"/>
                 <outlet property="ankiwrongsrsstagelbl" destination="UOg-C4-xae" id="qPV-1T-evv"/>
                 <outlet property="answerbtn" destination="fDg-we-m1R" id="GnJ-ZY-X90"/>
+                <outlet property="answerprompteffectview" destination="9TO-A9-VAN" id="kPA-cV-E1M"/>
                 <outlet property="answerstatus" destination="fdh-O3-be9" id="CFz-YO-xBG"/>
                 <outlet property="answertextfield" destination="V0c-Ys-uF1" id="h3C-lA-M55"/>
                 <outlet property="correctitem" destination="yHU-Qo-khj" id="qsO-KN-s0Q"/>
@@ -23,8 +24,10 @@
                 <outlet property="lasttentb" destination="Ppm-jZ-rOU" id="gYq-Co-zVP"/>
                 <outlet property="lasttentoolbaritem" destination="3nf-1B-Tty" id="Xb6-Sk-f4k"/>
                 <outlet property="pendingitem" destination="djS-pX-nPo" id="nyq-ZL-F0f"/>
+                <outlet property="playvoice" destination="mhq-6f-tbW" id="axJ-xI-Na6"/>
                 <outlet property="popovervalidationmessage" destination="nxl-sv-4QS" id="Zge-Do-S9b"/>
                 <outlet property="questionprompt" destination="qWw-XL-1r9" id="Kpx-V5-O1M"/>
+                <outlet property="questionvisualeffectview" destination="Xfr-wC-NeZ" id="tO3-dS-RNW"/>
                 <outlet property="scoreitem" destination="LMg-pa-VZc" id="nTp-g3-vhR"/>
                 <outlet property="srslevellabel" destination="BJP-Z4-Toa" id="zJ7-qc-Y9z"/>
                 <outlet property="validationmessage" destination="Tp6-pm-EyI" id="hjp-Q6-bde"/>
@@ -45,7 +48,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="514" height="384"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Xfr-wC-NeZ">
+                    <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="9TO-A9-VAN">
+                        <rect key="frame" x="0.0" y="59" width="514" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-XL-1r9">
+                                <rect key="frame" x="-2" y="8" width="518" height="28"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="test" id="iGu-Z2-pCe">
+                                    <font key="font" metaFont="system" size="24"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </visualEffectView>
+                    <visualEffectView wantsLayer="YES" fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Xfr-wC-NeZ">
                         <rect key="frame" x="0.0" y="99" width="514" height="285"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -89,15 +107,6 @@
                         <connections>
                             <outlet property="delegate" destination="-2" id="h43-Ym-ayT"/>
                         </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qWw-XL-1r9">
-                        <rect key="frame" x="-2" y="58" width="518" height="37"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="iGu-Z2-pCe">
-                            <font key="font" metaFont="system" size="24"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDg-we-m1R">
                         <rect key="frame" x="466" y="11" width="48" height="48"/>
@@ -195,6 +204,21 @@
                             <action selector="viewitem:" target="-2" id="K6Q-ke-GJU"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="B9A5F843-D06D-4E2C-BAC0-03A992A497BA" label="Play Voice" paletteLabel="Play Voice" toolTip="Play Voice" image="play.circle" catalog="system" bordered="YES" id="mhq-6f-tbW">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="ZpW-6S-gVI">
+                            <rect key="frame" x="12" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="play.circle" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ety-xx-wB7">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="playvoice:" target="-2" id="FpJ-1U-7qg"/>
+                        </connections>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Uh9-GM-qy3"/>
                     <toolbarItem implicitItemIdentifier="2025E579-9FAA-4C11-BA1C-3F408C451B3A" label="score" paletteLabel="score" image="hand.thumbsup" catalog="system" title="0%" sizingBehavior="auto" id="qrJ-eQ-MpB">
                         <nil key="toolTip"/>
@@ -233,6 +257,7 @@
                 <defaultToolbarItems>
                     <toolbarItem reference="3nf-1B-Tty"/>
                     <toolbarItem reference="bZn-3E-AeB"/>
+                    <toolbarItem reference="mhq-6f-tbW"/>
                     <toolbarItem reference="Uh9-GM-qy3"/>
                     <toolbarItem reference="qrJ-eQ-MpB"/>
                     <toolbarItem reference="YQY-Yi-zpT"/>
@@ -343,6 +368,7 @@
         <image name="clock" catalog="system" width="15" height="15"/>
         <image name="eye" catalog="system" width="20" height="13"/>
         <image name="hand.thumbsup" catalog="system" width="16" height="17"/>
+        <image name="play.circle" catalog="system" width="15" height="15"/>
         <image name="tray" catalog="system" width="19" height="13"/>
     </resources>
 </document>

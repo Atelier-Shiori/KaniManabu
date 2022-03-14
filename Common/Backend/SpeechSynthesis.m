@@ -6,6 +6,7 @@
 //
 
 #import "SpeechSynthesis.h"
+#import "MicrosoftSpeechConstants.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MicrosoftCognitiveServicesSpeech/SPXSpeechApi.h>
 #import <SAMKeychain/SAMKeychain.h>
@@ -109,9 +110,15 @@
 - (void)getSpeechDataFromText:(NSString *)text completionHandler:(void (^)(bool success, NSData *audiodata)) completionHandler {
     NSString *skey = [self getSubscriptionKey];
     if (!skey) {
-        // No Subscription Key
-        completionHandler(false, nil);
-        return;
+        if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
+            // User has a subscription, use built in subscription key
+            skey = subscriptionKey;
+        }
+        else {
+            // No Subscription Key
+            completionHandler(false, nil);
+            return;
+        }
     }
     // Configure the speech synthesizer and output location
     SPXSpeechConfiguration *configuration = [[SPXSpeechConfiguration alloc] initWithSubscription:skey region:@"eastus"];

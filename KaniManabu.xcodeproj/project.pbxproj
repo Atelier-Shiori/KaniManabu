@@ -192,9 +192,18 @@
 		FFA14B85278F04E10038B9C2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA14B84278F04E10038B9C2 /* AVFoundation.framework */; };
 		FFA14B90278F0F8C0038B9C2 /* NSTableViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA14B8F278F0F8C0038B9C2 /* NSTableViewAction.m */; };
 		FFA58AF127DBB9A90091146D /* SubscriptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58AF027DBB9A90091146D /* SubscriptionManager.m */; };
-		FFA58AF227DBB9A90091146D /* SubscriptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58AF027DBB9A90091146D /* SubscriptionManager.m */; };
 		FFA58B0627DBC7970091146D /* RevenueCat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 152E08CE27D184ED00699E98 /* RevenueCat.framework */; };
 		FFA58B0727DBC7970091146D /* RevenueCat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 152E08CE27D184ED00699E98 /* RevenueCat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FFA58B0B27DEB30E0091146D /* SubscriptionPref.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58B0927DEB30E0091146D /* SubscriptionPref.m */; };
+		FFA58B0C27DEB30E0091146D /* SubscriptionPref.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58B0927DEB30E0091146D /* SubscriptionPref.m */; };
+		FFA58B0D27DEB30E0091146D /* SubscriptionPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA58B0A27DEB30E0091146D /* SubscriptionPref.xib */; };
+		FFA58B0E27DEB30E0091146D /* SubscriptionPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA58B0A27DEB30E0091146D /* SubscriptionPref.xib */; };
+		FFA58B1227DF60590091146D /* SubscriptionPickerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58B1027DF60590091146D /* SubscriptionPickerWindow.m */; };
+		FFA58B1327DF60590091146D /* SubscriptionPickerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA58B1127DF60590091146D /* SubscriptionPickerWindow.xib */; };
+		FFA58B1427DFA4580091146D /* SubscriptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58AF027DBB9A90091146D /* SubscriptionManager.m */; };
+		FFA58B1727DFB61B0091146D /* MicrosoftSpeechConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58B1627DFB61B0091146D /* MicrosoftSpeechConstants.m */; };
+		FFA58B1827DFB61B0091146D /* MicrosoftSpeechConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58B1627DFB61B0091146D /* MicrosoftSpeechConstants.m */; };
+		FFA58B1927DFB61B0091146D /* MicrosoftSpeechConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58B1627DFB61B0091146D /* MicrosoftSpeechConstants.m */; };
 		FFB6145C278CB8AF001E5FAA /* DeckBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */; };
 		FFBE3C2E278DEF67003D3F06 /* SRSLevelValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C2D278DEF67003D3F06 /* SRSLevelValueTransformer.m */; };
 		FFBE3C31278DF05F003D3F06 /* UnixDatetoNSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C30278DF05F003D3F06 /* UnixDatetoNSDate.m */; };
@@ -554,6 +563,14 @@
 		FFA14B8F278F0F8C0038B9C2 /* NSTableViewAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTableViewAction.m; sourceTree = "<group>"; };
 		FFA58AEF27DBB9A90091146D /* SubscriptionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubscriptionManager.h; sourceTree = "<group>"; };
 		FFA58AF027DBB9A90091146D /* SubscriptionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubscriptionManager.m; sourceTree = "<group>"; };
+		FFA58B0827DEB30E0091146D /* SubscriptionPref.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubscriptionPref.h; sourceTree = "<group>"; };
+		FFA58B0927DEB30E0091146D /* SubscriptionPref.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubscriptionPref.m; sourceTree = "<group>"; };
+		FFA58B0A27DEB30E0091146D /* SubscriptionPref.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionPref.xib; sourceTree = "<group>"; };
+		FFA58B0F27DF60590091146D /* SubscriptionPickerWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubscriptionPickerWindow.h; sourceTree = "<group>"; };
+		FFA58B1027DF60590091146D /* SubscriptionPickerWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubscriptionPickerWindow.m; sourceTree = "<group>"; };
+		FFA58B1127DF60590091146D /* SubscriptionPickerWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionPickerWindow.xib; sourceTree = "<group>"; };
+		FFA58B1527DFB61B0091146D /* MicrosoftSpeechConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MicrosoftSpeechConstants.h; sourceTree = "<group>"; };
+		FFA58B1627DFB61B0091146D /* MicrosoftSpeechConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MicrosoftSpeechConstants.m; sourceTree = "<group>"; };
 		FFB6145A278CB8AF001E5FAA /* DeckBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckBrowser.h; sourceTree = "<group>"; };
 		FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckBrowser.m; sourceTree = "<group>"; };
 		FFBE3C2C278DEF67003D3F06 /* SRSLevelValueTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRSLevelValueTransformer.h; sourceTree = "<group>"; };
@@ -681,6 +698,9 @@
 				FF778DB9279EEB5F0055AF2D /* WaniKaniPreferences.h */,
 				FF778DBA279EEB5F0055AF2D /* WaniKaniPreferences.m */,
 				FF173DD527B69E0600E5CD37 /* WaniKaniPreferences.xib */,
+				FFA58B0827DEB30E0091146D /* SubscriptionPref.h */,
+				FFA58B0927DEB30E0091146D /* SubscriptionPref.m */,
+				FFA58B0A27DEB30E0091146D /* SubscriptionPref.xib */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -710,6 +730,8 @@
 				FF173E4B27BA791700E5CD37 /* DeckMonitor.m */,
 				FFA58AEF27DBB9A90091146D /* SubscriptionManager.h */,
 				FFA58AF027DBB9A90091146D /* SubscriptionManager.m */,
+				FFA58B1527DFB61B0091146D /* MicrosoftSpeechConstants.h */,
+				FFA58B1627DFB61B0091146D /* MicrosoftSpeechConstants.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -826,6 +848,9 @@
 				153E9F0A2795CF170094A306 /* CSVLoadingWindow.h */,
 				153E9F0B2795CF170094A306 /* CSVLoadingWindow.m */,
 				FF173E0527B69E4100E5CD37 /* CSVLoadingWindow.xib */,
+				FFA58B0F27DF60590091146D /* SubscriptionPickerWindow.h */,
+				FFA58B1027DF60590091146D /* SubscriptionPickerWindow.m */,
+				FFA58B1127DF60590091146D /* SubscriptionPickerWindow.xib */,
 			);
 			path = "Window Controllers";
 			sourceTree = "<group>";
@@ -1244,6 +1269,7 @@
 				157329282794B9C400587C05 /* dsa_pub.pem in Resources */,
 				157329292794B9C400587C05 /* Credits.rtf in Resources */,
 				FF173DE327B69E1F00E5CD37 /* NewDeckDialog.xib in Resources */,
+				FFA58B1327DF60590091146D /* SubscriptionPickerWindow.xib in Resources */,
 				FF173DF727B69E3300E5CD37 /* CSVImportController.xib in Resources */,
 				FF173DEF27B69E2B00E5CD37 /* KanjiEditor.xib in Resources */,
 				FF173E0327B69E4100E5CD37 /* CSVLoadingWindow.xib in Resources */,
@@ -1253,6 +1279,7 @@
 				FF173DDB27B69E1700E5CD37 /* Learn.xib in Resources */,
 				157329312794B9C400587C05 /* MainMenu.xib in Resources */,
 				157329322794B9C400587C05 /* PFAboutWindow.xib in Resources */,
+				FFA58B0D27DEB30E0091146D /* SubscriptionPref.xib in Resources */,
 				FF173DD727B69E1300E5CD37 /* Review.xib in Resources */,
 				FF173DD327B69E0600E5CD37 /* WaniKaniPreferences.xib in Resources */,
 				FF173DEB27B69E2700E5CD37 /* VocabEditor.xib in Resources */,
@@ -1299,6 +1326,7 @@
 				FFD983772797415E0017730A /* LaunchScreen.storyboard in Resources */,
 				FFD983742797415E0017730A /* Assets.xcassets in Resources */,
 				FFD9836F2797415D0017730A /* Main.storyboard in Resources */,
+				FFA58B0E27DEB30E0091146D /* SubscriptionPref.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1329,6 +1357,7 @@
 				157329002794B9C400587C05 /* DeckBrowser.m in Sources */,
 				FF778DCA279EEC740055AF2D /* WaniKani.xcdatamodeld in Sources */,
 				157329012794B9C400587C05 /* GeneralPreferencesViewController.m in Sources */,
+				FFA58B1227DF60590091146D /* SubscriptionPickerWindow.m in Sources */,
 				157329022794B9C400587C05 /* DeckManager.m in Sources */,
 				157329032794B9C400587C05 /* SRScheduler.m in Sources */,
 				157329042794B9C400587C05 /* ReviewWindowController.m in Sources */,
@@ -1339,9 +1368,11 @@
 				157329082794B9C400587C05 /* MSWeakTimer.m in Sources */,
 				FF16A0B427B57BDF00AA385E /* AudioContainer.xcdatamodeld in Sources */,
 				157329092794B9C400587C05 /* DeckViewCell.m in Sources */,
+				FFA58B1827DFB61B0091146D /* MicrosoftSpeechConstants.m in Sources */,
 				1573290A2794B9C400587C05 /* CSVDeckExporter.m in Sources */,
 				1573290B2794B9C400587C05 /* string_score.c in Sources */,
 				1573290C2794B9C400587C05 /* CardEditor.m in Sources */,
+				FFA58B0B27DEB30E0091146D /* SubscriptionPref.m in Sources */,
 				1573290D2794B9C400587C05 /* KaniManabu.xcdatamodeld in Sources */,
 				1573290E2794B9C400587C05 /* ItemInfoWindowController.m in Sources */,
 				1573290F2794B9C400587C05 /* main.m in Sources */,
@@ -1395,6 +1426,7 @@
 				151F3AB7278D07AB00953ECD /* DeckViewCell.m in Sources */,
 				15CB506A27949A5000ECF326 /* CSVDeckExporter.m in Sources */,
 				15B122D9278CEBE900575A73 /* string_score.c in Sources */,
+				FFA58B1727DFB61B0091146D /* MicrosoftSpeechConstants.m in Sources */,
 				FFA14B7B278EF1560038B9C2 /* CardEditor.m in Sources */,
 				153FFE7E2794F72100D481A2 /* PatreonLicenseManager.m in Sources */,
 				FF708869278C7CDF00DF399E /* KaniManabu.xcdatamodeld in Sources */,
@@ -1421,11 +1453,12 @@
 				FFD983942797426C0017730A /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				FF16A09327B56A9700AA385E /* SpeechSynthesis.m in Sources */,
 				FFD9838A279742420017730A /* CSVDeckExporter.m in Sources */,
-				FFA58AF227DBB9A90091146D /* SubscriptionManager.m in Sources */,
 				FF16A0B527B57BDF00AA385E /* AudioContainer.xcdatamodeld in Sources */,
 				FFD98391279742610017730A /* NSString+RomajiKanaConvert.m in Sources */,
 				FFD98395279742710017730A /* string_score.c in Sources */,
 				FFD9838C279742490017730A /* NSNumberFormatterNumberOnly.m in Sources */,
+				FFA58B1927DFB61B0091146D /* MicrosoftSpeechConstants.m in Sources */,
+				FFA58B0C27DEB30E0091146D /* SubscriptionPref.m in Sources */,
 				FFD9838E279742530017730A /* DeckManager.m in Sources */,
 				FFD98396279742760017730A /* MSWeakTimer.m in Sources */,
 				FFD9837A2797415E0017730A /* main.m in Sources */,
@@ -1438,6 +1471,7 @@
 				FFD983662797415D0017730A /* AppDelegate.m in Sources */,
 				FFD98389279741D00017730A /* KaniManabu.xcdatamodeld in Sources */,
 				FFD983692797415D0017730A /* SceneDelegate.m in Sources */,
+				FFA58B1427DFA4580091146D /* SubscriptionManager.m in Sources */,
 				FFD9838B279742460017730A /* CSVDeckImporter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

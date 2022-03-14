@@ -13,8 +13,11 @@
 #import <RevenueCat/RevenueCat-Swift.h>
 #else
 #endif
-
+#if defined(AppStore)
 @interface AppDelegate : NSObject <NSApplicationDelegate, RCPurchasesDelegate>
+#else
+@interface AppDelegate : NSObject <NSApplicationDelegate>
+#endif
 @property (readonly, strong) NSPersistentCloudKitContainer *persistentContainer;
 @property (readonly, strong) NSPersistentContainer *wanikaniContainer;
 @property (readonly, strong) NSPersistentContainer *audioContainer;

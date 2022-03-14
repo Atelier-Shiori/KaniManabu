@@ -809,4 +809,8 @@
         [_moc save:nil];
     }];
 }
+
+- (bool)checkiCloudLoggedIn {
+    return NSFileManager.defaultManager.ubiquityIdentityToken != nil ? true : false;
+}
 @end

@@ -28,6 +28,7 @@
 @property (strong) IBOutlet TKMKanaInputTextField *answertextfield;
 @property (strong) IBOutlet NSTextField *srslevellabel;
 @property (strong) IBOutlet NSButton *answerbtn;
+@property (strong) IBOutlet NSToolbarItem *playvoice;
 @property int totalitems;
 @property int correctcount;
 @property int incorrectcount;
@@ -52,6 +53,8 @@
 @property NSRange currentrange;
 @property (strong) TKMKanaInput *kanainput;
 @property bool useKaniManabuIME;
+@property (strong) IBOutlet NSVisualEffectView *answerprompteffectview;
+@property (strong) IBOutlet NSVisualEffectView *questionvisualeffectview;
 @end
 
 @implementation ReviewWindowController
@@ -267,6 +270,9 @@
                 _currentcard.currentreviewmeaningincorrect = true;
                 _answered = true;
                 _iteminfotoolbaritem.enabled = true;
+                if (_currentcard.cardtype == CardTypeKana) {
+                    _playvoice.enabled = true;
+                }
                 [_currentcard setIncorrect:CardReviewTypeMeaning];
                 return;
             }
@@ -276,6 +282,7 @@
         [_currentcard setCorrect:CardReviewTypeMeaning];
         if (_currentcard.cardtype == CardTypeKana) {
             // Say Vocab reading if user enabled option
+            _playvoice.enabled = true;
             if ([NSUserDefaults.standardUserDefaults boolForKey:@"SayKanaReadingAnswer"]) {
                 [self sayAnswer:[_currentcard.card valueForKey:@"kanareading"]];
             }
@@ -306,12 +313,16 @@
                 _currentcard.currentreviewmeaningincorrect = true;
                 _answered = true;
                 _iteminfotoolbaritem.enabled = true;
+                if (_currentcard.cardtype == CardTypeVocab) {
+                    _playvoice.enabled = true;
+                }
                 [_currentcard setIncorrect:CardReviewTypeReading];
                 return;
             }
         }
         if (_currentcard.cardtype == CardTypeVocab) {
             // Say Vocab reading if user enabled option
+            _playvoice.enabled = true;
             if ([NSUserDefaults.standardUserDefaults boolForKey:@"SayKanaReadingAnswer"]) {
                 [self sayAnswer:[_currentcard.card valueForKey:@"reading"]];
             }
@@ -352,6 +363,7 @@
 - (void)nextQuestion {
     [NSNotificationCenter.defaultCenter postNotificationName:@"ReviewAdvanced" object:nil];
     _iteminfotoolbaritem.enabled = false;
+    _playvoice.enabled = false;
     _answered = false;
     if (!_ankimode) {
         _answerstatus.stringValue = @"";
@@ -434,6 +446,7 @@
                     break;
                 }
             }
+            _answerprompteffectview.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
             _answertextfield.placeholderString = @"Enter Meaning";
             break;
         }
@@ -448,6 +461,7 @@
                     break;
                 }
             }
+            _answerprompteffectview.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantLight];
             _answertextfield.placeholderString = @"答えを入力してください";
             _oldanswerstr = @"";
             _oldrange = NSMakeRange(0, 0);
@@ -701,6 +715,14 @@
     }
     @catch (NSException *ex) {
         
+    }
+}
+- (IBAction)playvoice:(id)sender {
+    if (_currentcard.cardtype == CardTypeKana) {
+        [self sayAnswer:[_currentcard.card valueForKey:@"kanareading"]];
+    }
+    else if (_currentcard.cardtype == CardTypeVocab) {
+        [self sayAnswer:[_currentcard.card valueForKey:@"reading"]];
     }
 }
 

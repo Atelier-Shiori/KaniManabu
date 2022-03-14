@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)purchasePackage:(RCPackage *)package completionHandler:(void (^)(bool success, bool cancelled)) completionHandler;
 + (void)restorePurchase:(void (^)(bool success)) completionHandler;
 + (void)getCustomerInfo:(void (^)(bool success, RCCustomerInfo * customerInfo)) completionHandler;
++ (bool)checkDeckLimit:(bool)adding;
 @end
 
 NS_ASSUME_NONNULL_END

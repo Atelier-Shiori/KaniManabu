@@ -16,6 +16,7 @@
 
 #if defined(AppStore)
 #import "SubscriptionManager.h"
+#import "SubscriptionPref.h"
 #else
 #import "LicenseManager.h"
 #endif
@@ -28,6 +29,9 @@
 
 @property PFAboutWindowController *aboutWindowController;
 @property (strong) DeckMonitor *deckMonitor;
+#if defined(AppStore)
+@property (strong) RCPurchases *rcpurchases;
+#endif
 - (IBAction)saveAction:(id)sender;
 
 @end
@@ -52,6 +56,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    if (![DeckManager.sharedInstance checkiCloudLoggedIn]) {
+        [self showiCloudNotice];
+    }
     DeckManager.sharedInstance.moc = self.persistentContainer.viewContext;
     WaniKani.sharedInstance.moc = self.wanikaniContainer.viewContext;
     SpeechSynthesis.sharedInstance.moc = self.audioContainer.viewContext;
@@ -78,15 +85,24 @@
     [MSACCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
     [MSACAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
 #if defined(AppStore)
-    NSUUID *userid = [NSUbiquitousKeyValueStore.defaultStore valueForKey:@"RevenueCatUserID"];
+    NSString *userid = [NSUbiquitousKeyValueStore.defaultStore objectForKey:@"RevenueCatUserID"];
     if (!userid) {
         // Set key in iCloud for RevenueCat to use
-        userid = [NSUUID new];
-        [NSUbiquitousKeyValueStore.defaultStore setValue:userid forKey:@"RevenueCatUserID"];
+        userid = [NSUUID new].UUIDString;
+        [NSUbiquitousKeyValueStore.defaultStore setString:userid forKey:@"RevenueCatUserID"];
         [NSUbiquitousKeyValueStore.defaultStore synchronize];
     }
+    _rcpurchases = [RCPurchases configureWithAPIKey:@"appl_tSCAgCTfPHikGbKqyzZgHXxBVcC"];
     RCPurchases.logLevel = RCLogLevelDebug;
-    [RCPurchases configureWithAPIKey:@"appl_tSCAgCTfPHikGbKqyzZgHXxBVcC"];
+    _rcpurchases.delegate = self;
+    [SubscriptionManager getCustomerInfo:^(bool success, RCCustomerInfo * customerInfo) {
+        if (customerInfo) {
+            [SubscriptionManager setDonationStateWithCustomer:customerInfo];
+        }
+        if (![NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
+            [self showNagDialogWithWindow:self.mwc.window];
+        }
+    }];
 #else
     [LicenseManager.sharedInstance checkLicenseWithWindow:_mwc.window];
 #endif
@@ -114,7 +130,8 @@
         GeneralPreferencesViewController *genview = [[GeneralPreferencesViewController  alloc] init];
         WaniKaniPreferences *wpref = [WaniKaniPreferences new];
 #if defined(AppStore)
-        NSArray *controllers = @[genview,wpref];
+        SubscriptionPref *subpref = [SubscriptionPref new];
+        NSArray *controllers = @[genview,wpref,subpref];
 #else
         SoftwareUpdatesPref *supref = [SoftwareUpdatesPref new];
         NSArray *controllers = @[genview, wpref, supref];
@@ -409,6 +426,41 @@
 - (void)purchases:(RCPurchases *)purchases receivedUpdatedCustomerInfo:(RCCustomerInfo *)customerInfo {
     [SubscriptionManager setDonationStateWithCustomer:customerInfo];
 }
+
+- (void)showNagDialogWithWindow:(NSWindow *)w {
+    NSAlert *alert = [NSAlert new];
+    alert.messageText = @"Please Support KaniManabu";
+    alert.informativeText = @"While KaniManabu is free to use, you are limited to three decks and this message will appear on launch. To remove this limitation and this nag message while unlocking subscriber features, get a subscription.";
+    [alert addButtonWithTitle:NSLocalizedString(@"Subscribe",nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Remind Me Later",nil)];
+    [alert beginSheetModalForWindow:w completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            [self.preferencesWindowController showWindow:nil];
+            [(MASPreferencesWindowController *)self.preferencesWindowController selectControllerAtIndex:2];
+        }
+    }];
+}
 #else
 #endif
+
+#pragma mark iCloud Not Logged in Warning
+- (void)showiCloudNotice {
+    // Shows Donation Reminder
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    bool show = ![defaults valueForKey:@"surpressicloudnotice"];
+    if (![defaults boolForKey:@"surpressicloudnotice"] || show) {
+        NSAlert *alert = [[NSAlert alloc] init] ;
+        [alert addButtonWithTitle:@"OK"];
+        alert.messageText = @"Not Logged into iCloud or iCloud Drive Disabled";
+        alert.informativeText = @"KaniManabu relies on iCloud Drive and iCloud Account for the app to fully function. Make sure you are logged into an iCloud Account and have iCloud Drive enabled. Some functionality is now limited.";
+        [alert setShowsSuppressionButton:YES];
+        // Set Message type to Warning
+        alert.alertStyle = NSAlertStyleInformational;
+        long choice = [alert runModal];
+        if (alert.suppressionButton.state == NSControlStateValueOn) {
+            // Suppress this alert until the next version
+            [defaults setBool: YES forKey:@"surpressicloudnotice"];
+        }
+    }
+}
 @end
