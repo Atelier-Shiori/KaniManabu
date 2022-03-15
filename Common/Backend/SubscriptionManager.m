@@ -31,6 +31,7 @@
 + (void)purchasePackage:(RCPackage *)package completionHandler:(void (^)(bool success, bool cancelled)) completionHandler {
     [[RCPurchases sharedPurchases] purchasePackage:package withCompletion:^(RCStoreTransaction *transaction, RCCustomerInfo *customerInfo, NSError *error, BOOL cancelled) {
         [self setDonationStateWithCustomer:customerInfo];
+        completionHandler(!error ? true : false, cancelled);
     }];
 }
 + (void)restorePurchase:(void (^)(bool success)) completionHandler {

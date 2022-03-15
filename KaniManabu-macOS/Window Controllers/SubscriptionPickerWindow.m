@@ -86,6 +86,7 @@
 
 - (IBAction)subscribe:(id)sender {
     RCPackage *package;
+    [self indicatorActive:YES];
     if (_monthly.state == NSControlStateValueOn) {
         package = _offeringsdefault.monthly;
     }
@@ -96,14 +97,19 @@
         package = _offeringsdefault.lifetime;
     }
     else {
+        [self indicatorActive:NO];
         return;
     }
     [SubscriptionManager purchasePackage:package completionHandler:^(bool success, bool cancelled) {
         if (success && !cancelled) {
             dispatch_async(dispatch_get_main_queue(), ^{
+                [self indicatorActive:NO];
                 [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
                 [self.window close];
             });
+        }
+        else {
+            [self indicatorActive:NO];
         }
     }];
 }

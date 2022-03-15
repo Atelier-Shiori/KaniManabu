@@ -65,6 +65,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"LearnEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ReviewEnded" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"NewItemsSynced" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"CardAdded" object:nil];
     [self.window.toolbar insertItemWithItemIdentifier:NSToolbarToggleSidebarItemIdentifier atIndex:0];
 }
 
@@ -74,8 +75,12 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 // Reload
                 [self generateSourceList];
+                [self loadDeck];
             });
         }
+    }
+    else if ([notification.name isEqualToString:@"CardAdded"]) {
+        [self loadDeck];
     }
 }
 
@@ -266,7 +271,6 @@
         case DeckTypeVocab: {
             [CardEditor openVocabCardEditorWithUUID:_currentDeckUUID isNewCard:true withWindow:self.window completionHandler:^(bool success) {
                 if (success) {
-                    [self loadDeck];
                     [NSNotificationCenter.defaultCenter postNotificationName:@"CardAdded" object:nil];
                 }
             }];
@@ -275,7 +279,6 @@
         case DeckTypeKana: {
             [CardEditor openKanaCardEditorWithUUID:_currentDeckUUID isNewCard:true withWindow:self.window completionHandler:^(bool success) {
                 if (success) {
-                    [self loadDeck];
                     [NSNotificationCenter.defaultCenter postNotificationName:@"CardAdded" object:nil];
                 }
             }];
@@ -284,7 +287,6 @@
         case DeckTypeKanji: {
             [CardEditor openKanjiCardEditorWithUUID:_currentDeckUUID isNewCard:true withWindow:self.window completionHandler:^(bool success) {
                 if (success) {
-                    [self loadDeck];
                     [NSNotificationCenter.defaultCenter postNotificationName:@"CardAdded" object:nil];
                 }
             }];
