@@ -16,7 +16,6 @@
 
 #if defined(AppStore)
 #import "SubscriptionManager.h"
-#import "SubscriptionPref.h"
 #else
 #import "LicenseManager.h"
 #endif
@@ -129,12 +128,13 @@
     {
         GeneralPreferencesViewController *genview = [[GeneralPreferencesViewController  alloc] init];
         WaniKaniPreferences *wpref = [WaniKaniPreferences new];
+        AdvancedPref *apref = [AdvancedPref new];
 #if defined(AppStore)
         SubscriptionPref *subpref = [SubscriptionPref new];
-        NSArray *controllers = @[genview,wpref,subpref];
+        NSArray *controllers = @[genview,wpref,subpref, apref];
 #else
         SoftwareUpdatesPref *supref = [SoftwareUpdatesPref new];
-        NSArray *controllers = @[genview, wpref, supref];
+        NSArray *controllers = @[genview, wpref, supref, apref];
 #endif
         __preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:controllers];
     }

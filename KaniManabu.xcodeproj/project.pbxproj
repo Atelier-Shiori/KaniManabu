@@ -163,6 +163,13 @@
 		FF28A828278CB50500D3744D /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A80B278C8D5F00D3744D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF28A82A278CB50600D3744D /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A809278C8D5500D3744D /* PXSourceList.framework */; };
 		FF28A82B278CB50600D3744D /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF28A809278C8D5500D3744D /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF3C9FD527E22B7E00277FEE /* IBMSpeechConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C9FD427E22B7E00277FEE /* IBMSpeechConstants.m */; };
+		FF3C9FD627E22B7E00277FEE /* IBMSpeechConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C9FD427E22B7E00277FEE /* IBMSpeechConstants.m */; };
+		FF3C9FD727E22B7E00277FEE /* IBMSpeechConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C9FD427E22B7E00277FEE /* IBMSpeechConstants.m */; };
+		FF3C9FDF27E2508B00277FEE /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C9FDD27E2508B00277FEE /* AdvancedPref.m */; };
+		FF3C9FE027E2508B00277FEE /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C9FDD27E2508B00277FEE /* AdvancedPref.m */; };
+		FF3C9FE127E2508B00277FEE /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3C9FDE27E2508B00277FEE /* AdvancedPref.xib */; };
+		FF3C9FE227E2508B00277FEE /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3C9FDE27E2508B00277FEE /* AdvancedPref.xib */; };
 		FF55FF4827BD763900EE389D /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF55FF3A27BD761700EE389D /* MMMarkdown.framework */; };
 		FF55FF4927BD763900EE389D /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF55FF3A27BD761700EE389D /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF55FF4A27BD764200EE389D /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF55FF3A27BD761700EE389D /* MMMarkdown.framework */; };
@@ -528,6 +535,12 @@
 		FF28A822278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLtoNSAttributedString.m"; sourceTree = "<group>"; };
 		FF28A823278CB31300D3744D /* NSTextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
 		FF28A824278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
+		FF3C9FBF27E2014700277FEE /* texttospeech 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "texttospeech 2.xcdatamodel"; sourceTree = "<group>"; };
+		FF3C9FD327E22B7E00277FEE /* IBMSpeechConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IBMSpeechConstants.h; sourceTree = "<group>"; };
+		FF3C9FD427E22B7E00277FEE /* IBMSpeechConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBMSpeechConstants.m; sourceTree = "<group>"; };
+		FF3C9FDC27E2508B00277FEE /* AdvancedPref.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvancedPref.h; sourceTree = "<group>"; };
+		FF3C9FDD27E2508B00277FEE /* AdvancedPref.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvancedPref.m; sourceTree = "<group>"; };
+		FF3C9FDE27E2508B00277FEE /* AdvancedPref.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedPref.xib; sourceTree = "<group>"; };
 		FF55FF2827BD761700EE389D /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = "Dependencies/MMMarkdown-master/MMMarkdown.xcodeproj"; sourceTree = "<group>"; };
 		FF708861278C7CDF00DF399E /* KaniManabu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaniManabu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF708864278C7CDF00DF399E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -701,6 +714,9 @@
 				FFA58B0827DEB30E0091146D /* SubscriptionPref.h */,
 				FFA58B0927DEB30E0091146D /* SubscriptionPref.m */,
 				FFA58B0A27DEB30E0091146D /* SubscriptionPref.xib */,
+				FF3C9FDC27E2508B00277FEE /* AdvancedPref.h */,
+				FF3C9FDD27E2508B00277FEE /* AdvancedPref.m */,
+				FF3C9FDE27E2508B00277FEE /* AdvancedPref.xib */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -732,6 +748,8 @@
 				FFA58AF027DBB9A90091146D /* SubscriptionManager.m */,
 				FFA58B1527DFB61B0091146D /* MicrosoftSpeechConstants.h */,
 				FFA58B1627DFB61B0091146D /* MicrosoftSpeechConstants.m */,
+				FF3C9FD327E22B7E00277FEE /* IBMSpeechConstants.h */,
+				FF3C9FD427E22B7E00277FEE /* IBMSpeechConstants.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -751,6 +769,7 @@
 		15C52D7B27947773002ADE2B /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				FF3C9FD827E231C000277FEE /* Resources */,
 				15B122D3278CE85E00575A73 /* Backend */,
 				15C52D7C27947784002ADE2B /* Support */,
 			);
@@ -871,6 +890,13 @@
 				FF173E3E27B70FA700E5CD37 /* TKMKanaInput+Internals.h */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		FF3C9FD827E231C000277FEE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		FF55FF2927BD761700EE389D /* Products */ = {
@@ -1281,6 +1307,7 @@
 				157329322794B9C400587C05 /* PFAboutWindow.xib in Resources */,
 				FFA58B0D27DEB30E0091146D /* SubscriptionPref.xib in Resources */,
 				FF173DD727B69E1300E5CD37 /* Review.xib in Resources */,
+				FF3C9FE227E2508B00277FEE /* AdvancedPref.xib in Resources */,
 				FF173DD327B69E0600E5CD37 /* WaniKaniPreferences.xib in Resources */,
 				FF173DEB27B69E2700E5CD37 /* VocabEditor.xib in Resources */,
 				FF173DFF27B69E3B00E5CD37 /* ItemInfoWindow.xib in Resources */,
@@ -1304,6 +1331,7 @@
 				FF173DF627B69E3300E5CD37 /* CSVImportController.xib in Resources */,
 				FF173DEE27B69E2B00E5CD37 /* KanjiEditor.xib in Resources */,
 				FF746574278F47330062E476 /* EULA.rtf in Resources */,
+				FF3C9FE127E2508B00277FEE /* AdvancedPref.xib in Resources */,
 				FF173DCA27B69DFA00E5CD37 /* GeneralPreferences.xib in Resources */,
 				FF70886B278C7CE000DF399E /* Assets.xcassets in Resources */,
 				FF173DDA27B69E1700E5CD37 /* Learn.xib in Resources */,
@@ -1366,6 +1394,7 @@
 				157329062794B9C400587C05 /* NSNumberFormatterNumberOnly.m in Sources */,
 				157329072794B9C400587C05 /* CSVDeckImporter.m in Sources */,
 				157329082794B9C400587C05 /* MSWeakTimer.m in Sources */,
+				FF3C9FE027E2508B00277FEE /* AdvancedPref.m in Sources */,
 				FF16A0B427B57BDF00AA385E /* AudioContainer.xcdatamodeld in Sources */,
 				157329092794B9C400587C05 /* DeckViewCell.m in Sources */,
 				FFA58B1827DFB61B0091146D /* MicrosoftSpeechConstants.m in Sources */,
@@ -1381,6 +1410,7 @@
 				157329122794B9C400587C05 /* NSTextView+SetHTMLAttributedText.m in Sources */,
 				157329132794B9C400587C05 /* DeckOptions.m in Sources */,
 				157329142794B9C400587C05 /* AnswerCheck.m in Sources */,
+				FF3C9FD627E22B7E00277FEE /* IBMSpeechConstants.m in Sources */,
 				157329152794B9C400587C05 /* SRSLevelValueTransformer.m in Sources */,
 				FF173E4127B70FA800E5CD37 /* TKMKanaInput.m in Sources */,
 				153E9F0E2795CF170094A306 /* CSVLoadingWindow.m in Sources */,
@@ -1423,6 +1453,7 @@
 				FF89D7132791EC92009B7C6F /* CSVDeckImporter.m in Sources */,
 				FF1BE81827906AA500CA6A99 /* MSWeakTimer.m in Sources */,
 				FF778DBC279EEB5F0055AF2D /* WaniKaniPreferences.m in Sources */,
+				FF3C9FD527E22B7E00277FEE /* IBMSpeechConstants.m in Sources */,
 				151F3AB7278D07AB00953ECD /* DeckViewCell.m in Sources */,
 				15CB506A27949A5000ECF326 /* CSVDeckExporter.m in Sources */,
 				15B122D9278CEBE900575A73 /* string_score.c in Sources */,
@@ -1432,6 +1463,7 @@
 				FF708869278C7CDF00DF399E /* KaniManabu.xcdatamodeld in Sources */,
 				15794870278CBFC9000D984D /* ItemInfoWindowController.m in Sources */,
 				FF708870278C7CE000DF399E /* main.m in Sources */,
+				FF3C9FDF27E2508B00277FEE /* AdvancedPref.m in Sources */,
 				FF89D70F2791DFE8009B7C6F /* CSVImportController.m in Sources */,
 				FF173E4027B70FA800E5CD37 /* TKMKanaInput.m in Sources */,
 				153FFE762794F33500D481A2 /* CFobError.m in Sources */,
@@ -1466,6 +1498,7 @@
 				FFD9836C2797415D0017730A /* ViewController.m in Sources */,
 				FFD98393279742670017730A /* CHCSVParser.m in Sources */,
 				FFD9838F279742560017730A /* CardReview.m in Sources */,
+				FF3C9FD727E22B7E00277FEE /* IBMSpeechConstants.m in Sources */,
 				1548200A279DFA5A001B6D92 /* DeckCell.m in Sources */,
 				FFD9838D2797424D0017730A /* AnswerCheck.m in Sources */,
 				FFD983662797415D0017730A /* AppDelegate.m in Sources */,
@@ -2019,9 +2052,10 @@
 		FF16A0B127B57BDF00AA385E /* AudioContainer.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FF3C9FBF27E2014700277FEE /* texttospeech 2.xcdatamodel */,
 				FF16A0B227B57BDF00AA385E /* texttospeech.xcdatamodel */,
 			);
-			currentVersion = FF16A0B227B57BDF00AA385E /* texttospeech.xcdatamodel */;
+			currentVersion = FF3C9FBF27E2014700277FEE /* texttospeech 2.xcdatamodel */;
 			path = AudioContainer.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

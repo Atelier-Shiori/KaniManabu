@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21E230" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Speech" representedClassName="Speech" syncable="YES" codeGenerationType="class">
+        <attribute name="audio" optional="YES" attributeType="Binary"/>
+        <attribute name="serviceid" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="word" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Speech" positionX="-63" positionY="-18" width="128" height="74"/>
+    </elements>
+</model>

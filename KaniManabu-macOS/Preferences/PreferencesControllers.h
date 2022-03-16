@@ -8,7 +8,9 @@
 #import "GeneralPreferencesViewController.h"
 #import "WaniKaniPreferences.h"
 #import <MASPreferences/MASPreferences.h>
+#import "AdvancedPref.h"
 #if defined(AppStore)
+#import "SubscriptionPref.h"
 #else
 #import "SoftwareUpdatesPref.h"
 #endif

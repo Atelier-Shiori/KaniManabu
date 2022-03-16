@@ -11,8 +11,11 @@
 #import <MicrosoftCognitiveServicesSpeech/SPXSpeechApi.h>
 #import <SAMKeychain/SAMKeychain.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <AFNetworking/AFNetworking.h>
+#import "IBMSpeechConstants.h"
 
 @interface SpeechSynthesis ()
+@property (strong) AFHTTPSessionManager *ibmmanager;
 @property (strong) AVSpeechSynthesizer *synthesizer;
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property (strong) AVAudioPlayer *player;
@@ -33,6 +36,9 @@
     if (self = [super init]) {
         _synthesizer = [AVSpeechSynthesizer new];
         _privateQueue = dispatch_queue_create("moe.ateliershiori.KaniManabu.speechsynthesis", DISPATCH_QUEUE_CONCURRENT);
+        self.ibmmanager = [AFHTTPSessionManager manager];
+        self.ibmmanager.requestSerializer = [AFJSONRequestSerializer serializer];
+        self.ibmmanager.responseSerializer = [AFHTTPResponseSerializer serializer];
         return self;
     }
     return nil;
@@ -44,12 +50,37 @@
         if ([NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 2) {
             dispatch_async(self.privateQueue, ^{
                 // Use Microsoft Speech Synthesis. Get the audio synthesis from Microsoft Speech Services and then save it to Core Data for later use.
-                NSData *speechData = [self getStoredAudio:text];
+                NSData *speechData = [self getStoredAudio:text withService:TTSMicrosoft];
                 if (!speechData) {
                     // Get the speech audio and save it
-                    [self getSpeechDataFromText:text completionHandler:^(bool success, NSData *audiodata) {
+                    [self getMSSpeechDataFromText:text completionHandler:^(bool success, NSData *audiodata) {
                         if (success) {
-                            [self saveAudioWithWord:text withAudioData:audiodata];
+                            [self saveAudioWithWord:text withAudioData:audiodata withService:TTSMicrosoft];
+                            self.playing = NO;
+                        }
+                        else {
+                            // Fallback to TTS
+                            [self macOSSayText:text];
+                            self.playing = NO;
+                        }
+                    }];
+                }
+                else {
+                    // Play back stored audio
+                    [self playAudioWithData:speechData];
+                    self.playing = NO;
+                }
+            });
+        }
+        else if ([NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 3) {
+            dispatch_async(self.privateQueue, ^{
+                
+                NSData *speechData = [self getStoredAudio:text withService:TTSIBM];
+                if (!speechData) {
+                    // Get the speech audio and save it
+                    [self getIBMSpeechDataFromText:text completionHandler:^(bool success, NSData *audiodata) {
+                        if (success) {
+                            [self saveAudioWithWord:text withAudioData:audiodata withService:TTSIBM];
                             self.playing = NO;
                         }
                         else {
@@ -77,15 +108,15 @@
 - (void)macOSSayText:(NSString *)text {
     // Use macOS Speech Synthesis
     AVSpeechUtterance *utterance = [AVSpeechUtterance speechUtteranceWithString:text];
-    utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier: [NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 0 || [NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] == 2 ? @"com.apple.speech.synthesis.voice.kyoko.premium" : @"com.apple.speech.synthesis.voice.otoya.premium"];
+    utterance.voice = [AVSpeechSynthesisVoice voiceWithIdentifier:[NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"] != 1 ? @"com.apple.speech.synthesis.voice.kyoko.premium" : @"com.apple.speech.synthesis.voice.otoya.premium"];
     [_synthesizer speakUtterance:utterance];
 }
 
-- (NSData *)getStoredAudio:(NSString *)text {
+- (NSData *)getStoredAudio:(NSString *)text withService:(TTSService)service {
     // Gets the stored audio for the word from the AudioContainer Core Data container
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     fetchRequest.entity = [NSEntityDescription entityForName:@"Speech" inManagedObjectContext:_moc];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word == %@",text];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"word == %@ AND serviceid == %i",text, service];
     fetchRequest.predicate = predicate;
     NSError *error = nil;
     NSArray *results = [_moc executeFetchRequest:fetchRequest error:&error];
@@ -107,7 +138,73 @@
     [SAMKeychain deletePasswordForService:@"KaniManabu" account:@"Azure Subscription Key"];
 }
 
-- (void)getSpeechDataFromText:(NSString *)text completionHandler:(void (^)(bool success, NSData *audiodata)) completionHandler {
+- (void)storeIBMAPIKey:(NSDictionary *)data {
+    NSData *myData = [NSKeyedArchiver archivedDataWithRootObject:data];
+    [SAMKeychain setPasswordData:myData forService:@"KaniManabu" account:@"IBM API Key" error:nil];
+}
+
+- (NSDictionary *)getIBMAPIKey {
+    NSData *myData = [SAMKeychain passwordDataForService:@"KaniManabu" account:@"IBM API Key"];
+    if (myData) {
+        return (NSDictionary *)[NSKeyedUnarchiver unarchiveObjectWithData:myData];
+    }
+    return nil;
+}
+
+- (void)removeIBMAPIKey {
+    [SAMKeychain deletePasswordForService:@"KaniManabu" account:@"IBM API Key"];
+}
+
+- (void)getIBMSpeechDataFromText:(NSString *)text completionHandler:(void (^)(bool success, NSData *audiodata)) completionHandler {
+    NSDictionary *parameters = @{@"text" : text};
+    NSDictionary *apicred = [self getIBMAPIKey];
+    NSString *APIKey = @"";
+    if (apicred) {
+        APIKey = apicred[@"apikey"];
+    }
+    else {
+        if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
+            APIKey = IBMAPIKey;
+        }
+        else {
+            completionHandler(false, nil);
+            return;
+        }
+    }
+    [self.ibmmanager.requestSerializer setAuthorizationHeaderFieldWithUsername:@"apikey" password:APIKey];
+    NSString *url = [NSString stringWithFormat:@"%@/v1/synthesize?voice=ja-JP_EmiV3Voice", apicred ? apicred[@"url"] : IBMInstanceURL];
+    [_ibmmanager POST:url parameters:parameters headers:@{@"Accept" : @"audio/wav"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        NSString *fileName = @"/KaniManabu/pullStream.wav";
+        NSString *fileAtPath = [filePath stringByAppendingString:fileName];
+        if (![[NSFileManager defaultManager] fileExistsAtPath:fileAtPath]) {
+            [[NSFileManager defaultManager] createFileAtPath:fileAtPath contents:nil attributes:nil];
+        }
+        NSData *dataresponseObject = responseObject;
+        [dataresponseObject writeToFile:fileAtPath atomically:YES];
+        // Play audio while conversion is in progress
+        [self playAudioWithData:[NSData dataWithContentsOfURL:[NSURL fileURLWithPath:fileAtPath]]];
+        //Convert to AAC
+        [self convertWithFileName:fileAtPath completionHandler:^(NSData *audiodata) {
+            if (audiodata) {
+                [NSFileManager.defaultManager removeItemAtPath:fileAtPath error:nil];
+                [NSFileManager.defaultManager removeItemAtPath:[fileAtPath stringByReplacingOccurrencesOfString:@".wav" withString:@".m4a"] error:nil];
+                completionHandler(true, audiodata);
+            }
+            else {
+                completionHandler(false, nil);
+            }
+        }];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"IBM Speech Errpr: %@", error.localizedDescription);
+        NSString* errResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",errResponse);
+        completionHandler(false, nil);
+    }];
+}
+
+- (void)getMSSpeechDataFromText:(NSString *)text completionHandler:(void (^)(bool success, NSData *audiodata)) completionHandler {
     NSString *skey = [self getSubscriptionKey];
     if (!skey) {
         if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
@@ -168,11 +265,12 @@
     }];
 }
 
-- (void)saveAudioWithWord:(NSString *)word withAudioData:(NSData *)data {
+- (void)saveAudioWithWord:(NSString *)word withAudioData:(NSData *)data withService:(TTSService)service {
     // Stores the audio file with the kana word for later use
     NSManagedObject *newAudio = [NSEntityDescription insertNewObjectForEntityForName:@"Speech" inManagedObjectContext:_moc];
     [newAudio setValue:word forKey:@"word"];
     [newAudio setValue:data forKey:@"audio"];
+    [newAudio setValue:@(service) forKey:@"serviceid"];
     [_moc performBlockAndWait:^{
             [_moc save:nil];
     }];
@@ -205,5 +303,22 @@
             completionHandler(audiodata);
         }
     }];
+}
+
+- (void)playSample {
+    switch ([NSUserDefaults.standardUserDefaults integerForKey:@"ttsvoice"]) {
+        case 0:
+        case 1:
+            [self macOSSayText:@"これで勝ったと思うなよ"];
+            break;
+        case 2:
+            [self playAudioWithData:[[NSDataAsset alloc] initWithName:@"mssample"].data];
+            break;
+        case 3:
+            [self playAudioWithData:[[NSDataAsset alloc] initWithName:@"ibmsample"].data];
+            break;
+        default:
+            break;
+    }
 }
 @end

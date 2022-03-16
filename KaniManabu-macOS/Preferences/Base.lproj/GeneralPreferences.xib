@@ -8,20 +8,17 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GeneralPreferencesViewController">
             <connections>
-                <outlet property="clearbtn" destination="2RJ-kE-JKV" id="b8k-2P-g9D"/>
-                <outlet property="msazureapikey" destination="SLP-Ff-Npj" id="rS9-EG-nhH"/>
-                <outlet property="savebtn" destination="9pZ-FF-8a3" id="VGL-59-fni"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="364"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="336"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0hv-F6-Xe0">
-                    <rect key="frame" x="156" y="302" width="278" height="18"/>
+                    <rect key="frame" x="156" y="277" width="278" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Automatically play audio after answer" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="UqO-ZL-UPA">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -32,7 +29,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lXm-A5-fOV">
-                    <rect key="frame" x="66" y="330" width="55" height="16"/>
+                    <rect key="frame" x="66" y="302" width="55" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="General" id="kE4-tE-f01">
                         <font key="font" metaFont="systemBold"/>
@@ -41,7 +38,7 @@
                     </textFieldCell>
                 </textField>
                 <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iZL-ln-nBj">
-                    <rect key="frame" x="178" y="173" width="96" height="21"/>
+                    <rect key="frame" x="178" y="166" width="96" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" focusRingType="none" title="5" drawsBackground="YES" id="d4v-lb-YhD">
                         <numberFormatter key="formatter" formatterBehavior="custom10_4" usesGroupingSeparator="NO" formatWidth="-1" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="42" id="TMN-I6-3Mr" customClass="NSNumberFormatterNumberOnly">
@@ -61,7 +58,7 @@
                     </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V1y-gJ-hr2">
-                    <rect key="frame" x="36" y="176" width="136" height="16"/>
+                    <rect key="frame" x="36" y="169" width="136" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="New Card Limit:" id="cQi-FV-rvQ">
                         <font key="font" metaFont="system"/>
@@ -70,7 +67,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tRh-Gl-1zG">
-                    <rect key="frame" x="282" y="176" width="184" height="16"/>
+                    <rect key="frame" x="282" y="169" width="184" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="per day per deck" id="WhB-cG-JH3">
                         <font key="font" metaFont="system"/>
@@ -79,7 +76,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mpS-b0-viT">
-                    <rect key="frame" x="153" y="78" width="265" height="18"/>
+                    <rect key="frame" x="153" y="71" width="265" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Send Crash Data and Statistics" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="MIo-cj-scw">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -91,7 +88,7 @@
                     </connections>
                 </button>
                 <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxK-0G-AYX">
-                    <rect key="frame" x="15" y="99" width="106" height="17"/>
+                    <rect key="frame" x="15" y="92" width="106" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Privacy" id="42W-P2-cOr">
                         <font key="font" metaFont="systemBold"/>
@@ -100,7 +97,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ao0-Ot-Ivw">
-                    <rect key="frame" x="333" y="46" width="109" height="32"/>
+                    <rect key="frame" x="333" y="39" width="109" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Learn More" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DUF-hE-7CC">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -111,8 +108,8 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w1X-Zj-zG7">
-                    <rect key="frame" x="147" y="53" width="191" height="17"/>
-                    <autoresizingMask key="autoresizingMask"/>
+                    <rect key="frame" x="147" y="46" width="191" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Help us improve KaniManabu." id="pyY-rP-VKd">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -120,7 +117,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KDd-U3-cEO">
-                    <rect key="frame" x="163" y="138" width="186" height="32"/>
+                    <rect key="frame" x="163" y="131" width="186" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="Remove Orphaned Cards" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7A1-ZY-5wF">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -131,7 +128,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L81-0c-10x">
-                    <rect key="frame" x="36" y="279" width="136" height="16"/>
+                    <rect key="frame" x="36" y="251" width="136" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="TTS Voice:" id="Fib-Rg-KI8">
                         <font key="font" metaFont="system"/>
@@ -140,16 +137,19 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nQ8-hd-TBA">
-                    <rect key="frame" x="175" y="272" width="176" height="25"/>
+                    <rect key="frame" x="175" y="244" width="235" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="Kyoko (Female)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="NW0-1D-bvM" id="HAt-m8-qmp">
+                    <popUpButtonCell key="cell" type="push" title="Kyoko (Female, macOS)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="NW0-1D-bvM" id="HAt-m8-qmp">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" id="Ffw-4t-4Lb">
                             <items>
-                                <menuItem title="Kyoko (Female)" state="on" id="NW0-1D-bvM"/>
-                                <menuItem title="Otoya (Male)" tag="1" id="mtI-RV-TFw"/>
-                                <menuItem title="Microsoft Speech" tag="2" id="e3i-8b-wpg">
+                                <menuItem title="Kyoko (Female, macOS)" state="on" id="NW0-1D-bvM"/>
+                                <menuItem title="Otoya (Male, macOS)" tag="1" id="mtI-RV-TFw"/>
+                                <menuItem title="Nanami (F, Microsoft Speech)" tag="2" id="e3i-8b-wpg">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem title="Emi (F, IBM Watson)" tag="3" id="lAZ-aL-hsC">
                                     <modifierMask key="keyEquivalentModifierMask"/>
                                 </menuItem>
                             </items>
@@ -159,51 +159,8 @@
                         <binding destination="AMl-7q-YBz" name="selectedTag" keyPath="values.ttsvoice" id="1tm-EZ-oHe"/>
                     </connections>
                 </popUpButton>
-                <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SLP-Ff-Npj">
-                    <rect key="frame" x="178" y="247" width="265" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="1BN-QZ-krq">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        <allowedInputSourceLocales>
-                            <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                        </allowedInputSourceLocales>
-                    </secureTextFieldCell>
-                </secureTextField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="651-3N-lwJ">
-                    <rect key="frame" x="15" y="250" width="157" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="MS TTS  API Key:" id="fqr-qX-9Ay">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2RJ-kE-JKV">
-                    <rect key="frame" x="171" y="217" width="66" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="P41-iu-KkO">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="clearapikey:" target="-2" id="cq5-Yn-YVg"/>
-                    </connections>
-                </button>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9pZ-FF-8a3">
-                    <rect key="frame" x="235" y="217" width="64" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZrF-hG-NZf">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="saveapi:" target="-2" id="R6q-sm-40T"/>
-                    </connections>
-                </button>
                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RbM-XE-GLl">
-                    <rect key="frame" x="17" y="23" width="25" height="25"/>
+                    <rect key="frame" x="17" y="16" width="25" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="help" bezelStyle="helpButton" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Fe-f0-moJ">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -214,7 +171,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="97r-8S-rOk">
-                    <rect key="frame" x="153" y="118" width="278" height="18"/>
+                    <rect key="frame" x="153" y="111" width="278" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Use KaniManabu's IME for Readings" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="xys-AQ-XDM">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -228,18 +185,35 @@
                         </binding>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Vm-3D-RFM">
-                    <rect key="frame" x="66" y="200" width="389" height="18"/>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rcm-WN-vjm">
+                    <rect key="frame" x="408" y="241" width="43" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" selectable="YES" title="See KaniManabu's Help to learn how to set up the Microsoft TTS Voice." id="NAp-vC-2jQ">
+                    <buttonCell key="cell" type="push" bezelStyle="rounded" image="play" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KRe-MC-aTx">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="playsample:" target="-2" id="XXg-8q-fRl"/>
+                    </connections>
+                </button>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Vm-3D-RFM">
+                    <rect key="frame" x="54" y="206" width="389" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" selectable="YES" title="Microsoft and IBM Watson voices requires additional configuration in Advanced Preferences." id="NAp-vC-2jQ">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <binding destination="AMl-7q-YBz" name="hidden" keyPath="values.donated" id="zJc-Te-NFW"/>
+                    </connections>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="138" y="149"/>
+            <point key="canvasLocation" x="138" y="135"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="AMl-7q-YBz"/>
     </objects>
+    <resources>
+        <image name="play" width="25" height="25"/>
+    </resources>
 </document>

@@ -593,7 +593,7 @@
     NSAlert *alert = [[NSAlert alloc] init] ;
     [alert addButtonWithTitle:@"OK"];
     [alert setMessageText:@"Deck Limit Exceeded"];
-    alert.informativeText = @"You cannot use this feature since you exceeded the deck limit of 3. Please delete one of the deck or register the program";
+    alert.informativeText = @"You cannot use this feature since you exceeded the deck limit of 3. Please delete one or more decks or subscribe.";
     alert.alertStyle = NSAlertStyleInformational;
     [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
         }];
