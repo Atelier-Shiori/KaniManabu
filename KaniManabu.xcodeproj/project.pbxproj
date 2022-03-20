@@ -168,8 +168,6 @@
 		FF3C9FD727E22B7E00277FEE /* IBMSpeechConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C9FD427E22B7E00277FEE /* IBMSpeechConstants.m */; };
 		FF3C9FDF27E2508B00277FEE /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C9FDD27E2508B00277FEE /* AdvancedPref.m */; };
 		FF3C9FE027E2508B00277FEE /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = FF3C9FDD27E2508B00277FEE /* AdvancedPref.m */; };
-		FF3C9FE127E2508B00277FEE /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3C9FDE27E2508B00277FEE /* AdvancedPref.xib */; };
-		FF3C9FE227E2508B00277FEE /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF3C9FDE27E2508B00277FEE /* AdvancedPref.xib */; };
 		FF55FF4827BD763900EE389D /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF55FF3A27BD761700EE389D /* MMMarkdown.framework */; };
 		FF55FF4927BD763900EE389D /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF55FF3A27BD761700EE389D /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF55FF4A27BD764200EE389D /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF55FF3A27BD761700EE389D /* MMMarkdown.framework */; };
@@ -203,8 +201,6 @@
 		FFA58B0727DBC7970091146D /* RevenueCat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 152E08CE27D184ED00699E98 /* RevenueCat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFA58B0B27DEB30E0091146D /* SubscriptionPref.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58B0927DEB30E0091146D /* SubscriptionPref.m */; };
 		FFA58B0C27DEB30E0091146D /* SubscriptionPref.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58B0927DEB30E0091146D /* SubscriptionPref.m */; };
-		FFA58B0D27DEB30E0091146D /* SubscriptionPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA58B0A27DEB30E0091146D /* SubscriptionPref.xib */; };
-		FFA58B0E27DEB30E0091146D /* SubscriptionPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA58B0A27DEB30E0091146D /* SubscriptionPref.xib */; };
 		FFA58B1227DF60590091146D /* SubscriptionPickerWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58B1027DF60590091146D /* SubscriptionPickerWindow.m */; };
 		FFA58B1327DF60590091146D /* SubscriptionPickerWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFA58B1127DF60590091146D /* SubscriptionPickerWindow.xib */; };
 		FFA58B1427DFA4580091146D /* SubscriptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58AF027DBB9A90091146D /* SubscriptionManager.m */; };
@@ -238,6 +234,10 @@
 		FFD98397279742900017730A /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF74655F278F2F960062E476 /* AFNetworking.framework */; };
 		FFD98398279742900017730A /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF74655F278F2F960062E476 /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FFD983A8279744760017730A /* Study.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD983A7279744760017730A /* Study.storyboard */; };
+		FFE1D6B627E37E8400568D95 /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFE1D6B927E37E8400568D95 /* AdvancedPref.xib */; };
+		FFE1D6B727E37E8400568D95 /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFE1D6B927E37E8400568D95 /* AdvancedPref.xib */; };
+		FFE1D6CD27E37E8800568D95 /* SubscriptionPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFE1D6D027E37E8800568D95 /* SubscriptionPref.xib */; };
+		FFE1D6CE27E37E8800568D95 /* SubscriptionPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFE1D6D027E37E8800568D95 /* SubscriptionPref.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -540,7 +540,6 @@
 		FF3C9FD427E22B7E00277FEE /* IBMSpeechConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IBMSpeechConstants.m; sourceTree = "<group>"; };
 		FF3C9FDC27E2508B00277FEE /* AdvancedPref.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvancedPref.h; sourceTree = "<group>"; };
 		FF3C9FDD27E2508B00277FEE /* AdvancedPref.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvancedPref.m; sourceTree = "<group>"; };
-		FF3C9FDE27E2508B00277FEE /* AdvancedPref.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvancedPref.xib; sourceTree = "<group>"; };
 		FF55FF2827BD761700EE389D /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = "Dependencies/MMMarkdown-master/MMMarkdown.xcodeproj"; sourceTree = "<group>"; };
 		FF708861278C7CDF00DF399E /* KaniManabu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaniManabu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF708864278C7CDF00DF399E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -578,7 +577,6 @@
 		FFA58AF027DBB9A90091146D /* SubscriptionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubscriptionManager.m; sourceTree = "<group>"; };
 		FFA58B0827DEB30E0091146D /* SubscriptionPref.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubscriptionPref.h; sourceTree = "<group>"; };
 		FFA58B0927DEB30E0091146D /* SubscriptionPref.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubscriptionPref.m; sourceTree = "<group>"; };
-		FFA58B0A27DEB30E0091146D /* SubscriptionPref.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionPref.xib; sourceTree = "<group>"; };
 		FFA58B0F27DF60590091146D /* SubscriptionPickerWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SubscriptionPickerWindow.h; sourceTree = "<group>"; };
 		FFA58B1027DF60590091146D /* SubscriptionPickerWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SubscriptionPickerWindow.m; sourceTree = "<group>"; };
 		FFA58B1127DF60590091146D /* SubscriptionPickerWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionPickerWindow.xib; sourceTree = "<group>"; };
@@ -603,6 +601,8 @@
 		FFD983782797415E0017730A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFD983792797415E0017730A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FFD983A7279744760017730A /* Study.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Study.storyboard; sourceTree = "<group>"; };
+		FFE1D6B827E37E8400568D95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AdvancedPref.xib; sourceTree = "<group>"; };
+		FFE1D6CF27E37E8800568D95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SubscriptionPref.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -713,10 +713,10 @@
 				FF173DD527B69E0600E5CD37 /* WaniKaniPreferences.xib */,
 				FFA58B0827DEB30E0091146D /* SubscriptionPref.h */,
 				FFA58B0927DEB30E0091146D /* SubscriptionPref.m */,
-				FFA58B0A27DEB30E0091146D /* SubscriptionPref.xib */,
+				FFE1D6D027E37E8800568D95 /* SubscriptionPref.xib */,
 				FF3C9FDC27E2508B00277FEE /* AdvancedPref.h */,
 				FF3C9FDD27E2508B00277FEE /* AdvancedPref.m */,
-				FF3C9FDE27E2508B00277FEE /* AdvancedPref.xib */,
+				FFE1D6B927E37E8400568D95 /* AdvancedPref.xib */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -1305,9 +1305,9 @@
 				FF173DDB27B69E1700E5CD37 /* Learn.xib in Resources */,
 				157329312794B9C400587C05 /* MainMenu.xib in Resources */,
 				157329322794B9C400587C05 /* PFAboutWindow.xib in Resources */,
-				FFA58B0D27DEB30E0091146D /* SubscriptionPref.xib in Resources */,
+				FFE1D6CD27E37E8800568D95 /* SubscriptionPref.xib in Resources */,
 				FF173DD727B69E1300E5CD37 /* Review.xib in Resources */,
-				FF3C9FE227E2508B00277FEE /* AdvancedPref.xib in Resources */,
+				FFE1D6B727E37E8400568D95 /* AdvancedPref.xib in Resources */,
 				FF173DD327B69E0600E5CD37 /* WaniKaniPreferences.xib in Resources */,
 				FF173DEB27B69E2700E5CD37 /* VocabEditor.xib in Resources */,
 				FF173DFF27B69E3B00E5CD37 /* ItemInfoWindow.xib in Resources */,
@@ -1331,7 +1331,7 @@
 				FF173DF627B69E3300E5CD37 /* CSVImportController.xib in Resources */,
 				FF173DEE27B69E2B00E5CD37 /* KanjiEditor.xib in Resources */,
 				FF746574278F47330062E476 /* EULA.rtf in Resources */,
-				FF3C9FE127E2508B00277FEE /* AdvancedPref.xib in Resources */,
+				FFE1D6B627E37E8400568D95 /* AdvancedPref.xib in Resources */,
 				FF173DCA27B69DFA00E5CD37 /* GeneralPreferences.xib in Resources */,
 				FF70886B278C7CE000DF399E /* Assets.xcassets in Resources */,
 				FF173DDA27B69E1700E5CD37 /* Learn.xib in Resources */,
@@ -1354,7 +1354,7 @@
 				FFD983772797415E0017730A /* LaunchScreen.storyboard in Resources */,
 				FFD983742797415E0017730A /* Assets.xcassets in Resources */,
 				FFD9836F2797415D0017730A /* Main.storyboard in Resources */,
-				FFA58B0E27DEB30E0091146D /* SubscriptionPref.xib in Resources */,
+				FFE1D6CE27E37E8800568D95 /* SubscriptionPref.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1664,6 +1664,22 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		FFE1D6B927E37E8400568D95 /* AdvancedPref.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFE1D6B827E37E8400568D95 /* Base */,
+			);
+			name = AdvancedPref.xib;
+			sourceTree = "<group>";
+		};
+		FFE1D6D027E37E8800568D95 /* SubscriptionPref.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FFE1D6CF27E37E8800568D95 /* Base */,
+			);
+			name = SubscriptionPref.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -1867,7 +1883,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20220301;
+				CURRENT_PROJECT_VERSION = 20220316;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1891,7 +1907,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = "1.0-beta2";
+				MARKETING_VERSION = "1.0-beta3";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1907,7 +1923,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20220301;
+				CURRENT_PROJECT_VERSION = 20220316;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1931,7 +1947,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = "1.0-beta2";
+				MARKETING_VERSION = "1.0-beta3";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
