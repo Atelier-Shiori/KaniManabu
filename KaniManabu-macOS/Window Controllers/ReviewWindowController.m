@@ -84,6 +84,7 @@
         _iteminfotoolbaritem.image = [NSImage imageNamed:@"eye"];
         _lasttentoolbaritem.image = [NSImage imageNamed:@"clock"];
         _answerbtn.image = [NSImage imageNamed:@"arrowright"];
+        _playvoice.image = [NSImage imageNamed:@"play"];
     }
 }
 
@@ -270,9 +271,6 @@
                 _currentcard.currentreviewmeaningincorrect = true;
                 _answered = true;
                 _iteminfotoolbaritem.enabled = true;
-                if (_currentcard.cardtype == CardTypeKana) {
-                    _playvoice.enabled = true;
-                }
                 [_currentcard setIncorrect:CardReviewTypeMeaning];
                 return;
             }
@@ -313,9 +311,6 @@
                 _currentcard.currentreviewmeaningincorrect = true;
                 _answered = true;
                 _iteminfotoolbaritem.enabled = true;
-                if (_currentcard.cardtype == CardTypeVocab) {
-                    _playvoice.enabled = true;
-                }
                 [_currentcard setIncorrect:CardReviewTypeReading];
                 return;
             }
