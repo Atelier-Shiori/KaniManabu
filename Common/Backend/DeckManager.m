@@ -298,6 +298,10 @@
             [self setLearnDateForDeckUUID:uuid setToday:NO];
         }
     }
+    else {
+        // Set next checck date
+        [self setLearnDateForDeckUUID:uuid setToday:NO];
+    }
     return learnqueue;
 }
 
