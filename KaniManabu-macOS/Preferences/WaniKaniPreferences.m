@@ -90,13 +90,14 @@
 - (void)loadUserInformation {
     if ([WaniKani.sharedInstance getToken]) {
         _wanikaniusername.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"WaniKaniUsername"];
-        _wanikanisubscribed.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"WaniKaniSubscribed"] ? @"Subscribed" : @"Free";
+        _wanikanisubscribed.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"WaniKaniSubscribed"] ? @"Full" : @"Limited";
     }
     else {
-        _wanikaniusername.stringValue = @"Not logged in";
+        _wanikaniusername.stringValue = @"N/A";
         _wanikanisubscribed.stringValue = @"N/A";
     }
 }
+
 - (IBAction)getapitoken:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.wanikani.com/settings/personal_access_tokens"]];
 }

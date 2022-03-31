@@ -117,5 +117,11 @@
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseCancel];
     [self.window close];
 }
+- (IBAction)privacypolicy:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://kanimanabu.app/terms-of-use/"]];
+}
+- (IBAction)termsofservice:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://kanimanabu.app/privacy-policy/"]];
+}
 
 @end
