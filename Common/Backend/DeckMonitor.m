@@ -155,7 +155,7 @@
 }
 
 - (void)notifyLaunchSync {
-    [self showNotificationWithMessage:@"KaniManabu is syncing from iCloud since it last launched. Please wait one minute before reviewing/learning items."];
+    [self showNotificationWithMessage:@"KaniManabu is syncing from iCloud since it last launched. Please wait for it to complete with a notification before reviewing/learning items."];
 }
 
 - (void)notifySyncDone {

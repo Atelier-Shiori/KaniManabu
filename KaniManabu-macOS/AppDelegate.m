@@ -91,7 +91,7 @@
         [NSUbiquitousKeyValueStore.defaultStore setString:userid forKey:@"RevenueCatUserID"];
         [NSUbiquitousKeyValueStore.defaultStore synchronize];
     }
-    _rcpurchases = [RCPurchases configureWithAPIKey:@"appl_tSCAgCTfPHikGbKqyzZgHXxBVcC"];
+    _rcpurchases = [RCPurchases configureWithAPIKey:@"appl_tSCAgCTfPHikGbKqyzZgHXxBVcC" appUserID:userid];
     RCPurchases.logLevel = RCLogLevelDebug;
     _rcpurchases.delegate = self;
     [SubscriptionManager getCustomerInfo:^(bool success, RCCustomerInfo * customerInfo) {
@@ -430,9 +430,9 @@
 - (void)showNagDialogWithWindow:(NSWindow *)w {
     NSAlert *alert = [NSAlert new];
     alert.messageText = @"Please Support KaniManabu";
-    alert.informativeText = @"While KaniManabu is free to use, you are limited to three decks and this message will appear on launch. To remove this limitation and this nag message while unlocking subscriber features, get a subscription.";
+    alert.informativeText = @"While KaniManabu is free to use, you are limited to three decks and this message will appear on launch. To remove this limitation and this nag message while unlocking subscriber features, get a subscription. Do you want to open Preferences to view Subscription options?";
     [alert addButtonWithTitle:NSLocalizedString(@"Subscribe",nil)];
-    [alert addButtonWithTitle:NSLocalizedString(@"Remind Me Later",nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Not Now",nil)];
     [alert beginSheetModalForWindow:w completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSAlertFirstButtonReturn) {
             [self.preferencesWindowController showWindow:nil];
@@ -452,7 +452,7 @@
         NSAlert *alert = [[NSAlert alloc] init] ;
         [alert addButtonWithTitle:@"OK"];
         alert.messageText = @"Not Logged into iCloud or iCloud Drive Disabled";
-        alert.informativeText = @"KaniManabu relies on iCloud Drive and iCloud Account for the app to fully function. Make sure you are logged into an iCloud Account and have iCloud Drive enabled. Some functionality is now limited.";
+        alert.informativeText = @"KaniManabu relies on iCloud Drive and iCloud Account for the app to fully function. Make sure you are logged into an iCloud Account and have iCloud Drive enabled and relaunch the app. Some functionality is now limited.";
         [alert setShowsSuppressionButton:YES];
         // Set Message type to Warning
         alert.alertStyle = NSAlertStyleInformational;
