@@ -50,7 +50,9 @@
     if (!_syncinginprogress) {
         if (!_firstsync) {
             _firstsync = YES;
-            [self notifyLaunchSync];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self notifyLaunchSync];
+            });
         }
         _syncdone = NO;
         _syncinginprogress = YES;
@@ -109,7 +111,9 @@
     _timeractive = NO;
     if (!_firstsyncdone) {
         _firstsyncdone = YES;
-        [self notifySyncDone];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self notifySyncDone];
+        });
     }
     bool changesindatabase = [self checkTransactionHistory];
     if ([self cardtotalschanged] || changesindatabase) {

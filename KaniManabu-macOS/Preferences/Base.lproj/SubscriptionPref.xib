@@ -54,7 +54,7 @@
                         <binding destination="2pk-oP-32z" name="hidden" keyPath="values.donated" id="Cvk-N3-5Ab"/>
                     </connections>
                 </button>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzL-8A-ukx">
+                <textField hidden="YES" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dzL-8A-ukx">
                     <rect key="frame" x="22" y="11" width="445" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" selectable="YES" id="kNO-sH-CfA">

@@ -44,7 +44,7 @@
     // Defaults
     defaultValues[@"DeckNewCardLimitPerDay"] = @(5);
     defaultValues[@"SayKanaReadingAnswer"] = @YES;
-    defaultValues[@"sendanalytics"] = @YES;
+    defaultValues[@"sendanalytics"] = @NO;
     defaultValues[@"ttsvoice"] = @(0);
     defaultValues[@"usekanimanabuime"] = @YES;
     defaultValues[@"donated"] = @NO;
@@ -185,6 +185,16 @@
 - (IBAction)showhelp:(id)sender{
     //Show Help
      [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://help.malupdaterosx.moe/kanimanabu/"]];
+}
+
+- (IBAction)showtos:(id)sender{
+    //Show Help
+     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://kanimanabu.app/terms-of-use/"]];
+}
+
+- (IBAction)showprivacypolicy:(id)sender{
+    //Show Help
+     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://kanimanabu.app/privacy-policy/"]];
 }
 
 #pragma mark - Core Data stack
