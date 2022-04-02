@@ -142,9 +142,9 @@
         if (returnCode== NSAlertFirstButtonReturn) {
             self.promptacknowledged = YES;
             // Suspend items that are still in the queue
-            for (CardReview *card in self.reviewqueue) {
+            /*for (CardReview *card in self.reviewqueue) {
                 [card suspendReview];
-            }
+            }*/
             [self showReviewComplete];
         }
     }];
