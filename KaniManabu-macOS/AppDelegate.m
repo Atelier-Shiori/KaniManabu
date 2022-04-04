@@ -37,6 +37,8 @@
 
 @implementation AppDelegate
 
+NSString *const kcurrentDeckVersion = @"1";
+
 + (void)initialize {
     //Create a Dictionary
     NSMutableDictionary * defaultValues = [NSMutableDictionary dictionary];
@@ -55,6 +57,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    [self checkDeckVersion];
     if (![DeckManager.sharedInstance checkiCloudLoggedIn]) {
         [self showiCloudNotice];
     }
@@ -188,12 +191,10 @@
 }
 
 - (IBAction)showtos:(id)sender{
-    //Show Help
      [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://kanimanabu.app/terms-of-use/"]];
 }
 
 - (IBAction)showprivacypolicy:(id)sender{
-    //Show Help
      [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://kanimanabu.app/privacy-policy/"]];
 }
 
@@ -472,5 +473,37 @@
             [defaults setBool: YES forKey:@"surpressicloudnotice"];
         }
     }
+}
+
+- (void)checkDeckVersion {
+    NSString *deckversion = [NSUbiquitousKeyValueStore.defaultStore objectForKey:@"DeckVersion"];
+    if (!deckversion) {
+        [NSUbiquitousKeyValueStore.defaultStore setString:kcurrentDeckVersion forKey:@"DeckVersion"];
+        [NSUbiquitousKeyValueStore.defaultStore synchronize];
+    }
+    if (deckversion.doubleValue < kcurrentDeckVersion.doubleValue) {
+        [NSUbiquitousKeyValueStore.defaultStore setString:kcurrentDeckVersion forKey:@"DeckVersion"];
+        [NSUbiquitousKeyValueStore.defaultStore synchronize];
+        NSLog(@"Set new deck version");
+    }
+    else if (deckversion.doubleValue > kcurrentDeckVersion.doubleValue) {
+        NSAlert *alert = [[NSAlert alloc] init] ;
+        [alert addButtonWithTitle:@"OK"];
+        alert.messageText = @"KaniManabu Client Too Old";
+#if defined(AppStore)
+        alert.informativeText = @"This version of KaniManabu is too old and not compatible with the deck stored on iCloud. Please open the App Store and update to the latest client. This application will now quit.";
+#else
+        alert.informativeText = @"This version of KaniManabu is too old and not compatible with the deck stored on iCloud. Please download the latest version. This application will now quit.";
+#endif
+        // Set Message type to Warning
+        alert.alertStyle = NSAlertStyleInformational;
+        long choice = [alert runModal];
+#if defined(AppStore)
+#else
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://malupdaterosx.moe/downloadkanimanabu.php"]];
+#endif
+        [[NSApplication sharedApplication] terminate:nil];
+    }
+
 }
 @end

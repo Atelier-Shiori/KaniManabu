@@ -124,7 +124,9 @@
             [NSUserDefaults.standardUserDefaults setValue:NSDate.date forKey:@"LastLaunchSyncDate"];
         }
     }
-    [self setNewCards];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setNewCards];
+    });
 }
 
 - (bool)checkTransactionHistory {
