@@ -3,6 +3,10 @@ KaniManu (蟹学ぶ) is an open source flashcard app for macOS (and soon iOS/iPa
 
 Requires macOS 10.15 Catalina or later.
 
+[![macappstore](https://malupdaterosx.moe/wp-content/uploads/2018/04/downloadmacappstore.png)](https://itunes.apple.com/us/app/shukofukurou/id1373973596?ls=1&mt=12)
+
+iOS/iPadOS version is in development.
+
 # What is different about KaniManabu compared to other SRS Flashcard software like Anki?
 KaniManbu is a lot easier to use with three different card types (Kanji, Kana, and Vocab). Unlike Anki, the user needs to type in the answer for both the meaning and reading instead of seeing the back of the card and picking the difficulty. This allows the learner to reinforce their knowledge.
 
@@ -40,9 +44,11 @@ KaniManbu is a lot easier to use with three different card types (Kanji, Kana, a
 # Supporting this Project
 While this app is open source and libre software, the binaries are not free since time and resources (web hosting and the Apple Developer Program to distribute the app) are needed to develop the app. However, users can self-compile, but the user will need an Apple Developer account since the Core Data database is stored in iCloud, allowing users to sync their decks to all their Macs and eventually iOS devices. You need a membership to use the iCloud features with your own apps.
 
-The app will only be available on the App Store on release and non-app store version will be for active patrons only. The free version will be limited to 3 decks and there will be some features that will be exclusive to the pro version (Microsoft/IBM Watson TTS without API key, public decks, and more). The pro version will be available through a monthly, yearly, or lifetime subscriptions. Active patrons can unlock these features with the non-app store version for the macOS version due to Apple App Store guidelines. The Pro version will work on both the iOS and Mac version as I plan to make it a universal purchase. I know some people hate subscriptions, but the subscription model allows me to cover infrastructure and development costs. The source code will be free for those who want to compile the app and use it for free without iCloud features.
+You can download the app for free on the Mac App Store. If you need to unlock the limit and other subscription-exclusive features or want to support us, you can get a subscription or make a one-time purchase. Pricing can be seen [here](https://kanimanabu.app/pricing/).
 
-You may also choose to support us on [Patreon](https://www.patreon.com/malupdaterosx) as well, which you can also unlock the app for free as long you remain an active patron. 
+[![macappstore](https://malupdaterosx.moe/wp-content/uploads/2018/04/downloadmacappstore.png)](https://itunes.apple.com/us/app/shukofukurou/id1373973596?ls=1&mt=12)
+
+You may also choose to support us on [Patreon](https://www.patreon.com/malupdaterosx) as well, which you can also unlock the app for free as long you remain an active patron. The Patron client can be downloaded [here](https://malupdaterosx.moe/downloadkanimanabu).
 
 # How to Compile in XCode
 Warning: This won't work if you don't have a Developer ID installed. If you don't have one, obtain one by joining the Apple Developer Program or turn off code signing.
