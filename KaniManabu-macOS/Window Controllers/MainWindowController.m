@@ -108,6 +108,25 @@
 - (void)fireTimer {
     _totalreviewitemcount = 0;
     _totallearnitemcount = 0;
+    if ([DeckManager.sharedInstance checkiCloudLoggedIn]) {
+        [self setNewCards];
+    }
+    else {
+        [NSNotificationCenter.defaultCenter postNotificationName:@"TimerFired" object:nil];
+    }
+}
+
+- (void)setNewCards {
+    NSArray *decks = [_dm retrieveDecks];
+    for (NSManagedObject *deck in decks) {
+        NSDate *nextdate = [NSDate dateWithTimeIntervalSince1970:((NSNumber *)[deck valueForKey:@"nextLearnInterval"]).doubleValue];
+        bool enabled = ((NSNumber *)[deck valueForKey:@"enabled"]).boolValue;
+        if (enabled) {
+            if (nextdate.timeIntervalSinceNow <= 0) {
+                [_dm setandretrieveLearnItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
+            }
+        }
+    }
     [NSNotificationCenter.defaultCenter postNotificationName:@"TimerFired" object:nil];
 }
 

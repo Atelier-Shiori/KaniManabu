@@ -262,7 +262,7 @@
     [learnqueue addObjectsFromArray:learningcards];
     bool overridelimit = ((NSNumber *)[deckmeta valueForKey:@"overridenewcardlimit"]).boolValue;
     int maxlearnlimit = overridelimit ? ((NSNumber *)[deckmeta valueForKey:@"newcardlimit"]).intValue : ((NSNumber *)[NSUserDefaults.standardUserDefaults valueForKey:@"DeckNewCardLimitPerDay"]).intValue;
-    if (((learnqueue.count <= maxlearnlimit && maxlearnlimit != 0) || maxlearnlimit == 0 )&& ([self getLearnDateForDeckUUID:uuid].timeIntervalSinceNow <= 0 || learningmore)) {
+    if (((learnqueue.count < maxlearnlimit && maxlearnlimit != 0) || maxlearnlimit == 0 )&& ([self getLearnDateForDeckUUID:uuid].timeIntervalSinceNow <= 0 || learningmore)) {
         NSArray *newcards = [_moc executeFetchRequest:fetchRequest error:&error];
         if (((NSNumber *)[deckmeta valueForKey:@"newcardmode"]).intValue == NewCardsRandom) {
             NSMutableArray *usedRandomNumbers = [NSMutableArray new];

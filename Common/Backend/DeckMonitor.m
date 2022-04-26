@@ -83,10 +83,14 @@
     NSArray *decks = [_dm retrieveDecks];
     for (NSManagedObject *deck in decks) {
         NSDate *nextdate = [NSDate dateWithTimeIntervalSince1970:((NSNumber *)[deck valueForKey:@"nextLearnInterval"]).doubleValue];
-        if (nextdate.timeIntervalSinceNow <= 0) {
-            [_dm setandretrieveLearnItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
+        bool enabled = ((NSNumber *)[deck valueForKey:@"enabled"]).boolValue;
+        if (enabled) {
+            if (nextdate.timeIntervalSinceNow <= 0) {
+                [_dm setandretrieveLearnItemsForDeckUUID:[deck valueForKey:@"deckUUID"] withType:((NSNumber *)[deck valueForKey:@"deckType"]).intValue];
+            }
         }
     }
+    [NSNotificationCenter.defaultCenter postNotificationName:@"TimerFired" object:nil];
 }
 
 - (void)startsynctimer {

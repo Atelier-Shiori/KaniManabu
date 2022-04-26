@@ -198,6 +198,16 @@ NSString *const kcurrentDeckVersion = @"1";
      [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://kanimanabu.app/privacy-policy/"]];
 }
 
+- (IBAction)showresources:(id)sender{
+    //Show Help
+     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://kanimanabu.app/resources/"]];
+}
+
+- (IBAction)showjapaneseinputguide:(id)sender{
+    //Show Help
+     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://kanimanabu.app/wp-content/uploads/sites/3/2022/04/typingjapaneseguide.pdf"]];
+}
+
 #pragma mark - Core Data stack
 
 @synthesize persistentContainer = _persistentContainer;

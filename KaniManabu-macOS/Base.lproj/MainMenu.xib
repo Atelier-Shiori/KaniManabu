@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -380,6 +380,20 @@
                                     <action selector="reportIssue:" target="Voe-Tx-rLC" id="1fa-Cc-MJ7"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="pr8-1l-rx1"/>
+                            <menuItem title="Japanese Input Guide…" id="Q8u-9q-TU5">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showjapaneseinputguide:" target="Voe-Tx-rLC" id="tdg-mZ-Viw"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Get More Decks…" id="STt-bE-Che">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showresources:" target="Voe-Tx-rLC" id="6zN-Vs-xcl"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="5oc-5h-AED"/>
                             <menuItem title="Privacy Policy…" id="gqx-8q-nY7">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
