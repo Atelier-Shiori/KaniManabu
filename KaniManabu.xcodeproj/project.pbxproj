@@ -210,6 +210,16 @@
 		FFB6145C278CB8AF001E5FAA /* DeckBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */; };
 		FFBE3C2E278DEF67003D3F06 /* SRSLevelValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C2D278DEF67003D3F06 /* SRSLevelValueTransformer.m */; };
 		FFBE3C31278DF05F003D3F06 /* UnixDatetoNSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C30278DF05F003D3F06 /* UnixDatetoNSDate.m */; };
+		FFC93EE82821A2D0008797B6 /* Conjugator.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC93EE72821A2D0008797B6 /* Conjugator.m */; };
+		FFC93EE92821A2D0008797B6 /* Conjugator.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC93EE72821A2D0008797B6 /* Conjugator.m */; };
+		FFC93EEA2821A2D0008797B6 /* Conjugator.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC93EE72821A2D0008797B6 /* Conjugator.m */; };
+		FFC93EEC2821A2DB008797B6 /* conjugationdata.json in Resources */ = {isa = PBXBuildFile; fileRef = FFC93EEB2821A2DB008797B6 /* conjugationdata.json */; };
+		FFC93EED2821A2DB008797B6 /* conjugationdata.json in Resources */ = {isa = PBXBuildFile; fileRef = FFC93EEB2821A2DB008797B6 /* conjugationdata.json */; };
+		FFC93EEE2821A2DB008797B6 /* conjugationdata.json in Resources */ = {isa = PBXBuildFile; fileRef = FFC93EEB2821A2DB008797B6 /* conjugationdata.json */; };
+		FFC93EF22821A611008797B6 /* ConjugationPracticeSettingsDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC93EF02821A611008797B6 /* ConjugationPracticeSettingsDialog.m */; };
+		FFC93EF32821A611008797B6 /* ConjugationPracticeSettingsDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = FFC93EF02821A611008797B6 /* ConjugationPracticeSettingsDialog.m */; };
+		FFC93EF42821A611008797B6 /* ConjugationPracticeSettingsDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFC93EF12821A611008797B6 /* ConjugationPracticeSettingsDialog.xib */; };
+		FFC93EF52821A611008797B6 /* ConjugationPracticeSettingsDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFC93EF12821A611008797B6 /* ConjugationPracticeSettingsDialog.xib */; };
 		FFD983662797415D0017730A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD983652797415D0017730A /* AppDelegate.m */; };
 		FFD983692797415D0017730A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD983682797415D0017730A /* SceneDelegate.m */; };
 		FFD9836C2797415D0017730A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD9836B2797415D0017730A /* ViewController.m */; };
@@ -588,6 +598,12 @@
 		FFBE3C2D278DEF67003D3F06 /* SRSLevelValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRSLevelValueTransformer.m; sourceTree = "<group>"; };
 		FFBE3C2F278DF05F003D3F06 /* UnixDatetoNSDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnixDatetoNSDate.h; sourceTree = "<group>"; };
 		FFBE3C30278DF05F003D3F06 /* UnixDatetoNSDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnixDatetoNSDate.m; sourceTree = "<group>"; };
+		FFC93ED32821A2D0008797B6 /* Conjugator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Conjugator.h; sourceTree = "<group>"; };
+		FFC93EE72821A2D0008797B6 /* Conjugator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Conjugator.m; sourceTree = "<group>"; };
+		FFC93EEB2821A2DB008797B6 /* conjugationdata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = conjugationdata.json; sourceTree = "<group>"; };
+		FFC93EEF2821A611008797B6 /* ConjugationPracticeSettingsDialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConjugationPracticeSettingsDialog.h; sourceTree = "<group>"; };
+		FFC93EF02821A611008797B6 /* ConjugationPracticeSettingsDialog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConjugationPracticeSettingsDialog.m; sourceTree = "<group>"; };
+		FFC93EF12821A611008797B6 /* ConjugationPracticeSettingsDialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConjugationPracticeSettingsDialog.xib; sourceTree = "<group>"; };
 		FFD983622797415D0017730A /* KaniManabu-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KaniManabu-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD983642797415D0017730A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FFD983652797415D0017730A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -724,6 +740,8 @@
 		15B122D3278CE85E00575A73 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				FFC93ED32821A2D0008797B6 /* Conjugator.h */,
+				FFC93EE72821A2D0008797B6 /* Conjugator.m */,
 				FF28A80D278C941800D3744D /* SRScheduler.h */,
 				FF28A80E278C941800D3744D /* SRScheduler.m */,
 				15794871278CC083000D984D /* CardReview.h */,
@@ -870,6 +888,9 @@
 				FFA58B0F27DF60590091146D /* SubscriptionPickerWindow.h */,
 				FFA58B1027DF60590091146D /* SubscriptionPickerWindow.m */,
 				FFA58B1127DF60590091146D /* SubscriptionPickerWindow.xib */,
+				FFC93EEF2821A611008797B6 /* ConjugationPracticeSettingsDialog.h */,
+				FFC93EF02821A611008797B6 /* ConjugationPracticeSettingsDialog.m */,
+				FFC93EF12821A611008797B6 /* ConjugationPracticeSettingsDialog.xib */,
 			);
 			path = "Window Controllers";
 			sourceTree = "<group>";
@@ -895,6 +916,7 @@
 		FF3C9FD827E231C000277FEE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FFC93EEB2821A2DB008797B6 /* conjugationdata.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1297,6 +1319,7 @@
 				FF173DE327B69E1F00E5CD37 /* NewDeckDialog.xib in Resources */,
 				FFA58B1327DF60590091146D /* SubscriptionPickerWindow.xib in Resources */,
 				FF173DF727B69E3300E5CD37 /* CSVImportController.xib in Resources */,
+				FFC93EF52821A611008797B6 /* ConjugationPracticeSettingsDialog.xib in Resources */,
 				FF173DEF27B69E2B00E5CD37 /* KanjiEditor.xib in Resources */,
 				FF173E0327B69E4100E5CD37 /* CSVLoadingWindow.xib in Resources */,
 				1573292D2794B9C400587C05 /* EULA.rtf in Resources */,
@@ -1312,6 +1335,7 @@
 				FF173DEB27B69E2700E5CD37 /* VocabEditor.xib in Resources */,
 				FF173DFF27B69E3B00E5CD37 /* ItemInfoWindow.xib in Resources */,
 				FF173DE727B69E2300E5CD37 /* DeckBrowser.xib in Resources */,
+				FFC93EED2821A2DB008797B6 /* conjugationdata.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1322,6 +1346,7 @@
 				FF173E0627B69E4D00E5CD37 /* DeckViewCell.xib in Resources */,
 				FF173DFA27B69E3700E5CD37 /* DeckOptions.xib in Resources */,
 				FF173DCE27B69DFE00E5CD37 /* SoftwareUpdateView.xib in Resources */,
+				FFC93EEC2821A2DB008797B6 /* conjugationdata.json in Resources */,
 				FF173DF227B69E3000E5CD37 /* KanaEditor.xib in Resources */,
 				FF173DDE27B69E1B00E5CD37 /* mainwindow.xib in Resources */,
 				153FFE7B2794F6F900D481A2 /* DonationWindow.xib in Resources */,
@@ -1339,6 +1364,7 @@
 				FF746572278F44AE0062E476 /* PFAboutWindow.xib in Resources */,
 				FF173DD627B69E1300E5CD37 /* Review.xib in Resources */,
 				FF173DD227B69E0600E5CD37 /* WaniKaniPreferences.xib in Resources */,
+				FFC93EF42821A611008797B6 /* ConjugationPracticeSettingsDialog.xib in Resources */,
 				FF173DEA27B69E2700E5CD37 /* VocabEditor.xib in Resources */,
 				FF173E0227B69E4100E5CD37 /* CSVLoadingWindow.xib in Resources */,
 				FF173DFE27B69E3A00E5CD37 /* ItemInfoWindow.xib in Resources */,
@@ -1351,6 +1377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFD983A8279744760017730A /* Study.storyboard in Resources */,
+				FFC93EEE2821A2DB008797B6 /* conjugationdata.json in Resources */,
 				FFD983772797415E0017730A /* LaunchScreen.storyboard in Resources */,
 				FFD983742797415E0017730A /* Assets.xcassets in Resources */,
 				FFD9836F2797415D0017730A /* Main.storyboard in Resources */,
@@ -1379,6 +1406,7 @@
 				157328FD2794B9C400587C05 /* DeckAddDialogController.m in Sources */,
 				FF778DE8279EEEDA0055AF2D /* WaniKani.m in Sources */,
 				FF173E4D27BA791700E5CD37 /* DeckMonitor.m in Sources */,
+				FFC93EF32821A611008797B6 /* ConjugationPracticeSettingsDialog.m in Sources */,
 				FF778DBD279EEB5F0055AF2D /* WaniKaniPreferences.m in Sources */,
 				157328FE2794B9C400587C05 /* MainWindowController.m in Sources */,
 				157328FF2794B9C400587C05 /* UnixDatetoNSDate.m in Sources */,
@@ -1386,6 +1414,7 @@
 				FF778DCA279EEC740055AF2D /* WaniKani.xcdatamodeld in Sources */,
 				157329012794B9C400587C05 /* GeneralPreferencesViewController.m in Sources */,
 				FFA58B1227DF60590091146D /* SubscriptionPickerWindow.m in Sources */,
+				FFC93EE92821A2D0008797B6 /* Conjugator.m in Sources */,
 				157329022794B9C400587C05 /* DeckManager.m in Sources */,
 				157329032794B9C400587C05 /* SRScheduler.m in Sources */,
 				157329042794B9C400587C05 /* ReviewWindowController.m in Sources */,
@@ -1431,6 +1460,7 @@
 				FF28A81A278CB17F00D3744D /* LearnWindowController.m in Sources */,
 				FF28A825278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				FF173E4C27BA791700E5CD37 /* DeckMonitor.m in Sources */,
+				FFC93EF22821A611008797B6 /* ConjugationPracticeSettingsDialog.m in Sources */,
 				151F3ABD278E23CD00953ECD /* KanjiEditor.m in Sources */,
 				15B122DF278CED4C00575A73 /* NSString+RomajiKanaConvert.m in Sources */,
 				FF89D70B2791D41D009B7C6F /* CHCSVParser.m in Sources */,
@@ -1464,6 +1494,7 @@
 				15794870278CBFC9000D984D /* ItemInfoWindowController.m in Sources */,
 				FF708870278C7CE000DF399E /* main.m in Sources */,
 				FF3C9FDF27E2508B00277FEE /* AdvancedPref.m in Sources */,
+				FFC93EE82821A2D0008797B6 /* Conjugator.m in Sources */,
 				FF89D70F2791DFE8009B7C6F /* CSVImportController.m in Sources */,
 				FF173E4027B70FA800E5CD37 /* TKMKanaInput.m in Sources */,
 				153FFE762794F33500D481A2 /* CFobError.m in Sources */,
@@ -1492,6 +1523,7 @@
 				FFA58B1927DFB61B0091146D /* MicrosoftSpeechConstants.m in Sources */,
 				FFA58B0C27DEB30E0091146D /* SubscriptionPref.m in Sources */,
 				FFD9838E279742530017730A /* DeckManager.m in Sources */,
+				FFC93EEA2821A2D0008797B6 /* Conjugator.m in Sources */,
 				FFD98396279742760017730A /* MSWeakTimer.m in Sources */,
 				FFD9837A2797415E0017730A /* main.m in Sources */,
 				FFD98392279742640017730A /* PaRomajiKanaConverter.m in Sources */,
@@ -1716,7 +1748,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = KaniManabu;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1756,7 +1788,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = KaniManabu;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1907,7 +1939,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1947,7 +1979,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
