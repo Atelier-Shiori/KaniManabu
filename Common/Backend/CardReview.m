@@ -36,6 +36,15 @@
     return self;
 }
 
+- (instancetype)initWithConjCard:(ConjugationReviewCard *)ccard {
+    if (self = [self init]) {
+        self.ccard = ccard;
+        self.cardtype = CardTypeConjugReview;
+        self.proposedSRSStage = 0;
+    }
+    return self;
+}
+
 - (void)setCorrect:(CardReviewType)reviewtype {
     switch (reviewtype) {
         case CardReviewTypeMeaning: {
@@ -50,11 +59,19 @@
             self.reviewedreading = true;
             break;
         }
+        case CardReviewTypeAnswerOnly: {
+            // For Misc cards and Conjugation practice only
+            if (_cardtype == CardTypeMisc) {
+                int correctcount = ((NSNumber *)[_card valueForKey:@"numansweredcorrect"]).intValue;
+                [self.card setValue:@(correctcount+1) forKey:@"numansweredcorrect"];
+            }
+            self.reviewedanswer = true;
+        }
         default: {
             break;
         }
     }
-    if (self.reviewedreading && self.reviewedmeaning && !self.currentreviewmeaningincorrect && !self.currentreviewreadingincorrect) {
+    if (((self.reviewedreading && self.reviewedmeaning && !self.currentreviewmeaningincorrect && !self.currentreviewreadingincorrect) && (_cardtype != CardTypeMisc || _cardtype != CardTypeConjugReview)) || ((self.reviewedanswer && !self.currentreviewanswerincorrect) && (_cardtype == CardTypeMisc || _cardtype == CardTypeConjugReview))) {
         _proposedSRSStage = [SRScheduler newStageByIncrementingCurrentStage:self.proposedSRSStage];
     }
 }
@@ -66,8 +83,8 @@
             if (!self.currentreviewmeaningincorrect) {
                 if (!_learningmode) {
                     // Only increment the incorrect count when the card is learned
-                    int meaningincorrectcount = ((NSNumber *)[_card valueForKey:@"nummeaningcorrect"]).intValue;
-                    [self.card setValue:@(meaningincorrectcount+1) forKey:@"nummeaningcorrect"];
+                    int meaningincorrectcount = ((NSNumber *)[_card valueForKey:@"nummeaningincorrect"]).intValue;
+                    [self.card setValue:@(meaningincorrectcount+1) forKey:@"nummeaningincorrect"];
                 }
                 self.currentreviewmeaningincorrect = true;
             }
@@ -77,11 +94,26 @@
             if (!self.currentreviewreadingincorrect) {
                 if (!_learningmode) {
                     // Only increment the incorrect count when the card is learned
-                    int readingincorrectcount = ((NSNumber *)[_card valueForKey:@"nummeaningcorrect"]).intValue;
-                    [self.card setValue:@(readingincorrectcount+1) forKey:@"numreadingcorrect"];
+                    int readingincorrectcount = ((NSNumber *)[_card valueForKey:@"numreadingincorrect"]).intValue;
+                    [self.card setValue:@(readingincorrectcount+1) forKey:@"numreadingincorrect"];
                 }
                 self.currentreviewreadingincorrect = true;
             }
+            break;
+        }
+        case CardTypeMisc: {
+            if (!self.currentreviewanswerincorrect) {
+                if (!_learningmode) {
+                    // Only increment the incorrect count when the card is learned
+                    int answerincorrectcount = ((NSNumber *)[_card valueForKey:@"numanswerincorrect"]).intValue;
+                    [self.card setValue:@(answerincorrectcount+1) forKey:@"numanswerincorrect"];
+                }
+                self.currentreviewanswerincorrect = true;
+            }
+            break;
+        }
+        case CardTypeConjugReview: {
+            self.currentreviewanswerincorrect = true;
             break;
         }
         default: {
@@ -104,6 +136,10 @@
 
 - (void)finishReview {
     self.reviewed = true;
+    if (_cardtype == CardTypeConjugReview) {
+        // No need to write review progress for Conjugation practice items since they aren't real cards
+        return;
+    }
     if (self.currentreviewnumincorrect == 0) {
         // Increment Correct count
         int correctcount = ((NSNumber *)[_card valueForKey:@"numansweredcorrect"]).intValue;
@@ -120,11 +156,18 @@
     [_card setValue:@(_proposedSRSStage) forKey:@"srsstage"];
     // Reset in review values
     [_card setValue:@(0) forKey:@"proposedsrsstage"];
-    [_card setValue:@(0) forKey:@"reviewincorrectcount"];
-    [_card setValue:@NO forKey:@"reviewincorrectmeaning"];
-    [_card setValue:@NO forKey:@"reviewincorrectreading"];
-    [_card setValue:@NO forKey:@"reviewedreading"];
-    [_card setValue:@NO forKey:@"reviewedmeaning"];
+    if (_cardtype == CardTypeMisc) {
+        [_card setValue:@(0) forKey:@"reviewincorrectcount"];
+        [_card setValue:@NO forKey:@"reviewincorrectanswer"];
+        [_card setValue:@NO forKey:@"reviewedanswer"];
+    }
+    else {
+        [_card setValue:@(0) forKey:@"reviewincorrectcount"];
+        [_card setValue:@NO forKey:@"reviewincorrectmeaning"];
+        [_card setValue:@NO forKey:@"reviewincorrectreading"];
+        [_card setValue:@NO forKey:@"reviewedreading"];
+        [_card setValue:@NO forKey:@"reviewedmeaning"];
+    }
     [_card setValue:@NO forKey:@"inreview"];
     if (_learningmode) {
         // Card is learned, set learned flag

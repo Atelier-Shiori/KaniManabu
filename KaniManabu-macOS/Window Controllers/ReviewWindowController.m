@@ -239,6 +239,10 @@
             }
             break;
         }
+        case CardTypeMisc: {
+            correctAnswer = [_currentcard.card valueForKey:@"answer"];
+            break;
+        }
     }
     if (_questiontype == CardReviewTypeMeaning) {
         int answerstate = [AnswerCheck checkMeaning:_answertextfield.stringValue withCard:_currentcard.card];
@@ -327,7 +331,34 @@
         _iteminfotoolbaritem.enabled = true;
         [_currentcard setCorrect:CardReviewTypeReading];
     }
-    if (_currentcard.reviewedmeaning && _currentcard.reviewedreading) {
+    else if (_questiontype == CardReviewTypeAnswerOnly) {
+            int answerstate = [AnswerCheck checkMiscAnswer:correctAnswer withCard:_currentcard.card];
+            switch (answerstate) {
+                case AnswerStatePrecise: {
+                    [self setTextFieldAnswerBackground:1];
+                    break;
+                }
+                case AnswerStateInprecise: {
+                    [self setTextFieldAnswerBackground:1];
+                    _answerstatus.stringValue = @"Your answer was a bit off. Check your answer with the item info to see if your answer was correct";
+                    break;
+                }
+                case AnswerStateIncorrect: {
+                    [self setTextFieldAnswerBackground:0];
+                    _answerstatus.stringValue = @"Need Help? Click the Item Info to view the correct answer.";
+                    _currentcard.currentreviewmeaningincorrect = true;
+                    _answered = true;
+                    _iteminfotoolbaritem.enabled = true;
+                    [_currentcard setIncorrect:CardReviewTypeReading];
+                    return;
+                }
+            }
+        _currentcard.reviewedanswer = true;
+        _answered = true;
+        _iteminfotoolbaritem.enabled = true;
+        [_currentcard setCorrect:CardReviewTypeAnswerOnly];
+    }
+    if (_currentcard.reviewedmeaning && _currentcard.reviewedreading || _currentcard.reviewedanswer && _currentcard.cardtype == CardTypeMisc) {
         if (!_learnmode) {
             // Show New SRS Level
             [self showNewSRSStage:YES];
@@ -717,7 +748,12 @@
         [self sayAnswer:[_currentcard.card valueForKey:@"kanareading"]];
     }
     else if (_currentcard.cardtype == CardTypeVocab) {
-        [self sayAnswer:[_currentcard.card valueForKey:@"reading"]];
+        if ([NSUserDefaults.standardUserDefaults boolForKey:@"usekanjitts"]) {
+            [self sayAnswer:[_currentcard.card valueForKey:@"japanese"]];
+        }
+        else {
+            [self sayAnswer:[_currentcard.card valueForKey:@"reading"]];
+        }
     }
 }
 

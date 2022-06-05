@@ -172,6 +172,13 @@
 		FF55FF4927BD763900EE389D /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF55FF3A27BD761700EE389D /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FF55FF4A27BD764200EE389D /* MMMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF55FF3A27BD761700EE389D /* MMMarkdown.framework */; };
 		FF55FF4B27BD764200EE389D /* MMMarkdown.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FF55FF3A27BD761700EE389D /* MMMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF6399782847851B00479C15 /* ConjugationReviewCard.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6399772847851B00479C15 /* ConjugationReviewCard.m */; };
+		FF6399792847851B00479C15 /* ConjugationReviewCard.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6399772847851B00479C15 /* ConjugationReviewCard.m */; };
+		FF63997A2847851B00479C15 /* ConjugationReviewCard.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6399772847851B00479C15 /* ConjugationReviewCard.m */; };
+		FF63997D2847853900479C15 /* MiscEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF63997C2847853900479C15 /* MiscEditor.m */; };
+		FF63997E2847853900479C15 /* MiscEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = FF63997C2847853900479C15 /* MiscEditor.m */; };
+		FF6399802847853F00479C15 /* MiscEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF63997F2847853F00479C15 /* MiscEditor.xib */; };
+		FF6399812847853F00479C15 /* MiscEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF63997F2847853F00479C15 /* MiscEditor.xib */; };
 		FF708866278C7CDF00DF399E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FF708865278C7CDF00DF399E /* AppDelegate.m */; };
 		FF708869278C7CDF00DF399E /* KaniManabu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF708867278C7CDF00DF399E /* KaniManabu.xcdatamodeld */; };
 		FF70886B278C7CE000DF399E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF70886A278C7CE000DF399E /* Assets.xcassets */; };
@@ -551,6 +558,11 @@
 		FF3C9FDC27E2508B00277FEE /* AdvancedPref.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvancedPref.h; sourceTree = "<group>"; };
 		FF3C9FDD27E2508B00277FEE /* AdvancedPref.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvancedPref.m; sourceTree = "<group>"; };
 		FF55FF2827BD761700EE389D /* MMMarkdown.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MMMarkdown.xcodeproj; path = "Dependencies/MMMarkdown-master/MMMarkdown.xcodeproj"; sourceTree = "<group>"; };
+		FF6399632847851B00479C15 /* ConjugationReviewCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConjugationReviewCard.h; sourceTree = "<group>"; };
+		FF6399772847851B00479C15 /* ConjugationReviewCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConjugationReviewCard.m; sourceTree = "<group>"; };
+		FF63997B2847853900479C15 /* MiscEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiscEditor.h; sourceTree = "<group>"; };
+		FF63997C2847853900479C15 /* MiscEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiscEditor.m; sourceTree = "<group>"; };
+		FF63997F2847853F00479C15 /* MiscEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MiscEditor.xib; path = "KaniManabu-macOS/Window Controllers/MiscEditor.xib"; sourceTree = SOURCE_ROOT; };
 		FF708861278C7CDF00DF399E /* KaniManabu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaniManabu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF708864278C7CDF00DF399E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FF708865278C7CDF00DF399E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -578,6 +590,7 @@
 		FF89D70D2791DFE8009B7C6F /* CSVImportController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSVImportController.m; sourceTree = "<group>"; };
 		FF89D7112791EC92009B7C6F /* CSVDeckImporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVDeckImporter.h; sourceTree = "<group>"; };
 		FF89D7122791EC92009B7C6F /* CSVDeckImporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSVDeckImporter.m; sourceTree = "<group>"; };
+		FF9D91AB2848E61600F9558B /* WaniManabu 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "WaniManabu 2.xcdatamodel"; sourceTree = "<group>"; };
 		FFA14B79278EF1560038B9C2 /* CardEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardEditor.h; sourceTree = "<group>"; };
 		FFA14B7A278EF1560038B9C2 /* CardEditor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardEditor.m; sourceTree = "<group>"; };
 		FFA14B84278F04E10038B9C2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -768,6 +781,8 @@
 				FFA58B1627DFB61B0091146D /* MicrosoftSpeechConstants.m */,
 				FF3C9FD327E22B7E00277FEE /* IBMSpeechConstants.h */,
 				FF3C9FD427E22B7E00277FEE /* IBMSpeechConstants.m */,
+				FF6399632847851B00479C15 /* ConjugationReviewCard.h */,
+				FF6399772847851B00479C15 /* ConjugationReviewCard.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -825,6 +840,7 @@
 				FF173DF927B69E3300E5CD37 /* CSVImportController.xib */,
 				FF173DFD27B69E3700E5CD37 /* DeckOptions.xib */,
 				FF173E0127B69E3B00E5CD37 /* ItemInfoWindow.xib */,
+				FF63997F2847853F00479C15 /* MiscEditor.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -860,6 +876,8 @@
 				15C52D7D279477D1002ADE2B /* XIBs */,
 				FF28A815278CB16D00D3744D /* MainWindowController.h */,
 				FF28A816278CB16D00D3744D /* MainWindowController.m */,
+				FF63997B2847853900479C15 /* MiscEditor.h */,
+				FF63997C2847853900479C15 /* MiscEditor.m */,
 				FF28A818278CB17F00D3744D /* LearnWindowController.h */,
 				FF28A819278CB17F00D3744D /* LearnWindowController.m */,
 				FF28A81B278CB19E00D3744D /* ReviewWindowController.h */,
@@ -1323,6 +1341,7 @@
 				FF173DEF27B69E2B00E5CD37 /* KanjiEditor.xib in Resources */,
 				FF173E0327B69E4100E5CD37 /* CSVLoadingWindow.xib in Resources */,
 				1573292D2794B9C400587C05 /* EULA.rtf in Resources */,
+				FF6399812847853F00479C15 /* MiscEditor.xib in Resources */,
 				FF173DCB27B69DFA00E5CD37 /* GeneralPreferences.xib in Resources */,
 				1573292F2794B9C400587C05 /* Assets.xcassets in Resources */,
 				FF173DDB27B69E1700E5CD37 /* Learn.xib in Resources */,
@@ -1350,6 +1369,7 @@
 				FF173DF227B69E3000E5CD37 /* KanaEditor.xib in Resources */,
 				FF173DDE27B69E1B00E5CD37 /* mainwindow.xib in Resources */,
 				153FFE7B2794F6F900D481A2 /* DonationWindow.xib in Resources */,
+				FF6399802847853F00479C15 /* MiscEditor.xib in Resources */,
 				15C52D7F2794780A002ADE2B /* dsa_pub.pem in Resources */,
 				FF746576278F47380062E476 /* Credits.rtf in Resources */,
 				FF173DE227B69E1F00E5CD37 /* NewDeckDialog.xib in Resources */,
@@ -1406,6 +1426,7 @@
 				157328FD2794B9C400587C05 /* DeckAddDialogController.m in Sources */,
 				FF778DE8279EEEDA0055AF2D /* WaniKani.m in Sources */,
 				FF173E4D27BA791700E5CD37 /* DeckMonitor.m in Sources */,
+				FF63997E2847853900479C15 /* MiscEditor.m in Sources */,
 				FFC93EF32821A611008797B6 /* ConjugationPracticeSettingsDialog.m in Sources */,
 				FF778DBD279EEB5F0055AF2D /* WaniKaniPreferences.m in Sources */,
 				157328FE2794B9C400587C05 /* MainWindowController.m in Sources */,
@@ -1435,6 +1456,7 @@
 				1573290E2794B9C400587C05 /* ItemInfoWindowController.m in Sources */,
 				1573290F2794B9C400587C05 /* main.m in Sources */,
 				157329102794B9C400587C05 /* CSVImportController.m in Sources */,
+				FF6399792847851B00479C15 /* ConjugationReviewCard.m in Sources */,
 				157329112794B9C400587C05 /* AppDelegate.m in Sources */,
 				157329122794B9C400587C05 /* NSTextView+SetHTMLAttributedText.m in Sources */,
 				157329132794B9C400587C05 /* DeckOptions.m in Sources */,
@@ -1467,6 +1489,7 @@
 				FFA14B90278F0F8C0038B9C2 /* NSTableViewAction.m in Sources */,
 				1579486D278CBFB0000D984D /* DeckAddDialogController.m in Sources */,
 				154490842794ED760009CED4 /* LicenseManager.m in Sources */,
+				FF63997D2847853900479C15 /* MiscEditor.m in Sources */,
 				FF28A817278CB16D00D3744D /* MainWindowController.m in Sources */,
 				FFBE3C31278DF05F003D3F06 /* UnixDatetoNSDate.m in Sources */,
 				FFB6145C278CB8AF001E5FAA /* DeckBrowser.m in Sources */,
@@ -1497,6 +1520,7 @@
 				FFC93EE82821A2D0008797B6 /* Conjugator.m in Sources */,
 				FF89D70F2791DFE8009B7C6F /* CSVImportController.m in Sources */,
 				FF173E4027B70FA800E5CD37 /* TKMKanaInput.m in Sources */,
+				FF6399782847851B00479C15 /* ConjugationReviewCard.m in Sources */,
 				153FFE762794F33500D481A2 /* CFobError.m in Sources */,
 				FF708866278C7CDF00DF399E /* AppDelegate.m in Sources */,
 				FF28A826278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m in Sources */,
@@ -1520,6 +1544,7 @@
 				FFD98391279742610017730A /* NSString+RomajiKanaConvert.m in Sources */,
 				FFD98395279742710017730A /* string_score.c in Sources */,
 				FFD9838C279742490017730A /* NSNumberFormatterNumberOnly.m in Sources */,
+				FF63997A2847851B00479C15 /* ConjugationReviewCard.m in Sources */,
 				FFA58B1927DFB61B0091146D /* MicrosoftSpeechConstants.m in Sources */,
 				FFA58B0C27DEB30E0091146D /* SubscriptionPref.m in Sources */,
 				FFD9838E279742530017730A /* DeckManager.m in Sources */,
@@ -2111,9 +2136,10 @@
 		FF708867278C7CDF00DF399E /* KaniManabu.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FF9D91AB2848E61600F9558B /* WaniManabu 2.xcdatamodel */,
 				FF708868278C7CDF00DF399E /* WaniManabu.xcdatamodel */,
 			);
-			currentVersion = FF708868278C7CDF00DF399E /* WaniManabu.xcdatamodel */;
+			currentVersion = FF9D91AB2848E61600F9558B /* WaniManabu 2.xcdatamodel */;
 			path = KaniManabu.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

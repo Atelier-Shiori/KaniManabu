@@ -7,8 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
-
+#import "ConjugationReviewCard.h"
 
 @interface AnswerCheck : NSObject
 typedef NS_ENUM(int,AnswerState) {
@@ -25,6 +24,8 @@ typedef NS_ENUM(int,AnswerState) {
 + (AnswerState)checkMeaning:(NSString *)answer withCard:(NSManagedObject *)card;
 + (AnswerState)checkVocabReading:(NSString *)answer withCard:(NSManagedObject *)card;
 + (AnswerState)checkKanjiReading:(NSString *)answer withCard:(NSManagedObject *)card;
++ (AnswerState)checkMiscAnswer:(NSString *)answer withCard:(NSManagedObject *)card;
++ (AnswerState)checkConjugation:(NSString *)answer withCard:(ConjugationReviewCard *)card;
 @end
 
 

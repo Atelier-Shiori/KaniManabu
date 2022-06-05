@@ -48,6 +48,7 @@ NSString *const kcurrentDeckVersion = @"1";
     defaultValues[@"SayKanaReadingAnswer"] = @YES;
     defaultValues[@"sendanalytics"] = @NO;
     defaultValues[@"ttsvoice"] = @(0);
+    defaultValues[@"usekanjitts"] = @NO;
     defaultValues[@"usekanimanabuime"] = @YES;
     defaultValues[@"donated"] = @NO;
     //Register Dictionary

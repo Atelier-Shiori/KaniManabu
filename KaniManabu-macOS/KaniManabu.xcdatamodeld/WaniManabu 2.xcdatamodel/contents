@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Decks" representedClassName="Decks" syncable="YES" codeGenerationType="class">
+        <attribute name="ankimode" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="deckName" optional="YES" attributeType="String"/>
+        <attribute name="deckType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="deckUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="enabled" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="misckanainput" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="miscpictureonly" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="newcardlimit" optional="YES" attributeType="Integer 16" minValueString="5" defaultValueString="5" usesScalarValueType="YES"/>
+        <attribute name="newcardmode" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nextLearnInterval" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="overridenewcardlimit" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="KanaCards" representedClassName="KanaCards" syncable="YES" codeGenerationType="class">
+        <attribute name="altmeaning" optional="YES" attributeType="String"/>
+        <attribute name="carduuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="contextsentence1" optional="YES" attributeType="String"/>
+        <attribute name="contextsentence2" optional="YES" attributeType="String"/>
+        <attribute name="datecreated" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="deckUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="english" optional="YES" attributeType="String"/>
+        <attribute name="englishsentence1" optional="YES" attributeType="String"/>
+        <attribute name="englishsentence2" optional="YES" attributeType="String"/>
+        <attribute name="inreview" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="japanese" optional="YES" attributeType="String"/>
+        <attribute name="kanareading" optional="YES" attributeType="String"/>
+        <attribute name="lastreviewed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="learned" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="learning" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="nextreviewinterval" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="numansweredcorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="numansweredincorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nummeaningcorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nummeaningincorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="proposedsrsstage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reviewedmeaning" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="reviewedreading" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="reviewincorrectcount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reviewincorrectmeaning" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="reviewincorrectreading" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="srsstage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="suspended" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="tags" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="KanjiCards" representedClassName="KanjiCards" syncable="YES" codeGenerationType="class">
+        <attribute name="altmeaning" optional="YES" attributeType="String"/>
+        <attribute name="altreading" optional="YES" attributeType="String"/>
+        <attribute name="altreadingtype" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="carduuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="datecreated" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="deckUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="english" optional="YES" attributeType="String"/>
+        <attribute name="inreview" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="japanese" optional="YES" attributeType="String"/>
+        <attribute name="kanareading" optional="YES" attributeType="String"/>
+        <attribute name="lastreviewed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="learned" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="learning" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="nextreviewinterval" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="numansweredcorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="numansweredincorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nummeaningcorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nummeaningincorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="numreadingcorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="numreadingincorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="proposedsrsstage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reading" optional="YES" attributeType="String"/>
+        <attribute name="readingtype" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reviewedmeaning" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="reviewedreading" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="reviewincorrectcount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reviewincorrectmeaning" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="reviewincorrectreading" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="srsstage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="suspended" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="tags" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="MiscCards" representedClassName="MiscCards" syncable="YES" codeGenerationType="class">
+        <attribute name="answer" optional="YES" attributeType="String"/>
+        <attribute name="audio" optional="YES" attributeType="Binary"/>
+        <attribute name="carduuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="deckUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="inreview" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="lastreviewed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="learned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="learning" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="nextreviewinterval" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="numansweredcorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="numansweredincorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nummeaningcorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nummeaningincorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="picture" optional="YES" attributeType="Binary"/>
+        <attribute name="proposedsrsstage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="question" optional="YES" attributeType="String"/>
+        <attribute name="reviewincorrectcount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reviewincorrectmeaning" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="reviewincorrectreading" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="srsstage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="suspended" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="tags" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="VocabCards" representedClassName="VocabCards" syncable="YES" codeGenerationType="class">
+        <attribute name="altmeaning" optional="YES" attributeType="String"/>
+        <attribute name="carduuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="contextsentence1" optional="YES" attributeType="String"/>
+        <attribute name="contextsentence2" optional="YES" attributeType="String"/>
+        <attribute name="contextsentence3" optional="YES" attributeType="String"/>
+        <attribute name="datecreated" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="deckUUID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="english" optional="YES" attributeType="String"/>
+        <attribute name="englishsentence1" optional="YES" attributeType="String"/>
+        <attribute name="englishsentence2" optional="YES" attributeType="String"/>
+        <attribute name="englishsentence3" optional="YES" attributeType="String"/>
+        <attribute name="inreview" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="japanese" optional="YES" attributeType="String"/>
+        <attribute name="kanaWord" optional="YES" attributeType="String"/>
+        <attribute name="lastreviewed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="learned" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="learning" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="nextreviewinterval" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="numansweredcorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="numansweredincorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nummeaningcorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="nummeaningincorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="numreadingcorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="numreadingincorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="proposedsrsstage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reading" optional="YES" attributeType="String"/>
+        <attribute name="reviewedmeaning" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="reviewedreading" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="reviewincorrectcount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="reviewincorrectmeaning" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="reviewincorrectreading" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="srsstage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="suspended" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="tags" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Decks" positionX="-63" positionY="-18" width="128" height="194"/>
+        <element name="KanaCards" positionX="-18" positionY="144" width="128" height="479"/>
+        <element name="KanjiCards" positionX="-36" positionY="135" width="128" height="509"/>
+        <element name="VocabCards" positionX="-54" positionY="18" width="128" height="554"/>
+        <element name="MiscCards" positionX="-36" positionY="144" width="128" height="374"/>
+    </elements>
+</model>

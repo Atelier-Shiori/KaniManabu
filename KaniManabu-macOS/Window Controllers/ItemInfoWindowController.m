@@ -250,7 +250,7 @@
 }
 
 - (IBAction)playvoice:(id)sender {
-    [SpeechSynthesis.sharedInstance sayText:_cardType == DeckTypeKana ? _cardMeta[@"kanareading"] : _cardMeta[@"reading"]];
+    [SpeechSynthesis.sharedInstance sayText:_cardType == DeckTypeKana ? _cardMeta[@"kanareading"] : [NSUserDefaults.standardUserDefaults boolForKey:@"usekanjitts"] ? _cardMeta[@"japanese"] : _cardMeta[@"reading"]];
 }
 
 - (IBAction)lookupworddictionary:(id)sender {

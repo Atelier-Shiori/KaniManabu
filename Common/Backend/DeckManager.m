@@ -130,6 +130,9 @@
         case DeckTypeVocab:
             fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
             break;
+        case DeckTypeMisc:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
+            break;
         default:
             return nil;
     }
@@ -172,6 +175,9 @@
                 break;
             case DeckTypeVocab:
                 fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+                break;
+            case DeckTypeMisc:
+                fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
                 break;
             default:
                 return nil;
@@ -228,6 +234,9 @@
             break;
         case DeckTypeVocab:
             fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeMisc:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
             break;
         default:
             return nil;
@@ -355,6 +364,9 @@
         case DeckTypeVocab:
             fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
             break;
+        case DeckTypeMisc:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
+            break;
         default:
             return 0;
     }
@@ -387,6 +399,9 @@
         case DeckTypeVocab:
             fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
             break;
+        case DeckTypeMisc:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
+            break;
         default:
             return 0;
     }
@@ -417,6 +432,9 @@
             case DeckTypeVocab:
                 fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
                 break;
+            case DeckTypeMisc:
+                fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
+                break;
             default:
                 break;
         }
@@ -446,6 +464,9 @@
             break;
         case DeckTypeVocab:
             fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeMisc:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
             break;
         default:
             return nil;
@@ -482,6 +503,9 @@
                 break;
             case DeckTypeVocab:
                 fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+                break;
+            case DeckTypeMisc:
+                fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
                 break;
             default:
                 return nil;
@@ -545,6 +569,9 @@
             case DeckTypeVocab:
                 entity = @"VocabCards";
                 break;
+            case DeckTypeMisc:
+                entity = @"MiscCards";
+                break;
             default:
                 return false;
         }
@@ -592,6 +619,9 @@
         case DeckTypeVocab:
             fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
             break;
+        case DeckTypeMisc:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
+            break;
         default:
             return false;
     }
@@ -613,6 +643,9 @@
             break;
         case DeckTypeVocab:
             fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeMisc:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
             break;
         default:
             return false;
@@ -644,6 +677,9 @@
             break;
         case DeckTypeVocab:
             fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeMisc:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
             break;
         default:
             return;
@@ -686,6 +722,9 @@
         case DeckTypeVocab:
             fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
             break;
+        case DeckTypeMisc:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
+            break;
         default:
             return;
     }
@@ -715,6 +754,9 @@
             break;
         case DeckTypeVocab:
             fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeMisc:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
             break;
         default:
             return false;
@@ -747,6 +789,9 @@
         case DeckTypeVocab:
             fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
             break;
+        case DeckTypeMisc:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
+            break;
         default:
             return;
     }
@@ -777,6 +822,9 @@
             break;
         case DeckTypeVocab:
             fetchRequest.entity = [NSEntityDescription entityForName:@"VocabCards" inManagedObjectContext:_moc];
+            break;
+        case DeckTypeMisc:
+            fetchRequest.entity = [NSEntityDescription entityForName:@"MiscCards" inManagedObjectContext:_moc];
             break;
         default:
             return;

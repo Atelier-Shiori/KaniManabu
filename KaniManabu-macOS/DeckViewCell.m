@@ -78,6 +78,9 @@
         case DeckTypeVocab:
             _decktypestr.stringValue = @"単語";
             break;
+        case DeckTypeMisc:
+            _decktypestr.stringValue = @"雑多";
+            break;
         default:
             _decktypestr.stringValue = @"他の";
             break;

@@ -181,4 +181,53 @@ double const kFuzziness = 0.8;
     return AnswerStateIncorrect;
 }
 
++ (AnswerState)checkMiscAnswer:(NSString *)answer withCard:(NSManagedObject *)card {
+    // Trim whitespace if any
+    answer = [answer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    // Check Answers
+    NSString *correctAnswer = [card valueForKey:@"answer"];
+    
+    if ([answer caseInsensitiveCompare:correctAnswer] == NSOrderedSame) {
+        return AnswerStatePrecise;
+    }
+    
+    // Check for imprecise match with stringscore.
+    float stringscore = string_fuzzy_score(answer.UTF8String, correctAnswer.UTF8String, kFuzziness);
+    if (stringscore >= .6) {
+        // Answer is correct enough, but not precise.
+        return AnswerStateInprecise;
+    }
+    
+    // Answer is incorrect
+    return AnswerStateIncorrect;
+}
+
++ (AnswerState)checkConjugation:(NSString *)answer withCard:(ConjugationReviewCard *)card {
+    // Validate String
+    if ([self validateKanaNumericString:answer]) {
+        if (![self validateAlphaNumericString:answer]) {
+            return AnswerStateInvalidCharacters;
+        }
+        // Check with Kanji Reading
+        answer = [answer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSString *correctAnswer = card.answerkanji;
+        if ([answer isEqualToString:correctAnswer]) {
+            return AnswerStatePrecise;
+        }
+    }
+    else {
+        answer = [answer stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        // Convert answer to Hiragana
+        answer = [answer stringKatakanaToHiragana];
+        // Check answer
+        NSString *correctAnswer = card.answerkana;
+        if ([answer isEqualToString:correctAnswer]) {
+            return AnswerStatePrecise;
+        }
+    }
+    // Answer is incorrect
+    return AnswerStateIncorrect;
+}
+
+
 @end

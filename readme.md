@@ -29,6 +29,15 @@ KaniManbu is a lot easier to use with three different card types (Kanji, Kana, a
 * WaniKani integration (view information of kanji used in words in item info/lesson sessions and check if the vocab exists on Wanikani before adding. (Note that free users are limited to content available in levels 1-3)
 * Ability to learn more items and set per deck new card limit
 
+# In Progress (1.1 release, Early-Mid July 2022)
+* Misc Deck Type (Front/Back) with the ability to add an image and/or sound clip (Subscription Feature)
+* Conjugation Practice (Subscription Feature)
+* Ability to automatically fill in definitions and Kana readings using Jisho API
+* JSON-format deck Export/Import
+
+# Planned (Fall 2022)
+* iOS/iPadOS version
+
 # Planned features
 * Ability to import and export decks (KaniManabu JSON format)
 * Ability to review all items in the queue (Review and Learning)

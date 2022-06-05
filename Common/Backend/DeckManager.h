@@ -14,7 +14,8 @@
 typedef NS_ENUM(int,DeckType) {
     DeckTypeKanji = 0,
     DeckTypeVocab = 1,
-    DeckTypeKana = 2
+    DeckTypeKana = 2,
+    DeckTypeMisc = 3
 };
 
 typedef NS_ENUM(int,NewCardReviewMode) {
