@@ -15,7 +15,6 @@
 #import <MMMarkdown/MMMarkdown.h>
 
 @interface LearnWindowController ()
-@property (strong) IBOutlet NSTextField *wordlabel;
 @property (strong) IBOutlet NSTextView *infotextview;
 @property (strong) IBOutlet NSToolbarItem *playvoicetoolbaritem;
 @property (strong) IBOutlet NSProgressIndicator *progress;
@@ -26,7 +25,6 @@
 @property int currentitem;
 @property bool promptacknowledged;
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
-@property (strong) IBOutlet NSTextField *furiganas;
 @end
 
 @implementation LearnWindowController
@@ -48,6 +46,13 @@
         _lookupindictionarytoolbaritem.image = [NSImage imageNamed:@"bookshelf"];
         _otherresourcestoolbaritem.image = [NSImage imageNamed:@"safari"];;
     }
+    if (!_jWebView) {
+        _jWebView = [JapaneseWebView new];
+    }
+    _containerview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    _jWebView.view.frame = _containerview.frame;
+    [_jWebView.view setFrameOrigin:NSMakePoint(0, 0)];
+    [_containerview  addSubview:_jWebView.view];
 }
 
 
@@ -145,7 +150,12 @@
 
 - (void)populateValues {
     _currentcard = _studyitems[_currentitem];
-    _wordlabel.stringValue = [_currentcard.card valueForKey:@"japanese"];
+    if (_currentcard.cardtype == DeckTypeVocab) {
+        [_jWebView loadHTMLFromFrontText:[NSString stringWithFormat:@"<ruby>%@<rt>%@</rt></ruby>", [_currentcard.card valueForKey:@"japanese"], [_currentcard.card valueForKey:@"kanaWord"]]];
+    }
+    else {
+        [_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"]];
+    }
     if (_currentcard.cardtype == DeckTypeKanji) {
         _playvoicetoolbaritem.enabled = false;
     }
@@ -159,7 +169,6 @@
     NSMutableString *infostr = [NSMutableString new];
     switch (_currentcard.cardtype) {
         case DeckTypeKana: {
-            _furiganas.stringValue = @"";
             [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"english"]];
             if (((NSString *)[_currentcard.card valueForKey:@"altmeaning"]).length > 0) {
                 [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"altmeaning"]];
@@ -183,7 +192,6 @@
             break;
         }
         case DeckTypeKanji: {
-            _furiganas.stringValue = @"";
             [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"english"]];
             if (((NSString *)[_currentcard.card valueForKey:@"altmeaning"]).length > 0) {
                 [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"altmeaning"]];
@@ -199,7 +207,6 @@
             break;
         }
         case DeckTypeVocab: {
-            _furiganas.stringValue = [_currentcard.card valueForKey:@"kanaWord"];
             [infostr appendFormat:@"<h2>Japanese Kana</h2><p>%@</p>",[_currentcard.card valueForKey:@"kanaWord"]];
             [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",[_currentcard.card valueForKey:@"english"]];
             if (((NSString *)[_currentcard.card valueForKey:@"altmeaning"]).length > 0) {

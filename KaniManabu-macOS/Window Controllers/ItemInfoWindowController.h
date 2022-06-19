@@ -6,6 +6,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "JapaneseWebView.h"
 
 
 
@@ -14,6 +15,8 @@
 @property (strong) NSDictionary *cardMeta;
 @property int cardType;
 @property int parentWindowType;
+@property (strong) JapaneseWebView * jWebView;
+@property (strong) IBOutlet NSView *containerview;
 
 typedef NS_ENUM(int,ParentWindowType) {
     ParentWindowTypeDeckBrowser = 0,

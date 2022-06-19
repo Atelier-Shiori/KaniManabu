@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +17,7 @@
                 <outlet property="answerprompteffectview" destination="9TO-A9-VAN" id="kPA-cV-E1M"/>
                 <outlet property="answerstatus" destination="fdh-O3-be9" id="CFz-YO-xBG"/>
                 <outlet property="answertextfield" destination="V0c-Ys-uF1" id="h3C-lA-M55"/>
+                <outlet property="containerview" destination="PCi-6s-NLE" id="Bbj-MU-81e"/>
                 <outlet property="correctitem" destination="yHU-Qo-khj" id="qsO-KN-s0Q"/>
                 <outlet property="iteminfotoolbaritem" destination="bZn-3E-AeB" id="1ul-D7-SHj"/>
                 <outlet property="lasttenarraycontroller" destination="GeO-0b-3HC" id="UIR-t1-9q8"/>
@@ -32,7 +33,6 @@
                 <outlet property="srslevellabel" destination="BJP-Z4-Toa" id="zJ7-qc-Y9z"/>
                 <outlet property="validationmessage" destination="Tp6-pm-EyI" id="hjp-Q6-bde"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="KSx-Co-Pzj"/>
-                <outlet property="word" destination="czI-9i-G2Z" id="kRA-YP-sbT"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -42,7 +42,7 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="519" y="347" width="514" height="384"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <value key="minSize" type="size" width="514" height="384"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="514" height="384"/>
@@ -67,11 +67,11 @@
                         <rect key="frame" x="0.0" y="99" width="514" height="285"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="czI-9i-G2Z">
-                                <rect key="frame" x="-2" y="54" width="518" height="133"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="charWrapping" alignment="center" id="Xzb-8U-Sdn">
-                                    <font key="font" metaFont="system" size="64"/>
+                            <textField hidden="YES" wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="BJP-Z4-Toa">
+                                <rect key="frame" x="160" y="259" width="195" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" borderStyle="bezel" alignment="center" drawsBackground="YES" id="RKi-kN-g12">
+                                    <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
@@ -85,15 +85,10 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <textField hidden="YES" wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" alphaValue="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="BJP-Z4-Toa">
-                                <rect key="frame" x="160" y="259" width="195" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" borderStyle="bezel" alignment="center" drawsBackground="YES" id="RKi-kN-g12">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PCi-6s-NLE">
+                                <rect key="frame" x="0.0" y="0.0" width="514" height="285"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                            </customView>
                         </subviews>
                     </visualEffectView>
                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0c-Ys-uF1" customClass="TKMKanaInputTextField">
@@ -109,7 +104,7 @@
                         </connections>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDg-we-m1R">
-                        <rect key="frame" x="466" y="11" width="48" height="48"/>
+                        <rect key="frame" x="466" y="11.5" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="arrow.right" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="6q3-ZS-hhs">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -363,12 +358,12 @@
         </textField>
     </objects>
     <resources>
-        <image name="arrow.right" catalog="system" width="16" height="12"/>
-        <image name="checkmark" catalog="system" width="15" height="13"/>
+        <image name="arrow.right" catalog="system" width="15" height="12"/>
+        <image name="checkmark" catalog="system" width="14" height="13"/>
         <image name="clock" catalog="system" width="15" height="15"/>
-        <image name="eye" catalog="system" width="20" height="13"/>
+        <image name="eye" catalog="system" width="21" height="13"/>
         <image name="hand.thumbsup" catalog="system" width="16" height="17"/>
         <image name="play.circle" catalog="system" width="15" height="15"/>
-        <image name="tray" catalog="system" width="19" height="13"/>
+        <image name="tray" catalog="system" width="18" height="13"/>
     </resources>
 </document>

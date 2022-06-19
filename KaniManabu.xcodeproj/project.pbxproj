@@ -101,6 +101,8 @@
 		15F7793F279F4B4B00982BF9 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 153A3646279F4B0A004AC33F /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		15F77947279F4B5500982BF9 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153A3646279F4B0A004AC33F /* SAMKeychain.framework */; };
 		15F77948279F4B5500982BF9 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 153A3646279F4B0A004AC33F /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF0A18A0285FCA4500011780 /* JapaneseWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0A188B285FCA4500011780 /* JapaneseWebView.m */; };
+		FF0A18A1285FCA4500011780 /* JapaneseWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0A188B285FCA4500011780 /* JapaneseWebView.m */; };
 		FF16A09127B56A9700AA385E /* SpeechSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16A09027B56A9700AA385E /* SpeechSynthesis.m */; };
 		FF16A09227B56A9700AA385E /* SpeechSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16A09027B56A9700AA385E /* SpeechSynthesis.m */; };
 		FF16A09327B56A9700AA385E /* SpeechSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16A09027B56A9700AA385E /* SpeechSynthesis.m */; };
@@ -490,6 +492,8 @@
 		15CB506827949A5000ECF326 /* CSVDeckExporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVDeckExporter.h; sourceTree = "<group>"; };
 		15CB506927949A5000ECF326 /* CSVDeckExporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSVDeckExporter.m; sourceTree = "<group>"; };
 		15CBBB262794BB7600B4FA4A /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "KaniManabu-macOS/Base.lproj/AppStore/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
+		FF0A188B285FCA4500011780 /* JapaneseWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JapaneseWebView.m; sourceTree = "<group>"; };
+		FF0A189F285FCA4500011780 /* JapaneseWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JapaneseWebView.h; sourceTree = "<group>"; };
 		FF16A08F27B56A9700AA385E /* SpeechSynthesis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeechSynthesis.h; sourceTree = "<group>"; };
 		FF16A09027B56A9700AA385E /* SpeechSynthesis.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeechSynthesis.m; sourceTree = "<group>"; };
 		FF16A0B227B57BDF00AA385E /* texttospeech.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = texttospeech.xcdatamodel; sourceTree = "<group>"; };
@@ -888,6 +892,8 @@
 				FF173E3D27B70FA700E5CD37 /* TKMKanaInput.h */,
 				FF173E3F27B70FA800E5CD37 /* TKMKanaInput.m */,
 				FF173E3E27B70FA700E5CD37 /* TKMKanaInput+Internals.h */,
+				FF0A189F285FCA4500011780 /* JapaneseWebView.h */,
+				FF0A188B285FCA4500011780 /* JapaneseWebView.m */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -1385,6 +1391,7 @@
 				157329002794B9C400587C05 /* DeckBrowser.m in Sources */,
 				FF778DCA279EEC740055AF2D /* WaniKani.xcdatamodeld in Sources */,
 				157329012794B9C400587C05 /* GeneralPreferencesViewController.m in Sources */,
+				FF0A18A1285FCA4500011780 /* JapaneseWebView.m in Sources */,
 				FFA58B1227DF60590091146D /* SubscriptionPickerWindow.m in Sources */,
 				157329022794B9C400587C05 /* DeckManager.m in Sources */,
 				157329032794B9C400587C05 /* SRScheduler.m in Sources */,
@@ -1441,6 +1448,7 @@
 				FFBE3C31278DF05F003D3F06 /* UnixDatetoNSDate.m in Sources */,
 				FFB6145C278CB8AF001E5FAA /* DeckBrowser.m in Sources */,
 				15794878278CD407000D984D /* GeneralPreferencesViewController.m in Sources */,
+				FF0A18A0285FCA4500011780 /* JapaneseWebView.m in Sources */,
 				153E9F0D2795CF170094A306 /* CSVLoadingWindow.m in Sources */,
 				FF778DE7279EEEDA0055AF2D /* WaniKani.m in Sources */,
 				1579487D278CDB97000D984D /* DeckManager.m in Sources */,
@@ -1716,7 +1724,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = KaniManabu;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1756,7 +1764,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = KaniManabu;
 				SWIFT_EMIT_LOC_STRINGS = YES;

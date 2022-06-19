@@ -14,13 +14,11 @@
 #import <MMMarkdown/MMMarkdown.h>
 
 @interface ItemInfoWindowController ()
-@property (strong) IBOutlet NSTextField *wordlabel;
 @property (strong) IBOutlet NSTextView *infotextview;
 @property (strong) IBOutlet NSToolbarItem *playvoicetoolbaritem;
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property (strong) IBOutlet NSToolbarItem *lookupindictionarytoolbaritem;
 @property (strong) IBOutlet NSToolbarItem *otherresourcestoolbaritem;
-@property (strong) IBOutlet NSTextField *furiganas;
 @end
 
 @implementation ItemInfoWindowController
@@ -56,6 +54,13 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    if (!_jWebView) {
+        _jWebView = [JapaneseWebView new];
+    }
+    _containerview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    _jWebView.view.frame = _containerview.frame;
+    [_jWebView.view setFrameOrigin:NSMakePoint(0, 0)];
+    [_containerview  addSubview:_jWebView.view];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"CardRemoved" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"CardModified" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"CardBrowserClosed" object:nil];
@@ -84,7 +89,12 @@
 - (void)populateValues {
     _cardUUID = _cardMeta[@"carduuid"];
     _cardType = ((NSNumber *)_cardMeta[@"cardtype"]).intValue;
-    _wordlabel.stringValue = _cardMeta[@"japanese"];
+    if (_cardType == DeckTypeVocab) {
+        [_jWebView loadHTMLFromFrontText:[NSString stringWithFormat:@"<ruby>%@<rt>%@</rt></ruby>", _cardMeta[@"japanese"], _cardMeta[@"kanaWord"]]];
+    }
+    else {
+        [_jWebView loadHTMLFromFrontText:_cardMeta[@"japanese"]];
+    }
     if (_cardType == DeckTypeKanji) {
         _playvoicetoolbaritem.enabled = false;
     }
@@ -98,7 +108,6 @@
     NSMutableString *infostr = [NSMutableString new];
     switch (_cardType) {
         case DeckTypeKana: {
-            _furiganas.stringValue = @"";
                 [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",_cardMeta[@"english"]];
             if (((NSString *)_cardMeta[@"altmeaning"]).length > 0) {
                 [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",_cardMeta[@"altmeaning"]];
@@ -122,7 +131,6 @@
             break;
         }
         case DeckTypeKanji: {
-            _furiganas.stringValue = @"";
             [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",_cardMeta[@"english"]];
             if (((NSString *)_cardMeta[@"altmeaning"]).length > 0) {
                 [infostr appendFormat:@"<h1>Alt Meaning</h1><p>%@</p>",_cardMeta[@"altmeaning"]];
@@ -138,7 +146,6 @@
             break;
         }
         case DeckTypeVocab: {
-            _furiganas.stringValue = _cardMeta[@"kanaWord"];
             [infostr appendFormat:@"<h1>Kana Reading</h1><p>%@</p>",_cardMeta[@"kanaWord"]];
             [infostr appendFormat:@"<h1>English Meaning</h1><p>%@</p>",_cardMeta[@"english"]];
             if (((NSString *)_cardMeta[@"altmeaning"]).length > 0) {

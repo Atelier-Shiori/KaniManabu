@@ -13,6 +13,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "SpeechSynthesis.h"
 #import "TKMKanaInput.h"
+#import "JapaneseWebView.h"
 
 @interface ReviewWindowController ()
 @property (strong) DeckManager *dm;
@@ -22,7 +23,6 @@
 @property (strong) IBOutlet NSToolbarItem *iteminfotoolbaritem;
 @property (strong) ItemInfoWindowController *iiwc;
 @property (strong) NSMutableArray *completeditems;
-@property (strong) IBOutlet NSTextField *word;
 @property (strong) IBOutlet NSTextField *questionprompt;
 @property (strong) IBOutlet NSTextField *answerstatus;
 @property (strong) IBOutlet TKMKanaInputTextField *answertextfield;
@@ -55,6 +55,8 @@
 @property bool useKaniManabuIME;
 @property (strong) IBOutlet NSVisualEffectView *answerprompteffectview;
 @property (strong) IBOutlet NSVisualEffectView *questionvisualeffectview;
+@property (strong) JapaneseWebView * jWebView;
+@property (strong) IBOutlet NSView *containerview;
 @end
 
 @implementation ReviewWindowController
@@ -86,6 +88,13 @@
         _answerbtn.image = [NSImage imageNamed:@"arrowright"];
         _playvoice.image = [NSImage imageNamed:@"play"];
     }
+    if (!_jWebView) {
+        _jWebView = [JapaneseWebView new];
+    }
+    _containerview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    _jWebView.view.frame = _containerview.frame;
+    [_jWebView.view setFrameOrigin:NSMakePoint(0, 0)];
+    [_containerview  addSubview:_jWebView.view];
 }
 
 - (void)windowDidLoad {
@@ -249,6 +258,7 @@
             }
             case AnswerStateInprecise: {
                 [self setTextFieldAnswerBackground:1];
+                //[_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"] withBackText:@"Your answer was a bit off. Check your answer with the item info to see if your answer was correct];
                 _answerstatus.stringValue = @"Your answer was a bit off. Check your answer with the item info to see if your answer was correct";
                 break;
             }
@@ -267,6 +277,7 @@
             }
             case AnswerStateIncorrect: {
                 [self setTextFieldAnswerBackground:0];
+                //[_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"] withBackText:@"Need Help? Click the Item Info to view the correct answer."];
                 _answerstatus.stringValue = @"Need Help? Click the Item Info to view the correct answer.";
                 _currentcard.currentreviewmeaningincorrect = true;
                 _answered = true;
@@ -307,6 +318,7 @@
             }
             case AnswerStateIncorrect: {
                 [self setTextFieldAnswerBackground:0];
+                //[_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"] withBackText:@"Need Help? Click the Item Info to view the correct answer."];
                 _answerstatus.stringValue = @"Need Help? Click the Item Info to view the correct answer.";
                 _currentcard.currentreviewmeaningincorrect = true;
                 _answered = true;
@@ -424,7 +436,7 @@
 }
 
 - (void)setUpQuestion {
-    _word.stringValue = [_currentcard.card valueForKey:@"japanese"];
+    [_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"]];
     switch (_questiontype) {
         case CardReviewTypeMeaning: {
             switch (_currentcard.cardtype) {
@@ -471,7 +483,7 @@
 - (void)performshowAnswer {
     switch (_questiontype) {
         case CardReviewTypeMeaning: {
-            _questionprompt.stringValue = [_currentcard.card valueForKey:@"english"];
+            [_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"] withBackText:[_currentcard.card valueForKey:@"english"]];
             break;
         }
         case CardReviewTypeReading: {
@@ -483,11 +495,11 @@
                             [self sayAnswer:[_currentcard.card valueForKey:@"reading"]];
                         }
                     }
-                    _questionprompt.stringValue = [_currentcard.card valueForKey:@"kanaWord"];
+                    [_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"] withBackText:[_currentcard.card valueForKey:@"kanaWord"]];
                     break;
                 }
                 case CardTypeKanji: {
-                    _questionprompt.stringValue = [_currentcard.card valueForKey:@"reading"];
+                    [_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"] withBackText:[_currentcard.card valueForKey:@"reading"]];
                     break;
                 }
             }
