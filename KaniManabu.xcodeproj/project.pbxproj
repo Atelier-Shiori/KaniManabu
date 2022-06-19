@@ -101,6 +101,8 @@
 		15F7793F279F4B4B00982BF9 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 153A3646279F4B0A004AC33F /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		15F77947279F4B5500982BF9 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 153A3646279F4B0A004AC33F /* SAMKeychain.framework */; };
 		15F77948279F4B5500982BF9 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 153A3646279F4B0A004AC33F /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FF0A1886285F99DD00011780 /* JapaneseWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0A1871285F99DD00011780 /* JapaneseWebView.m */; };
+		FF0A1887285F99DD00011780 /* JapaneseWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = FF0A1871285F99DD00011780 /* JapaneseWebView.m */; };
 		FF16A09127B56A9700AA385E /* SpeechSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16A09027B56A9700AA385E /* SpeechSynthesis.m */; };
 		FF16A09227B56A9700AA385E /* SpeechSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16A09027B56A9700AA385E /* SpeechSynthesis.m */; };
 		FF16A09327B56A9700AA385E /* SpeechSynthesis.m in Sources */ = {isa = PBXBuildFile; fileRef = FF16A09027B56A9700AA385E /* SpeechSynthesis.m */; };
@@ -507,6 +509,8 @@
 		15CB506827949A5000ECF326 /* CSVDeckExporter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CSVDeckExporter.h; sourceTree = "<group>"; };
 		15CB506927949A5000ECF326 /* CSVDeckExporter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CSVDeckExporter.m; sourceTree = "<group>"; };
 		15CBBB262794BB7600B4FA4A /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMenu.xib; path = "KaniManabu-macOS/Base.lproj/AppStore/MainMenu.xib"; sourceTree = SOURCE_ROOT; };
+		FF0A1871285F99DD00011780 /* JapaneseWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JapaneseWebView.m; sourceTree = "<group>"; };
+		FF0A1885285F99DD00011780 /* JapaneseWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JapaneseWebView.h; sourceTree = "<group>"; };
 		FF16A08F27B56A9700AA385E /* SpeechSynthesis.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpeechSynthesis.h; sourceTree = "<group>"; };
 		FF16A09027B56A9700AA385E /* SpeechSynthesis.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpeechSynthesis.m; sourceTree = "<group>"; };
 		FF16A0B227B57BDF00AA385E /* texttospeech.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = texttospeech.xcdatamodel; sourceTree = "<group>"; };
@@ -927,6 +931,8 @@
 				FF173E3D27B70FA700E5CD37 /* TKMKanaInput.h */,
 				FF173E3F27B70FA800E5CD37 /* TKMKanaInput.m */,
 				FF173E3E27B70FA700E5CD37 /* TKMKanaInput+Internals.h */,
+				FF0A1885285F99DD00011780 /* JapaneseWebView.h */,
+				FF0A1871285F99DD00011780 /* JapaneseWebView.m */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -1432,6 +1438,7 @@
 				157328FE2794B9C400587C05 /* MainWindowController.m in Sources */,
 				157328FF2794B9C400587C05 /* UnixDatetoNSDate.m in Sources */,
 				157329002794B9C400587C05 /* DeckBrowser.m in Sources */,
+				FF0A1887285F99DD00011780 /* JapaneseWebView.m in Sources */,
 				FF778DCA279EEC740055AF2D /* WaniKani.xcdatamodeld in Sources */,
 				157329012794B9C400587C05 /* GeneralPreferencesViewController.m in Sources */,
 				FFA58B1227DF60590091146D /* SubscriptionPickerWindow.m in Sources */,
@@ -1476,6 +1483,7 @@
 				15794873278CC083000D984D /* CardReview.m in Sources */,
 				FF746570278F44A10062E476 /* PFAboutWindowController.m in Sources */,
 				15C52D77279476FB002ADE2B /* SoftwareUpdatesPref.m in Sources */,
+				FF0A1886285F99DD00011780 /* JapaneseWebView.m in Sources */,
 				15B122DE278CED4C00575A73 /* PaRomajiKanaConverter.m in Sources */,
 				153FFE742794F33500D481A2 /* CFobLicVerifier.m in Sources */,
 				151F3AC2278E23D800953ECD /* KanaEditor.m in Sources */,
