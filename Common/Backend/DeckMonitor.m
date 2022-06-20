@@ -90,7 +90,6 @@
             }
         }
     }
-    [NSNotificationCenter.defaultCenter postNotificationName:@"TimerFired" object:nil];
 }
 
 - (void)startsynctimer {
