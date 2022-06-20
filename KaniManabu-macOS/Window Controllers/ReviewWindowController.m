@@ -729,7 +729,12 @@
         [self sayAnswer:[_currentcard.card valueForKey:@"kanareading"]];
     }
     else if (_currentcard.cardtype == CardTypeVocab) {
-        [self sayAnswer:[_currentcard.card valueForKey:@"reading"]];
+        if ([NSUserDefaults.standardUserDefaults boolForKey:@"usekanjitts"]) {
+            [self sayAnswer:[_currentcard.card valueForKey:@"japanese"]];
+        }
+        else {
+            [self sayAnswer:[_currentcard.card valueForKey:@"reading"]];
+        }
     }
 }
 
