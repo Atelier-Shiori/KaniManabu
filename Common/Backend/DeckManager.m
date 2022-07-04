@@ -77,6 +77,8 @@
     fetchRequest.entity = [NSEntityDescription entityForName:@"Decks" inManagedObjectContext:_moc];
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                         initWithKey:@"deckName" ascending:YES];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"deckType < %@",@(3)];
+    fetchRequest.predicate = predicate;
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     __block NSError *error = nil;
     __block NSArray *decks;
