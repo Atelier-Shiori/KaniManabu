@@ -509,13 +509,13 @@
     alert.messageText = @"Reset Card's Progress?";
     alert.informativeText = [NSString stringWithFormat:@"Do you want to reset the review progress for card, %@ and put it back in the learning queue? This cannot be undone", [card valueForKey:@"japanese"]];
     [alert addButtonWithTitle:NSLocalizedString(@"Reset",nil)];
-    if (((NSNumber *)card[@"SRSStage"]).intValue == 9) {
-    [alert addButtonWithTitle:NSLocalizedString(@"Reset to Enlightened",nil)];
+    if (((NSNumber *)card[@"srsstage"]).intValue == 9) {
+        [alert addButtonWithTitle:NSLocalizedString(@"Reset to Enlightened",nil)];
     }
     [alert addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
     if (@available(macOS 11.0, *)) {
         [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
-        if (((NSNumber *)card[@"SRSStage"]).intValue == 9) {
+        if (((NSNumber *)card[@"srsstage"]).intValue == 9) {
             [(NSButton *)alert.buttons[1] setHasDestructiveAction:YES];
         }
     }
