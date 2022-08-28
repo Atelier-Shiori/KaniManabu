@@ -31,6 +31,7 @@
                 <outlet property="questionvisualeffectview" destination="Xfr-wC-NeZ" id="tO3-dS-RNW"/>
                 <outlet property="scoreitem" destination="LMg-pa-VZc" id="nTp-g3-vhR"/>
                 <outlet property="srslevellabel" destination="BJP-Z4-Toa" id="zJ7-qc-Y9z"/>
+                <outlet property="undotoolbaritem" destination="TAT-zm-in3" id="JvI-o2-fHe"/>
                 <outlet property="validationmessage" destination="Tp6-pm-EyI" id="hjp-Q6-bde"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="KSx-Co-Pzj"/>
             </connections>
@@ -42,7 +43,7 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="519" y="347" width="514" height="384"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <value key="minSize" type="size" width="514" height="384"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="514" height="384"/>
@@ -104,7 +105,7 @@
                         </connections>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDg-we-m1R">
-                        <rect key="frame" x="466" y="11.5" width="48" height="48"/>
+                        <rect key="frame" x="466" y="12" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="arrow.right" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="6q3-ZS-hhs">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -214,6 +215,21 @@
                             <action selector="playvoice:" target="-2" id="FpJ-1U-7qg"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="4B46F141-701C-4EF3-911D-48B302624B2A" label="Undo" paletteLabel="Undo" toolTip="Undo" image="arrow.uturn.backward" catalog="system" bordered="YES" id="TAT-zm-in3">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="dXy-62-jMD">
+                            <rect key="frame" x="0.0" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="arrow.uturn.backward" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3oF-X0-EVE">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="performundo:" target="-2" id="lro-Fs-8vW"/>
+                        </connections>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Uh9-GM-qy3"/>
                     <toolbarItem implicitItemIdentifier="2025E579-9FAA-4C11-BA1C-3F408C451B3A" label="score" paletteLabel="score" image="hand.thumbsup" catalog="system" title="0%" sizingBehavior="auto" id="qrJ-eQ-MpB">
                         <nil key="toolTip"/>
@@ -253,6 +269,7 @@
                     <toolbarItem reference="3nf-1B-Tty"/>
                     <toolbarItem reference="bZn-3E-AeB"/>
                     <toolbarItem reference="mhq-6f-tbW"/>
+                    <toolbarItem reference="TAT-zm-in3"/>
                     <toolbarItem reference="Uh9-GM-qy3"/>
                     <toolbarItem reference="qrJ-eQ-MpB"/>
                     <toolbarItem reference="YQY-Yi-zpT"/>
@@ -358,12 +375,13 @@
         </textField>
     </objects>
     <resources>
-        <image name="arrow.right" catalog="system" width="15" height="12"/>
-        <image name="checkmark" catalog="system" width="14" height="13"/>
+        <image name="arrow.right" catalog="system" width="16" height="12"/>
+        <image name="arrow.uturn.backward" catalog="system" width="16" height="14"/>
+        <image name="checkmark" catalog="system" width="15" height="13"/>
         <image name="clock" catalog="system" width="15" height="15"/>
-        <image name="eye" catalog="system" width="21" height="13"/>
+        <image name="eye" catalog="system" width="20" height="13"/>
         <image name="hand.thumbsup" catalog="system" width="16" height="17"/>
         <image name="play.circle" catalog="system" width="15" height="15"/>
-        <image name="tray" catalog="system" width="18" height="13"/>
+        <image name="tray" catalog="system" width="19" height="13"/>
     </resources>
 </document>

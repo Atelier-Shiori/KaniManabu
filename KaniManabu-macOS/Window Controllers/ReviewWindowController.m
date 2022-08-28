@@ -35,6 +35,7 @@
 @property int questiontype;
 @property int currentitem;
 @property bool answered;
+@property bool incorrect;
 @property (strong) CardReview* currentcard;
 @property bool promptacknowledged;
 @property (strong) IBOutlet NSPopover *lasttenpopover;
@@ -48,6 +49,7 @@
 @property (strong) IBOutlet NSPopover *popovervalidationmessage;
 @property (strong) IBOutlet NSTextField *validationmessage;
 @property (strong) IBOutlet NSToolbarItem *lasttentoolbaritem;
+@property (strong) IBOutlet NSToolbarItem *undotoolbaritem;
 @property (strong) NSString *oldanswerstr;
 @property NSRange oldrange;
 @property NSRange currentrange;
@@ -87,6 +89,7 @@
         _lasttentoolbaritem.image = [NSImage imageNamed:@"clock"];
         _answerbtn.image = [NSImage imageNamed:@"arrowright"];
         _playvoice.image = [NSImage imageNamed:@"play"];
+        _undotoolbaritem.image = [NSImage imageNamed:@"undo"];
     }
     if (!_jWebView) {
         _jWebView = [JapaneseWebView new];
@@ -282,7 +285,8 @@
                 _currentcard.currentreviewmeaningincorrect = true;
                 _answered = true;
                 _iteminfotoolbaritem.enabled = true;
-                [_currentcard setIncorrect:CardReviewTypeMeaning];
+                _incorrect = true;
+                //[_currentcard setIncorrect:CardReviewTypeMeaning];
                 return;
             }
         }
@@ -323,7 +327,8 @@
                 _currentcard.currentreviewmeaningincorrect = true;
                 _answered = true;
                 _iteminfotoolbaritem.enabled = true;
-                [_currentcard setIncorrect:CardReviewTypeReading];
+                _incorrect = true;
+                //[_currentcard setIncorrect:CardReviewTypeReading];
                 return;
             }
         }
@@ -368,6 +373,10 @@
 }
 
 - (void)nextQuestion {
+    if (_incorrect) {
+        [_currentcard setIncorrect:_questiontype];
+        _incorrect = false;
+    }
     [NSNotificationCenter.defaultCenter postNotificationName:@"ReviewAdvanced" object:nil];
     _iteminfotoolbaritem.enabled = false;
     _playvoice.enabled = false;
@@ -516,6 +525,27 @@
     _answered = true;
     _iteminfotoolbaritem.enabled = true;
 }
+
+- (IBAction)performundo:(id)sender {
+    [self undo];
+}
+
+- (void)undo {
+    // This method allows users to undo their answer if they got it wrong. This option is only available for typed answers as long they don't advance to the next question.
+    _answerstatus.stringValue = @"";
+    if (_questiontype == CardReviewTypeMeaning) {
+        _currentcard.currentreviewreadingincorrect = false;
+    }
+    else if (_questiontype == CardReviewTypeReading) {
+        _currentcard.currentreviewmeaningincorrect = false;
+    }
+    _answered = false;
+    _iteminfotoolbaritem.enabled = false;
+    _incorrect = false;
+    [self setUpQuestion];
+    [self setTextFieldAnswerBackground:2];
+}
+
 - (IBAction)ankianswerwrong:(id)sender {
     switch (_questiontype) {
         case CardReviewTypeMeaning: {
@@ -582,6 +612,9 @@
             }];
             _answertextfield.editable = NO;
             _answertextfield.currentEditor.selectedRange = NSMakeRange(0, 0);
+            if (!_ankimode) {
+                _undotoolbaritem.enabled = YES;
+            }
             break;
             }
         case 1: {
@@ -607,6 +640,7 @@
             _answertextfield.stringValue = @"";
             _answertextfield.editable = YES;
             _answerbtn.keyEquivalent = @"";
+            _undotoolbaritem.enabled = NO;
             break;
         }
     }
