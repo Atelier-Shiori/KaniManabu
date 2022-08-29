@@ -90,10 +90,10 @@
     _cardUUID = _cardMeta[@"carduuid"];
     _cardType = ((NSNumber *)_cardMeta[@"cardtype"]).intValue;
     if (_cardType == DeckTypeVocab) {
-        [_jWebView loadHTMLFromFrontText:[NSString stringWithFormat:@"<ruby>%@<rt>%@</rt></ruby>", _cardMeta[@"japanese"], _cardMeta[@"kanaWord"]]];
+        [_jWebView loadHTMLFromFrontText:[NSString stringWithFormat:@"<ruby>%@<rt>%@</rt></ruby>", _cardMeta[@"japanese"], _cardMeta[@"kanaWord"]] userandomfont:NO];
     }
     else {
-        [_jWebView loadHTMLFromFrontText:_cardMeta[@"japanese"]];
+        [_jWebView loadHTMLFromFrontText:_cardMeta[@"japanese"] userandomfont:NO];
     }
     if (_cardType == DeckTypeKanji) {
         _playvoicetoolbaritem.enabled = false;

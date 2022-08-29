@@ -10,7 +10,7 @@
 
 @interface JapaneseWebView : NSViewController  <WKUIDelegate,WKNavigationDelegate>
 @property (strong) WKWebView *webView;
-- (void)loadHTMLFromFrontText:(NSString *)fronttext;
+- (void)loadHTMLFromFrontText:(NSString *)fronttext userandomfont:(bool)userandomfont;
 - (void)loadHTMLFromFrontText:(NSString *)fronttext withBackText:(NSString *)backtext;
 @end
 

@@ -351,6 +351,7 @@
         }
         _iteminfotoolbaritem.enabled = true;
     }
+    [_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"] userandomfont:NO];
 }
 
 - (void)reviewComplete {
@@ -446,7 +447,7 @@
 
 - (void)setUpQuestion {
     _undotoolbaritem.enabled = NO;
-    [_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"]];
+    [_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"] userandomfont:YES];
     switch (_questiontype) {
         case CardReviewTypeMeaning: {
             switch (_currentcard.cardtype) {

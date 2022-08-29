@@ -151,10 +151,10 @@
 - (void)populateValues {
     _currentcard = _studyitems[_currentitem];
     if (_currentcard.cardtype == DeckTypeVocab) {
-        [_jWebView loadHTMLFromFrontText:[NSString stringWithFormat:@"<ruby>%@<rt>%@</rt></ruby>", [_currentcard.card valueForKey:@"japanese"], [_currentcard.card valueForKey:@"kanaWord"]]];
+        [_jWebView loadHTMLFromFrontText:[NSString stringWithFormat:@"<ruby>%@<rt>%@</rt></ruby>", [_currentcard.card valueForKey:@"japanese"], [_currentcard.card valueForKey:@"kanaWord"]] userandomfont:NO];
     }
     else {
-        [_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"]];
+        [_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"] userandomfont:NO];
     }
     if (_currentcard.cardtype == DeckTypeKanji) {
         _playvoicetoolbaritem.enabled = false;

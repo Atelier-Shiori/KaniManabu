@@ -26,11 +26,11 @@
     [super viewDidLoad];
     // Do view setup here.
 }
-- (void)loadHTMLFromFrontText:(NSString *)fronttext {
+- (void)loadHTMLFromFrontText:(NSString *)fronttext userandomfont:(bool)userandomfont {
     // Loads Front Test (Question)
     NSString *htmltext;
     NSString *fonts = [NSUserDefaults.standardUserDefaults valueForKey:@"fontnames"];
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"cyclefonts"] && fonts.length > 0) {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"cyclefonts"] && fonts.length > 0 && userandomfont) {
         NSArray *fontsarray = [fonts componentsSeparatedByString:@","];
         NSString *fontcss = [NSUserDefaults.standardUserDefaults valueForKey:@"fontcss"];
         NSString *fontcsshtml = fontcss && fontcss.length > 0 ? [NSString stringWithFormat:@"<link rel=\"stylesheet\" href=\"%@\">", fontcss] : @"";
