@@ -445,6 +445,7 @@
 }
 
 - (void)setUpQuestion {
+    _undotoolbaritem.enabled = NO;
     [_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"]];
     switch (_questiontype) {
         case CardReviewTypeMeaning: {
@@ -612,7 +613,8 @@
             }];
             _answertextfield.editable = NO;
             _answertextfield.currentEditor.selectedRange = NSMakeRange(0, 0);
-            if (!_ankimode) {
+            // Enable Undo for typed answers and review mode only.
+            if (!_ankimode && !_learnmode) {
                 _undotoolbaritem.enabled = YES;
             }
             break;

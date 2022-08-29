@@ -28,7 +28,17 @@
 }
 - (void)loadHTMLFromFrontText:(NSString *)fronttext {
     // Loads Front Test (Question)
-    NSString *htmltext = [NSString stringWithFormat:@"<html><head><meta charset=\"UTF-8\"><style>@media (prefers-color-scheme: dark){.content{color: #fff;}}.content{display: flex; justify-content: center; align-items: center; text-align: center; min-height: 100vh;font-family: -apple-system, BlinkMacSystemFont, Helvetica, sans-serif, \"Apple Color Emoji\";font-size: 6em;}@media only screen and (max-width: 515px){.content{font-size: 4em;}]</style></head><body><div class=\"content\"><p>%@</p></div></body></html>", fronttext];
+    NSString *htmltext;
+    NSString *fonts = [NSUserDefaults.standardUserDefaults valueForKey:@"fontnames"];
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"cyclefonts"] && fonts.length > 0) {
+        NSArray *fontsarray = [fonts componentsSeparatedByString:@","];
+        NSString *fontcss = [NSUserDefaults.standardUserDefaults valueForKey:@"fontcss"];
+        NSString *fontcsshtml = fontcss && fontcss.length > 0 ? [NSString stringWithFormat:@"<link rel=\"stylesheet\" href=\"%@\">", fontcss] : @"";
+        htmltext = [NSString stringWithFormat:@"<html><head><meta charset=\"UTF-8\">%@<style>@media (prefers-color-scheme: dark){.content{color: #fff;}}.content{display: flex; justify-content: center; align-items: center; text-align: center; min-height: 100vh;font-family: \"%@\";font-size: 6em;}.content:hover{font-family: -apple-system, BlinkMacSystemFont, Helvetica, sans-serif, \"Apple Color Emoji\";}@media only screen and (max-width: 515px){.content{font-size: 4em;}]</style></head><body><div class=\"content\"><p>%@</p></div></body></html>", fontcsshtml, fontsarray[arc4random_uniform((int)fontsarray.count-1)], fronttext];
+    }
+    else {
+        htmltext = [NSString stringWithFormat:@"<html><head><meta charset=\"UTF-8\"><style>@media (prefers-color-scheme: dark){.content{color: #fff;}}.content{display: flex; justify-content: center; align-items: center; text-align: center; min-height: 100vh;font-family: -apple-system, BlinkMacSystemFont, Helvetica, sans-serif, \"Apple Color Emoji\";font-size: 6em;}@media only screen and (max-width: 515px){.content{font-size: 4em;}]</style></head><body><div class=\"content\"><p>%@</p></div></body></html>", fronttext];
+    }
     [_webView loadHTMLString:htmltext baseURL:nil];
 }
 

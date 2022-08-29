@@ -51,6 +51,8 @@ NSString *const kcurrentDeckVersion = @"1";
     defaultValues[@"usekanjitts"] = @NO;
     defaultValues[@"usekanimanabuime"] = @YES;
     defaultValues[@"donated"] = @NO;
+    defaultValues[@"cyclefonts"] = @NO;
+    defaultValues[@"fontnames"] = @"Hiragino Mincho Pro,Hiragino Maru Gothic Pro,Hiragino Sans,Hiragino Kaku Gothic Pro";
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];
