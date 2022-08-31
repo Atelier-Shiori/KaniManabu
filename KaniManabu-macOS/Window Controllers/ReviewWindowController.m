@@ -324,7 +324,7 @@
                 [self setTextFieldAnswerBackground:0];
                 //[_jWebView loadHTMLFromFrontText:[_currentcard.card valueForKey:@"japanese"] withBackText:@"Need Help? Click the Item Info to view the correct answer."];
                 _answerstatus.stringValue = @"Need Help? Click the Item Info to view the correct answer.";
-                _currentcard.currentreviewmeaningincorrect = true;
+                _currentcard.currentreviewreadingincorrect = true;
                 _answered = true;
                 _iteminfotoolbaritem.enabled = true;
                 _incorrect = true;
@@ -536,10 +536,10 @@
     // This method allows users to undo their answer if they got it wrong. This option is only available for typed answers as long they don't advance to the next question.
     _answerstatus.stringValue = @"";
     if (_questiontype == CardReviewTypeMeaning) {
-        _currentcard.currentreviewreadingincorrect = false;
+        _currentcard.currentreviewmeaningincorrect = false;
     }
     else if (_questiontype == CardReviewTypeReading) {
-        _currentcard.currentreviewmeaningincorrect = false;
+        _currentcard.currentreviewreadingincorrect = false;
     }
     _answered = false;
     _iteminfotoolbaritem.enabled = false;

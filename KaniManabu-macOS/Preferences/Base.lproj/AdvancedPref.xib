@@ -188,7 +188,7 @@
                     </connections>
                 </button>
                 <tokenField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cVB-fX-G1W">
-                    <rect key="frame" x="184" y="87" width="266" height="59"/>
+                    <rect key="frame" x="184" y="55" width="266" height="91"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <tokenFieldCell key="cell" selectable="YES" editable="YES" borderStyle="bezel" alignment="left" drawsBackground="YES" allowsEditingTextAttributes="YES" id="8Tt-4o-UuV">
                         <font key="font" metaFont="system"/>
@@ -197,7 +197,11 @@
                     </tokenFieldCell>
                     <connections>
                         <binding destination="czJ-cz-Lwr" name="enabled" keyPath="values.cyclefonts" id="nyv-zV-zui"/>
-                        <binding destination="czJ-cz-Lwr" name="value" keyPath="values.fontnames" id="8r2-j7-fTa"/>
+                        <binding destination="czJ-cz-Lwr" name="value" keyPath="values.fontnames" id="ugw-r3-cgn">
+                            <dictionary key="options">
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </tokenField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uQ5-Er-RlJ">
@@ -208,28 +212,6 @@
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jY0-wu-ELM">
-                    <rect key="frame" x="22" y="61" width="157" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Font CSS (Web Fonts):" id="3Fk-03-zKm">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MhH-ql-1LW">
-                    <rect key="frame" x="184" y="58" width="266" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="pQe-Al-EVR">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <binding destination="czJ-cz-Lwr" name="enabled" keyPath="values.cyclefonts" id="Qu2-hX-9DV"/>
-                        <binding destination="czJ-cz-Lwr" name="value" keyPath="values.fontcss" id="FGV-rG-z6t"/>
-                    </connections>
                 </textField>
             </subviews>
             <point key="canvasLocation" x="138" y="258.5"/>
