@@ -16,6 +16,7 @@
 #import "JapaneseWebView.h"
 
 @interface ReviewWindowController ()
+@property (strong) IBOutlet NSProgressIndicator *reviewprogress;
 @property (strong) DeckManager *dm;
 @property (strong) IBOutlet NSButton *scoreitem;
 @property (strong) IBOutlet NSButton *correctitem;
@@ -121,6 +122,9 @@
     _useKaniManabuIME = [NSUserDefaults.standardUserDefaults boolForKey:@"usekanimanabuime"];
     [_reviewqueue addObjectsFromArray:reviewitems];
     _pendingitem.title = @(_reviewqueue.count).stringValue;
+    _reviewprogress.minValue = 0;
+    _reviewprogress.maxValue = reviewitems.count;
+    _reviewprogress.doubleValue = 0;
     [self nextQuestion];
 }
 
@@ -364,6 +368,7 @@
     }
     [_completeditems addObject:_currentcard];
     [_reviewqueue removeObject:_currentcard];
+    _reviewprogress.doubleValue = _completeditems.count;
     [self reloadFinishList];
 }
 
