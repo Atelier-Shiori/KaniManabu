@@ -599,6 +599,28 @@
     }
     [_lasttentb reloadData];
 }
+- (IBAction)suspendcard:(id)sender {
+    NSAlert *alert = [NSAlert new];
+    alert.messageText = @"Suspend Card?";
+    alert.informativeText = @"Do you want to suspend this card and remove it from the current review session? You can unsuspend this card in the Deck Viewer.";
+    [alert addButtonWithTitle:NSLocalizedString(@"Suspend",nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
+    if (@available(macOS 11.0, *)) {
+        [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    }
+    [(NSButton *)alert.buttons[0] setKeyEquivalent: @""];
+    [(NSButton *)alert.buttons[1] setKeyEquivalent: @"\033"];
+    __block ReviewWindowController *weakSelf = self;
+    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            // Suspend Card and remove from current review session
+            [weakSelf.dm togglesuspendCardForCardUUID:[weakSelf.currentcard.card valueForKey:@"carduuid"] withType:weakSelf.currentcard.cardtype];
+            [weakSelf.reviewqueue removeObject:weakSelf.currentcard];
+            [weakSelf calculatescores];
+            [weakSelf nextQuestion];
+        }
+    }];
+}
 
 
 #pragma mark helpers
