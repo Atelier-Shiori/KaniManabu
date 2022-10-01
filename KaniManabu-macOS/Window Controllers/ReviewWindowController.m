@@ -622,6 +622,27 @@
     }];
 }
 
+- (IBAction)skipcard:(id)sender {
+    NSAlert *alert = [NSAlert new];
+    alert.messageText = @"Skip Card?";
+    alert.informativeText = [NSString stringWithFormat:@"Do you want to skip this card for this session? This card will remain in the queue until you %@ it.", !self.learnmode ? @"reviewed" : @"learned"];
+    [alert addButtonWithTitle:NSLocalizedString(@"Skip",nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"Cancel",nil)];
+    if (@available(macOS 11.0, *)) {
+        [(NSButton *)alert.buttons[0] setHasDestructiveAction:YES];
+    }
+    [(NSButton *)alert.buttons[0] setKeyEquivalent: @""];
+    [(NSButton *)alert.buttons[1] setKeyEquivalent: @"\033"];
+    __block ReviewWindowController *weakSelf = self;
+    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            // remove from current review session
+            [weakSelf.reviewqueue removeObject:weakSelf.currentcard];
+            [weakSelf calculatescores];
+            [weakSelf nextQuestion];
+        }
+    }];
+}
 
 #pragma mark helpers
 

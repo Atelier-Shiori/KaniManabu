@@ -194,7 +194,7 @@
                     <toolbarItem implicitItemIdentifier="E2D62481-4AB5-4F1C-AF79-EB6465C47A9A" label="Item Info" paletteLabel="Item Info" image="eye" catalog="system" bordered="YES" sizingBehavior="auto" id="bZn-3E-AeB">
                         <nil key="toolTip"/>
                         <button key="view" verticalHuggingPriority="750" id="dpb-BG-dSK">
-                            <rect key="frame" x="10" y="14" width="33" height="23"/>
+                            <rect key="frame" x="11" y="14" width="32" height="23"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="eye" catalog="system" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ywc-pB-ZUC">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -250,11 +250,26 @@
                             <action selector="suspendcard:" target="-2" id="9RH-rQ-nvQ"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="AD2B7A28-C724-4FAA-8411-435432F7398C" label="Skip Card" paletteLabel="Skip Card" toolTip="Skip Card" image="arrowshape.bounce.forward" catalog="system" bordered="YES" id="cNS-em-U5F">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="qMx-aH-gTk">
+                            <rect key="frame" x="11" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="arrowshape.bounce.forward" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jRb-yb-onJ">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="skipcard:" target="-2" id="UaQ-k5-6Aq"/>
+                        </connections>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Uh9-GM-qy3"/>
                     <toolbarItem implicitItemIdentifier="2025E579-9FAA-4C11-BA1C-3F408C451B3A" label="score" paletteLabel="score" image="hand.thumbsup" catalog="system" title="0%" sizingBehavior="auto" id="qrJ-eQ-MpB">
                         <nil key="toolTip"/>
-                        <button key="view" id="LMg-pa-VZc">
-                            <rect key="frame" x="0.0" y="14" width="41" height="17"/>
+                        <button key="view" misplaced="YES" id="LMg-pa-VZc">
+                            <rect key="frame" x="0.0" y="15" width="41" height="17.5"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <buttonCell key="cell" type="square" title="0%" bezelStyle="shadowlessSquare" image="hand.thumbsup" catalog="system" imagePosition="left" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="1qK-vr-bd0">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -291,6 +306,7 @@
                     <toolbarItem reference="mhq-6f-tbW"/>
                     <toolbarItem reference="TAT-zm-in3"/>
                     <toolbarItem reference="kLs-uZ-tjw"/>
+                    <toolbarItem reference="cNS-em-U5F"/>
                     <toolbarItem reference="Uh9-GM-qy3"/>
                     <toolbarItem reference="qrJ-eQ-MpB"/>
                     <toolbarItem reference="YQY-Yi-zpT"/>
@@ -398,6 +414,7 @@
     <resources>
         <image name="arrow.right" catalog="system" width="15" height="12"/>
         <image name="arrow.uturn.backward" catalog="system" width="15" height="14"/>
+        <image name="arrowshape.bounce.forward" catalog="system" width="20" height="14"/>
         <image name="checkmark" catalog="system" width="14" height="13"/>
         <image name="clock" catalog="system" width="15" height="15"/>
         <image name="eye" catalog="system" width="21" height="13"/>

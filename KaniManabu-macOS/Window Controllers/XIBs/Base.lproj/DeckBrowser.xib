@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21225" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21225"/>
         <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,7 +33,7 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="614" y="375" width="775" height="464"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <value key="minSize" type="size" width="775" height="464"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="775" height="464"/>
@@ -72,7 +72,7 @@
                             <binding destination="IT8-Pf-9N8" name="enabled" keyPath="selectedObjects.@count" id="fLK-68-5iq"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="70146907-1AB1-4D23-8408-3CF827E44EFC" label="Delete Card" paletteLabel="Delete Card" toolTip="Look up in Dictionary" image="trash" catalog="system" bordered="YES" id="z3Q-nt-Y4A">
+                    <toolbarItem implicitItemIdentifier="70146907-1AB1-4D23-8408-3CF827E44EFC" label="Delete Card" paletteLabel="Delete Card" toolTip="Delete Card" image="trash" catalog="system" bordered="YES" id="z3Q-nt-Y4A">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="Gek-fv-py6">
@@ -86,6 +86,22 @@
                         <connections>
                             <action selector="deleteCard:" target="-2" id="eLz-lW-u36"/>
                             <binding destination="IT8-Pf-9N8" name="enabled" keyPath="selectedObjects.@count" id="jqA-VG-w7p"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="9F7FB7FB-3B75-4BC9-B9F7-9912DCBB05F0" label="Suspend Card" paletteLabel="Suspend Card" toolTip="Suspend Card" image="moon" catalog="system" bordered="YES" id="Oa7-Wj-UyM">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="GMe-4f-e5Y">
+                            <rect key="frame" x="22" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="moon" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NGJ-so-j64">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="suspendCard:" target="-2" id="vbP-Wt-G91"/>
+                            <binding destination="IT8-Pf-9N8" name="enabled" keyPath="selectedObjects.@count" id="zqN-vz-nZL"/>
                         </connections>
                     </toolbarItem>
                     <searchToolbarItem implicitItemIdentifier="3CE416CB-C699-45CD-9FE2-697281A20A40" label="Search" paletteLabel="Search" visibilityPriority="1001" id="Lze-6I-FEx">
@@ -109,6 +125,7 @@
                     <toolbarItem reference="d9H-ix-8uv"/>
                     <toolbarItem reference="Mqu-9P-F6i"/>
                     <toolbarItem reference="z3Q-nt-Y4A"/>
+                    <toolbarItem reference="Oa7-Wj-UyM"/>
                     <toolbarItem reference="lMy-sM-qdG"/>
                     <searchToolbarItem reference="Lze-6I-FEx"/>
                 </defaultToolbarItems>
@@ -228,7 +245,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="Fl2-3G-GYM">
                         <rect key="frame" x="0.0" y="0.0" width="570" height="388"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" headerView="EkD-Rv-KPD" id="mGW-Ts-3KE" customClass="NSTableViewAction">
                                 <rect key="frame" x="0.0" y="0.0" width="570" height="360"/>
@@ -389,8 +406,9 @@
     </objects>
     <resources>
         <image name="NSActionTemplate" width="15" height="15"/>
-        <image name="doc.badge.plus" catalog="system" width="16" height="17"/>
-        <image name="pencil" catalog="system" width="13" height="13"/>
+        <image name="doc.badge.plus" catalog="system" width="15" height="17"/>
+        <image name="moon" catalog="system" width="15" height="15"/>
+        <image name="pencil" catalog="system" width="14" height="13"/>
         <image name="trash" catalog="system" width="15" height="17"/>
     </resources>
 </document>

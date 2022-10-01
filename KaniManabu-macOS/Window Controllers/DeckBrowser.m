@@ -365,6 +365,16 @@
     }];
 }
 
+- (IBAction)suspendCard:(id)sender {
+    [self performSuspendCard];
+}
+
+- (void)performSuspendCard {
+    NSDictionary *card =  [_arraycontroller selectedObjects][0];
+    [_dm togglesuspendCardForCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue];
+    [self loadDeck];
+}
+
 - (void)loadDeck {
     // Save Scroll orgin
     NSPoint scrollOrigin = _tb.superview.bounds.origin;
@@ -574,9 +584,7 @@
 - (IBAction)suspendcontext:(id)sender {
     long rightClickSelectedRow = self.tb.clickedRow;
     [self.tb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
-    NSDictionary *card =  [_arraycontroller selectedObjects][0];
-    [_dm togglesuspendCardForCardUUID:[card valueForKey:@"carduuid"] withType:((NSNumber *)[card valueForKey:@"cardtype"]).intValue];
-    [self loadDeck];
+    [self performSuspendCard];
 }
 - (IBAction)filteraction:(id)sender {
     [self filteritems];
