@@ -53,6 +53,7 @@ NSString *const kcurrentDeckVersion = @"1";
     defaultValues[@"donated"] = @NO;
     defaultValues[@"cyclefonts"] = @NO;
     defaultValues[@"fontnames"] = @[@"Hiragino Mincho Pro",@"Hiragino Maru Gothic Pro",@"Hiragino Sans",@"Hiragino Kaku Gothic Pro"];
+    defaultValues[@"allowimpercise"] = @YES;
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];

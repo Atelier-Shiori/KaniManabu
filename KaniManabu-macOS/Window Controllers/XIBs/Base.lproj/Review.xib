@@ -44,7 +44,7 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenNone="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="519" y="347" width="514" height="384"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="935"/>
             <value key="minSize" type="size" width="514" height="384"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="514" height="384"/>
@@ -106,7 +106,7 @@
                         </connections>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fDg-we-m1R">
-                        <rect key="frame" x="466" y="12.5" width="48" height="48"/>
+                        <rect key="frame" x="466" y="13" width="48" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="arrow.right" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="6q3-ZS-hhs">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -268,7 +268,7 @@
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Uh9-GM-qy3"/>
                     <toolbarItem implicitItemIdentifier="2025E579-9FAA-4C11-BA1C-3F408C451B3A" label="score" paletteLabel="score" image="hand.thumbsup" catalog="system" title="0%" sizingBehavior="auto" id="qrJ-eQ-MpB">
                         <nil key="toolTip"/>
-                        <button key="view" misplaced="YES" id="LMg-pa-VZc">
+                        <button key="view" id="LMg-pa-VZc">
                             <rect key="frame" x="0.0" y="15" width="41" height="17.5"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <buttonCell key="cell" type="square" title="0%" bezelStyle="shadowlessSquare" image="hand.thumbsup" catalog="system" imagePosition="left" alignment="center" enabled="NO" imageScaling="proportionallyDown" inset="2" id="1qK-vr-bd0">
@@ -412,15 +412,15 @@
         </textField>
     </objects>
     <resources>
-        <image name="arrow.right" catalog="system" width="15" height="12"/>
-        <image name="arrow.uturn.backward" catalog="system" width="15" height="14"/>
+        <image name="arrow.right" catalog="system" width="16" height="12"/>
+        <image name="arrow.uturn.backward" catalog="system" width="16" height="14"/>
         <image name="arrowshape.bounce.forward" catalog="system" width="20" height="14"/>
-        <image name="checkmark" catalog="system" width="14" height="13"/>
+        <image name="checkmark" catalog="system" width="15" height="13"/>
         <image name="clock" catalog="system" width="15" height="15"/>
-        <image name="eye" catalog="system" width="21" height="13"/>
+        <image name="eye" catalog="system" width="20" height="13"/>
         <image name="hand.thumbsup" catalog="system" width="16" height="17"/>
         <image name="moon" catalog="system" width="15" height="15"/>
         <image name="play.circle" catalog="system" width="15" height="15"/>
-        <image name="tray" catalog="system" width="18" height="13"/>
+        <image name="tray" catalog="system" width="19" height="13"/>
     </resources>
 </document>

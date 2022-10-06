@@ -104,7 +104,7 @@ double const kFuzziness = 0.8;
     
     // Check for imprecise match with stringscore.
     float stringscore = string_fuzzy_score(answer.UTF8String, correctAnswer.UTF8String, kFuzziness);
-    if (stringscore >= .6) {
+    if (stringscore >= .6 && [NSUserDefaults.standardUserDefaults boolForKey:@"allowimpercise"]) {
         // Answer is correct enough, but not precise.
         return AnswerStateInprecise;
     }
@@ -118,7 +118,7 @@ double const kFuzziness = 0.8;
             }
             // Check for imprecise match with stringscore.
             float stringscore = string_fuzzy_score(answer.UTF8String, taltAnswer.UTF8String, kFuzziness);
-            if (stringscore >= .6) {
+            if (stringscore >= .6 && [NSUserDefaults.standardUserDefaults boolForKey:@"allowimpercise"]) {
                 // Answer is correct enough, but not precise.
                 return AnswerStateInprecise;
         }
