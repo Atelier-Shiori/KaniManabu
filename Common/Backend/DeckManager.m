@@ -852,18 +852,18 @@
     int decktype = ((NSNumber *)[deckMeta valueForKey:@"deckType"]).intValue;
     NSArray *cards = [self retrieveCardsForDeckUUID:uuid withType:decktype];
     NSMutableDictionary *learneddata = [NSMutableDictionary new];
-    int learned = 0;
-    int notlearned = 0;
+    int learnedcount = 0;
+    int notlearnedcount = 0;
     for (NSManagedObject * card in cards) {
         bool learned = ((NSNumber *)[card valueForKey:@"learned"]).boolValue;
         if (learned) {
-            learned++;
+            learnedcount++;
         }
         else {
-            notlearned++;
+            notlearnedcount++;
         }
     }
-    return @{@"Learned" : @(learned), @"Not Learned" : @(notlearned)};
+    return @{@"Learned" : @(learnedcount), @"Not Learned" : @(notlearnedcount)};
 }
 - (NSDictionary *)generateSRSChartDataforDeckUUID:(NSUUID *)uuid {
     NSManagedObject *deckMeta = [self getDeckMetadataWithUUID:uuid];
