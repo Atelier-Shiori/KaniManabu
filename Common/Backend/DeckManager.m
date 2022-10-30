@@ -819,4 +819,93 @@
 - (bool)checkiCloudLoggedIn {
     return NSFileManager.defaultManager.ubiquityIdentityToken != nil ? true : false;
 }
+
+#pragma mark For Swift Charts
+
+- (NSDictionary *)generateForecastDataforDeckUUID:(NSUUID *)uuid {
+    NSManagedObject *deckMeta = [self getDeckMetadataWithUUID:uuid];
+    int decktype = ((NSNumber *)[deckMeta valueForKey:@"deckType"]).intValue;
+    NSArray *cards = [self retrieveCardsForDeckUUID:uuid withType:decktype];
+    int totalcurrentcount = [self retrieveReviewItemsForDeckUUID:uuid withType:decktype].count;
+    NSMutableDictionary *forecast = [NSMutableDictionary new];
+    NSDate *now = NSDate.now;
+    double previnterval = 0;
+    for (int i = 1; i < 49; i++) {
+        int newtotal = 0;
+        NSDate *forecasteddate = [now dateByAddingTimeInterval:i*60*60];
+        double forecastedinterval = forecasteddate.timeIntervalSince1970;
+        for (NSManagedObject * card in cards) {
+            double nextinterval = ((NSNumber *)[card valueForKey:@"nextreviewinterval"]).doubleValue;
+            if (((i == 1 && nextinterval <= forecastedinterval) || (previnterval < nextinterval && nextinterval <= forecastedinterval)) && nextinterval != 0) {
+                newtotal++;
+            }
+        }
+        forecast[@(i).stringValue] = @{@"value1" : @(newtotal), @"value2" : @(totalcurrentcount+newtotal)};
+        totalcurrentcount = totalcurrentcount+newtotal;
+        previnterval = forecastedinterval;
+    }
+    return forecast;
+}
+
+- (NSDictionary *)generateLearnedChartDataforDeckUUID:(NSUUID *)uuid {
+    NSManagedObject *deckMeta = [self getDeckMetadataWithUUID:uuid];
+    int decktype = ((NSNumber *)[deckMeta valueForKey:@"deckType"]).intValue;
+    NSArray *cards = [self retrieveCardsForDeckUUID:uuid withType:decktype];
+    NSMutableDictionary *learneddata = [NSMutableDictionary new];
+    int learned = 0;
+    int notlearned = 0;
+    for (NSManagedObject * card in cards) {
+        bool learned = ((NSNumber *)[card valueForKey:@"learned"]).boolValue;
+        if (learned) {
+            learned++;
+        }
+        else {
+            notlearned++;
+        }
+    }
+    return @{@"Learned" : @(learned), @"Not Learned" : @(notlearned)};
+}
+- (NSDictionary *)generateSRSChartDataforDeckUUID:(NSUUID *)uuid {
+    NSManagedObject *deckMeta = [self getDeckMetadataWithUUID:uuid];
+    int decktype = ((NSNumber *)[deckMeta valueForKey:@"deckType"]).intValue;
+    NSArray *cards = [self retrieveCardsForDeckUUID:uuid withType:decktype];
+    int apprentice = 0;
+    int guru = 0;
+    int master = 0;
+    int enlightened = 0;
+    int burned = 0;
+    for (NSManagedObject * card in cards) {
+        bool learned = ((NSNumber *)[card valueForKey:@"learned"]).boolValue;
+        int srslevel = ((NSNumber *)[card valueForKey:@"srsstage"]).intValue;
+        if (learned) {
+            switch (srslevel) {
+                case SRSStageApprentice1:
+                case SRSStageApprentice2:
+                case SRSStageApprentice3:
+                case SRSStageApprentice4:
+                    apprentice++;
+                    break;
+                case SRSStageGuru1:
+                case SRSStageGuru2:
+                    guru++;
+                    break;
+                case SRSStageMaster:
+                    master++;
+                    break;
+                case SRSStageEnlightened:
+                    enlightened++;
+                    break;
+                case SRSStageBurned:
+                    burned++;
+                    break;
+                default:
+                    continue;
+            }
+        }
+        else {
+            continue;
+        }
+    }
+    return @{@"Apprentice" : @(apprentice), @"Guru" : @(guru), @"Master" : @(master), @"Enlightened" : @(enlightened), @"Burned" : @(burned)};
+}
 @end

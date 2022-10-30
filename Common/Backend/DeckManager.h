@@ -54,6 +54,9 @@ typedef NS_ENUM(int,NewCardReviewMode) {
 - (void)togglesuspendCardForCardUUID:(NSUUID *)uuid withType:(int)type;
 - (void)removeOrphanedCards;
 - (bool)checkiCloudLoggedIn;
+- (NSDictionary *)generateForecastDataforDeckUUID:(NSUUID *)uuid;
+- (NSDictionary *)generateLearnedChartDataforDeckUUID:(NSUUID *)uuid;
+- (NSDictionary *)generateSRSChartDataforDeckUUID:(NSUUID *)uuid;
 @end
 
 

@@ -25,6 +25,7 @@
 #import "LicenseManager.h"
 #endif
 #import "CSVLoadingWindow.h"
+#import "DeckStatsWindow.h"
 
 @interface MainWindowController ()
 @property (strong) DeckManager *dm;
@@ -43,6 +44,7 @@
 @property (strong) IBOutlet NSToolbarItem *newdecktoolbaritem;
 @property (strong) IBOutlet NSToolbarItem *importdecktoolbaritem;
 @property (strong) IBOutlet NSToolbarItem *exportdecktoolbaritem;
+@property (strong) DeckStatsWindow *dsw;
 @end
 
 @implementation MainWindowController
@@ -90,6 +92,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"AddToQueueCount" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ActionShowDeckOptions" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"NewItemsSynced" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:@"ActionShowDeckStats" object:nil];
     AppDelegate *delegate = (AppDelegate *)NSApp.delegate;
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreRemoteChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(receiveNotification:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:delegate.persistentContainer.persistentStoreCoordinator];
@@ -264,6 +267,18 @@
             NSApp.dockTile.showsApplicationBadge = nonzerototalqueuecount;
             NSApp.dockTile.badgeLabel = nonzerototalqueuecount ? @(totalqueue).stringValue : @"";
             [NSApp.dockTile display];
+        }
+    }
+    else if ([notification.name isEqualToString:@"ActionShowDeckStats"]) {
+        if (@available(macOS 12.0, *)) {
+            if (!_dsw) {
+                _dsw = [DeckStatsWindow new];
+            }
+            NSManagedObject *deck = notification.object;
+            _dsw.deckuuid = [deck valueForKey:@"deckUUID"];
+            _dsw.window.title = [NSString stringWithFormat:@"%@ - Deck Stats", [deck valueForKey:@"deckName"]];
+            [_dsw.window makeKeyAndOrderFront:self];
+            [_dsw loadChart];
         }
     }
 }

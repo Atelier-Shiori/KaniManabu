@@ -210,6 +210,12 @@
 		FFA58B1827DFB61B0091146D /* MicrosoftSpeechConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58B1627DFB61B0091146D /* MicrosoftSpeechConstants.m */; };
 		FFA58B1927DFB61B0091146D /* MicrosoftSpeechConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = FFA58B1627DFB61B0091146D /* MicrosoftSpeechConstants.m */; };
 		FFB6145C278CB8AF001E5FAA /* DeckBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */; };
+		FFB829A9290EC7E9007D6D17 /* DeckStatsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB829A7290EC7E9007D6D17 /* DeckStatsWindow.m */; };
+		FFB829AA290EC7E9007D6D17 /* DeckStatsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FFB829A7290EC7E9007D6D17 /* DeckStatsWindow.m */; };
+		FFB829AB290EC7E9007D6D17 /* DeckStatsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB829A8290EC7E9007D6D17 /* DeckStatsWindow.xib */; };
+		FFB829AC290EC7E9007D6D17 /* DeckStatsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFB829A8290EC7E9007D6D17 /* DeckStatsWindow.xib */; };
+		FFB829C3290EC94C007D6D17 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB829C2290EC94B007D6D17 /* Chart.swift */; };
+		FFB829C4290EC94C007D6D17 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFB829C2290EC94B007D6D17 /* Chart.swift */; };
 		FFBE3C2E278DEF67003D3F06 /* SRSLevelValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C2D278DEF67003D3F06 /* SRSLevelValueTransformer.m */; };
 		FFBE3C31278DF05F003D3F06 /* UnixDatetoNSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFBE3C30278DF05F003D3F06 /* UnixDatetoNSDate.m */; };
 		FFD983662797415D0017730A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FFD983652797415D0017730A /* AppDelegate.m */; };
@@ -588,6 +594,11 @@
 		FFA58B1627DFB61B0091146D /* MicrosoftSpeechConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MicrosoftSpeechConstants.m; sourceTree = "<group>"; };
 		FFB6145A278CB8AF001E5FAA /* DeckBrowser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckBrowser.h; sourceTree = "<group>"; };
 		FFB6145B278CB8AF001E5FAA /* DeckBrowser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckBrowser.m; sourceTree = "<group>"; };
+		FFB829A6290EC7E9007D6D17 /* DeckStatsWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeckStatsWindow.h; sourceTree = "<group>"; };
+		FFB829A7290EC7E9007D6D17 /* DeckStatsWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeckStatsWindow.m; sourceTree = "<group>"; };
+		FFB829A8290EC7E9007D6D17 /* DeckStatsWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeckStatsWindow.xib; sourceTree = "<group>"; };
+		FFB829C0290EC94A007D6D17 /* KaniManabu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KaniManabu-Bridging-Header.h"; sourceTree = "<group>"; };
+		FFB829C2290EC94B007D6D17 /* Chart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		FFBE3C2C278DEF67003D3F06 /* SRSLevelValueTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SRSLevelValueTransformer.h; sourceTree = "<group>"; };
 		FFBE3C2D278DEF67003D3F06 /* SRSLevelValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SRSLevelValueTransformer.m; sourceTree = "<group>"; };
 		FFBE3C2F278DF05F003D3F06 /* UnixDatetoNSDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnixDatetoNSDate.h; sourceTree = "<group>"; };
@@ -754,6 +765,8 @@
 				FFA58B1627DFB61B0091146D /* MicrosoftSpeechConstants.m */,
 				FF3C9FD327E22B7E00277FEE /* IBMSpeechConstants.h */,
 				FF3C9FD427E22B7E00277FEE /* IBMSpeechConstants.m */,
+				FFB829C2290EC94B007D6D17 /* Chart.swift */,
+				FFB829C0290EC94A007D6D17 /* KaniManabu-Bridging-Header.h */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -800,6 +813,7 @@
 		15C52D7D279477D1002ADE2B /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				FFB829A8290EC7E9007D6D17 /* DeckStatsWindow.xib */,
 				FF173DD927B69E1300E5CD37 /* Review.xib */,
 				FF173DDD27B69E1700E5CD37 /* Learn.xib */,
 				FF173DE127B69E1B00E5CD37 /* mainwindow.xib */,
@@ -874,6 +888,8 @@
 				FFA58B0F27DF60590091146D /* SubscriptionPickerWindow.h */,
 				FFA58B1027DF60590091146D /* SubscriptionPickerWindow.m */,
 				FFA58B1127DF60590091146D /* SubscriptionPickerWindow.xib */,
+				FFB829A6290EC7E9007D6D17 /* DeckStatsWindow.h */,
+				FFB829A7290EC7E9007D6D17 /* DeckStatsWindow.m */,
 			);
 			path = "Window Controllers";
 			sourceTree = "<group>";
@@ -1110,8 +1126,12 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
+					157328F02794B9C400587C05 = {
+						LastSwiftMigration = 1410;
+					};
 					FF708860278C7CDF00DF399E = {
 						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1410;
 					};
 					FFD983612797415D0017730A = {
 						CreatedOnToolsVersion = 13.1;
@@ -1317,6 +1337,7 @@
 				FF173DD327B69E0600E5CD37 /* WaniKaniPreferences.xib in Resources */,
 				FF173DEB27B69E2700E5CD37 /* VocabEditor.xib in Resources */,
 				FF173DFF27B69E3B00E5CD37 /* ItemInfoWindow.xib in Resources */,
+				FFB829AC290EC7E9007D6D17 /* DeckStatsWindow.xib in Resources */,
 				FF173DE727B69E2300E5CD37 /* DeckBrowser.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1343,6 +1364,7 @@
 				FF173DDA27B69E1700E5CD37 /* Learn.xib in Resources */,
 				FF70886E278C7CE000DF399E /* MainMenu.xib in Resources */,
 				FF746572278F44AE0062E476 /* PFAboutWindow.xib in Resources */,
+				FFB829AB290EC7E9007D6D17 /* DeckStatsWindow.xib in Resources */,
 				FF173DD627B69E1300E5CD37 /* Review.xib in Resources */,
 				FF173DD227B69E0600E5CD37 /* WaniKaniPreferences.xib in Resources */,
 				FF173DEA27B69E2700E5CD37 /* VocabEditor.xib in Resources */,
@@ -1381,6 +1403,7 @@
 				157328F92794B9C400587C05 /* KanjiEditor.m in Sources */,
 				157328FA2794B9C400587C05 /* NSString+RomajiKanaConvert.m in Sources */,
 				157328FB2794B9C400587C05 /* CHCSVParser.m in Sources */,
+				FFB829AA290EC7E9007D6D17 /* DeckStatsWindow.m in Sources */,
 				157328FC2794B9C400587C05 /* NSTableViewAction.m in Sources */,
 				157328FD2794B9C400587C05 /* DeckAddDialogController.m in Sources */,
 				FF778DE8279EEEDA0055AF2D /* WaniKani.m in Sources */,
@@ -1390,6 +1413,7 @@
 				157328FF2794B9C400587C05 /* UnixDatetoNSDate.m in Sources */,
 				157329002794B9C400587C05 /* DeckBrowser.m in Sources */,
 				FF778DCA279EEC740055AF2D /* WaniKani.xcdatamodeld in Sources */,
+				FFB829C4290EC94C007D6D17 /* Chart.swift in Sources */,
 				157329012794B9C400587C05 /* GeneralPreferencesViewController.m in Sources */,
 				FF0A18A1285FCA4500011780 /* JapaneseWebView.m in Sources */,
 				FFA58B1227DF60590091146D /* SubscriptionPickerWindow.m in Sources */,
@@ -1436,6 +1460,7 @@
 				153FFE742794F33500D481A2 /* CFobLicVerifier.m in Sources */,
 				151F3AC2278E23D800953ECD /* KanaEditor.m in Sources */,
 				FF28A81A278CB17F00D3744D /* LearnWindowController.m in Sources */,
+				FFB829C3290EC94C007D6D17 /* Chart.swift in Sources */,
 				FF28A825278CB31300D3744D /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				FF173E4C27BA791700E5CD37 /* DeckMonitor.m in Sources */,
 				151F3ABD278E23CD00953ECD /* KanjiEditor.m in Sources */,
@@ -1477,6 +1502,7 @@
 				153FFE762794F33500D481A2 /* CFobError.m in Sources */,
 				FF708866278C7CDF00DF399E /* AppDelegate.m in Sources */,
 				FF28A826278CB31300D3744D /* NSTextView+SetHTMLAttributedText.m in Sources */,
+				FFB829A9290EC7E9007D6D17 /* DeckStatsWindow.m in Sources */,
 				15C52D71279398E3002ADE2B /* DeckOptions.m in Sources */,
 				FF778DC9279EEC740055AF2D /* WaniKani.xcdatamodeld in Sources */,
 				15B122D6278CE93E00575A73 /* AnswerCheck.m in Sources */,
@@ -1696,6 +1722,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "KaniManabu-macOS/KaniManabu(AppStore).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -1724,10 +1751,13 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = KaniManabu;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Common/Backend/KaniManabu-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1736,6 +1766,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "KaniManabu-macOS/KaniManabu(AppStore).entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -1764,10 +1795,12 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = KaniManabu;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Common/Backend/KaniManabu-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1887,6 +1920,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "KaniManabu-macOS/KaniManabu.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -1919,6 +1953,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Common/Backend/KaniManabu-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1927,6 +1964,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "KaniManabu-macOS/KaniManabu.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -1959,6 +1997,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.KaniManabu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Common/Backend/KaniManabu-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

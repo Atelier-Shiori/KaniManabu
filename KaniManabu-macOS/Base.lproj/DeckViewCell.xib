@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -46,7 +46,7 @@
                     </textFieldCell>
                 </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xd6-M7-TFv">
-                    <rect key="frame" x="268" y="36" width="130" height="19"/>
+                    <rect key="frame" x="268" y="53" width="130" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Review" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WLs-Xh-Kec">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -57,7 +57,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Unq-EN-UIB">
-                    <rect key="frame" x="268" y="62" width="130" height="19"/>
+                    <rect key="frame" x="268" y="75" width="130" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                     <buttonCell key="cell" type="roundRect" title="Learn" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PsD-oP-2Nl">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -68,7 +68,7 @@
                     </connections>
                 </button>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PuZ-gh-ayd">
-                    <rect key="frame" x="96" y="34" width="41" height="48"/>
+                    <rect key="frame" x="96" y="34.5" width="41" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="text.book.closed" catalog="system" id="yi1-5W-Fai"/>
                 </imageView>
@@ -106,7 +106,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xYN-13-EEr">
-                    <rect key="frame" x="287" y="96" width="99" height="16"/>
+                    <rect key="frame" x="287" y="101" width="99" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" placeholderString="Deck Type" id="iUX-yU-nbO">
                         <font key="font" metaFont="system"/>
@@ -114,10 +114,22 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dJh-bC-L7j">
+                    <rect key="frame" x="268" y="31" width="130" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <buttonCell key="cell" type="roundRect" title="Stats" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hxS-3A-aKE">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="cellTitle"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showdeckstats:" target="c22-O7-iKe" id="EyW-EY-nnJ"/>
+                    </connections>
+                </button>
             </subviews>
             <connections>
                 <outlet property="DeckName" destination="uoj-LB-obo" id="6Vf-1L-WWF"/>
                 <outlet property="deckoptionsbtn" destination="kle-OU-8HE" id="SmE-zU-EPF"/>
+                <outlet property="deckstats" destination="dJh-bC-L7j" id="kdp-pz-3Rf"/>
                 <outlet property="decktypestr" destination="xYN-13-EEr" id="CPL-md-DIc"/>
                 <outlet property="deletebtn" destination="vXY-Es-isH" id="a3w-K7-Tik"/>
                 <outlet property="inboxicon" destination="D7g-TP-Uyg" id="g83-lq-KAm"/>
@@ -131,10 +143,10 @@
         </customView>
     </objects>
     <resources>
-        <image name="NSAddTemplate" width="15" height="13"/>
+        <image name="NSAddTemplate" width="18" height="17"/>
         <image name="gearshape" catalog="system" width="16" height="16"/>
-        <image name="text.book.closed" catalog="system" width="15" height="16"/>
+        <image name="text.book.closed" catalog="system" width="14" height="16"/>
         <image name="trash" catalog="system" width="15" height="17"/>
-        <image name="tray" catalog="system" width="19" height="13"/>
+        <image name="tray" catalog="system" width="18" height="13"/>
     </resources>
 </document>

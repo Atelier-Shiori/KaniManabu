@@ -13,6 +13,7 @@
 @property (strong) IBOutlet NSImageView *learnicon;
 @property (strong) IBOutlet NSButton *deckoptionsbtn;
 @property (strong) IBOutlet NSButton *deletebtn;
+@property (strong) IBOutlet NSButton *deckstats;
 
 @end
 
@@ -38,6 +39,12 @@
         _learnicon.image = [NSImage imageNamed:@"book"];
         _deckoptionsbtn.image = [NSImage imageNamed:@"gear"];
         _deletebtn.image = [NSImage imageNamed:@"delete"];
+    }
+    
+    if (@available(macOS 12.0, *)) {
+    }
+    else {
+        _deckstats.enabled = NO;
     }
 }
 
@@ -109,6 +116,9 @@
 }
 - (IBAction)openoptions:(id)sender {
     [NSNotificationCenter.defaultCenter postNotificationName:@"ActionShowDeckOptions" object:_deckMeta];
+}
+- (IBAction)showdeckstats:(id)sender {
+    [NSNotificationCenter.defaultCenter postNotificationName:@"ActionShowDeckStats" object:_deckMeta];
 }
 
 @end
